@@ -155,57 +155,6 @@
   </div>
   </div>
 </header>
-Column E - Checkbox
-Column F - Blank
-Column G - Checkbox
-Column H - Checkbox
-Column I - =IF(F2="","",F2+1)
-Column J - Checkbox
-Column K - =IF(G2=TRUE, "LEAD FORM",
- IF(J2=TRUE, "SENT",
-  IF(ISBLANK(I2), "PENDING",
-   IF(INT(I2)=TODAY(), "SEND REPLY",
-    IF(I2<TODAY(), "OVERDUE", "PENDING")
-   )
-  )
- )
-)
-
-Column L - =IF(F2="","",F2+4)
-Column M - Checkbox
-Column N - =IF(G2=TRUE, "LEAD FORM",
- IF(M2=TRUE, "SENT",
-  IF(ISBLANK(L2), "PENDING",
-   IF(INT(L2)=TODAY(), "SEND REPLY",
-    IF(L2<TODAY(), "OVERDUE", "PENDING")
-   )
-  )
- )
-)
-
-Column O - =IF(F2="","",F2+8)
-Column P - Checkbox
-Column Q - =IF(G2=TRUE, "LEAD FORM",
- IF(P2=TRUE, "SENT",
-  IF(ISBLANK(O2), "PENDING",
-   IF(INT(O2)=TODAY(), "SEND REPLY",
-    IF(O2<TODAY(), "OVERDUE", "PENDING")
-   )
-  )
- )
-)
-Column R - =IF(F2="","",F2+15)
-Column S - Checkbox
-Column T - =IF(G2=TRUE, "LEAD FORM",
- IF(S2=TRUE, "SENT",
-  IF(ISBLANK(R2), "PENDING",
-   IF(INT(R2)=TODAY(), "SEND REPLY",
-    IF(R2<TODAY(), "OVERDUE", "PENDING")
-   )
-  )
- )
-)
-Column U - Checkbox
 
 <main>
   <h2>🗂️ Company Overview</h2>
