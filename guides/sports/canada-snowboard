@@ -1,0 +1,348 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwagZone Custom Merch – Swag Strategy</title>
+  <link rel="icon" type="image/png" href="https://cat-ca.swag-zone.com/files/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --brand-purple: var(--brand-purple);
+  --brand-purple-dark: #5c3e8a;
+  --brand-purple-light: #ede6f5;
+  --accent-coral: #A678B5;
+  --highlight-yellow: #ffcc40;
+}
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      background-color: #fefefe;
+      color: #333;
+    }
+    header, footer {
+  background-color: #785BA6;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+    header img {
+      height: 50px;
+      vertical-align: middle;
+    }
+    header h1 {
+  display: inline;
+  font-size: 2rem;
+  margin-left: 10px;
+  color: white;
+}
+    main {
+      padding: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1, h2, h3 {
+  margin-top: 3em;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #222;
+}
+    h2 {
+  color: #444;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+  font-size: 1.6rem;
+}
+    
+    ul {
+      margin-left: 1.2em;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 24px 0 72px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th {
+      background-color: var(--brand-purple-light);
+      color: #785BA6;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 14px;
+    }
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    tr:hover {
+      background-color: #fdfdfd;
+      box-shadow: inset 0 0 0 999px rgba(255, 255, 160, 0.1);
+    }
+    .overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+    .goals-box {
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--brand-blue);
+  margin-top: 16px;
+  font-size: 1.1rem;
+}
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tip {
+      background: #fffbe6;
+      border-left: 4px solid var(--highlight-yellow);
+      padding: 12px;
+      border-radius: 6px;
+    }
+    .framework-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .framework-item {
+      background-color: #f1f4fa;
+      border-left: 4px solid var(--brand-purple-dark);
+      padding: 16px;
+      border-radius: 6px;
+    }
+    footer p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--accent-coral);
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+    .overview-grid,
+    .framework-grid,
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div style="display: flex; align-items: center; justify-content: space-between; max-width: 960px; margin: 0 auto;">
+    <img src="https://cat-ca.swag-zone.com/files/1200-x-1200-04.png" alt="SwagZone Logo" style="max-width: 150px; height: auto; margin-top: 1rem; filter: brightness(0) invert(1);">
+    <div style="text-align: right;">
+      <h1 style="margin: 0; text-align: right;">🚀 Custom Swag Guide</h1>
+      <p style="margin: 0.5rem 0 0; font-size: 0.95rem; text-align: right;"><a href="https://www.swag-zone.com" style="color: white; text-decoration: underline;">View Product Catalog</a></p>
+  </div>
+  </div>
+</header>
+<main>
+  <section>
+    <h2>Company Overview</h2>
+    <div class="overview-grid">
+      <div><strong>Name:</strong> Canada Snowboard (Canadian Snowboard Federation)</div>
+      <div><strong>Location:</strong> Vancouver, BC, Canada</div>
+      <div><strong>Type:</strong> National Sport Organization (NSO)</div>
+      <div><strong>Team Size:</strong> National federation + provincial/territorial network</div>
+      <div><strong>Audience:</strong> High-performance athletes, grassroots snowboarders, P/T members, board volunteers</div>
+      <div><strong>Goals:</strong> Strengthen governance, support elite development, expand grassroots access, promote Canadian snowboarding pride</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>SWAG IDEAS</h2>
+
+    <h3>1. Explore: Athlete & Team Pride</h3>
+    <p class="section-intro">Celebrate national team membership and high-performance mindset with premium, on-brand gear.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Ideas</th>
+          <th>Description</th>
+          <th>Product Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Canada Snowboard Team Beanie</td>
+          <td>Embroidered with logo + medal stripes—ideal for on-mountain training and travel.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=embroidered+beanie" target="_blank">Explore</a></td>
+        </tr>
+        <tr>
+          <td>High-Performance Neck Gaiter</td>
+          <td>Logo + PODIUM colours, suitable for cold-weather training and competition.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=neck+gaiter" target="_blank">Explore</a></td>
+        </tr>
+        <tr>
+          <td>Custom Medal Lanyards</td>
+          <td>Maple-leaf patterned lanyards used for event credentials or athlete passes.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=lanyard" target="_blank">Explore</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. Explore: Grassroots & Member Connection</h3>
+    <p class="section-intro">Boost affinity and solidarity across local associations and snowboard clubs.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Ideas</th>
+          <th>Description</th>
+          <th>Product Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shred Hookup Discount Cards</td>
+          <td>Compact hard-card with Canada Snowboard logo + partner savings info.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=membership+card" target="_blank">Explore</a></td>
+        </tr>
+        <tr>
+          <td>P‑T Association Vinyl Decal</td>
+          <td>Durable logo sticker for boards, helmets, and gear—celebrates local affiliation.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=vinyl+decal" target="_blank">Explore</a></td>
+        </tr>
+        <tr>
+          <td>Community Shred Socks</td>
+          <td>Performance tube socks with bold logo and national stripes—perfect for park days.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=snowboard+socks" target="_blank">Explore</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. Explore: Event & Summit Branding</h3>
+    <p class="section-intro">Create cohesion and professionalism at national events and board gatherings.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Ideas</th>
+          <th>Description</th>
+          <th>Product Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Event Water Bottles</td>
+          <td>Reusable stainless steel bottles with full-color NSO crest and event name.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=insulated+water+bottle" target="_blank">Explore</a></td>
+        </tr>
+        <tr>
+          <td>Podium Presentation Pins</td>
+          <td>Enamel pins for event volunteers, coaches, and board members to display.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=enamel+pin" target="_blank">Explore</a></td>
+        </tr>
+        <tr>
+          <td>Summit Notebook & Pen Set</td>
+          <td>Branded notepad with embossed logo and country-flag ribbon bookmarks.</td>
+          <td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=notebook+pen+set" target="_blank">Explore</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4. Signature Swag Moments</h3>
+    <p class="section-intro">Deliver memorable, boutique kits that resonate with team spirit and athlete achievement.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Ideas</th>
+          <th>Description</th>
+          <th>Product Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>“First Track” Care Kit</td>
+          <td>Beanie, lip balm, trail mix — packaged in a foil pouch as a celebratory first-run gift.</td>
+          <td>Custom Concept</td>
+        </tr>
+        <tr>
+          <td>Athlete Legacy Photo Journal</td>
+          <td>Leather-bound journal with embossed logo and pockets for race photos/patches.</td>
+          <td>Custom Concept</td>
+        </tr>
+        <tr>
+          <td>Para & Adaptive Inclusivity Pack</td>
+          <td>Customized toque, water bottle, and framed Athlete Statement booklet.</td>
+          <td>Custom Concept</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+
+
+
+
+
+
+
+
+
+<section>
+
+
+<div id="top-footer" class="bg-white py-5" style="padding: 2rem 1rem;">
+  <div class="container">
+    <h1 class="text-center mb-4 fs-1" style="text-align:center; font-size: 1.75rem;">Get A Swag Quote Today!</h1>
+    <hr class="mb-4 footerhr" />
+    <div class="row" style="display: block;">
+<div class="col-sm-12">
+    <p style="text-align: center; font-weight: bold;">OUR CONTACT INFO</p>
+    <p style="text-align: center;"><a href="tel:888-290-6875">+1 888-290-6875</a></p>
+    <p style="text-align: center;"><a href="mailto:contact@swag-zone.ca">Email Us</a></p>
+    <p style="text-align: center;">We ship across US & Canada</p>
+    <p style="text-align: center;"><img class="img-fluid" src="https://cat-ca.swag-zone.com/files/logo.png" alt="SwagZone Logo" style="max-width: 150px; height: auto; margin-top: 1rem;" /></p>
+  </div>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+ var form = document.getElementById('myForm');
+ var currentUrl = window.location.href;
+
+ form.addEventListener('submit', function(e) {
+    var hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'Submitted From';
+    hiddenInput.value = currentUrl;
+    form.appendChild(hiddenInput);
+ });
+});
+</script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/swagzone-custom-merch?hide_gdpr_banner=1&primary_color=9183cc', text: 'Book A Swag Consult', color: '#9183cc', textColor: '#ffffff', branding: false }); }</script>
+<!-- Calendly badge widget end -->
+
+</section>
+<footer>
+  <p>© SwagZone Custom Merch 2025. All rights reserved.</p>
+  <p><a href="https://www.swag-zone.com">Visit Our Website</a></p>
+  
+</footer>
+</body>
+</html>
