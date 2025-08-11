@@ -1,56 +1,215 @@
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 16px;
-margin-top: 10px;
-font-size: 1.1rem;
+/* ===========================
+   SwagZone Strategy Page – CSS
+   File: styles.css
+   =========================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --brand-purple: #785BA6;
+  --brand-purple-dark: #5c3e8a;
+  --brand-purple-light: #ede6f5;
+  --accent-coral: #A678B5;
+  --highlight-yellow: #ffcc40;
+  --text: #333333;
+  --text-strong: #222222;
+  --bg: #fefefe;
+  --card: #ffffff;
+  --muted: #f9f9f9;
+  --line: #e0e0e0;
 }
-.goals-box {
-background: #f9f9f9;
-padding: 16px;
-border-radius: 8px;
-border-left: 4px solid var(--brand-blue);
-margin-top: 16px;
-font-size: 1.1rem;
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
-.tips-grid {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 16px;
-margin-top: 20px;
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.tip {
-background: #fffbe6;
-border-left: 4px solid var(--highlight-yellow);
-padding: 12px;
-border-radius: 6px;
+
+a {
+  color: var(--brand-purple);
+  text-decoration: underline;
 }
-.framework-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 20px;
-margin-top: 20px;
+a:hover { opacity: 0.85; }
+
+/* ---------- Header / Footer ---------- */
+header, footer {
+  background-color: var(--brand-purple);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
-.framework-item {
-background-color: #f1f4fa;
-border-left: 4px solid var(--brand-purple-dark);
-padding: 16px;
-border-radius: 6px;
+
+header img {
+  height: 50px;
+  vertical-align: middle;
 }
-footer p {
-margin: 5px 0;
-font-size: 0.9rem;
+
+header h1 {
+  display: inline;
+  font-size: 2rem;
+  margin-left: 10px;
+  color: #fff;
 }
-footer a {
-color: var(--accent-coral);
-text-decoration: underline;
+
+footer p { margin: 5px 0; font-size: 0.95rem; }
+footer a { color: #fff; text-decoration: underline; }
+
+/* ---------- Layout ---------- */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
-@media (max-width: 768px) {
+
+h1, h2, h3 {
+  color: var(--text-strong);
+  font-weight: 600;
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--line);
+}
+
+.section-intro {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  margin-top: -0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Grids ---------- */
 .overview-grid,
 .framework-grid,
 .tips-grid {
-grid-template-columns: 1fr;
+  display: grid;
+  gap: 16px;
+  margin-top: 10px;
 }
-}
-</style>
 
-</head> <body> <header> <div style="display: flex; align-items: center; justify-content: space-between; max-width: 960px; margin: 0 auto;"> <img src="https://cat-ca.swag-zone.com/files/1200-x-1200-04.png" alt="SwagZone Logo" style="max-width: 150px; height: auto; margin-top: 1rem; filter: brightness(0) invert(1);"> <div style="text-align: right;"> <h1 style="margin: 0; text-align: right;">🚀 Custom Swag Guide</h1> <p style="margin: 0.5rem 0 0; font-size: 0.95rem; text-align: right;"><a href="https://www.swag-zone.com" style="color: white; text-decoration: underline;">View Product Catalog</a></p> </div> </div> </header> <main> <h2>🏡 Company Overview</h2> <div class="overview-grid"> <div><strong>Company Name:</strong> Hunter Logan</div> <div><strong>Location:</strong> Canada</div> <div><strong>Type:</strong> Brand Visibility & Team Culture Initiative</div> <div><strong>Team Size:</strong> TBD</div> <div><strong>Audience:</strong> Employees, partners, clients, event attendees</div> <div><strong>Goals:</strong> Strengthen public brand presence, build internal unity, and create high-buzz, highly shareable moments</div> </div> <h2>🏱 SWAG IDEAS</h2> <h3>1) Explore: Brand Visibility Power Plays</h3> <p class="section-intro">Swag that travels, sparks curiosity, and keeps the brand in motion—built for streets, transit, airports, and photo ops.</p> <table> <tr><th>Ideas</th><th>Description</th><th>Product Link</th></tr> <tr><td>Urban Commuter Backpack</td><td>Sleek, durable bag with understated logo—seen on transit, flights, and coffee runs.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=commuter+backpack" target="_blank"><strong>Explore</strong></a></td></tr> <tr><td>Reflective Logo Umbrella</td><td>Pops in rainy photos and makes the brand visible from across the street.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=travel+umbrella" target="_blank"><strong>Explore</strong></a></td></tr> <tr><td>Oversized Street Banner Flag</td><td>Eye-catching for events, office windows, or rooftop branding moments.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=banner+flag" target="_blank"><strong>Explore</strong></a></td></tr> </table> <h3>2) Explore: Staff Culture & Unity Gear</h3> <p class="section-intro">Useful, everyday items employees are proud to use—building unity while keeping the brand in motion.</p> <table> <tr><th>Ideas</th><th>Description</th><th>Product Link</th></tr> <tr><td>Branded Softshell Jackets</td><td>Weather-ready layers embroidered with the logo—ideal for commuting, travel, and field visits.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=softshell+jacket" target="_blank"><strong>Explore</strong></a></td></tr> <tr><td>Premium Insulated Drinkware</td><td>Stainless steel bottles/tumblers that keep temps for hours—your logo at every desk and meeting.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=stainless+steel+tumbler" target="_blank"><strong>Explore</strong></a></td></tr> <tr><td>Custom Laptop Sleeves</td><td>Sleek, padded sleeves with the brand logo—protects devices and travels well to client meetings or conferences.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=laptop+sleeve" target="_blank"><strong>Explore</strong></a></td></tr> </table> <h3>3) 👔 Professional Apparel & Team Uniforms</h3> <p class="section-intro">Elevated, coordinated apparel to project professionalism at events, meetings, and in daily operations.</p> <table> <tr><th>Ideas</th><th>Description</th><th>Product Link</th></tr> <tr><td>Cutter &amp; Buck Forge Polo</td><td>Premium polo with moisture-wicking fabric—ideal for conferences or client visits.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=Cutter+%26+Buck+Forge+Polo" target="_blank"><strong>Explore</strong></a></td></tr> <tr><td>The North Face Skyline Full-Zip Fleece</td><td>Lightweight yet warm—polished branded outerwear for varied climates.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=The+North+Face+Skyline+Full-Zip+Fleece" target="_blank"><strong>Explore</strong></a></td></tr> <tr><td>OGIO Caliber 2.0 Polo</td><td>Modern, athletic-fit polo for a comfortable, professional team look.</td><td><a href="https://cat-ca.swag-zone.com/:quicksearch.htm?quicksearchbox=OGIO+Caliber+2.0+Polo" target="_blank"><strong>Explore</strong></a></td></tr> </table> <h2>🧠 Implementation Tips</h2> <div class="tips-grid"> <div class="tip"><strong>🔥 Drop Culture:</strong> Run apparel like limited drops. Numbered tags + scarcity = instant collector energy and higher wear rates.</div> <div class="tip"><strong>📸 Photo Zones:</strong> Create a clean “selfie spot” at HQ and events. Add a neon sign or banner flag to boost organic social.</div> <div class="tip"><strong>🎯 Visibility Through Utility:</strong> Prioritize items people actually carry daily (jackets, drinkware, sleeves) so your logo moves through airports, streets, and conferences.</div> </div> </main> <section> <div id="top-footer" class="bg-white py-5" style="padding: 2rem 1rem;"> <div class="container"> <h1 class="text-center mb-4 fs-1" style="text-align:center; font-size: 1.75rem;">Get A Swag Quote Today!</h1> <hr class="mb-4 footerhr" /> <div class="row" style="display: block;"> <div class="col-sm-12"> <p style="text-align: center; font-weight: bold;">OUR CONTACT INFO</p> <p style="text-align: center;"><a href="tel:888-290-6875">+1 888-290-6875</a></p> <p style="text-align: center;"><a href="mailto:contact@swag-zone.ca">Email Us</a></p> <p style="text-align: center;">We ship across US & Canada</p> <p style="text-align: center;"><img class="img-fluid" src="https://cat-ca.swag-zone.com/files/logo.png" alt="SwagZone Logo" style="max-width: 150px; height: auto; margin-top: 1rem;" /></p> </div> </div> </div> </div> <script> document.addEventListener('DOMContentLoaded', function() { var form = document.getElementById('myForm'); if (!form) return; var currentUrl = window.location.href; form.addEventListener('submit', function(e) { var hiddenInput = document.createElement('input'); hiddenInput.type = 'hidden'; hiddenInput.name = 'Submitted From'; hiddenInput.value = currentUrl; form.appendChild(hiddenInput); }); }); </script> <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"> <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script> <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/swagzone-custom-merch?hide_gdpr_banner=1&primary_color=9183cc', text: 'Book A Swag Consult', color: '#9183cc', textColor: '#ffffff', branding: false }); }</script> </section> <footer> <p>© SwagZone Custom Merch 2025. All rights reserved.</p> <p><a href="https://www.swag-zone.com">Visit Our Website</a></p> </footer> </body> </html>
+.overview-grid { grid-template-columns: 1fr 1fr; }
+.framework-grid { grid-template-columns: 1fr 1fr; margin-top: 20px; }
+.tips-grid { grid-template-columns: 1fr 1fr 1fr; margin-top: 20px; }
+
+.framework-item,
+.tip {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.framework-item {
+  background-color: #f1f4fa;
+  border-left: 4px solid var(--brand-purple-dark);
+}
+
+.tip {
+  background: #fffbe6;
+  border-left: 4px solid var(--highlight-yellow);
+}
+
+/* ---------- Info Blocks ---------- */
+.goals-box {
+  background: var(--muted);
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--brand-purple);
+  margin-top: 16px;
+  font-size: 1.05rem;
+}
+
+.goals-box ul { margin: 0.5rem 0 0 1.2rem; }
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0 72px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+thead th {
+  background-color: var(--brand-purple-light);
+  color: var(--brand-purple);
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 14px;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid #eae6f3;
+}
+
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+tr:hover td {
+  background-color: #fdfdfd;
+  box-shadow: inset 0 0 0 999px rgba(255, 255, 160, 0.08);
+}
+
+/* ---------- Utilities ---------- */
+.container { max-width: 960px; margin: 0 auto; }
+.img-fluid { max-width: 100%; height: auto; display: block; }
+
+/* ---------- “Top Footer” CTA Section ---------- */
+#top-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+}
+
+#top-footer .footerhr {
+  border: none;
+  border-top: 2px solid var(--line);
+  margin: 12px auto 24px;
+  max-width: 240px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  main { padding: 36px 18px; }
+}
+
+@media (max-width: 768px) {
+  .overview-grid,
+  .framework-grid,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  header h1 { font-size: 1.6rem; }
+  thead th, td { padding: 12px 14px; }
+}
+
+/* ---------- Optional: Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e7e7e7;
+    --text-strong: #ffffff;
+    --bg: #0f0f13;
+    --card: #17171d;
+    --muted: #1d1d24;
+    --line: #2a2a34;
+  }
+  a { color: #cbbcf1; }
+  header, footer { background-color: #5a4692; }
+  thead th { background-color: #261f3d; color: #d7cef5; border-bottom-color: #312a50; }
+  tr:hover td { background-color: #1c1c24; box-shadow: inset 0 0 0 999px rgba(255, 255, 160, 0.04); }
+}
