@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Momentum Scanner V2 — Swing Scan (Aug 16, 2025)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111827; /* slate-900 */
+      --muted: #6b7280; /* gray-500 */
+      --primary: #111827;
+      --accent: #0ea5e9; /* sky-500 */
+      --green: #10b981; /* emerald-500 */
+      --red: #ef4444; /* red-500 */
+      --border: #e5e7eb; /* gray-200 */
+    }
+    html, body { background: var(--bg); color: var(--fg); font: 13px/1.35 ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    h2 { font-size: 16px; margin: 18px 0 8px; }
+    h3 { font-size: 14px; margin: 12px 0 6px; }
+    p  { margin: 6px 0; color: var(--fg); }
+    .muted { color: var(--muted); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px 24px; }
+    .header { display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:8px; margin-bottom:12px; }
+    .badge { font-size: 11px; letter-spacing: .02em; padding: 2px 6px; border-radius: 999px; background: #f1f5f9; color:#0f172a; border:1px solid var(--border); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    thead { background: #f8fafc; }
+    th, td { border: 1px solid var(--border); padding: 6px 8px; vertical-align: top; word-wrap: break-word; }
+    th { text-align: left; font-weight: 700; font-size: 12px; color:#0f172a; }
+    td { font-size: 12px; }
+    tbody tr:nth-child(even) { background: #fcfdff; }
+    .num { font-variant-numeric: tabular-nums; text-align: right; }
+    .links a { color: #0369a1; text-decoration: none; border-bottom: 1px dotted #93c5fd; }
+    .links a:hover { text-decoration: underline; }
+
+    .btnprint { display:inline-block; margin: 8px 0 14px; padding: 8px 12px; background:#0ea5e9; color:white; border:none; border-radius:10px; font-weight:600; cursor:pointer; box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+    .btnprint:hover { background:#0284c7; }
+
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .card { border:1px solid var(--border); border-radius: 12px; padding: 12px; }
+    .card h3 { margin-top: 0; }
+    .kv { display:grid; grid-template-columns: 140px 1fr; gap: 6px 12px; }
+
+    /* Print rules */
+    @page { size: A4 landscape; margin: 0.6in; }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .btnprint { display: none !important; }
+      thead { display: table-header-group; }
+      tfoot { display: table-footer-group; }
+      .pagebreak { break-before: page; }
+    }
+
+    /* Column width hints to fit landscape nicely */
+    .col-ticker{ width: 60px; }
+    .col-scan{ width: 70px; }
+    .col-notes{ width: 220px; }
+    .col-entry,.col-stop,.col-t1,.col-rr,.col-atr{ width: 80px; }
+    .col-earn{ width: 140px; }
+    .col-why{ width: 220px; }
+    .col-links{ width: 150px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Momentum Scanner V2 — Swing Scan</h1>
+        <div class="muted">Date: Aug 16, 2025 · Fixed position size: $50,000 · U.S.-listed (no OTC)</div>
+      </div>
+      <div class="badge">Rules-based · Educational only (not advice)</div>
+    </div>
+
+    <button class="btnprint" onclick="window.print()">Print / Save as PDF (Landscape)</button>
+
+    <h2>A) Eight Candidates</h2>
+    <p class="muted">Base universe applied: Price &gt; $10 · Avg Vol &gt; 1M · Market Cap ≥ $2B · Beta &gt; 1 · Price &gt; SMA200. Entries follow pattern rules; T1 is +2R unless noted. ATR shown as $ / % (proxies labeled where used). Links point to Finviz pages.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="col-ticker">Ticker</th>
+          <th class="col-scan">Scan</th>
+          <th class="col-notes">Pattern Notes</th>
+          <th class="col-entry num">Entry</th>
+          <th class="col-stop num">Stop</th>
+          <th class="col-t1 num">T1 (sell 50%)</th>
+          <th class="col-rr num">R:R (T1)</th>
+          <th class="col-atr num">ATR$ / ATR%</th>
+          <th class="col-earn">Next Earnings</th>
+          <th class="col-why">Why chosen</th>
+          <th class="col-links">Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CELH</strong></td>
+          <td><strong>PEG</strong></td>
+          <td>Post-earnings gap + tight 3–5 bar flag near highs; &gt;SMA50/200</td>
+          <td class="num">58.00</td>
+          <td class="num">55.15</td>
+          <td class="num">63.70</td>
+          <td class="num">2.0×</td>
+          <td class="num">2.23 / ~3.9%</td>
+          <td>Reported Aug 7 (post-EPS PEG)</td>
+          <td>Clean post-EPS power gap, strong YTD momo, liquid</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=CELH">Finviz: CELH</a></td>
+        </tr>
+        <tr>
+          <td><strong>PLTR</strong></td>
+          <td><strong>PEG</strong></td>
+          <td>Beat + raised early Aug; consolidating under recent highs; &gt;SMA50/200</td>
+          <td class="num">Pivot + 0.1×ATR</td>
+          <td class="num">Flag low − 0.5×ATR</td>
+          <td class="num">+2R</td>
+          <td class="num">≥2.0× (est)</td>
+          <td class="num">ATR proxy (pending)</td>
+          <td>Reported Aug 5</td>
+          <td>Classic PEG setup after strong report & volume surge</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=PLTR">Finviz: PLTR</a></td>
+        </tr>
+        <tr>
+          <td><strong>ENPH</strong></td>
+          <td><strong>REV</strong></td>
+          <td>Near 52W lows; attempting reclaim with 3–5 bar shelf; high beta</td>
+          <td class="num">35.50</td>
+          <td class="num">33.50</td>
+          <td class="num">40.30</td>
+          <td class="num">2.4×</td>
+          <td class="num">~2.0 / ~5.7%</td>
+          <td>&gt;48h away</td>
+          <td>Tight risk near lows; potent R:R if reclaim sticks</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=ENPH">Finviz: ENPH</a></td>
+        </tr>
+        <tr>
+          <td><strong>PYPL</strong></td>
+          <td><strong>REV</strong></td>
+          <td>52W-low zone; 3–7 bar shelf; no near-term EPS; R:R ≥ 2.5</td>
+          <td class="num">71.00</td>
+          <td class="num">69.20</td>
+          <td class="num">74.60</td>
+          <td class="num">2.0×</td>
+          <td class="num">~1.6 / ~2.4%</td>
+          <td>&gt;48h away</td>
+          <td>Liquid reversal candidate; defined shelf</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=PYPL">Finviz: PYPL</a></td>
+        </tr>
+        <tr>
+          <td><strong>META</strong></td>
+          <td><strong>FLAG</strong></td>
+          <td>Three-weeks-tight / shallow flag near ATH; stacked trend</td>
+          <td class="num">795.67</td>
+          <td class="num">779.33</td>
+          <td class="num">828.35</td>
+          <td class="num">2.0×</td>
+          <td class="num">~16.2 / ~2.05%</td>
+          <td>Last reported late Jul; &gt;48h away</td>
+          <td>Elite trend, low tightness, clear pivot</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=META">Finviz: META</a></td>
+        </tr>
+        <tr>
+          <td><strong>AVGO</strong></td>
+          <td><strong>FLAG</strong></td>
+          <td>Shallow consolidation &lt;5% off highs; stacked MA trend</td>
+          <td class="num">318.30</td>
+          <td class="num">300.30</td>
+          <td class="num">357.90</td>
+          <td class="num">2.0×</td>
+          <td class="num">~9.4 / ~3.1%</td>
+          <td>Q3 FY25 due Sept (outside 48h)</td>
+          <td>Liquid mega-cap flag with catalyst runway</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=AVGO">Finviz: AVGO</a></td>
+        </tr>
+        <tr>
+          <td><strong>CRWD</strong></td>
+          <td><strong>MOMO</strong></td>
+          <td>Stacked (Price&gt;SMA50&gt;SMA200), YTD&gt;25%, beta&gt;1, high vol thrust</td>
+          <td class="num">440.79</td>
+          <td class="num">411.19</td>
+          <td class="num">500.00</td>
+          <td class="num">2.0×</td>
+          <td class="num">~11.9 / ~2.8%</td>
+          <td>Aug 27 (AMC)</td>
+          <td>Leading cyber name; tight multi-day range to break</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=CRWD">Finviz: CRWD</a></td>
+        </tr>
+        <tr>
+          <td><strong>UBER</strong></td>
+          <td><strong>MOMO</strong></td>
+          <td>Strong YTD; &gt;SMA50/200; ROIC/FCF improving; high liquidity</td>
+          <td class="num">93.30</td>
+          <td class="num">88.40</td>
+          <td class="num">103.20</td>
+          <td class="num">2.0×</td>
+          <td class="num">~2.3 / ~2.6%</td>
+          <td>&gt;48h away</td>
+          <td>Large-cap momo with clean levels & theme diversification</td>
+          <td class="links"><a href="https://finviz.com/quote.ashx?t=UBER">Finviz: UBER</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagebreak"></div>
+
+    <h2>B) Top-3 Expanded</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>1) CELH — PEG — Power Earnings Gap + tight flag</h3>
+        <div class="kv">
+          <div><strong>Entry / Stop / T1 / Runner</strong></div><div>58.00 / 55.15 / 63.70 / 10-EMA trail</div>
+          <div><strong>R:R; ATR$/%</strong></div><div>2.0×; 2.23 / ~3.9%</div>
+          <div><strong>Earnings date</strong></div><div>Reported Aug 7, 2025 (PEG allowed)</div>
+          <div><strong>Why it beats others</strong></div><div>Post-EPS gap with tight flag near highs → clean risk & fast feedback; strong liquidity with minimal overhead.</div>
+          <div><strong>Links</strong></div><div><a href="https://finviz.com/quote.ashx?t=CELH">Finviz: CELH</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>2) CRWD — MOMO — Range break in a leadership name</h3>
+        <div class="kv">
+          <div><strong>Entry / Stop / T1 / Runner</strong></div><div>440.79 / 411.19 / 500.00 / 10-EMA trail</div>
+          <div><strong>R:R; ATR$/%</strong></div><div>2.0×; ~11.9 / ~2.8%</div>
+          <div><strong>Earnings date</strong></div><div>Aug 27, 2025 (AMC) — outside 48h but near</div>
+          <div><strong>Why it beats others</strong></div><div>Textbook 5–10 day range below resistance; theme leader with excellent liquidity.</div>
+          <div><strong>Links</strong></div><div><a href="https://finviz.com/quote.ashx?t=CRWD">Finviz: CRWD</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>3) META — FLAG — Three-weeks-tight near ATH</h3>
+        <div class="kv">
+          <div><strong>Entry / Stop / T1 / Runner</strong></div><div>795.67 / 779.33 / 828.35 / 10-EMA trail</div>
+          <div><strong>R:R; ATR$/%</strong></div><div>2.0×; ~16.2 / ~2.05%</div>
+          <div><strong>Earnings date</strong></div><div>Last reported late Jul; next window &gt;48h</div>
+          <div><strong>Why it beats others</strong></div><div>Tightness & stacked trend reduce error rate; huge liquidity with limited overhead.</div>
+          <div><strong>Links</strong></div><div><a href="https://finviz.com/quote.ashx?t=META">Finviz: META</a></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>C) Final Recommendation</h2>
+    <div class="card">
+      <h3>CELH — PEG — Power Earnings Gap + tight flag</h3>
+      <div class="kv">
+        <div><strong>Why it wins</strong></div><div>Fresh post-earnings catalyst with tight consolidation near highs; clear levels → measured risk; diversified vs. mega-cap tech.</div>
+        <div><strong>Action</strong></div><div>Entry 58.00 · Stop 55.15 · T1 (sell 50%) 63.70 · Runner: 10‑EMA trail (fallback: prior‑day low − 0.5×ATR)</div>
+        <div><strong>Position & Risk</strong></div><div>$50,000 → 862 shares (floor) · $ Risk: (58.00 − 55.15) × 862 = $2,456.70</div>
+        <div><strong>Notes</strong></div><div>Proxies labeled; follow rules: Entry = Pivot + 0.1×ATR; Stops per pattern; T1 = +2R. No entries &lt;48h before earnings (PEG is post‑EPS).</div>
+      </div>
+    </div>
+
+    <h2>Quality Scores (0–100)</h2>
+    <p class="muted">Scoring: R:R (0–25) · Tightness (0–15) · Volume (0–10) · Trend (0–10) · Catalyst (0–15) · Liquidity (0–5) · Overhead (0–10) · minus penalties. Bands: ≥85 Elite · 70–84 Strong · 55–69 Decent · &lt;55 Skip.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="col-ticker">Ticker</th>
+          <th class="col-scan">Scan</th>
+          <th class="num">Quality Score</th>
+          <th>Band</th>
+          <th>Breakdown (R:R / Tight / Vol / Trend / Catalyst / Liq / Overhead − penalties)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CELH</strong></td><td>PEG</td><td class="num"><strong>71</strong></td><td><strong>Strong</strong></td><td>15 / 12 / 9 / 8 / 14 / 4 / 9 − 0</td>
+        </tr>
+        <tr>
+          <td><strong>META</strong></td><td>FLAG</td><td class="num"><strong>69</strong></td><td>Decent</td><td>15 / 14 / 7 / 9 / 10 / 5 / 9 − 0</td>
+        </tr>
+        <tr>
+          <td><strong>CRWD</strong></td><td>MOMO</td><td class="num"><strong>65</strong></td><td>Decent</td><td>15 / 11 / 8 / 9 / 10 / 5 / 8 − 1 (sector overlap)</td>
+        </tr>
+        <tr>
+          <td><strong>PLTR</strong></td><td>PEG</td><td class="num"><strong>65</strong></td><td>Decent</td><td>15 / 10 / 8 / 8 / 13 / 5 / 8 − 2 (sector overlap)</td>
+        </tr>
+        <tr>
+          <td><strong>AVGO</strong></td><td>FLAG</td><td class="num"><strong>62</strong></td><td>Decent</td><td>15 / 11 / 6 / 9 / 8 / 5 / 9 − 1 (sector overlap)</td>
+        </tr>
+        <tr>
+          <td><strong>UBER</strong></td><td>MOMO</td><td class="num"><strong>58</strong></td><td>Decent</td><td>15 / 9 / 6 / 8 / 7 / 5 / 8 − 0</td>
+        </tr>
+        <tr>
+          <td><strong>PYPL</strong></td><td>REV</td><td class="num"><strong>56</strong></td><td>Decent</td><td>15 / 10 / 5 / 4 / 7 / 5 / 6 − 0</td>
+        </tr>
+        <tr>
+          <td><strong>ENPH</strong></td><td>REV</td><td class="num"><strong>54</strong></td><td><strong>Skip</strong></td><td>17 / 9 / 6 / 4 / 9 / 4 / 5 − 0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="muted" style="margin-top:10px">Tip: If your browser ignores the landscape directive, set orientation to <strong>Landscape</strong> in the print dialog and reduce scale to ~90% so the big table fits comfortably on one page.</p>
+
+    <p class="muted">Source of candidates & stats: Finviz. This document is for educational purposes only and does not constitute investment advice.</p>
+  </div>
+</body>
+</html>
