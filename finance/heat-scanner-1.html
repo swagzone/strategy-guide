@@ -38,7 +38,7 @@
     .btn-tab{background:#0f1729;border:1px solid #223052;color:#cbd5e1;padding:8px 12px;border-radius:10px;cursor:pointer}
     .btn-tab.active{background:#1a2440;color:#fff}
     .tabs{display:flex;gap:8px}
-    .grid-bars{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .grid-bars{display:grid;grid-template-columns:repeat(5,minmax(140px,1fr));gap:10px}
     .bar{height:8px;background:#1e293b;border-radius:999px;overflow:hidden}
     .bar > span{display:block;height:100%;background:linear-gradient(90deg,#93c5fd,#60a5fa);}    
     .bar-val{font-size:12px;color:#cbd5e1;margin-top:6px}
@@ -87,6 +87,21 @@
     /* Small axis labels for charts */
     .axis-label{fill:#9fb3d9;font-size:11px}
     .grid-line{stroke:#1f2a42;stroke-width:1;opacity:.55}
+    /* Mobile responsiveness */
+    .table-wrap{overflow-x:auto;}
+    @media (max-width:1100px){
+      .row.cols-4{grid-template-columns:1fr 1fr}
+      .row.cols-3{grid-template-columns:1fr 1fr}
+      .area{height:220px}
+      .wrap{padding:16px}
+    }
+    @media (max-width:700px){
+      .row.cols-4,.row.cols-3,.row.cols-2{grid-template-columns:1fr}
+      h1{font-size:18px}
+      .tabs{flex-wrap:wrap}
+      table{min-width:640px}
+      .grid-bars{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -431,6 +446,7 @@
   function money(n){return "$"+n.toFixed(2)}
   function qsClass(q){return q>=80?'qs h':(q>=60?'qs m':'qs l')}
 
+  function contrib(v,w){ v=Math.max(0,Math.min(100,v)); return (v*w).toFixed(1); }
   function derive(series){
     var last=series[series.length-1];
     var idx=Math.max(0,series.length-6); var tilt=last.chs-series[idx].chs;
@@ -464,11 +480,11 @@
     $("vix").textContent=d.term.vix.toFixed(1); $("vix3m").textContent=d.term.vix3m.toFixed(1); $("vix9d").textContent=d.term.vix9d.toFixed(1);
 
     // Subscore bars + numbers
-    $("bar-vol").style.width=Math.min(100,Math.max(0,last.vol))+"%"; $("val-vol").textContent=last.vol+" (w 25%) → "+(last.vol*0.25/1).toFixed(1);
-    $("bar-breadth").style.width=Math.min(100,Math.max(0,last.breadth))+"%"; $("val-breadth").textContent=last.breadth+" (w 27%) → "+(last.breadth*0.27).toFixed(1);
-    $("bar-credit").style.width=Math.min(100,Math.max(0,last.credit))+"%"; $("val-credit").textContent=last.credit+" (w 15%) → "+(last.credit*0.15).toFixed(1);
-    $("bar-trend").style.width=Math.min(100,Math.max(0,last.trend))+"%"; $("val-trend").textContent=last.trend+" (w 23%) → "+(last.trend*0.23).toFixed(1);
-    $("bar-news").style.width=Math.min(100,Math.max(0,last.news))+"%"; $("val-news").textContent=last.news+" (w 10%) → "+(last.news*0.10).toFixed(1);
+    $("bar-vol").style.width=Math.min(100,Math.max(0,last.vol))+"%"; $("val-vol").textContent=last.vol+" (w 25%) → "+contrib(last.vol,0.25);
+    $("bar-breadth").style.width=Math.min(100,Math.max(0,last.breadth))+"%"; $("val-breadth").textContent=last.breadth+" (w 27%) → "+contrib(last.breadth,0.27);
+    $("bar-credit").style.width=Math.min(100,Math.max(0,last.credit))+"%"; $("val-credit").textContent=last.credit+" (w 15%) → "+contrib(last.credit,0.15);
+    $("bar-trend").style.width=Math.min(100,Math.max(0,last.trend))+"%"; $("val-trend").textContent=last.trend+" (w 23%) → "+contrib(last.trend,0.23);
+    $("bar-news").style.width=Math.min(100,Math.max(0,last.news))+"%"; $("val-news").textContent=last.news+" (w 10%) → "+contrib(last.news,0.10);
 
     // Charts with axes and stats
     drawArea('chs-svg', s.map(function(p){return p.chs;}), {fill:'rgba(96,165,250,0.18)', stroke:'#93c5fd'}, d);
