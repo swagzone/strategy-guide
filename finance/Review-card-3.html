@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Momentum Cards — Thumbs + Feedback (HTML)</title>
+  <style>
+    :root{
+      --bg:#0b0b0c;--panel:#141416;--panel2:#17181a;--text:#e6e6e6;--muted:#9aa0a6;
+      --border:#24252a;--accent:#dcdcdc;--green:#6ee7b7;--green-ink:#103524;--red:#fda4af;--red-ink:#3a1013;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; background:radial-gradient(1200px 800px at 80% -10%,#1b1b1e 0%,#0b0b0c 60%),var(--bg); color:var(--text)}
+    .wrap{padding:24px; max-width:1200px; margin:0 auto}
+    h1{font-size:28px;margin:0 0 20px;font-weight:800}
+    .grid{display:grid; gap:16px}
+    @media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}.card{background:linear-gradient(180deg,var(--panel) 0%,var(--panel2) 100%); border:1px solid var(--border); border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,.45); overflow:hidden}
+.card-h{display:flex; align-items:flex-start; justify-content:space-between; padding:16px}
+.kicker{font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#bdbdbd}
+.title{display:flex; align-items:center; gap:8px}
+.title h2{font-size:22px; margin:4px 0 0}
+.badge{font-size:12px; padding:4px 8px; border-radius:999px; background:#0f2019; color:var(--green); border:1px solid #214838}
+.sub{color:var(--green); font-size:12px; margin-top:4px}
+
+.thumbs{display:flex; gap:8px}
+.btn{display:inline-flex; align-items:center; gap:6px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(255,255,255,.02); color:var(--text); cursor:pointer; transition:.18s}
+.btn:hover{background:rgba(255,255,255,.06)}
+.btn.active{background:#f5f5f5; color:#0b0b0c; border-color:#e7e7e7}
+.btn svg{width:16px;height:16px}
+
+.body{padding:0 16px 16px; color:var(--muted); font-size:14px; line-height:1.5}
+
+.sheet{border-top:1px solid var(--border); background:#121315; overflow:hidden; max-height:0; opacity:0; transition:max-height .35s ease, opacity .25s ease}
+.sheet.open{max-height:220px; opacity:1}
+.sheet-in{display:flex; gap:12px; padding:14px 16px}
+.chip{align-self:flex-start; padding:4px 8px; border-radius:10px; font-size:12px; border:1px solid #2a2d33; background:#0c0c0e; color:#cfcfcf}
+.chip.green{background:var(--green-ink); border-color:#1f4b3e; color:var(--green)}
+.chip.red{background:var(--red-ink); border-color:#5b1e28; color:var(--red)}
+textarea{flex:1; min-height:64px; resize:vertical; border-radius:12px; background:#0b0c0e; border:1px solid var(--border); color:var(--text); padding:10px; font-size:14px}
+.row{display:flex; align-items:center; justify-content:space-between; margin-top:10px}
+.link{display:inline-flex; align-items:center; gap:6px; color:#b9b9b9; font-size:12px; text-decoration:none}
+.link:hover{color:#fff}
+.submit{background:#f3f3f3; color:#0b0b0c; border:none; padding:8px 12px; border-radius:10px; font-weight:600; cursor:pointer}
+.submit[disabled]{opacity:.6; cursor:not-allowed}
+.sent{padding:0 16px 14px; color:#aab0b6; font-size:12px}
+.hide{display:none}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Swing Warm: Top Momentum Setups</h1><div class="grid" id="cards">
+  <!-- Cards are injected by JS below; keep HTML minimal if you want to template here -->
+</div>
+
+  </div>  <template id="card-template">
+    <div class="card" data-card>
+      <div class="card-h">
+        <div>
+          <div class="kicker">Setup</div>
+          <div class="title">
+            <h2 data-title>ANET</h2>
+            <span class="badge" data-score>79</span>
+          </div>
+          <div class="sub" data-sub>Strong</div>
+        </div>
+        <div class="thumbs">
+          <button class="btn" data-up aria-label="Thumbs up" title="Thumbs up">👍 <span class="lb sm-hide">Like</span></button>
+          <button class="btn" data-down aria-label="Thumbs down" title="Thumbs down">👎 <span class="lb sm-hide">Dislike</span></button>
+        </div>
+      </div>
+      <div class="body" data-blurb>Trigger 133.75 stop-limit · R:R 1.5 · ATR $34.57</div><div class="sheet" data-sheet>
+    <div class="sheet-in">
+      <div class="chip" data-chip>Feedback</div>
+      <div style="flex:1">
+        <textarea placeholder="What did you like? e.g., clean trigger, risk clarity, great timing" data-note></textarea>
+        <div class="row">
+          <a href="#" class="link" data-close>✕ Close</a>
+          <button class="submit" data-submit>Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="sent hide" data-sent>Thanks — logged! 🙌</div>
+  </div>
+</div>
+
+  </template>  <script>
+    // --- Demo data (replace with your real payload) ---
+    const cardsData = [
+      { id:"anet", title:"ANET", score:79, sub:"Strong", blurb:"Trigger 133.75 stop-limit · R:R 1.5 · ATR $34.57" },
+      { id:"snow", title:"SNOW", score:76, sub:"Strong", blurb:"Trigger 241.35 stop-limit · R:R 1.5 · ATR $9.43" },
+      { id:"meta", title:"META", score:74, sub:"Strong", blurb:"Trigger 719.50 stop-limit · R:R 1.5 · ATR 18.53" },
+    ];
+
+    const $cards = document.getElementById('cards');
+    const tpl = document.getElementById('card-template');
+
+    function mountCard(data){
+      const node = tpl.content.cloneNode(true);
+      const root = node.querySelector('[data-card]');
+      root.dataset.id = data.id;
+      root.querySelector('[data-title]').textContent = data.title;
+      root.querySelector('[data-score]').textContent = data.score ?? '';
+      root.querySelector('[data-sub]').textContent = data.sub ?? '';
+      root.querySelector('[data-blurb]').textContent = data.blurb ?? '';
+
+      const upBtn = root.querySelector('[data-up]');
+      const downBtn = root.querySelector('[data-down]');
+      const sheet = root.querySelector('[data-sheet]');
+      const chip = root.querySelector('[data-chip]');
+      const note = root.querySelector('[data-note]');
+      const close = root.querySelector('[data-close]');
+      const submit = root.querySelector('[data-submit]');
+      const sent = root.querySelector('[data-sent]');
+
+      function openSheet(vote){
+        upBtn.classList.toggle('active', vote==='up');
+        downBtn.classList.toggle('active', vote==='down');
+        sheet.classList.add('open');
+        if(vote==='up'){
+          chip.textContent='Liked'; chip.classList.add('green'); chip.classList.remove('red');
+          note.placeholder = "What did you like? e.g., clean trigger, risk clarity, great timing";
+        } else if(vote==='down'){
+          chip.textContent='Not helpful'; chip.classList.add('red'); chip.classList.remove('green');
+          note.placeholder = "What didn’t work? e.g., late signal, unclear risk, bad level";
+        } else {
+          chip.textContent='Feedback'; chip.classList.remove('red','green');
+        }
+        note.focus();
+        root.dataset.vote = vote;
+      }
+
+      upBtn.addEventListener('click', ()=>openSheet('up'));
+      downBtn.addEventListener('click', ()=>openSheet('down'));
+      close.addEventListener('click', (e)=>{ e.preventDefault(); sheet.classList.remove('open'); upBtn.classList.remove('active'); downBtn.classList.remove('active'); root.dataset.vote='';});
+
+      submit.addEventListener('click', async ()=>{
+        const payload = { cardId:data.id, vote: root.dataset.vote||'up', note: note.value.trim() };
+        submit.disabled = true; submit.textContent = 'Sending…';
+        try{
+          // TODO: Replace with your endpoint
+          // await fetch('/api/feedback', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+          console.log('feedback', payload);
+          sent.classList.remove('hide');
+          note.value = '';
+          setTimeout(()=>{ sheet.classList.remove('open'); sent.classList.add('hide'); upBtn.classList.remove('active'); downBtn.classList.remove('active'); submit.textContent='Submit'; submit.disabled=false; }, 900);
+        }catch(err){
+          submit.textContent='Retry'; submit.disabled=false; console.error(err);
+        }
+      });
+
+      $cards.appendChild(node);
+    }
+
+    cardsData.forEach(mountCard);
+  </script></body>
+</html>
