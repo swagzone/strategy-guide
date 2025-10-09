@@ -1,210 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MomentumWorks – Trade with rhythm, not noise.</title>
-  <meta name="description" content="MomentumWorks provides transparent, AI-powered market research and momentum insights. Educational use only — not investment advice." />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="MomentumWorks – Trade with rhythm, not noise." />
-  <meta property="og:description" content="Transparent, AI-powered momentum research and a public trade diary — built for learning, not advice." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://momentumworks.example" />
-  <meta property="og:image" content="https://momentumworks.example/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            mwNavy: '#0A1F44',
-            mwCharcoal: '#0f172a',
-            mwTeal: '#1CE5B8',
-            pulseGreen: '#3EDC81',
-            torqueRed: '#E63946',
-            swingBlue: '#4C8FFF'
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "MomentumWorks",
-    "url": "https://momentumworks.example",
-    "logo": "https://momentumworks.example/logo.png",
-    "sameAs": [
-      "https://twitter.com/yourhandle",
-      "https://instagram.com/yourhandle",
-      "https://www.reddit.com/user/yourhandle"
-    ]
-  }
-  </script>
-
-  <style>
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); }
-    .container { max-width: 1200px; }
-    html { scroll-behavior: smooth; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MomentumWorks – Trade with rhythm, not noise.</title>
+<meta name="description" content="MomentumWorks delivers transparent, momentum-driven market research and education with AI support. Public research diary, transparent methodology, and a pro dashboard with an AI copilot." />
+<meta property="og:title" content="MomentumWorks – Trade with rhythm, not noise." />
+<meta property="og:description" content="AI-powered momentum research, transparent trade diary, and a learning hub for disciplined traders." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://momentumworks.example" />
+<meta property="og:image" content="https://momentumworks.example/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+  theme:{extend:{colors:{
+    mwNavy:'#0A1F44',mwCharcoal:'#0f172a',mwTeal:'#1CE5B8',
+    pulseGreen:'#3EDC81',torqueRed:'#E63946',swingBlue:'#3574D4',swingGold:'#F9C74F'
+  }}}
+}
+</script>
+<style>
+.glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);}
+.container{max-width:1200px;}
+html{scroll-behavior:smooth;}
+</style>
 </head>
 
 <body class="bg-mwCharcoal text-white font-sans">
 
-  <!-- Nav -->
-  <header class="sticky top-0 z-50 bg-mwCharcoal/80 border-b border-white/5">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2 group">
+<!-- NAV -->
+<header class="sticky top-0 z-50 bg-mwCharcoal/80 border-b border-white/5">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">MW</div>
+      <span class="text-lg tracking-wide font-semibold">MomentumWorks</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="#diary" class="hover:text-mwTeal">Research Diary</a>
+      <a href="#products" class="hover:text-mwTeal">Products</a>
+      <a href="#pricing" class="hover:text-mwTeal">Pricing</a>
+      <a href="#blog" class="hover:text-mwTeal">Blog</a>
+      <a href="#about" class="hover:text-mwTeal">About</a>
+    </nav>
+    <nav class="hidden md:flex items-center gap-6 text-sm md:ml-6">
+      <a href="#trending" class="hover:text-mwTeal">Trending</a>
+      <a href="#faq" class="hover:text-mwTeal">FAQ</a>
+    </nav>
+    <a href="#watchlist" class="inline-flex items-center gap-2 bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">Get Weekly Watchlist</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full"><path d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/></svg>
+  </div>
+  <div class="container mx-auto px-4 py-20 md:py-28 relative">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Trade with <span class="text-mwTeal">rhythm</span>, not noise.</h1>
+      <p class="mt-5 text-white/80 text-lg md:text-xl">Transparent, AI-powered momentum research and a public learning diary.<br>Built for people who want clarity — not chaos.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start Learning</a>
+        <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">Explore the Research Diary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Built for people who want to <span class="text-mwTeal">think less</span> and learn smarter.</h2>
+      <p class="text-white/80 text-lg md:text-xl mb-6">MomentumWorks makes market structure simple. We turn complex trading research into visual, digestible, and AI-supported insights — designed for learning, not speculation.</p>
+      <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8">Our AI copilot analyzes momentum across sectors and shares structured research case studies. Every example is transparent, explained, and logged for educational use only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH DIARY -->
+<section id="diary" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-3xl font-bold">Public Research Diary</h2>
+        <p class="text-white/70 mt-1">Transparent methodology. Plain-English notes. Educational only.</p>
+      </div>
+      <a href="#pricing" class="text-mwTeal font-semibold whitespace-nowrap">Subscribe to Free Weekly Watchlist →</a>
+    </div>
+
+    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)] ring-1 ring-[rgba(28,229,184,0.18)] ring-inset">
+      <div class="bg-gradient-to-tr from-[rgba(28,229,184,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
+        <div class="text-sm text-white/80">Sample Research Log</div>
+        <div class="text-xs text-white/50">Updated daily after market close</div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="sticky top-0 z-10 bg-mwCharcoal/80 backdrop-blur">
+            <tr>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Category</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Summary</th>
+              <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Example Gain</th>
+            </tr>
+          </thead>
+          <tbody id="diaryRows"></tbody>
+        </table>
+      </div>
+      <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10">Demo data. Research only. Past performance is not indicative of future outcomes.</div>
+    </div>
+    <p class="mt-4 text-xs text-white/50 text-center italic">All case studies and examples are research-based and for educational purposes only.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-10">Products</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+      <h3 class="mt-2 text-3xl font-bold flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-pulseGreen"></span> Pulse</h3>
+      <p class="mt-4 text-white/80 text-base leading-relaxed">Short-format AI research for everyday learners — clear, fast, and jargon-free.</p>
+      <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+        <li>3–5 educational market studies per week</li>
+        <li>Example levels and structured analysis</li>
+        <li>Access to public research diary</li>
+        <li>Notes and reasoning behind each example</li>
+      </ul>
+      <a href="#pricing" class="mt-6 inline-block text-pulseGreen font-semibold hover:underline">Start with Pulse →</a>
+    </div>
+
+    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+      <h3 class="mt-2 text-3xl font-bold flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-torqueRed"></span> Torque</h3>
+      <p class="mt-4 text-white/80 text-base leading-relaxed">Expanded AI-assisted market coverage and daily regime breakdowns.</p>
+      <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+        <li>Pulse features included</li>
+        <li>Daily AI summaries with sector momentum and heat maps</li>
+        <li>Educational trade structure breakdowns</li>
+        <li>Access to Live FAQ and research trends</li>
+      </ul>
+      <a href="#pricing" class="mt-6 inline-block text-torqueRed font-semibold hover:underline">Join Torque Waitlist →</a>
+    </div>
+
+    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+      <h3 class="mt-2 text-3xl font-bold flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-swingBlue"></span> SwingLabs</h3>
+      <p class="mt-4 text-white/80 text-base leading-relaxed">For analysts and pros — advanced dashboards, data layers, and AI copilot tools.</p>
+      <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+        <li>Everything from Pulse + Torque</li>
+        <li>Personal research workspace</li>
+        <li>Regime Director and heat-scoring system</li>
+        <li>Cross-asset and sentiment-based insights</li>
+        <li><strong>Integrated AI Copilot</strong> for thesis generation and contextual pattern analysis</li>
+      </ul>
+      <a href="#pricing" class="mt-6 inline-block text-swingBlue font-semibold hover:underline">Book a Demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="container mx-auto px-4 py-20">
+  <h2 class="text-3xl font-bold mb-8">Pricing</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="glass rounded-xl p-6 border border-white/10 text-center">
+      <h3 class="text-2xl font-bold flex justify-center items-center gap-2 mb-3"><span class="w-3 h-3 rounded-full bg-pulseGreen"></span> Pulse</h3>
+      <p class="text-white/70 mb-4">Simplified AI research summaries and transparent case studies.</p>
+      <div class="text-4xl font-bold mb-4">$99<span class="text-lg text-white/60">/mo</span></div>
+      <ul class="space-y-2 text-white/80 text-sm list-disc list-inside mb-6 text-left">
+        <li>3 studies per week</li>
+        <li>Research-grade commentary</li>
+        <li>Public diary access</li>
+      </ul>
+      <a href="#" class="inline-block bg-pulseGreen/10 border border-pulseGreen/40 text-pulseGreen font-semibold rounded-lg px-6 py-2 hover:bg-pulseGreen/20 transition">Start Free Trial →</a>
+    </div>
+    <div class="glass rounded-xl p-6 border border-white/10 text-center">
+      <h3 class="text-2xl font-bold flex justify-center items-center gap-2 mb-3"><span class="w-3 h-3 rounded-full bg-torqueRed"></span> Torque</h3>
+      <p class="text-white/70 mb-4">Real-time updates and regime analytics for active learners.</p>
+      <div class="text-4xl font-bold mb-4">$299<span class="text-lg text-white/60">/mo</span></div>
+      <ul class="space-y-2 text-white/80 text-sm list-disc list-inside mb-6 text-left">
+        <li>Live AI commentary</li>
+        <li>Sector & volatility insights</li>
+        <li>Interactive research tools</li>
+      </ul>
+      <a href="#" class="inline-block bg-torqueRed/10 border border-torqueRed/40 text-torqueRed font-semibold rounded-lg px-6 py-2 hover:bg-torqueRed/20 transition">Coming Soon →</a>
+    </div>
+    <div class="glass rounded-xl p-6 border border-white/10 text-center">
+      <h3 class="text-2xl font-bold flex justify-center items-center gap-2 mb-3"><span class="w-3 h-3 rounded-full bg-swingBlue"></span> SwingLabs</h3>
+      <p class="text-white/70 mb-4">Full-stack research ecosystem for professional teams.</p>
+      <div class="text-4xl font-bold mb-4">$1999<span class="text-lg text-white/60">/mo</span></div>
+      <ul class="space-y-2 text-white/80 text-sm list-disc list-inside mb-6 text-left">
+        <li>Custom dashboards</li>
+        <li>Copilot-powered research automation</li>
+        <li>API access & enterprise tools</li>
+      </ul>
+      <a href="#" class="inline-block bg-swingBlue/10 border border-swingBlue/40 text-swingBlue font-semibold rounded-lg px-6 py-2 hover:bg-swingBlue/20 transition">Book Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5">
+  <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <div class="flex items-center gap-2">
         <div class="w-8 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">MW</div>
-        <span class="text-lg tracking-wide font-semibold">MomentumWorks</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#diary" class="hover:text-mwTeal">Trade Diary</a>
-        <a href="#products" class="hover:text-mwTeal">Products</a>
-        <a href="#pricing" class="hover:text-mwTeal">Pricing</a>
-        <a href="#blog" class="hover:text-mwTeal">Blog</a>
-        <a href="#about" class="hover:text-mwTeal">About</a>
-      </nav>
-      <a href="#watchlist" class="inline-flex items-center gap-2 bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">Get Weekly Watchlist</a>
+        <span class="font-semibold">MomentumWorks</span>
+      </div>
+      <p class="text-white/60 mt-3">Educational research only. MomentumWorks is not a registered investment advisor or broker. Nothing here constitutes financial advice or recommendations.</p>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="top" class="relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20" aria-hidden="true">
-      <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
-        <path d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/>
-      </svg>
+    <div>
+      <h4 class="font-semibold mb-2">Product</h4>
+      <ul class="space-y-1 text-white/70">
+        <li><a href="#products" class="hover:text-mwTeal">Pulse</a></li>
+        <li><a href="#products" class="hover:text-mwTeal">Torque</a></li>
+        <li><a href="#products" class="hover:text-mwTeal">SwingLabs</a></li>
+      </ul>
     </div>
-    <div class="container mx-auto px-4 py-20 md:py-28 relative max-w-[1200px]">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Trade with <span class="text-mwTeal">rhythm</span>, not noise.</h1>
-        <p class="mt-5 text-white/80 text-lg md:text-xl">Transparent, AI-powered momentum research and a public trade diary.<br>Built for people who want clear market ideas — no advice, no noise.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start with Pulse</a>
-          <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">See Today’s Trade Diary</a>
-        </div>
-      </div>
+    <div>
+      <h4 class="font-semibold mb-2">Company</h4>
+      <ul class="space-y-1 text-white/70">
+        <li><a href="#about" class="hover:text-mwTeal">About</a></li>
+        <li><a href="#blog" class="hover:text-mwTeal">Blog</a></li>
+        <li><a href="#pricing" class="hover:text-mwTeal">Pricing</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Philosophy -->
-  <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-20 md:py-28 max-w-[1200px]">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
-          Built for people who want to <span class="text-mwTeal">think less</span> and learn more.
-        </h2>
-        <p class="text-white/80 text-lg md:text-xl mb-6">
-          MomentumWorks helps independent traders and enthusiasts understand disciplined, transparent momentum research — built on data, not hype.
-        </p>
-        <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8">
-          We simplify market analysis by breaking it down into clear, educational insights and a public trade diary that anyone can follow. Every move is explained in plain English — no jargon, no guesswork — just rhythm and research.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="#diary" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Explore the Trade Diary</a>
-          <a href="#pricing" class="border border-white/20 px-6 py-3 rounded font-semibold">Get Started with Pulse</a>
-        </div>
-      </div>
+    <div>
+      <h4 class="font-semibold mb-2">Legal</h4>
+      <ul class="space-y-1 text-white/70">
+        <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
+        <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
+        <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Trade Diary -->
-  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-        <div>
-          <h2 class="text-3xl font-bold">Trade Diary & Research Log</h2>
-          <p class="text-white/70 mt-1">Plain-English reasoning. Transparent data. Educational use only.</p>
-        </div>
-        <a href="#pricing" class="text-mwTeal font-semibold whitespace-nowrap">Subscribe to our Free Weekly Watchlist →</a>
-      </div>
-
-      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)] ring-1 ring-[rgba(28,229,184,0.18)] ring-inset">
-        <div class="bg-gradient-to-tr from-[rgba(28,229,184,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
-          <div class="text-sm text-white/80">Public Research Diary (demo data)</div>
-          <div class="text-xs text-white/50">Updated daily after market close</div>
-        </div>
-
-        <div class="flex justify-end px-4 md:px-6 py-3 border-b border-white/10">
-          <div class="flex items-center gap-2 text-xs text-white/70">
-            <label class="hidden md:block">Month</label>
-            <select id="diaryMonth" class="px-3 py-2 rounded bg-white/10 border border-white/10 text-sm"></select>
-          </div>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead class="sticky top-0 z-10 bg-mwCharcoal/80 backdrop-blur">
-              <tr>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Type</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Research Notes</th>
-                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Realized</th>
-                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Open</th>
-              </tr>
-            </thead>
-            <tbody id="diaryRows" class="[&>tr:nth-child(odd)]:bg-white/[0.03] [&>tr:nth-child(even)]:bg-white/[0.015] [&>tr:hover]:bg-white/[0.08] transition-colors"></tbody>
-          </table>
-        </div>
-        <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10 text-center italic">All trade examples are research-based and for educational purposes only.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <!-- (kept your exact layout/width structure for perfect alignment) -->
-  <!-- ... existing product cards remain unchanged but with compliant copy ... -->
-
-  <!-- Footer -->
-  <footer class="border-t border-white/5">
-    <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm max-w-[1200px]">
-      <div>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">MW</div>
-          <span class="font-semibold">MomentumWorks</span>
-        </div>
-        <p class="text-white/60 mt-3">Educational research only. MomentumWorks is not a registered investment advisor or broker. Nothing here constitutes financial advice or recommendations.</p>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-2">Product</h4>
-        <ul class="space-y-1 text-white/70">
-          <li><a href="#products" class="hover:text-mwTeal">Pulse</a></li>
-          <li><a href="#products" class="hover:text-mwTeal">Torque</a></li>
-          <li><a href="#products" class="hover:text-mwTeal">SwingLabs</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-2">Company</h4>
-        <ul class="space-y-1 text-white/70">
-          <li><a href="#about" class="hover:text-mwTeal">About</a></li>
-          <li><a href="#blog" class="hover:text-mwTeal">Blog</a></li>
-          <li><a href="#pricing" class="hover:text-mwTeal">Pricing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-2">Legal</h4>
-        <ul class="space-y-1 text-white/70">
-          <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
-          <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
-          <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="text-center text-white/50 text-xs pb-8">© <span id="year"></span> MomentumWorks. All rights reserved.</div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  </div>
+  <div class="text-center text-white/50 text-xs pb-8">© <span id="year"></span> MomentumWorks. All rights
