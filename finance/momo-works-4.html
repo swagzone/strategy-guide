@@ -57,94 +57,86 @@ html{scroll-behavior:smooth;}
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
     <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
       <defs>
-        <!-- Soft area so the dot/trail stand out -->
+        <!-- Keep area subtle so the dot is the hero -->
         <linearGradient id="mwArea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.26"/>
+          <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.24"/>
           <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.04"/>
         </linearGradient>
 
-        <!-- Normal glow + burst glow -->
+        <!-- Normal + burst glows -->
         <filter id="mwGlow" x="-60%" y="-60%" width="220%" height="220%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="g1"/>
-          <feMerge>
-            <feMergeNode in="g1"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
+          <feMerge><feMergeNode in="g1"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
-        <filter id="mwBurstGlow" x="-80%" y="-80%" width="260%" height="260%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="g2"/>
-          <feMerge>
-            <feMergeNode in="g2"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
+        <filter id="mwBurstGlow" x="-90%" y="-90%" width="280%" height="280%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="g2"/>
+          <feMerge><feMergeNode in="g2"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
 
-        <!-- HIGH-BETA curve; BIG ramp begins ~ 75% (x ~ 900) -->
-        <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.4"
+        <!-- HIGH-BETA smooth wiggle with progressive slope; ROCKET from ~75% to end -->
+        <!-- (y smaller = higher on screen) -->
+        <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.6"
           d="
-            M   0,338
-            C  55,312   95,342  140,300
-            C 190,258  240,306  290,266
-            C 340,226  385,256  430,216
-            C 470,188  520,214  560,188
-            C 600,160  655,206  700,168
-            C 745,132  795,176  835,146
-            C 875,120  905,140  930,130
-            C 950,122  965,118  980,116   <!-- lead-in to ramp -->
-            C 995,114 1015,104 1035, 96
-            C 1065, 86 1100, 80 1135, 75
-            C 1165, 72 1185, 70 1200, 66  <!-- BANG! rocket segment -->
+            M   0,360
+            C  80,350  120,355  170,335
+            C 230,315  280,338  330,312
+            C 390,288  430,300  480,275
+            C 530,252  570,262  620,242
+            C 670,225  710,235  760,220
+            C 810,208  850,218  890,205
+            C 920,195  950,185  980,170     <!-- begin pre-ramp -->
+            C 1008,155 1038,140 1070,120
+            C 1098,105 1128, 88 1165, 65    <!-- ramp intensifies -->
+            C 1185, 52 1193, 44 1200, 38    <!-- BANG -->
           "/>
 
         <path id="mwAreaPath" fill="url(#mwArea)"
           d="
-            M   0,338
-            C  55,312   95,342  140,300
-            C 190,258  240,306  290,266
-            C 340,226  385,256  430,216
-            C 470,188  520,214  560,188
-            C 600,160  655,206  700,168
-            C 745,132  795,176  835,146
-            C 875,120  905,140  930,130
-            C 950,122  965,118  980,116
-            C 995,114 1015,104 1035, 96
-            C 1065, 86 1100, 80 1135, 75
-            C 1165, 72 1185, 70 1200, 66
+            M   0,360
+            C  80,350  120,355  170,335
+            C 230,315  280,338  330,312
+            C 390,288  430,300  480,275
+            C 530,252  570,262  620,242
+            C 670,225  710,235  760,220
+            C 810,208  850,218  890,205
+            C 920,195  950,185  980,170
+            C 1008,155 1038,140 1070,120
+            C 1098,105 1128, 88 1165, 65
+            C 1185, 52 1193, 44 1200, 38
             L 1200,400 L 0,400 Z
           "/>
 
-        <!-- gradient for comet trail fade -->
+        <!-- Trail gradient (transparent → bright) -->
         <linearGradient id="mwTrailGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"  stop-color="#00FFA3" stop-opacity="0"/>
-          <stop offset="40%" stop-color="#00FFA3" stop-opacity="0.25"/>
-          <stop offset="70%" stop-color="#00FFA3" stop-opacity="0.7"/>
-          <stop offset="100%" stop-color="#00FFA3" stop-opacity="1"/>
+          <stop offset="0%"  stop-color="#00FFC2" stop-opacity="0"/>
+          <stop offset="40%" stop-color="#00FFC2" stop-opacity="0.25"/>
+          <stop offset="75%" stop-color="#00FFC2" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#00FFC2" stop-opacity="1"/>
         </linearGradient>
       </defs>
 
-      <!-- Area + line (fixed) -->
+      <!-- Static chart -->
       <use href="#mwAreaPath"></use>
       <use href="#mwPath"></use>
 
-      <!-- Subtle gridlines -->
-      <g opacity="0.25">
+      <!-- Light grid (finance vibe) -->
+      <g opacity="0.22">
         <line x1="0" y1="100" x2="1200" y2="100" stroke="#1CE5B8" stroke-dasharray="4 8"/>
         <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
         <line x1="0" y1="300" x2="1200" y2="300" stroke="#1CE5B8" stroke-dasharray="4 8"/>
       </g>
 
-      <!-- Comet trail (we update this polyline in JS) -->
+      <!-- Comet trail (JS updates) -->
       <polyline id="mwTrail" fill="none" stroke="url(#mwTrailGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points=""/>
 
-      <!-- Hero dot (super bright neon with white rim) -->
-      <circle id="mwDot" r="8" cx="0" cy="0"
-              fill="#00FFA3" stroke="white" stroke-width="3"
+      <!-- Hero dot: brighter neon + white rim + glow -->
+      <circle id="mwDot" r="9" cx="0" cy="0"
+              fill="#00FFC2" stroke="white" stroke-width="3"
               filter="url(#mwGlow)"></circle>
 
-      <!-- Price guide -->
+      <!-- Vertical price guide -->
       <line id="mwGuide" x1="0" y1="60" x2="0" y2="400"
-            stroke="#00FFA3" stroke-width="1.6" stroke-opacity="0.6"
-            stroke-dasharray="3 6"></line>
+            stroke="#00FFC2" stroke-width="1.8" stroke-opacity="0.65" stroke-dasharray="3 6"></line>
     </svg>
   </div>
 
@@ -166,16 +158,16 @@ html{scroll-behavior:smooth;}
 </section>
 
 <style>
-  /* subtle breathe so background feels alive (dot/trail are the hero) */
+  /* Subtle breathe on area so background feels alive */
   #mwHeroSvg use { animation: mwBreathe 9s ease-in-out infinite; transform-origin:center; }
-  @keyframes mwBreathe { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-2px) } }
+  @keyframes mwBreathe { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-2px) } }
 
-  /* dot idle pulse (will get overridden during burst) */
-  #mwDot { animation: mwDotPulse 1.5s ease-in-out infinite; }
+  /* Idle dot pulse (overridden in burst) */
+  #mwDot { animation: mwDotPulse 1.4s ease-in-out infinite; }
   @keyframes mwDotPulse {
-    0%   { r: 7.5; opacity: 0.95; }
-    50%  { r: 9;   opacity: 1;    }
-    100% { r: 7.5; opacity: 0.95; }
+    0% { r: 8.5; opacity: .95; }
+    50% { r: 10;  opacity: 1;   }
+    100%{ r: 8.5; opacity: .95; }
   }
 </style>
 
@@ -188,67 +180,57 @@ html{scroll-behavior:smooth;}
 
   const L = path.getTotalLength();
 
-  // timing
-  const duration = 9000;        // ms per full pass
-  const burstStartT = 0.75;     // 3/4 through
-  const burstEndT   = 1.00;     // to the end
-
-  // comet trail buffer
-  const maxTrailPoints = 60;     // more points = longer tail
+  // One full pass; burst is last 25%
+  const duration     = 9000;   // ms
+  const burstStartT  = 0.75;   // 75% through
+  const maxTrailPts  = 70;     // comet trail length
   const pts = [];
 
-  // helper to clamp 0..1
-  const clamp01 = (x) => Math.max(0, Math.min(1, x));
+  // optional: ease-in speed so it feels more natural
+  const easeIn = (x) => x * x * (3 - 2 * x); // smoothstep
 
   let start = performance.now();
 
   function tick(now){
-    const elapsed  = (now - start) % duration;
-    const t        = elapsed / duration;       // 0..1
-    const dist     = t * L;
-    const pt       = path.getPointAtLength(dist);
+    const elapsed = (now - start) % duration;
+    const t0 = elapsed / duration;                 // 0..1 linear time
+    const t  = easeIn(t0);                         // eased time for smoother motion
+    const d  = t * L;
+    const pt = path.getPointAtLength(d);
 
-    // place the dot
+    // position dot and guide
     dot.setAttribute('cx', pt.x);
     dot.setAttribute('cy', pt.y);
-
-    // price guide
     guide.setAttribute('x1', pt.x);
     guide.setAttribute('x2', pt.x);
 
-    // trail: push new point; keep maxTrailPoints
+    // update comet trail
     pts.push([pt.x, pt.y]);
-    if (pts.length > maxTrailPoints) pts.shift();
+    if (pts.length > maxTrailPts) pts.shift();
     trail.setAttribute('points', pts.map(p => p.join(',')).join(' '));
 
-    // are we in the burst segment?
-    const inBurst = (t >= burstStartT);
-    const burstPhase = inBurst ? (t - burstStartT) / (burstEndT - burstStartT) : 0; // 0..1
-
-    // ramp attributes during burst: bigger radius, stronger glow, thicker trail
-    if (inBurst){
-      const r = 9 + 6*burstPhase; // up to 15
+    // Burst behavior during last quarter
+    if (t0 >= burstStartT) {
+      const burstPhase = (t0 - burstStartT) / (1 - burstStartT); // 0..1
+      // Bigger, brighter, glowier
+      const r = 10 + 8 * burstPhase;      // up to 18px
       dot.setAttribute('r', r);
       dot.setAttribute('filter', 'url(#mwBurstGlow)');
-
-      const trailW = 3 + 3*burstPhase; // up to 6
-      trail.setAttribute('stroke-width', trailW);
+      trail.setAttribute('stroke-width', 4 + 4 * burstPhase); // up to 8
       trail.setAttribute('stroke-opacity', 0.85);
-
-      // also fatten the price guide a bit for drama
-      guide.setAttribute('stroke-width', 1.6 + 0.8*burstPhase);
-      guide.setAttribute('stroke-opacity', 0.65 + 0.25*burstPhase);
+      guide.setAttribute('stroke-width', 1.8 + 0.9 * burstPhase);
+      guide.setAttribute('stroke-opacity', 0.7 + 0.2 * burstPhase);
     } else {
-      dot.setAttribute('r', 8);
+      dot.setAttribute('r', 9);
       dot.setAttribute('filter', 'url(#mwGlow)');
       trail.setAttribute('stroke-width', 3);
       trail.setAttribute('stroke-opacity', 0.7);
-      guide.setAttribute('stroke-width', 1.6);
-      guide.setAttribute('stroke-opacity', 0.6);
+      guide.setAttribute('stroke-width', 1.8);
+      guide.setAttribute('stroke-opacity', 0.65);
     }
 
-    // When we loop, reset the trail so each pass feels fresh
-    if (t < 0.02 && pts.length > 5){
+    // Clear trail at loop start so each pass feels fresh
+    if (t0 < 0.02 && pts.length) {
       pts.length = 0;
       trail.setAttribute('points', '');
     }
