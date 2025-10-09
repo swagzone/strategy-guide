@@ -1,162 +1,226 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MomentumWorks – Trade with rhythm, not noise.</title>
-  <meta name="description" content="MomentumWorks delivers transparent, momentum-driven trade intelligence for retail traders, active pros, and wealth managers. Public trade diary, clear signals, and a pro dashboard with AI copilot." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            mwNavy: '#0A1F44',
-            mwCharcoal: '#0f172a',
-            mwTeal: '#1CE5B8',
-            pulseGreen: '#3EDC81',
-            torqueRed: '#E63946',
-            swingBlue: '#2B4C9A'
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); }
-    .container { max-width: 1200px; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MomentumWorks – Trade with rhythm, not noise.</title>
+<meta name="description" content="MomentumWorks delivers transparent, momentum-driven trade intelligence for retail traders, active pros, and wealth managers. Public trade diary, clear signals, and a pro dashboard with AI copilot." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+  theme:{extend:{colors:{
+    mwNavy:'#0A1F44',mwCharcoal:'#0f172a',mwTeal:'#1CE5B8',
+    pulseGreen:'#3EDC81',torqueRed:'#E63946',swingBlue:'#2B4C9A'
+  }}}
+}
+</script>
+<style>
+.glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);}
+.container{max-width:1200px;}
+</style>
 </head>
+
 <body class="bg-mwCharcoal text-white font-sans">
 
-  <!-- Hero -->
-  <section id="top" class="container mx-auto px-4 py-20 md:py-28">
-    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Trade with <span class="text-mwTeal">rhythm</span>, not noise.</h1>
-    <p class="mt-5 text-white/80 text-lg md:text-xl">MomentumWorks helps retail investors follow disciplined, transparent momentum strategies — in plain English, with a public trade diary.</p>
-  </section>
+<!-- NAV -->
+<header class="sticky top-0 z-50 bg-mwCharcoal/80 border-b border-white/5">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">MW</div>
+      <span class="text-lg font-semibold">MomentumWorks</span>
+    </a>
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="#diary" class="hover:text-mwTeal">Trade Diary</a>
+      <a href="#products" class="hover:text-mwTeal">Products</a>
+      <a href="#pricing" class="hover:text-mwTeal">Pricing</a>
+      <a href="#faq" class="hover:text-mwTeal">FAQ</a>
+    </nav>
+    <a href="#watchlist" class="bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">Get Weekly Watchlist</a>
+  </div>
+</header>
 
-  <!-- Public Trade Diary -->
-  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl font-bold">Live Trade Diary</h2>
-        <div class="flex items-center gap-3 text-xs text-white/70">
-          <label class="hidden md:block">Month</label>
-          <select id="diaryMonth" class="px-2 py-1 rounded bg-white/10 border border-white/10"></select>
-        </div>
-      </div>
-      <p class="text-white/80 mb-6">This diary explains trades in simple language — what we liked about each stock and why we thought it could move higher or lower. It’s a teaching tool, not financial advice.</p>
+<!-- HERO -->
+<section id="top" class="container mx-auto px-4 py-20 md:py-28">
+  <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+    Trade with <span class="text-mwTeal">rhythm</span>, not noise.
+  </h1>
+  <p class="mt-5 text-white/80 text-lg md:text-xl max-w-2xl">
+    Transparent momentum signals and an honest public diary. 
+    Pulse for retail traders, Torque for active pros, and SwingLabs for institutions.
+  </p>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start with Pulse</a>
+    <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">View Trade Diary</a>
+  </div>
+</section>
 
-      <!-- Diary table -->
-      <div class="rounded-xl overflow-hidden border border-white/10">
-        <div class="overflow-auto">
-          <table class="min-w-full">
-            <thead class="bg-mwCharcoal/60">
-              <tr>
-                <th class="text-left p-3 text-sm font-semibold">Date (UTC)</th>
-                <th class="text-left p-3 text-sm font-semibold">Ticker</th>
-                <th class="text-left p-3 text-sm font-semibold">Type</th>
-                <th class="text-left p-3 text-sm font-semibold">Status</th>
-                <th class="text-left p-3 text-sm font-semibold">Notes</th>
-                <th class="text-right p-3 text-sm font-semibold">% Realized</th>
-                <th class="text-right p-3 text-sm font-semibold">% Unrealized</th>
-              </tr>
-            </thead>
-            <tbody id="diaryRows" class="divide-y divide-white/5 bg-mwCharcoal/40"></tbody>
-            <tfoot class="bg-mwCharcoal/60">
-              <tr>
-                <td colspan="5" class="p-3 text-sm font-semibold text-right">Monthly Total:</td>
-                <td id="monthTotal" colspan="2" class="p-3 text-right text-sm font-bold text-mwTeal">+0.00%</td>
-              </tr>
-              <tr>
-                <td colspan="5" class="p-3 text-sm font-semibold text-right">YTD Return (MomentumWorks):</td>
-                <td id="ytdTotal" colspan="2" class="p-3 text-right text-sm font-bold text-mwTeal">+0.00%</td>
-              </tr>
-              <tr>
-                <td colspan="5" class="p-3 text-sm font-semibold text-right">YTD vs SPY / QQQ:</td>
-                <td id="ytdCompare" colspan="2" class="p-3 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <div class="px-4 py-3 text-xs text-white/60 border-t border-white/10">Demo data. Educational only. Not investment advice.</div>
+<!-- PRODUCTS -->
+<section id="products" class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-8">Products</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="glass rounded-xl p-6 border border-white/10">
+      <div class="text-sm uppercase tracking-wider text-white/60">Retail</div>
+      <h3 class="mt-1 text-2xl font-bold flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-pulseGreen"></span> Pulse</h3>
+      <p class="mt-3 text-white/80">Three simple swing ideas weekly with easy explanations — why we like them and what we’re watching.</p>
+    </div>
+    <div class="glass rounded-xl p-6 border border-white/10">
+      <div class="text-sm uppercase tracking-wider text-white/60">Active</div>
+      <h3 class="mt-1 text-2xl font-bold flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-torqueRed"></span> Torque</h3>
+      <p class="mt-3 text-white/80">Daily intraday ideas, notes, and evolving swing updates — for traders who live the screens.</p>
+    </div>
+    <div class="glass rounded-xl p-6 border border-white/10">
+      <div class="text-sm uppercase tracking-wider text-white/60">Pro</div>
+      <h3 class="mt-1 text-2xl font-bold flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-swingBlue"></span> SwingLabs</h3>
+      <p class="mt-3 text-white/80">Analytics dashboard, history, and AI copilot for professional traders and advisors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE DIARY -->
+<section id="diary" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-3xl font-bold">Live Trade Diary</h2>
+      <div class="flex items-center gap-3 text-xs text-white/70">
+        <label class="hidden md:block">Month</label>
+        <select id="diaryMonth" class="px-2 py-1 rounded bg-white/10 border border-white/10"></select>
       </div>
     </div>
-  </section>
+    <p class="text-white/80 mb-6 max-w-3xl">
+      Each trade is explained in plain language — why we liked it, what we expected, 
+      and how it played out. No jargon, just honest reasoning and results.
+    </p>
 
-  <script>
-  // --- Dummy human-style trades (retail-friendly notes) ---
-  const diaryDemo = {
-    months: ["2025-08","2025-09","2025-10"],
-    trades: [
-      { date_open:"2025-10-06", symbol:"AAPL", type:"Swing Long", status:"OPEN", realized_pct:0.80, open_pct:0.35, 
-        notes:"Apple had a calm week before new product launches. We expected buying interest to build as investors anticipate stronger holiday demand." },
-      { date_open:"2025-10-01", date_close:"2025-10-03", symbol:"TSLA", type:"Swing Long", status:"EXITED", realized_pct:2.54, open_pct:0.00, 
-        notes:"Tesla had pulled back for several days, and sentiment felt overly negative. We expected a relief move as short sellers covered ahead of earnings." },
-      { date_open:"2025-10-02", date_close:"2025-10-04", symbol:"NVDA", type:"Swing Long", status:"STOPPED", realized_pct:-1.28, open_pct:0.00, 
-        notes:"We took a shot thinking AI optimism might push Nvidia higher, but broader tech weakness pulled it back instead." },
-      { date_open:"2025-09-18", date_close:"2025-09-20", symbol:"MSFT", type:"Swing Long", status:"EXITED", realized_pct:1.90, open_pct:0.00, 
-        notes:"Microsoft had strong enterprise momentum and consistent buying from funds, so we looked for a steady continuation move." },
-      { date_open:"2025-09-10", date_close:"2025-09-11", symbol:"AMD", type:"Swing Long", status:"STOPPED", realized_pct:-0.72, open_pct:0.00, 
-        notes:"We expected AMD to benefit from chip strength, but the stock lost steam after initial enthusiasm faded." },
-      { date_open:"2025-09-03", date_close:"2025-09-06", symbol:"SMCI", type:"Swing Long", status:"EXITED", realized_pct:4.10, open_pct:0.00, 
-        notes:"We liked Super Micro for its leadership in AI servers and expected new orders to push shares higher — and they did." },
-      { date_open:"2025-08-22", date_close:"2025-08-26", symbol:"META", type:"Swing Long", status:"EXITED", realized_pct:3.25, open_pct:0.00, 
-        notes:"Meta had been consolidating after strong results, and we thought renewed ad spending optimism could spark the next leg up." },
-      { date_open:"2025-08-15", date_close:"2025-08-16", symbol:"QQQ", type:"Swing Long", status:"STOPPED", realized_pct:-0.60, open_pct:0.00, 
-        notes:"We looked for a bounce in the Nasdaq after a quick drop, but selling pressure continued, so we cut the trade early." },
-      { date_open:"2025-08-05", date_close:"2025-08-08", symbol:"SHOP", type:"Swing Long", status:"EXITED", realized_pct:2.05, open_pct:0.00, 
-        notes:"Shopify had strong e-commerce momentum and was attracting new fund inflows. We rode a short-term push before locking in gains." }
-    ]
-  };
+    <div class="rounded-xl overflow-hidden border border-white/10">
+      <div class="overflow-auto">
+        <table class="min-w-full">
+          <thead class="bg-mwCharcoal/60">
+            <tr>
+              <th class="p-3 text-left text-sm font-semibold">Date</th>
+              <th class="p-3 text-left text-sm font-semibold">Ticker</th>
+              <th class="p-3 text-left text-sm font-semibold">Type</th>
+              <th class="p-3 text-left text-sm font-semibold">Status</th>
+              <th class="p-3 text-left text-sm font-semibold">Notes</th>
+              <th class="p-3 text-right text-sm font-semibold">% Realized</th>
+              <th class="p-3 text-right text-sm font-semibold">% Unrealized</th>
+            </tr>
+          </thead>
+          <tbody id="diaryRows" class="divide-y divide-white/5 bg-mwCharcoal/40"></tbody>
+          <tfoot class="bg-mwCharcoal/60">
+            <tr>
+              <td colspan="5" class="p-3 text-right font-semibold">Monthly Total:</td>
+              <td id="monthTotal" colspan="2" class="p-3 text-right text-mwTeal font-bold">+0.00%</td>
+            </tr>
+            <tr>
+              <td colspan="5" class="p-3 text-right font-semibold">YTD Return (MomentumWorks):</td>
+              <td id="ytdTotal" colspan="2" class="p-3 text-right text-mwTeal font-bold">+0.00%</td>
+            </tr>
+            <tr>
+              <td colspan="5" class="p-3 text-right font-semibold">YTD vs SPY / QQQ:</td>
+              <td id="ytdCompare" colspan="2" class="p-3 text-right text-white/80">SPY +8.3% | QQQ +12.4%</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="px-4 py-3 text-xs text-white/60 border-t border-white/10">
+        Demo data. Educational only. Past performance is not indicative of future results.
+      </div>
+    </div>
+  </div>
+</section>
 
-  const $ = s => document.querySelector(s);
-  function monthFromDate(dateStr){
-    if(!dateStr) return "";
-    const d = new Date(dateStr + "T00:00:00Z");
-    return d.getUTCFullYear() + "-" + String(d.getUTCMonth()+1).padStart(2,"0");
-  }
-  function safePct(x){ const n=Number(x||0); return (n>=0?"+":"")+n.toFixed(2)+"%"; }
-  function statusBadge(s){
-    const map={OPEN:"bg-emerald-600/20 text-emerald-300",EXITED:"bg-cyan-600/20 text-cyan-300",STOPPED:"bg-rose-600/20 text-rose-300"};
-    const cls=map[s]||"bg-slate-500/20 text-slate-300";
-    return `<span class="px-2 py-0.5 rounded-full text-xs ${cls}">${s}</span>`;
-  }
+<!-- PRICING -->
+<section id="pricing" class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-8">Pricing</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="rounded-xl border border-white/10 p-6">
+      <h3 class="text-2xl font-bold">Pulse</h3>
+      <div class="text-4xl font-extrabold mt-4">$39<span class="text-base font-medium text-white/60">/mo</span></div>
+      <ul class="mt-6 text-white/80 text-sm space-y-2 list-disc list-inside">
+        <li>3 swing setups per week</li><li>Plain-English reasoning</li><li>Public diary access</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border border-white/10 p-6 ring-2 ring-torqueRed/40">
+      <h3 class="text-2xl font-bold">Torque</h3>
+      <div class="text-4xl font-extrabold mt-4">$129<span class="text-base font-medium text-white/60">/mo</span></div>
+      <ul class="mt-6 text-white/80 text-sm space-y-2 list-disc list-inside">
+        <li>3 day trades per day</li><li>Live commentary & diary logging</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border border-white/10 p-6">
+      <h3 class="text-2xl font-bold">SwingLabs</h3>
+      <div class="text-4xl font-extrabold mt-4">$499<span class="text-base font-medium text-white/60">+/mo</span></div>
+      <ul class="mt-6 text-white/80 text-sm space-y-2 list-disc list-inside">
+        <li>AI copilot</li><li>Portfolio analytics & export</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  function populateMonths(data){
-    const months = data.months || Array.from(new Set((data.trades||[]).map(t=>monthFromDate(t.date_close||t.date_open)))).sort();
-    const sel=$("#diaryMonth");
-    sel.innerHTML=months.map(m=>`<option value="${m}">${m}</option>`).join("");
-    sel.value=months.at(-1);
-  }
+<!-- FAQ -->
+<section id="faq" class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-8">FAQ</h2>
+  <p class="text-white/80">Coming soon — live generated from community questions.</p>
+</section>
 
-  function renderDiary(data){
-    const month=$("#diaryMonth").value;
-    const rows=(data.trades||[]).filter(t=>monthFromDate(t.date_close||t.date_open)===month);
-    $("#diaryRows").innerHTML=rows.map(t=>`
-      <tr>
-        <td class="p-3 text-sm whitespace-nowrap">${t.date_close||t.date_open}</td>
-        <td class="p-3 text-sm font-semibold">${t.symbol}</td>
-        <td class="p-3 text-sm">${t.type}</td>
-        <td class="p-3 text-sm">${statusBadge(t.status)}</td>
-        <td class="p-3 text-sm text-white/80">${t.notes}</td>
-        <td class="p-3 text-sm text-right">${safePct(t.realized_pct)}</td>
-        <td class="p-3 text-sm text-right">${safePct(t.open_pct)}</td>
-      </tr>
-    `).join("");
+<!-- FOOTER -->
+<footer class="border-t border-white/5">
+  <div class="container mx-auto px-4 py-10 text-sm text-white/60">
+    © <span id="year"></span> MomentumWorks • Educational content only.
+  </div>
+</footer>
 
-    // Monthly + YTD totals
-    const monthGain = rows.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
-    const ytdGain = data.trades.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
-    $("#monthTotal").textContent=(monthGain>=0?"+":"")+monthGain.toFixed(2)+"%";
-    $("#ytdTotal").textContent=(ytdGain>=0?"+":"")+ytdGain.toFixed(2)+"%";
+<!-- JS -->
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
 
-    // Compare vs SPY/QQQ (dummy values)
-    $("#ytdCompare").textContent=`SPY +8.3% | QQQ +12.4% | MW ${(ytdGain>=0?"+":"")+ytdGain.toFixed(2)}%`;
-  }
+// Dummy human-style diary
+const diaryDemo={months:["2025-08","2025-09","2025-10"],
+trades:[
+{date_open:"2025-10-06",symbol:"AAPL",type:"Swing Long",status:"OPEN",realized_pct:0.8,open_pct:0.35,
+notes:"Apple had a calm week before product launches. We expected optimism to build as investors looked toward holiday sales."},
+{date_open:"2025-10-01",date_close:"2025-10-03",symbol:"TSLA",type:"Swing Long",status:"EXITED",realized_pct:2.54,open_pct:0,
+notes:"Tesla sentiment was overly negative; we expected a short-term bounce as traders positioned ahead of earnings."},
+{date_open:"2025-10-02",date_close:"2025-10-04",symbol:"NVDA",type:"Swing Long",status:"STOPPED",realized_pct:-1.28,open_pct:0,
+notes:"We thought AI optimism might lift Nvidia again, but the stock cooled off with tech overall."},
+{date_open:"2025-09-18",date_close:"2025-09-20",symbol:"MSFT",type:"Swing Long",status:"EXITED",realized_pct:1.9,open_pct:0,
+notes:"Microsoft kept steady enterprise demand, and we expected continued strength from fund inflows."},
+{date_open:"2025-09-10",date_close:"2025-09-11",symbol:"AMD",type:"Swing Long",status:"STOPPED",realized_pct:-0.72,open_pct:0,
+notes:"We anticipated chip enthusiasm to spill over but the move faded quickly, so we exited early."},
+{date_open:"2025-09-03",date_close:"2025-09-06",symbol:"SMCI",type:"Swing Long",status:"EXITED",realized_pct:4.1,open_pct:0,
+notes:"Super Micro was leading in AI servers. We expected demand to keep building and it delivered."},
+{date_open:"2025-08-22",date_close:"2025-08-26",symbol:"META",type:"Swing Long",status:"EXITED",realized_pct:3.25,open_pct:0,
+notes:"Meta looked ready to resume its uptrend as advertisers increased spending again."},
+{date_open:"2025-08-15",date_close:"2025-08-16",symbol:"QQQ",type:"Swing Long",status:"STOPPED",realized_pct:-0.6,open_pct:0,
+notes:"We hoped for a quick bounce in the Nasdaq, but selling pressure persisted so we closed fast."},
+{date_open:"2025-08-05",date_close:"2025-08-08",symbol:"SHOP",type:"Swing Long",status:"EXITED",realized_pct:2.05,open_pct:0,
+notes:"Shopify showed strong growth signs in e-commerce, and we caught a brief upside burst."}
+]};
 
-  populateMonths(diaryDemo);
-  renderDiary(diaryDemo);
-  $("#diaryMonth").addEventListener("change",()=>renderDiary(diaryDemo));
-  </script>
-</body>
-</html>
+const $=s=>document.querySelector(s);
+function monthFromDate(d){if(!d)return"";const x=new Date(d+"T00:00:00Z");return x.getUTCFullYear()+"-"+String(x.getUTCMonth()+1).padStart(2,"0");}
+function safePct(x){const n=Number(x||0);return(n>=0?"+":"")+n.toFixed(2)+"%";}
+function statusBadge(s){const map={OPEN:"bg-emerald-600/20 text-emerald-300",EXITED:"bg-cyan-600/20 text-cyan-300",STOPPED:"bg-rose-600/20 text-rose-300"};
+const cls=map[s]||"bg-slate-600/20 text-slate-300";return`<span class="px-2 py-0.5 rounded-full text-xs ${cls}">${s}</span>`;}
+function populateMonths(data){const m=data.months||[...new Set(data.trades.map(t=>monthFromDate(t.date_close||t.date_open)))].sort();
+const sel=$("#diaryMonth");sel.innerHTML=m.map(x=>`<option value="${x}">${x}</option>`).join("");sel.value=m.at(-1);}
+function renderDiary(data){const m=$("#diaryMonth").value;
+const rows=data.trades.filter(t=>monthFromDate(t.date_close||t.date_open)===m);
+$("#diaryRows").innerHTML=rows.map(t=>`
+<tr>
+<td class="p-3 text-sm">${t.date_close||t.date_open}</td>
+<td class="p-3 text-sm font-semibold">${t.symbol}</td>
+<td class="p-3 text-sm">${t.type}</td>
+<td class="p-3 text-sm">${statusBadge(t.status)}</td>
+<td class="p-3 text-sm text-white/80">${t.notes}</td>
+<td class="p-3 text-sm text-right">${safePct(t.realized_pct)}</td>
+<td class="p-3 text-sm text-right">${safePct(t.open_pct)}</td>
+</tr>`).join("");
+const monthGain=rows.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
+const ytdGain=data.trades.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
+$("#monthTotal").textContent=(monthGain>=0?"+":"")+monthGain.toFixed(2)+"%";
+$("#ytdTotal").textContent=(ytdGain>=0?"+":"")+ytdGain.toFixed(2)+"%";
+$("#ytdCompare").textContent=`SPY +8.3% | QQQ +12.4% | MW ${(ytdGain>=0?"+":"")+ytdGain.toFixed(2)}%`; }
+populateMonths(diaryDemo);renderDiary(diaryDemo);
+$("#diaryMonth").addEventListener("change",()=>renderDiary(diaryDemo));
+</script>
+</body></html>
