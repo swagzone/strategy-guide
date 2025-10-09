@@ -53,7 +53,7 @@ html{scroll-behavior:smooth;}
 
 <!-- Hero -->
 <section id="top" class="relative overflow-hidden">
-  <!-- Ticker-style scrolling chart background -->
+  <!-- Static chart background -->
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
     <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
       <defs>
@@ -63,75 +63,62 @@ html{scroll-behavior:smooth;}
           <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.05"/>
         </linearGradient>
 
-        <!-- Uptrend squiggle (one tile; width = 1200 = viewBox width) -->
-        <path id="mwChartPathDef" fill="none" stroke="#1CE5B8" stroke-width="2"
-          d="
-            M 0,340
-            C  60,320  90,300 140,280
-            C 200,250 230,270 280,245
-            C 340,215 380,230 430,210
-            C 490,185 520,205 560,185
-            C 620,160 650,175 690,160
-            C 740,145 770,165 810,150
-            C 870,130 900,150 940,140
-            C 990,125 1020,140 1060,130
-            C 1110,120 1140,135 1200,120
-          " />
+        <!-- Bright dot glow -->
+        <filter id="mwGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
 
-        <!-- Area under the line -->
-        <path id="mwChartAreaDef" fill="url(#mwArea)"
+        <!-- HIGHER VOLATILITY (beta stock feel) -->
+        <!-- Tune control points for more/less drama -->
+        <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.25"
           d="
-            M 0,340
-            C  60,320  90,300 140,280
-            C 200,250 230,270 280,245
-            C 340,215 380,230 430,210
-            C 490,185 520,205 560,185
-            C 620,160 650,175 690,160
-            C 740,145 770,165 810,150
-            C 870,130 900,150 940,140
-            C 990,125 1020,140 1060,130
-            C 1110,120 1140,135 1200,120
+            M 0,335
+            C  50,310   95,340  140,300
+            C 190,260  240,305  290,270
+            C 340,235  380,255  425,220
+            C 470,185  520,215  560,185
+            C 600,155  660,205  700,165
+            C 740,130  790,170  830,145
+            C 880,115  930,165  965,135
+            C 1005,110 1060,145 1100,125
+            C 1140,110 1170,125 1200,110
+          "/>
+
+        <path id="mwAreaPath" fill="url(#mwArea)"
+          d="
+            M 0,335
+            C  50,310   95,340  140,300
+            C 190,260  240,305  290,270
+            C 340,235  380,255  425,220
+            C 470,185  520,215  560,185
+            C 600,155  660,205  700,165
+            C 740,130  790,170  830,145
+            C 880,115  930,165  965,135
+            C 1005,110 1060,145 1100,125
+            C 1140,110 1170,125  1200,110
             L 1200,400 L 0,400 Z
-          " />
+          "/>
       </defs>
 
-      <!-- The scrolling layer: two tiles for seamless loop -->
-      <g id="mwTicker" class="mw-ticker">
-        <!-- Tile A -->
-        <g>
-          <use href="#mwChartAreaDef"></use>
-          <use href="#mwChartPathDef"></use>
-        </g>
-        <!-- Tile B (second copy shifted one width) -->
-        <g transform="translate(1200,0)">
-          <use href="#mwChartAreaDef"></use>
-          <use href="#mwChartPathDef"></use>
-        </g>
-      </g>
+      <!-- Area + line (fixed, no scrolling) -->
+      <use href="#mwAreaPath"></use>
+      <use href="#mwPath"></use>
 
-      <!-- Subtle gridlines for finance-chart vibe -->
+      <!-- Subtle gridlines (finance vibe) -->
       <g opacity="0.25">
-        <line x1="0" y1="120" x2="1200" y2="120" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        <line x1="0" y1="110" x2="1200" y2="110" stroke="#1CE5B8" stroke-dasharray="4 8"/>
         <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
-        <line x1="0" y1="280" x2="1200" y2="280" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        <line x1="0" y1="290" x2="1200" y2="290" stroke="#1CE5B8" stroke-dasharray="4 8"/>
       </g>
 
-      <!-- “Current price” dot that the JS will position on the RIGHT edge -->
-      <circle id="mwDot" r="5" fill="#1CE5B8" cx="1180" cy="200"></circle>
-
-      <!-- Hidden measurement path (stationary) to compute dot position by length -->
-      <path id="mwMeasurePath" d="
-        M 0,340
-        C  60,320  90,300 140,280
-        C 200,250 230,270 280,245
-        C 340,215 380,230 430,210
-        C 490,185 520,205 560,185
-        C 620,160 650,175 690,160
-        C 740,145 770,165 810,150
-        C 870,130 900,150 940,140
-        C 990,125 1020,140 1060,130
-        C 1110,120 1140,135 1200,120
-      " fill="none" stroke="none" />
+      <!-- Bright moving dot (JS positions it along the curve) -->
+      <circle id="mwDot" r="6" cx="0" cy="0"
+              fill="#1CE5B8" stroke="white" stroke-width="2"
+              filter="url(#mwGlow)"></circle>
     </svg>
   </div>
 
@@ -153,37 +140,53 @@ html{scroll-behavior:smooth;}
 </section>
 
 <style>
-  /* Smooth horizontal scroll like a finance ticker */
-  .mw-ticker {
-    will-change: transform;
-    animation: mwScroll 18s linear infinite;
-  }
-  @keyframes mwScroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-1200px); } /* one tile width = viewBox width */
-  }
-
-  /* Gentle “alive” wiggle (kept very subtle) */
-  .mw-ticker use {
-    animation: mwWiggle 6s ease-in-out infinite;
+  /* Optional: subtle breathing for the whole chart so it feels alive */
+  #mwHeroSvg use {
+    animation: mwBreathe 8s ease-in-out infinite;
     transform-origin: center;
   }
-  @keyframes mwWiggle {
-    0%   { transform: translateY(0px); }
-    50%  { transform: translateY(-3px); }
-    100% { transform: translateY(0px); }
+  @keyframes mwBreathe {
+    0%,100% { transform: translateY(0px); }
+    50%     { transform: translateY(-2px); }
   }
 
-  /* Pulse the right-edge dot */
-  #mwDot {
-    animation: mwDotPulse 1.8s ease-in-out infinite;
-  }
+  /* Make the dot pop a bit more */
+  #mwDot { animation: mwDotPulse 1.6s ease-in-out infinite; }
   @keyframes mwDotPulse {
-    0%   { r: 4; opacity: 0.8; }
-    50%  { r: 6; opacity: 1; }
-    100% { r: 4; opacity: 0.8; }
+    0%   { r: 5.5; opacity: 0.9; }
+    50%  { r: 7;   opacity: 1;   }
+    100% { r: 5.5; opacity: 0.9; }
   }
 </style>
+
+<script>
+  // Animate the dot along the fixed curve from left -> right, loop forever.
+  (() => {
+    const path = document.getElementById('mwPath');
+    const dot  = document.getElementById('mwDot');
+
+    const pathLen   = path.getTotalLength();
+    const duration  = 9000; // ms for a full left->right pass (faster = more excitement)
+
+    let start = performance.now();
+
+    function step(t) {
+      const elapsed = (t - start) % duration;
+      const progress = elapsed / duration; // 0..1
+
+      // Move from a little left of visible start to end, then loop
+      const len = progress * pathLen;
+
+      const pt = path.getPointAtLength(len);
+      dot.setAttribute('cx', pt.x);
+      dot.setAttribute('cy', pt.y);
+
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  })();
+</script>
 
 <script>
   // Keep the “current price” dot locked to the right edge of the viewport
