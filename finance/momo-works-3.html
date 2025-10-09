@@ -63,7 +63,9 @@
       </nav>
       <a href="#watchlist" class="inline-flex items-center gap-2 bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">Get Weekly Watchlist</a>
     </div>
-  </header>  <!-- Hero -->  <section id="top" class="relative overflow-hidden">
+  </header>  
+  
+  <!-- Hero -->  <section id="top" class="relative overflow-hidden">
     <div class="absolute inset-0 opacity-20" aria-hidden="true">
       <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
         <path d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/>
@@ -105,7 +107,52 @@
     </div>
   </div>
 </section>
-   <!-- Value Props / Products Teaser -->  <section id="products" class="container mx-auto px-4 py-16">
+
+  
+  <!-- Trade Diary (public) -->  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="rounded-xl overflow-hidden border border-white/10">
+        <div class="max-w-4xl mx-auto text-center">
+
+  <div class="overflow-auto">
+    <table class="min-w-full">
+      <div class="flex items-center gap-3 text-xs text-white/70 mb-3">
+  <label class="hidden md:block">Month</label>
+  <select id="diaryMonth" class="px-2 py-1 rounded bg-white/10 border border-white/10"></select>
+</div>
+      <thead class="bg-mwCharcoal/60">
+        <tr>
+          <th class="text-left p-3 text-sm font-semibold">Date (UTC)</th>
+          <th class="text-left p-3 text-sm font-semibold">Ticker</th>
+          <th class="text-left p-3 text-sm font-semibold">Type</th>
+          <th class="text-left p-3 text-sm font-semibold">Status</th>
+          <th class="text-left p-3 text-sm font-semibold">Notes</th>
+          <th class="text-right p-3 text-sm font-semibold">% Realized</th>
+          <th class="text-right p-3 text-sm font-semibold">% Unrealized</th>
+        </tr>
+      </thead>
+      <tbody id="diaryRows" class="divide-y divide-white/5 bg-mwCharcoal/40"></tbody>
+      <tfoot class="bg-mwCharcoal/60">
+        <tr>
+          <td colspan="5" class="p-3 text-sm font-semibold text-right">Monthly Total:</td>
+          <td id="monthTotal" colspan="2" class="p-3 text-right text-sm font-bold text-mwTeal">+0.00%</td>
+        </tr>
+        <tr>
+          <td colspan="5" class="p-3 text-sm font-semibold text-right">YTD Return (MomentumWorks):</td>
+          <td id="ytdTotal" colspan="2" class="p-3 text-right text-sm font-bold text-mwTeal">+0.00%</td>
+        </tr>
+        <tr>
+          <td colspan="5" class="p-3 text-sm font-semibold text-right">YTD vs SPY / QQQ:</td>
+          <td id="ytdCompare" colspan="2" class="p-3 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="px-4 py-3 text-xs text-white/60 border-t border-white/10">
+    Demo data. Educational only. Not investment advice.
+  </div>
+  </section>  
+
+     <!-- Value Props / Products Teaser -->  <section id="products" class="container mx-auto px-4 py-16">
     <h2 class="text-3xl font-bold mb-8">Products</h2>
     <div class="grid md:grid-cols-3 gap-6">
       <!-- Pulse -->
@@ -145,7 +192,9 @@
         <a href="#pricing" class="mt-6 inline-block text-swingBlue font-semibold">Book a demo →</a>
       </div>
     </div>
-  </section>  <!-- Trending Trades -->  <section id="trending" class="bg-mwNavy/20 border-y border-white/5">
+  </section>  
+
+  <!-- Trending Trades -->  <section id="trending" class="bg-mwNavy/20 border-y border-white/5">
     <div class="container mx-auto px-4 py-16">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-3xl font-bold">Trending Trades</h2>
@@ -189,74 +238,12 @@
   <div class="mt-6 text-xs text-white/60">Aggregated from anonymized usage. Educational only. Not advice.</div>
 </div>
 
-  </section>  <!-- Trade Diary (public) -->  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
-  <div class="rounded-xl overflow-hidden border border-white/10">
-  <div class="overflow-auto">
-    <table class="min-w-full">
-      <div class="flex items-center gap-3 text-xs text-white/70 mb-3">
-  <label class="hidden md:block">Month</label>
-  <select id="diaryMonth" class="px-2 py-1 rounded bg-white/10 border border-white/10"></select>
-</div>
-      <thead class="bg-mwCharcoal/60">
-        <tr>
-          <th class="text-left p-3 text-sm font-semibold">Date (UTC)</th>
-          <th class="text-left p-3 text-sm font-semibold">Ticker</th>
-          <th class="text-left p-3 text-sm font-semibold">Type</th>
-          <th class="text-left p-3 text-sm font-semibold">Status</th>
-          <th class="text-left p-3 text-sm font-semibold">Notes</th>
-          <th class="text-right p-3 text-sm font-semibold">% Realized</th>
-          <th class="text-right p-3 text-sm font-semibold">% Unrealized</th>
-        </tr>
-      </thead>
-      <tbody id="diaryRows" class="divide-y divide-white/5 bg-mwCharcoal/40"></tbody>
-      <tfoot class="bg-mwCharcoal/60">
-        <tr>
-          <td colspan="5" class="p-3 text-sm font-semibold text-right">Monthly Total:</td>
-          <td id="monthTotal" colspan="2" class="p-3 text-right text-sm font-bold text-mwTeal">+0.00%</td>
-        </tr>
-        <tr>
-          <td colspan="5" class="p-3 text-sm font-semibold text-right">YTD Return (MomentumWorks):</td>
-          <td id="ytdTotal" colspan="2" class="p-3 text-right text-sm font-bold text-mwTeal">+0.00%</td>
-        </tr>
-        <tr>
-          <td colspan="5" class="p-3 text-sm font-semibold text-right">YTD vs SPY / QQQ:</td>
-          <td id="ytdCompare" colspan="2" class="p-3 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="px-4 py-3 text-xs text-white/60 border-t border-white/10">
-    Demo data. Educational only. Not investment advice.
-  </div>
-  </section>  <!-- Blog Preview -->  <section id="blog" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl font-bold">From the Blog</h2>
-        <a href="#" class="text-mwTeal font-semibold">View all →</a>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <article class="glass rounded-xl p-6 border border-white/10">
-          <h3 class="text-xl font-bold">Momentum vs Trend: Why Speed Matters</h3>
-          <p class="text-white/80 mt-2">A quick guide to understanding momentum and how we use it to find high‑probability swing setups.</p>
-          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
-        </article>
-        <article class="glass rounded-xl p-6 border border-white/10">
-          <h3 class="text-xl font-bold">ATR Stops: Simple Risk Math</h3>
-          <p class="text-white/80 mt-2">Sizing, stops, and targets using ATR so you can keep risk consistent across trades.</p>
-          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
-        </article>
-        <article class="glass rounded-xl p-6 border border-white/10">
-          <h3 class="text-xl font-bold">Case Study: A Loss We Learned From</h3>
-          <p class="text-white/80 mt-2">Transparency matters. Here’s how a losing trade reshaped our checklist and improved outcomes.</p>
-          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
-        </article>
-      </div>
-    </div>
-  </section>  <!-- Live FAQ -->  <section id="faq" class="container mx-auto px-4 py-16">
+  </section> 
+  
+  <!-- Live FAQ -->  <section id="faq" class="container mx-auto px-4 py-16">
     <div class="flex items-center justify-between mb-6">
-      <h2 class="text-3xl font-bold">Live FAQ (Torque +)</h2>
+      <h2 class="text-3xl font-bold">Live FAQ (Auto-Generated Using Ai From User Questions)</h2>
               <a href="#pricing" class="text-mwTeal font-semibold">Real‑time in Torque →</a>
-      <span class="text-xs text-white/60">Auto‑generated from anonymized user questions</span>
     </div>
     <div class="grid md:grid-cols-3 gap-6">
       <article class="glass rounded-xl p-6 border border-white/10">
@@ -292,7 +279,35 @@
         </form>
       </div>
     </div>
-  </section>  <!-- Footer -->  <footer class="border-t border-white/5">
+  </section>
+
+<!-- Blog Preview -->  <section id="blog" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl font-bold">From the Blog</h2>
+        <a href="#" class="text-mwTeal font-semibold">View all →</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="glass rounded-xl p-6 border border-white/10">
+          <h3 class="text-xl font-bold">Momentum vs Trend: Why Speed Matters</h3>
+          <p class="text-white/80 mt-2">A quick guide to understanding momentum and how we use it to find high‑probability swing setups.</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
+        </article>
+        <article class="glass rounded-xl p-6 border border-white/10">
+          <h3 class="text-xl font-bold">ATR Stops: Simple Risk Math</h3>
+          <p class="text-white/80 mt-2">Sizing, stops, and targets using ATR so you can keep risk consistent across trades.</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
+        </article>
+        <article class="glass rounded-xl p-6 border border-white/10">
+          <h3 class="text-xl font-bold">Case Study: A Loss We Learned From</h3>
+          <p class="text-white/80 mt-2">Transparency matters. Here’s how a losing trade reshaped our checklist and improved outcomes.</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->  <footer class="border-t border-white/5">
     <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
       <div>
         <div class="flex items-center gap-2">
