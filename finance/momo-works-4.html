@@ -51,22 +51,49 @@ html{scroll-behavior:smooth;}
   </div>
 </header>
 
-<!-- HERO -->
+<!-- Hero -->
 <section id="top" class="relative overflow-hidden">
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
-    <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full"><path d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/></svg>
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
+      <path class="wave-path" d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/>
+    </svg>
   </div>
-  <div class="container mx-auto px-4 py-20 md:py-28 relative">
+
+  <div class="container mx-auto px-4 py-20 md:py-28 relative max-w-[1200px]">
     <div class="max-w-3xl">
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Trade with <span class="text-mwTeal">rhythm</span>, not noise.</h1>
-      <p class="mt-5 text-white/80 text-lg md:text-xl">Transparent, AI-powered momentum research and a public learning diary.<br>Built for people who want clarity — not chaos.</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+        Trade with <span class="text-mwTeal">rhythm</span>, not noise.
+      </h1>
+      <p class="mt-5 text-white/80 text-lg md:text-xl">
+        Transparent, AI-powered momentum research and a public trade diary.<br>
+        Built for people who want clear market ideas — no advice, no noise.
+      </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start Learning</a>
-        <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">Explore the Research Diary</a>
+        <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start with Pulse</a>
+        <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">See Today’s Trade Diary</a>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Animated trading wave background */
+  .wave-path {
+    animation: waveMotion 8s ease-in-out infinite alternate;
+  }
+  @keyframes waveMotion {
+    0% {
+      d: path("M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z");
+    }
+    50% {
+      d: path("M0,260 C220,140 360,300 560,200 C760,100 960,320 1200,180 L1200,400 L0,400 Z");
+    }
+    100% {
+      d: path("M0,230 C180,100 340,260 540,160 C740,60 940,280 1200,140 L1200,400 L0,400 Z");
+    }
+  }
+</style>
+
 
 <!-- PHILOSOPHY -->
 <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
