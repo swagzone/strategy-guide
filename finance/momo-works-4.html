@@ -53,9 +53,85 @@ html{scroll-behavior:smooth;}
 
 <!-- Hero -->
 <section id="top" class="relative overflow-hidden">
+  <!-- Ticker-style scrolling chart background -->
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
-    <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
-      <path class="wave-path" d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/>
+    <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
+      <defs>
+        <!-- Soft area fill -->
+        <linearGradient id="mwArea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.05"/>
+        </linearGradient>
+
+        <!-- Uptrend squiggle (one tile; width = 1200 = viewBox width) -->
+        <path id="mwChartPathDef" fill="none" stroke="#1CE5B8" stroke-width="2"
+          d="
+            M 0,340
+            C  60,320  90,300 140,280
+            C 200,250 230,270 280,245
+            C 340,215 380,230 430,210
+            C 490,185 520,205 560,185
+            C 620,160 650,175 690,160
+            C 740,145 770,165 810,150
+            C 870,130 900,150 940,140
+            C 990,125 1020,140 1060,130
+            C 1110,120 1140,135 1200,120
+          " />
+
+        <!-- Area under the line -->
+        <path id="mwChartAreaDef" fill="url(#mwArea)"
+          d="
+            M 0,340
+            C  60,320  90,300 140,280
+            C 200,250 230,270 280,245
+            C 340,215 380,230 430,210
+            C 490,185 520,205 560,185
+            C 620,160 650,175 690,160
+            C 740,145 770,165 810,150
+            C 870,130 900,150 940,140
+            C 990,125 1020,140 1060,130
+            C 1110,120 1140,135 1200,120
+            L 1200,400 L 0,400 Z
+          " />
+      </defs>
+
+      <!-- The scrolling layer: two tiles for seamless loop -->
+      <g id="mwTicker" class="mw-ticker">
+        <!-- Tile A -->
+        <g>
+          <use href="#mwChartAreaDef"></use>
+          <use href="#mwChartPathDef"></use>
+        </g>
+        <!-- Tile B (second copy shifted one width) -->
+        <g transform="translate(1200,0)">
+          <use href="#mwChartAreaDef"></use>
+          <use href="#mwChartPathDef"></use>
+        </g>
+      </g>
+
+      <!-- Subtle gridlines for finance-chart vibe -->
+      <g opacity="0.25">
+        <line x1="0" y1="120" x2="1200" y2="120" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        <line x1="0" y1="280" x2="1200" y2="280" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+      </g>
+
+      <!-- “Current price” dot that the JS will position on the RIGHT edge -->
+      <circle id="mwDot" r="5" fill="#1CE5B8" cx="1180" cy="200"></circle>
+
+      <!-- Hidden measurement path (stationary) to compute dot position by length -->
+      <path id="mwMeasurePath" d="
+        M 0,340
+        C  60,320  90,300 140,280
+        C 200,250 230,270 280,245
+        C 340,215 380,230 430,210
+        C 490,185 520,205 560,185
+        C 620,160 650,175 690,160
+        C 740,145 770,165 810,150
+        C 870,130 900,150 940,140
+        C 990,125 1020,140 1060,130
+        C 1110,120 1140,135 1200,120
+      " fill="none" stroke="none" />
     </svg>
   </div>
 
@@ -77,24 +153,82 @@ html{scroll-behavior:smooth;}
 </section>
 
 <style>
-  /* Animated trading wave background */
-  .wave-path {
-    animation: waveMotion 8s ease-in-out infinite alternate;
+  /* Smooth horizontal scroll like a finance ticker */
+  .mw-ticker {
+    will-change: transform;
+    animation: mwScroll 18s linear infinite;
   }
-  @keyframes waveMotion {
-    0% {
-      d: path("M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z");
-    }
-    50% {
-      d: path("M0,260 C220,140 360,300 560,200 C760,100 960,320 1200,180 L1200,400 L0,400 Z");
-    }
-    100% {
-      d: path("M0,230 C180,100 340,260 540,160 C740,60 940,280 1200,140 L1200,400 L0,400 Z");
-    }
+  @keyframes mwScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-1200px); } /* one tile width = viewBox width */
+  }
+
+  /* Gentle “alive” wiggle (kept very subtle) */
+  .mw-ticker use {
+    animation: mwWiggle 6s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes mwWiggle {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-3px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Pulse the right-edge dot */
+  #mwDot {
+    animation: mwDotPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes mwDotPulse {
+    0%   { r: 4; opacity: 0.8; }
+    50%  { r: 6; opacity: 1; }
+    100% { r: 4; opacity: 0.8; }
   }
 </style>
 
+<script>
+  // Keep the “current price” dot locked to the right edge of the viewport
+  // while following the path shape as the background scrolls.
+  (() => {
+    const svg          = document.getElementById('mwHeroSvg');
+    const ticker       = document.getElementById('mwTicker');
+    const measurePath  = document.getElementById('mwMeasurePath'); // stationary reference
+    const dot          = document.getElementById('mwDot');
 
+    const viewWidth    = 1200;     // matches viewBox width & tile width
+    const durationMs   = 18000;    // must match CSS animation duration (18s)
+    const pathLength   = measurePath.getTotalLength();
+
+    // Sync CSS ticker translateX with JS time for dot position.
+    // Right edge corresponds to the same local position as the left edge of the visible tile.
+    let start = performance.now();
+
+    function frame(now) {
+      const elapsed = (now - start) % durationMs;
+      const progress = elapsed / durationMs;              // 0 → 1 over one cycle
+      const offsetLen = (pathLength * progress) % pathLength;
+
+      // Sample the path at that length to get the Y coordinate (and X, but we clamp X to right edge)
+      const pt = measurePath.getPointAtLength(offsetLen);
+
+      // Position the dot at right edge (slightly inset) with Y from the path sample
+      const rightInset = 20; // px inside the right edge of viewBox
+      const x = viewWidth - rightInset;
+      const y = pt.y;
+
+      dot.setAttribute('cx', x);
+      dot.setAttribute('cy', y);
+
+      // OPTIONAL: if you want the dashed grid to subtly scroll with the chart,
+      // you could also update a background transform here. Leaving static for cleanliness.
+
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  })();
+</script>
+
+  
 <!-- PHILOSOPHY -->
 <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
   <div class="container mx-auto px-4 py-20 md:py-28">
