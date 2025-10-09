@@ -57,68 +57,81 @@ html{scroll-behavior:smooth;}
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
     <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
       <defs>
-        <!-- Soft area fill -->
+        <!-- Softer area fill so the dot pops -->
         <linearGradient id="mwArea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.05"/>
+          <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.04"/>
         </linearGradient>
 
-        <!-- Bright dot glow -->
-        <filter id="mwGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+        <!-- BRIGHT neon green for the hero dot -->
+        <style>
+          :root { --mwDotColor: #00FFA3; } /* brighter than background teal */
+        </style>
+
+        <!-- Glow + subtle shadow so it never blends into background -->
+        <filter id="mwGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#001a12" flood-opacity="0.55"/>
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
           <feMerge>
             <feMergeNode in="blur"/>
             <feMergeNode in="SourceGraphic"/>
           </feMerge>
         </filter>
 
-        <!-- HIGHER VOLATILITY (beta stock feel) -->
-        <!-- Tune control points for more/less drama -->
-        <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.25"
+        <!-- HIGHER VOLATILITY PATH with big end ramp (smooth curves, no jagged lines) -->
+        <!-- Tweak control points to taste; end goes up aggressively (beta stock vibe) -->
+        <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.4"
           d="
-            M 0,335
-            C  50,310   95,340  140,300
-            C 190,260  240,305  290,270
-            C 340,235  380,255  425,220
+            M 0,340
+            C  50,315   95,345  140,300
+            C 190,255  240,305  290,265
+            C 340,225  385,255  430,215
             C 470,185  520,215  560,185
-            C 600,155  660,205  700,165
-            C 740,130  790,170  830,145
-            C 880,115  930,165  965,135
-            C 1005,110 1060,145 1100,125
-            C 1140,110 1170,125 1200,110
+            C 600,155  655,205  700,165
+            C 745,128  795,175  835,145
+            C 880,115  930,170  970,135
+            C 1010,110 1045,140 1085,125
+            C 1110,115 1135,118 1155,110
+            C 1175,100 1188,90  1200,70   <!-- final ramp up -->
           "/>
 
         <path id="mwAreaPath" fill="url(#mwArea)"
           d="
-            M 0,335
-            C  50,310   95,340  140,300
-            C 190,260  240,305  290,270
-            C 340,235  380,255  425,220
+            M 0,340
+            C  50,315   95,345  140,300
+            C 190,255  240,305  290,265
+            C 340,225  385,255  430,215
             C 470,185  520,215  560,185
-            C 600,155  660,205  700,165
-            C 740,130  790,170  830,145
-            C 880,115  930,165  965,135
-            C 1005,110 1060,145 1100,125
-            C 1140,110 1170,125  1200,110
+            C 600,155  655,205  700,165
+            C 745,128  795,175  835,145
+            C 880,115  930,170  970,135
+            C 1010,110 1045,140 1085,125
+            C 1110,115 1135,118 1155,110
+            C 1175,100 1188,90  1200,70
             L 1200,400 L 0,400 Z
           "/>
       </defs>
 
-      <!-- Area + line (fixed, no scrolling) -->
+      <!-- Area + line (fixed) -->
       <use href="#mwAreaPath"></use>
       <use href="#mwPath"></use>
 
       <!-- Subtle gridlines (finance vibe) -->
       <g opacity="0.25">
-        <line x1="0" y1="110" x2="1200" y2="110" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        <line x1="0" y1="100" x2="1200" y2="100" stroke="#1CE5B8" stroke-dasharray="4 8"/>
         <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
-        <line x1="0" y1="290" x2="1200" y2="290" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        <line x1="0" y1="300" x2="1200" y2="300" stroke="#1CE5B8" stroke-dasharray="4 8"/>
       </g>
 
-      <!-- Bright moving dot (JS positions it along the curve) -->
-      <circle id="mwDot" r="6" cx="0" cy="0"
-              fill="#1CE5B8" stroke="white" stroke-width="2"
+      <!-- Moving “current price” dot (bright neon + white rim + glow) -->
+      <circle id="mwDot" r="7.5" cx="0" cy="0"
+              fill="var(--mwDotColor)" stroke="white" stroke-width="2.5"
               filter="url(#mwGlow)"></circle>
+
+      <!-- Thin vertical guide at the dot (enhances price focus) -->
+      <line id="mwGuide" x1="0" y1="60" x2="0" y2="400"
+            stroke="var(--mwDotColor)" stroke-width="1.5" stroke-opacity="0.55"
+            stroke-dasharray="3 6"></line>
     </svg>
   </div>
 
@@ -140,97 +153,53 @@ html{scroll-behavior:smooth;}
 </section>
 
 <style>
-  /* Optional: subtle breathing for the whole chart so it feels alive */
-  #mwHeroSvg use {
-    animation: mwBreathe 8s ease-in-out infinite;
-    transform-origin: center;
-  }
-  @keyframes mwBreathe {
-    0%,100% { transform: translateY(0px); }
-    50%     { transform: translateY(-2px); }
-  }
+  /* Subtle breathing so the background feels alive, but dot remains the hero */
+  #mwHeroSvg use { animation: mwBreathe 9s ease-in-out infinite; transform-origin:center; }
+  @keyframes mwBreathe { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-2px) } }
 
-  /* Make the dot pop a bit more */
-  #mwDot { animation: mwDotPulse 1.6s ease-in-out infinite; }
+  /* Make the dot the star */
+  #mwDot { animation: mwDotPulse 1.4s ease-in-out infinite; }
   @keyframes mwDotPulse {
-    0%   { r: 5.5; opacity: 0.9; }
-    50%  { r: 7;   opacity: 1;   }
-    100% { r: 5.5; opacity: 0.9; }
+    0%   { r: 7;   opacity: 0.95; }
+    50%  { r: 8.5; opacity: 1;    }
+    100% { r: 7;   opacity: 0.95; }
   }
 </style>
 
 <script>
   // Animate the dot along the fixed curve from left -> right, loop forever.
+  // The guide line stays aligned with the dot’s x position.
   (() => {
-    const path = document.getElementById('mwPath');
-    const dot  = document.getElementById('mwDot');
+    const path   = document.getElementById('mwPath');
+    const dot    = document.getElementById('mwDot');
+    const guide  = document.getElementById('mwGuide');
 
-    const pathLen   = path.getTotalLength();
-    const duration  = 9000; // ms for a full left->right pass (faster = more excitement)
+    const length = path.getTotalLength();
+
+    // Make the pacing feel “trader fast” but not hectic
+    const duration = 8000; // ms per pass; lower = faster
 
     let start = performance.now();
 
-    function step(t) {
-      const elapsed = (t - start) % duration;
-      const progress = elapsed / duration; // 0..1
+    function tick(now) {
+      const elapsed  = (now - start) % duration;
+      const t        = elapsed / duration;           // 0..1
+      const dist     = t * length;
 
-      // Move from a little left of visible start to end, then loop
-      const len = progress * pathLen;
+      const pt = path.getPointAtLength(dist);
 
-      const pt = path.getPointAtLength(len);
       dot.setAttribute('cx', pt.x);
       dot.setAttribute('cy', pt.y);
 
-      requestAnimationFrame(step);
+      guide.setAttribute('x1', pt.x);
+      guide.setAttribute('x2', pt.x);
+
+      requestAnimationFrame(tick);
     }
 
-    requestAnimationFrame(step);
+    requestAnimationFrame(tick);
   })();
 </script>
-
-<script>
-  // Keep the “current price” dot locked to the right edge of the viewport
-  // while following the path shape as the background scrolls.
-  (() => {
-    const svg          = document.getElementById('mwHeroSvg');
-    const ticker       = document.getElementById('mwTicker');
-    const measurePath  = document.getElementById('mwMeasurePath'); // stationary reference
-    const dot          = document.getElementById('mwDot');
-
-    const viewWidth    = 1200;     // matches viewBox width & tile width
-    const durationMs   = 18000;    // must match CSS animation duration (18s)
-    const pathLength   = measurePath.getTotalLength();
-
-    // Sync CSS ticker translateX with JS time for dot position.
-    // Right edge corresponds to the same local position as the left edge of the visible tile.
-    let start = performance.now();
-
-    function frame(now) {
-      const elapsed = (now - start) % durationMs;
-      const progress = elapsed / durationMs;              // 0 → 1 over one cycle
-      const offsetLen = (pathLength * progress) % pathLength;
-
-      // Sample the path at that length to get the Y coordinate (and X, but we clamp X to right edge)
-      const pt = measurePath.getPointAtLength(offsetLen);
-
-      // Position the dot at right edge (slightly inset) with Y from the path sample
-      const rightInset = 20; // px inside the right edge of viewBox
-      const x = viewWidth - rightInset;
-      const y = pt.y;
-
-      dot.setAttribute('cx', x);
-      dot.setAttribute('cy', y);
-
-      // OPTIONAL: if you want the dashed grid to subtly scroll with the chart,
-      // you could also update a background transform here. Leaving static for cleanliness.
-
-      requestAnimationFrame(frame);
-    }
-
-    requestAnimationFrame(frame);
-  })();
-</script>
-
   
 <!-- PHILOSOPHY -->
 <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
