@@ -316,7 +316,7 @@
           <li>Educational commentary on each trade idea</li>
         </ul>
       </div>
-      <div class="mt-auto pt-6">
+            <div class="mt-auto pt-6">
         <a href="#pricing" class="inline-block text-pulseGreen font-semibold hover:underline">Start with Pulse →</a>
       </div>
     </div>
@@ -374,119 +374,150 @@
   </div>
 </section>
 
+<!-- Trending Trades -->
+<section id="trending" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-bold">Trending Trades</h2>
+      <a href="#pricing" class="text-mwTeal font-semibold hover:underline">Real-time in Torque →</a>
+    </div>
 
-  <!-- Trending Trades -->  <section id="trending" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl font-bold">Trending Trades</h2>
-        <a href="#pricing" class="text-mwTeal font-semibold">Real‑time in Torque →</a>
+    <p class="text-white/80 mb-8 max-w-3xl">
+      “SEO for signals” — rankings based on anonymized usage: chat queries, trade plans, watchlist saves, alerts, and (optionally) executions.
+      Public view shows delayed data.
+    </p>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap gap-2 mb-6 text-sm">
+      <button class="trend-tab bg-white/10 px-3 py-1 rounded border border-white/10" data-target="#tab-top">Top</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-rising">Rising</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-sectors">Sectors</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-long">Long Bias</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-short">Short Bias</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-stretched">Stretched?</button>
+    </div>
+
+    <!-- Panels -->
+    <div id="tab-top" class="trend-panel grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold text-white">NVDA</h4>
+          <span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 92</span>
+        </div>
+        <div class="text-white/70 text-sm mt-1">Rising 2.1× • Asked 47 • Plans 18 • Saved 62</div>
+        <div class="text-xs text-white/50 mt-3">Delayed sample. Real-time in Torque & SwingLabs.</div>
       </div>
-      <p class="text-white/80 mb-6">"SEO for signals"—rankings based on anonymized usage: chat queries, trade plans, watchlist saves, alerts, and (optionally) executions. Public view shows delayed data.</p><!-- Tabs -->
-  <div class="flex flex-wrap gap-2 mb-4 text-sm">
-    <button class="trend-tab bg-white/10 px-3 py-1 rounded border border-white/10" data-target="#tab-top">Top</button>
-    <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-rising">Rising</button>
-    <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-sectors">Sectors</button>
-    <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-long">Long Bias</button>
-    <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-short">Short Bias</button>
-    <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-stretched">Stretched?</button>
+
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold text-white">AAPL</h4>
+          <span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 81</span>
+        </div>
+        <div class="text-white/70 text-sm mt-1">Rising 1.6× • Asked 32 • Plans 12 • Saved 54</div>
+        <div class="text-xs text-white/50 mt-3">Delayed sample.</div>
+      </div>
+
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold text-white">SMCI</h4>
+          <span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 77</span>
+        </div>
+        <div class="text-white/70 text-sm mt-1">Rising 2.9× • Asked 21 • Plans 9 • Saved 40</div>
+        <div class="text-xs text-white/50 mt-3">Delayed sample.</div>
+      </div>
+    </div>
+
+    <div id="tab-rising" class="trend-panel hidden text-white/80">Sample rising list…</div>
+    <div id="tab-sectors" class="trend-panel hidden text-white/80">Sector heat placeholder…</div>
+    <div id="tab-long" class="trend-panel hidden text-white/80">Long-biased tickers…</div>
+    <div id="tab-short" class="trend-panel hidden text-white/80">Short-biased tickers…</div>
+    <div id="tab-stretched" class="trend-panel hidden text-white/80">Most “stretched?” queries…</div>
+
+    <div class="mt-8 text-xs text-white/60 text-center italic">
+      Aggregated from anonymized usage. Educational only. Not advice.
+    </div>
   </div>
-
-  <!-- Panels (placeholder static; wire to /api/trending later) -->
-  <div id="tab-top" class="trend-panel grid md:grid-cols-3 gap-4">
-    <div class="glass p-4 rounded border border-white/10">
-      <div class="flex items-center justify-between"><h4 class="font-semibold">NVDA</h4><span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 92</span></div>
-      <div class="text-white/70 text-sm mt-1">Rising 2.1× • Asked 47 • Plans 18 • Saved 62</div>
-      <div class="text-xs text-white/50 mt-2">Delayed sample. Real‑time in Torque & SwingLabs.</div>
-    </div>
-    <div class="glass p-4 rounded border border-white/10">
-      <div class="flex items-center justify-between"><h4 class="font-semibold">AAPL</h4><span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 81</span></div>
-      <div class="text-white/70 text-sm mt-1">Rising 1.6× • Asked 32 • Plans 12 • Saved 54</div>
-      <div class="text-xs text-white/50 mt-2">Delayed sample.</div>
-    </div>
-    <div class="glass p-4 rounded border border-white/10">
-      <div class="flex items-center justify-between"><h4 class="font-semibold">SMCI</h4><span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 77</span></div>
-      <div class="text-white/70 text-sm mt-1">Rising 2.9× • Asked 21 • Plans 9 • Saved 40</div>
-      <div class="text-xs text-white/50 mt-2">Delayed sample.</div>
-    </div>
-  </div>
-
-  <div id="tab-rising" class="trend-panel hidden text-white/80">Sample rising list…</div>
-  <div id="tab-sectors" class="trend-panel hidden text-white/80">Sector heat placeholder…</div>
-  <div id="tab-long" class="trend-panel hidden text-white/80">Long‑biased tickers…</div>
-  <div id="tab-short" class="trend-panel hidden text-white/80">Short‑biased tickers…</div>
-  <div id="tab-stretched" class="trend-panel hidden text-white/80">Most "stretched?" queries…</div>
-
-  <div class="mt-6 text-xs text-white/60">Aggregated from anonymized usage. Educational only. Not advice.</div>
-</div>
-
-  </section> 
+</section>
   
-  <!-- Live FAQ -->  <section id="faq" class="container mx-auto px-4 py-16">
-    <div class="flex items-center justify-between mb-6 max-w-[1200px]">
-      <h2 class="text-3xl font-bold">Live FAQ (Auto-Generated Using Ai From User Questions)</h2>
-              <a href="#pricing" class="text-mwTeal font-semibold">Real‑time in Torque →</a>
+ <!-- Live FAQ -->
+<section id="faq" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-bold">Live FAQ (Auto-Generated Using AI From User Questions)</h2>
+      <a href="#pricing" class="text-mwTeal font-semibold hover:underline">Real-time in Torque →</a>
     </div>
-    <div class="grid md:grid-cols-3 gap-6 max-w-[1200px]">
-      <article class="glass rounded-xl p-6 border border-white/10">
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
         <h3 class="font-semibold">Is the market too stretched for longs today?</h3>
-        <p class="text-white/80 text-sm mt-2">We look at breadth, RVOL, and distance from 20/50 EMA. If RVOL is elevated and breadth is narrowing, we reduce size or wait for pullbacks. Educational only.</p>
+        <p class="text-white/80 text-sm mt-2">
+          We review breadth, RVOL, and distance from 20/50 EMA. If RVOL is elevated and breadth narrows, we reduce risk
+          or wait for pullbacks. Educational research only.
+        </p>
         <div class="text-xs text-white/50 mt-3">Asked by 42 users in last 24h • Updated 12:10 ET</div>
       </article>
-      <article class="glass rounded-xl p-6 border border-white/10">
-        <h3 class="font-semibold">What’s a red‑to‑green setup?</h3>
-        <p class="text-white/80 text-sm mt-2">A gap‑down open that reclaims yesterday’s close, often aligning with VWAP reclaim + higher low. Torque’s pre‑market session surfaces these.</p>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <h3 class="font-semibold">What’s a red-to-green setup?</h3>
+        <p class="text-white/80 text-sm mt-2">
+          A gap-down open that reclaims yesterday’s close, often paired with a VWAP reclaim + higher low.
+          Torque’s pre-market view surfaces examples for study.
+        </p>
         <div class="text-xs text-white/50 mt-3">Asked by 27 users • Updated 10:05 ET</div>
       </article>
-      <article class="glass rounded-xl p-6 border border-white/10">
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
         <h3 class="font-semibold">How do you place ATR stops?</h3>
-        <p class="text-white/80 text-sm mt-2">We default to ~1.2–1.5× ATR(14) from entry for swings; intraday uses lower multiples based on volatility regime.</p>
+        <p class="text-white/80 text-sm mt-2">
+          For swings, we often reference ~1.2–1.5× ATR(14); intraday uses smaller multiples based on the volatility
+          regime. Educational research only.
+        </p>
         <div class="text-xs text-white/50 mt-3">Asked by 31 users • Updated 09:40 ET</div>
       </article>
     </div>
-    <div class="mt-6 text-sm text-white/70">Want a custom plan from any FAQ? <a href="#pricing" class="text-mwTeal">Try SwingLabs</a>.</div>
-  </section>  <!-- About -->  <section id="about" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold mb-4">Our Story</h2>
-    <p class="text-white/80 max-w-3xl">MomentumWorks was created to give traders rhythm in a chaotic market. We combine disciplined momentum models with simple communication and radical transparency. Every idea ships with entries, stops, targets, and a post‑mortem—logged in a public diary. The goal isn’t to be perfect—it’s to be consistent and accountable.</p>
-  </section>  <!-- Lead Magnet / Watchlist -->  <section id="watchlist" class="container mx-auto px-4 pb-20">
-    <div class="glass rounded-2xl p-8 border border-white/10">
-      <div class="md:flex items-center justify-between gap-6">
-        <div class="md:w-2/3">
-          <h3 class="text-2xl font-bold">Get the Free Weekly Watchlist</h3>
-          <p class="text-white/80 mt-2">One email each week with our top momentum candidates and what we’ll watch for. No spam, ever.</p>
-        </div>
-        <form class="md:w-1/3 mt-6 md:mt-0" onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');">
-          <input type="email" placeholder="you@company.com" required class="w-full px-4 py-3 rounded bg-white text-mwCharcoal placeholder-gray-500" />
-          <button class="w-full mt-3 bg-mwTeal text-mwCharcoal font-semibold py-3 rounded">Send me the Watchlist</button>
-        </form>
-      </div>
-    </div>
-  </section>
 
-<!-- Blog Preview -->  <section id="blog" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16">
-      <div class="flex items-center justify-between mb-6 max-w-[1200px]">
-        <h2 class="text-3xl font-bold">From the Blog</h2>
-        <a href="#" class="text-mwTeal font-semibold">View all →</a>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <article class="glass rounded-xl p-6 border border-white/10">
-          <h3 class="text-xl font-bold">Momentum vs Trend: Why Speed Matters</h3>
-          <p class="text-white/80 mt-2">A quick guide to understanding momentum and how we use it to find high‑probability swing setups.</p>
-          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
-        </article>
-        <article class="glass rounded-xl p-6 border border-white/10">
-          <h3 class="text-xl font-bold">ATR Stops: Simple Risk Math</h3>
-          <p class="text-white/80 mt-2">Sizing, stops, and targets using ATR so you can keep risk consistent across trades.</p>
-          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
-        </article>
-        <article class="glass rounded-xl p-6 border border-white/10">
-          <h3 class="text-xl font-bold">Case Study: A Loss We Learned From</h3>
-          <p class="text-white/80 mt-2">Transparency matters. Here’s how a losing trade reshaped our checklist and improved outcomes.</p>
-          <a href="#" class="inline-block mt-4 text-mwTeal">Read more →</a>
-        </article>
-      </div>
+    <div class="mt-8 text-sm text-white/70 text-center">
+      Want a custom plan from any FAQ? <a href="#pricing" class="text-mwTeal hover:underline">Try SwingLabs</a>.
     </div>
-  </section>
+  </div>
+</section>
+  
+
+<!-- Blog Preview -->
+<section id="blog" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-bold">From the Blog</h2>
+      <a href="#" class="text-mwTeal font-semibold hover:underline">View all →</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+        <h3 class="text-xl font-bold text-white">Momentum vs Trend: Why Speed Matters</h3>
+        <p class="text-white/80 mt-3 leading-relaxed">
+          A quick guide to understanding momentum and how we use it to identify high-probability swing setups.
+        </p>
+        <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+      </article>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+        <h3 class="text-xl font-bold text-white">ATR Stops: Simple Risk Math</h3>
+        <p class="text-white/80 mt-3 leading-relaxed">
+          How to use ATR for consistent position sizing, stop placement, and risk control across trades.
+        </p>
+        <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+      </article>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+        <h3 class="text-xl font-bold text-white">Case Study: A Loss We Learned From</h3>
+        <p class="text-white/80 mt-3 leading-relaxed">
+          Transparency matters. Here’s how a losing trade reshaped our process and strengthened our discipline.
+        </p>
+        <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+      </article>
+    </div>
+  </div>
+</section>
   
   <!-- Footer -->  <footer class="border-t border-white/5">
     <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
