@@ -65,48 +65,129 @@
     </div>
   </header>  
   
-  <!-- Hero -->  <section id="top" class="relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20" aria-hidden="true">
-      <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
-        <path d="M0,240 C200,120 350,280 550,180 C750,80 950,300 1200,160 L1200,400 L0,400 Z" fill="#1CE5B8"/>
-      </svg>
-    </div>
-    <div class="container mx-auto px-4 py-20 md:py-28 relative">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Trade with <span class="text-mwTeal">rhythm</span>, not noise.</h1>
-        <p class="mt-5 text-white/80 text-lg md:text-xl">Transparent, AI-powered momentum signals and a public trade diary. </br> Built for people who just want the good stuff with an AI copilot.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start with Pulse</a>
-          <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">See Today’s Trade Diary</a>
-        </div>
-      </div>
-    </div>
-    </section> 
+ <!-- Hero -->
+<section id="top" class="relative overflow-hidden">
+  <!-- Static chart background -->
+  <div class="absolute inset-0 opacity-20" aria-hidden="true">
+    <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
+  <defs>
+    <linearGradient id="mwArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.05"/>
+    </linearGradient>
 
-    <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
-  <div class="container mx-auto px-4 py-20 md:py-28">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
-        Built for traders who want to <span class="text-mwTeal">think less</span> and win more.
-      </h2>
-      <p class="text-white/80 text-lg md:text-xl mb-6">
-        MomentumWorks empowers retail investors to follow disciplined, transparent momentum strategies — built on data, not hype.
+    <filter id="mwGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Main uptrending line with strong ramp at the end -->
+    <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.8"
+      d="
+        M    0,360
+        C   80,350   120,355   170,335
+        C  230,315   280,338   330,312
+        C  390,288   430,300   480,275
+        C  530,252   570,262   620,242
+        C  670,225   710,235   760,220
+        C  810,208   850,218   890,205
+        C  920,195   950,185   980,170
+        C 1005,158 1035,142 1065,124
+        C 1085,112 1100,104 1115, 94
+        C 1125, 86 1135, 78 1145, 69
+        C 1155, 61 1165, 52 1175, 44
+        C 1185, 38 1193, 34 1200, 31
+      "/>
+
+    <!-- Matching filled area under the line -->
+    <path id="mwAreaPath" fill="url(#mwArea)"
+      d="
+        M    0,360
+        C   80,350   120,355   170,335
+        C  230,315   280,338   330,312
+        C  390,288   430,300   480,275
+        C  530,252   570,262   620,242
+        C  670,225   710,235   760,220
+        C  810,208   850,218   890,205
+        C  920,195   950,185   980,170
+        C 1005,158 1035,142 1065,124
+        C 1085,112 1100,104 1115, 94
+        C 1125, 86 1135, 78 1145, 69
+        C 1155, 61 1165, 52 1175, 44
+        C 1185, 38 1193, 34 1200, 31
+        L 1200,400 L 0,400 Z
+      "/>
+  </defs>
+
+  <!-- Draw static chart -->
+  <use href="#mwAreaPath"></use>
+  <use href="#mwPath"></use>
+
+  <!-- Gridlines -->
+  <g opacity="0.25">
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+  </g>
+
+  <!-- Glowing dot riding the curve -->
+  <circle id="mwDot" r="7" fill="#00FFD0" stroke="white" stroke-width="2" filter="url(#mwGlow)"></circle>
+</svg>
+
+  </div>
+
+  <div class="container mx-auto px-4 py-20 md:py-28 relative max-w-[1200px]">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+        Trade with <span class="text-mwTeal">rhythm</span>, not noise.
+      </h1>
+      <p class="mt-5 text-white/80 text-lg md:text-xl">
+        Transparent, AI-powered momentum research and a public trade diary.<br>
+        Built for people who want clear market ideas — with an AI Copilot.
       </p>
-      <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8">
-        We simplify professional trading by breaking it down into clear, actionable insights and a public trade diary that anyone can learn from.
-        Every move is explained in plain English — no jargon, no guesswork — so you can trade with confidence, discipline, and rhythm.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#diary" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">
-          Explore the Trade Diary
-        </a>
-        <a href="#pricing" class="border border-white/20 px-6 py-3 rounded font-semibold">
-          Get Started with Pulse
-        </a>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Start with Pulse</a>
+        <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">See Today’s Trade Diary</a>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  #mwDot {
+    animation: mwDotPulse 1.4s ease-in-out infinite;
+  }
+  @keyframes mwDotPulse {
+    0%   { r: 6; opacity: 0.8; }
+    50%  { r: 8; opacity: 1; }
+    100% { r: 6; opacity: 0.8; }
+  }
+</style>
+
+<script>
+  // Dot moves smoothly along the line left → right (fixed chart)
+  (() => {
+    const path = document.getElementById('mwPath');
+    const dot = document.getElementById('mwDot');
+    const pathLen = path.getTotalLength();
+    const duration = 6000; // 6s = snappier, high-energy feel
+    let start = performance.now();
+
+    function animate(now) {
+      const elapsed = (now - start) % duration;
+      const progress = elapsed / duration;
+      const len = progress * pathLen;
+      const pt = path.getPointAtLength(len);
+      dot.setAttribute('cx', pt.x);
+      dot.setAttribute('cy', pt.y);
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  })();
+</script>
 
   
  <!-- Trade Diary (public) -->
