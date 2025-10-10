@@ -482,44 +482,39 @@
   </div>
 </section>
 
-  <!-- About -->
+ <!-- About + Watchlist (exact layout like screenshot) -->
 <section id="about" class="bg-mwNavy/20 border-y border-white/5">
-  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
-    <h2 class="text-3xl font-bold mb-6">Our Story</h2>
-    <p class="text-white/80 leading-relaxed">
-      MomentumWorks was created to give traders rhythm in a chaotic market.
-      We combine disciplined momentum models with simple communication and
-      radical transparency. Every idea ships with entries, stops, targets,
-      and a post-mortem — logged in a public diary. The goal isn’t to be
-      perfect — it’s to be consistent and accountable.
+  <div class="container mx-auto px-4 py-20 max-w-[1200px]">
+    <!-- Our Story -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Story</h2>
+    <p class="text-white/80 leading-relaxed max-w-3xl mb-10">
+      MomentumWorks was created to give traders rhythm in a chaotic market. We combine disciplined momentum models
+      with simple communication and radical transparency. Every idea ships with entries, stops, targets, and a
+      post-mortem—logged in a public diary. The goal isn’t to be perfect—it’s to be consistent and accountable.
     </p>
-  </div>
-</section>
 
-<!-- Lead Magnet / Watchlist -->
-<section id="watchlist" class="border-t border-white/5 bg-mwCharcoal">
-  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
-    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
-      <div class="md:flex items-center justify-between gap-6">
-        <div class="md:w-2/3">
-          <h3 class="text-2xl font-bold">Get the Free Weekly Watchlist</h3>
+    <!-- Watchlist Card -->
+    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <!-- Left text -->
+        <div class="md:flex-1">
+          <h3 class="text-xl md:text-2xl font-extrabold">Get the Free Weekly Watchlist</h3>
           <p class="text-white/80 mt-2 leading-relaxed">
-            One email each week with our top momentum candidates and what we’re watching for.
-            No spam, ever.
+            One email each week with our top momentum candidates and what we’ll watch for. No spam, ever.
           </p>
         </div>
-        <form
-          class="md:w-1/3 mt-6 md:mt-0"
-          onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');"
-        >
+
+        <!-- Right: input stacked over button -->
+        <form class="w-full md:w-[420px]" onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');">
           <input
             type="email"
             placeholder="you@company.com"
             required
-            class="w-full px-4 py-3 rounded bg-white text-mwCharcoal placeholder-gray-500"
+            class="w-full px-4 py-3 rounded-md bg-white text-mwCharcoal placeholder-gray-500 focus:outline-none"
           />
           <button
-            class="w-full mt-3 bg-mwTeal text-mwCharcoal font-semibold py-3 rounded hover:opacity-90 transition"
+            class="w-full mt-3 bg-mwTeal text-mwCharcoal font-semibold py-3 rounded-md hover:opacity-90 transition"
+            type="submit"
           >
             Send me the Watchlist
           </button>
