@@ -18,13 +18,13 @@
       extend: {
         colors: {
           sspInk: '#0B1220',
-          sspSlate: '#111827',
-          sspMint: '#20E3B2',
-          sspBlue: '#3B82F6',
-          sspGold: '#F6C453',
-          planGreen: '#16A34A',
-          planBlue: '#2563EB',
-          planGold: '#D97706'
+          sspSlate: '#0F1623',
+          popMint: '#2EE6A6',
+          popPurple: '#8B80F9',
+          popPeach: '#FFB86B',
+          popMint: '#2EE6A6',
+          popPurple: '#8B80F9',
+          popPeach: '#FFB86B'
         }
       }
     }
@@ -37,27 +37,27 @@
 </style>
 </head>
 
-<body class="bg-sspSlate text-white font-sans">
+<body class="bg-white text-slate-800 font-sans">
 
 <!-- NAV -->
-<header class="sticky top-0 z-50 bg-sspSlate/80 border-b border-white/5">
+<header class="sticky top-0 z-50 bg-white/80 border-b border-slate-200">
   <div class="container mx-auto px-4 py-3 flex items-center justify-between">
     <a href="#top" class="flex items-center gap-2 group">
-      <div class="w-8 h-8 rounded bg-sspMint flex items-center justify-center font-black text-sspSlate">SSP</div>
+      <div class="w-8 h-8 rounded bg-popMint flex items-center justify-center font-black text-slate-900">SSP</div>
       <span class="text-lg tracking-wide font-semibold">SimpleStockPicks</span>
     </a>
     <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#diary" class="hover:text-sspMint">Pick Diary</a>
-      <a href="#products" class="hover:text-sspMint">Plans</a>
-      <a href="#pricing" class="hover:text-sspMint">Pricing</a>
-      <a href="#blog" class="hover:text-sspMint">Blog</a>
-      <a href="#about" class="hover:text-sspMint">About</a>
+      <a href="#diary" class="hover:text-popMint">Pick Diary</a>
+      <a href="#products" class="hover:text-popMint">Plans</a>
+      <a href="#pricing" class="hover:text-popMint">Pricing</a>
+      <a href="#blog" class="hover:text-popMint">Blog</a>
+      <a href="#about" class="hover:text-popMint">About</a>
     </nav>
     <nav class="hidden md:flex items-center gap-6 text-sm md:ml-6">
-      <a href="#trending" class="hover:text-sspMint">Trending</a>
-      <a href="#faq" class="hover:text-sspMint">FAQ</a>
+      <a href="#trending" class="hover:text-popMint">Trending</a>
+      <a href="#faq" class="hover:text-popMint">FAQ</a>
     </nav>
-    <a href="#watchlist" class="inline-flex items-center gap-2 bg-sspMint text-sspSlate px-4 py-2 rounded font-semibold">Get Daily Picks</a>
+    <a href="#watchlist" class="inline-flex items-center gap-2 bg-popMint text-slate-900 px-4 py-2 rounded font-semibold">Get Daily Picks</a>
   </div>
 </header>
 
@@ -68,8 +68,8 @@
     <svg id="sspHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
   <defs>
     <linearGradient id="sspArea" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#20E3B2" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#20E3B2" stop-opacity="0.05"/>
+      <stop offset="0%" stop-color="#2EE6A6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#2EE6A6" stop-opacity="0.05"/>
     </linearGradient>
 
     <filter id="sspGlow" x="-50%" y="-50%" width="200%" height="200%">
@@ -81,7 +81,7 @@
     </filter>
 
     <!-- Main uptrending line with strong ramp at the end -->
-    <path id="sspPath" fill="none" stroke="#20E3B2" stroke-width="2.8"
+    <path id="sspPath" fill="none" stroke="#2EE6A6" stroke-width="2.8"
       d="
         M    0,360
         C   80,350   120,355   170,335
@@ -124,9 +124,9 @@
 
   <!-- Gridlines -->
   <g opacity="0.25">
-    <line x1="0" y1="100" x2="1200" y2="100" stroke="#20E3B2" stroke-dasharray="4 8"/>
-    <line x1="0" y1="200" x2="1200" y2="200" stroke="#20E3B2" stroke-dasharray="4 8"/>
-    <line x1="0" y1="300" x2="1200" y2="300" stroke="#20E3B2" stroke-dasharray="4 8"/>
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#2EE6A6" stroke-dasharray="4 8"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#2EE6A6" stroke-dasharray="4 8"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#2EE6A6" stroke-dasharray="4 8"/>
   </g>
 
   <!-- Glowing dot riding the curve -->
@@ -138,16 +138,16 @@
   <div class="container mx-auto px-4 py-20 md:py-28 relative max-w-[1200px]">
     <div class="max-w-3xl">
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-        Simple <span class="text-sspMint">stock picks</span>, clearly explained.
+        Simple <span class="text-popMint">stock picks</span>, clearly explained.
       </h1>
-      <p class="mt-5 text-white/80 text-lg md:text-xl">
+      <p class="mt-5 text-slate-600 text-lg md:text-xl">
         Daily ideas with exact entries and exits—plus a public pick diary.
         <br />
         Built for people who want signal over noise.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#pricing" class="bg-sspMint text-sspSlate px-6 py-3 rounded font-semibold">Start Free</a>
-        <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">See Today’s Pick Diary</a>
+        <a href="#pricing" class="bg-popMint text-slate-900 px-6 py-3 rounded font-semibold">Start Free</a>
+        <a href="#diary" class="border border-slate-300 px-6 py-3 rounded font-semibold">See Today’s Pick Diary</a>
       </div>
     </div>
   </div>
@@ -181,50 +181,50 @@
 </script>
   
 <!-- PHILOSOPHY -->
-<section id="philosophy" class="bg-sspInk/30 border-y border-white/5">
+<section id="philosophy" class="bg-slate-50 border-y border-slate-200">
   <div class="container mx-auto px-4 py-20 md:py-28">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Built for people who want to <span class="text-sspMint">think less</span> and decide faster.</h2>
-      <p class="text-white/80 text-lg md:text-xl mb-6">SimpleStockPicks turns complex research into visual, digestible checklists—so you can scan, decide, and execute without second‑guessing.</p>
-      <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8">Each pick includes the what, why, where to enter, and where to get out. All examples are transparent, explained, and logged for educational use only.</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Built for people who want to <span class="text-popMint">think less</span> and decide faster.</h2>
+      <p class="text-slate-600 text-lg md:text-xl mb-6">SimpleStockPicks turns complex research into visual, digestible checklists—so you can scan, decide, and execute without second‑guessing.</p>
+      <p class="text-slate-500 text-base md:text-lg leading-relaxed mb-8">Each pick includes the what, why, where to enter, and where to get out. All examples are transparent, explained, and logged for educational use only.</p>
     </div>
   </div>
 </section>
 
 <!-- PICK DIARY -->
-<section id="diary" class="bg-sspInk/30 border-y border-white/5">
+<section id="diary" class="bg-slate-50 border-y border-slate-200">
   <div class="container mx-auto px-4 py-16">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
       <div>
         <h2 class="text-3xl font-bold">Public Pick Diary</h2>
-        <p class="text-white/70 mt-1">Every pick is timestamped with thesis, risk, and result. Educational only.</p>
+        <p class="text-slate-500 mt-1">Every pick is timestamped with thesis, risk, and result. Educational only.</p>
       </div>
-      <a href="#pricing" class="text-sspMint font-semibold whitespace-nowrap">Subscribe for Daily Picks →</a>
+      <a href="#pricing" class="text-popMint font-semibold whitespace-nowrap">Subscribe for Daily Picks →</a>
     </div>
 
-    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(32,227,178,0.12)] ring-1 ring-[rgba(32,227,178,0.18)] ring-inset">
+    <div class="rounded-2xl border border-slate-200 bg-white backdrop-blur-md overflow-hidden shadow-md ring-0">
       <div class="bg-gradient-to-tr from-[rgba(32,227,178,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
-        <div class="text-sm text-white/80">Sample Pick Log</div>
-        <div class="text-xs text-white/50">Updated daily after market close</div>
+        <div class="text-sm text-slate-600">Sample Pick Log</div>
+        <div class="text-xs text-slate-400">Updated daily after market close</div>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full">
-          <thead class="sticky top-0 z-10 bg-sspSlate/80 backdrop-blur">
+          <thead class="sticky top-0 z-10 bg-white/80 backdrop-blur">
             <tr>
-              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date</th>
-              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
-              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Type</th>
-              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
-              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Thesis</th>
-              <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Example Gain</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Date</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Ticker</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Type</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Status</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Thesis</th>
+              <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">% Example Gain</th>
             </tr>
           </thead>
           <tbody id="diaryRows"></tbody>
         </table>
       </div>
-      <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10">Demo data. Research only. Past performance is not indicative of future results.</div>
+      <div class="px-4 md:px-6 py-3 text-xs text-slate-500 border-t border-slate-200">Demo data. Research only. Past performance is not indicative of future results.</div>
     </div>
-    <p class="mt-4 text-xs text-white/50 text-center italic">Nothing here is financial advice. Educational examples only.</p>
+    <p class="mt-4 text-xs text-slate-400 text-center italic">Nothing here is financial advice. Educational examples only.</p>
   </div>
 </section>
 
@@ -235,17 +235,16 @@
   <div class="grid md:grid-cols-3 gap-6">
 
     <!-- Starter -->
-    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+    <div class="rounded-2xl p-8 border border-slate-200 bg-white backdrop-blur-sm flex flex-col">
       <div>
-        <div class="text-sm uppercase tracking-wider text-white/60">Get going</div>
+        <div class="text-sm uppercase tracking-wider text-slate-500">Beginner friendly</div>
         <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-planGreen"></span> Starter
-        </h3>
-        <p class="mt-4 text-white/80 text-base leading-relaxed">
+          <span class="w-3 h-3 rounded-full bg-popMint"></span> StockBuddy </h3>
+        <p class="mt-4 text-slate-600 text-base leading-relaxed">
           Clear picks for busy people—no jargon, just entries and exits.
         </p>
-        <div class="mt-3 text-3xl font-bold text-planGreen">$19<span class="text-base text-white/60">/mo</span></div>
-        <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+        <div class="mt-3 text-3xl font-bold text-popMint">$19<span class="text-base text-slate-500">/mo</span></div>
+        <ul class="mt-5 space-y-2 text-slate-600 text-sm list-disc list-inside leading-relaxed">
           <li>3–5 picks each week to choose from</li>
           <li>Exact entries, exits, targets, and risk</li>
           <li>Access to the public pick diary</li>
@@ -254,22 +253,21 @@
         </ul>
       </div>
       <div class="mt-auto pt-6">
-        <a href="#pricing" class="inline-block text-planGreen font-semibold hover:underline">Start Free →</a>
+        <a href="#pricing" class="inline-block text-popMint font-semibold hover:underline">Start Free →</a>
       </div>
     </div>
 
     <!-- Pro -->
-    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+    <div class="rounded-2xl p-8 border border-slate-200 bg-white backdrop-blur-sm flex flex-col">
       <div>
-        <div class="text-sm uppercase tracking-wider text-white/60">Most popular</div>
+        <div class="text-sm uppercase tracking-wider text-slate-500">Most popular</div>
         <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-planBlue"></span> Pro
-        </h3>
-        <p class="mt-4 text-white/80 text-base leading-relaxed">
+          <span class="w-3 h-3 rounded-full bg-popPurple"></span> TradePal </h3>
+        <p class="mt-4 text-slate-600 text-base leading-relaxed">
           Everything in Starter plus market context and intra‑week refreshes.
         </p>
-        <div class="mt-3 text-3xl font-bold text-planBlue">$79<span class="text-base text-white/60">/mo</span></div>
-        <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+        <div class="mt-3 text-3xl font-bold text-popPurple">$79<span class="text-base text-slate-500">/mo</span></div>
+        <ul class="mt-5 space-y-2 text-slate-600 text-sm list-disc list-inside leading-relaxed">
           <li>Starter features included</li>
           <li>Pick list refreshed 2–3× weekly (market‑dependent)</li>
           <li>Pre‑market and post‑market notes</li>
@@ -278,22 +276,21 @@
         </ul>
       </div>
       <div class="mt-auto pt-6">
-        <a href="#pricing" class="inline-block text-planBlue font-semibold hover:underline">Upgrade →</a>
+        <a href="#pricing" class="inline-block text-popPurple font-semibold hover:underline">Upgrade →</a>
       </div>
     </div>
 
     <!-- Advisor Suite -->
-    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+    <div class="rounded-2xl p-8 border border-slate-200 bg-white backdrop-blur-sm flex flex-col">
       <div>
-        <div class="text-sm uppercase tracking-wider text-white/60">For power users</div>
+        <div class="text-sm uppercase tracking-wider text-slate-500">For teams & advisors</div>
         <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-planGold"></span> Advisor Suite
-        </h3>
-        <p class="mt-4 text-white/80 text-base leading-relaxed">
+          <span class="w-3 h-3 rounded-full bg-popPeach"></span> SignalClub </h3>
+        <p class="mt-4 text-slate-600 text-base leading-relaxed">
           Data + automation + AI copilot for teams or advisors.
         </p>
-        <div class="mt-3 text-3xl font-bold text-planGold">$499<span class="text-base text-white/60">/mo</span></div>
-        <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+        <div class="mt-3 text-3xl font-bold text-popPeach">$499<span class="text-base text-slate-500">/mo</span></div>
+        <ul class="mt-5 space-y-2 text-slate-600 text-sm list-disc list-inside leading-relaxed">
           <li>Everything from Pro</li>
           <li>Custom watchlists and private pick logging</li>
           <li>Sector, industry, and commodity tilts</li>
@@ -302,7 +299,7 @@
         </ul>
       </div>
       <div class="mt-auto pt-6">
-        <a href="#pricing" class="inline-block text-planGold font-semibold hover:underline">Talk to us →</a>
+        <a href="#pricing" class="inline-block text-popPeach font-semibold hover:underline">Talk to us →</a>
       </div>
     </div>
 
@@ -310,41 +307,41 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/5">
+<footer class="border-t border-slate-200">
   <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
     <div>
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded bg-sspMint flex items-center justify-center font-black text-sspSlate">SSP</div>
+        <div class="w-8 h-8 rounded bg-popMint flex items-center justify-center font-black text-slate-900">SSP</div>
         <span class="font-semibold">SimpleStockPicks</span>
       </div>
-      <p class="text-white/60 mt-3">Educational research only. SimpleStockPicks is not a registered investment advisor or broker. Nothing here constitutes financial advice or recommendations.</p>
+      <p class="text-slate-500 mt-3">Educational research only. SimpleStockPicks is not a registered investment advisor or broker. Nothing here constitutes financial advice or recommendations.</p>
     </div>
     <div>
       <h4 class="font-semibold mb-2">Product</h4>
-      <ul class="space-y-1 text-white/70">
-        <li><a href="#products" class="hover:text-sspMint">Starter</a></li>
-        <li><a href="#products" class="hover:text-sspMint">Pro</a></li>
-        <li><a href="#products" class="hover:text-sspMint">Advisor Suite</a></li>
+      <ul class="space-y-1 text-slate-500">
+        <li><a href="#products" class="hover:text-popMint"> StockBuddy </a></li>
+        <li><a href="#products" class="hover:text-popMint"> TradePal </a></li>
+        <li><a href="#products" class="hover:text-popMint"> SignalClub </a></li>
       </ul>
     </div>
     <div>
       <h4 class="font-semibold mb-2">Company</h4>
-      <ul class="space-y-1 text-white/70">
-        <li><a href="#about" class="hover:text-sspMint">About</a></li>
-        <li><a href="#blog" class="hover:text-sspMint">Blog</a></li>
-        <li><a href="#pricing" class="hover:text-sspMint">Pricing</a></li>
+      <ul class="space-y-1 text-slate-500">
+        <li><a href="#about" class="hover:text-popMint">About</a></li>
+        <li><a href="#blog" class="hover:text-popMint">Blog</a></li>
+        <li><a href="#pricing" class="hover:text-popMint">Pricing</a></li>
       </ul>
     </div>
     <div>
       <h4 class="font-semibold mb-2">Legal</h4>
-      <ul class="space-y-1 text-white/70">
-        <li><a href="#" class="hover:text-sspMint">Terms</a></li>
-        <li><a href="#" class="hover:text-sspMint">Privacy</a></li>
-        <li><a href="#" class="hover:text-sspMint">Disclaimer</a></li>
+      <ul class="space-y-1 text-slate-500">
+        <li><a href="#" class="hover:text-popMint">Terms</a></li>
+        <li><a href="#" class="hover:text-popMint">Privacy</a></li>
+        <li><a href="#" class="hover:text-popMint">Disclaimer</a></li>
       </ul>
     </div>
   </div>
-  <div class="text-center text-white/50 text-xs pb-8">© <span id="year"></span> SimpleStockPicks. All rights reserved.</div>
+  <div class="text-center text-slate-400 text-xs pb-8">© <span id="year"></span> SimpleStockPicks. All rights reserved.</div>
 </footer>
 
 <!-- Sample Data + Year Setter -->
@@ -357,13 +354,13 @@
   ];
   const tbody = document.getElementById('diaryRows');
   if(tbody){
-    tbody.innerHTML = sample.map(r=>`<tr class="border-t border-white/5">
-      <td class="p-4 text-sm text-white/80">${r.date}</td>
+    tbody.innerHTML = sample.map(r=>`<tr class="border-t border-slate-200">
+      <td class="p-4 text-sm text-slate-600">${r.date}</td>
       <td class="p-4 text-sm font-semibold">${r.ticker}</td>
-      <td class="p-4 text-sm text-white/80">${r.type}</td>
-      <td class="p-4 text-sm ${r.status==='Open'?'text-sspMint':'text-white/80'}">${r.status}</td>
-      <td class="p-4 text-sm text-white/80">${r.thesis}</td>
-      <td class="p-4 text-sm text-right ${r.gain.startsWith('+')?'text-sspMint':'text-red-400'}">${r.gain}</td>
+      <td class="p-4 text-sm text-slate-600">${r.type}</td>
+      <td class="p-4 text-sm ${r.status==='Open'?'text-popMint':'text-slate-600'}">${r.status}</td>
+      <td class="p-4 text-sm text-slate-600">${r.thesis}</td>
+      <td class="p-4 text-sm text-right ${r.gain.startsWith('+')?'text-popMint':'text-red-400'}">${r.gain}</td>
     </tr>`).join('');
   }
   document.getElementById('year').textContent = new Date().getFullYear();
