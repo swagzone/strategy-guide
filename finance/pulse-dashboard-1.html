@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pulse — Weekly Momentum Board</title>
+
+<!-- Tailwind (class-based dark mode) -->
+<script>
+  window.tailwind = { config: { darkMode: 'class' } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  .card-shadow{ box-shadow:0 10px 30px rgba(0,0,0,.35) }
+  .feedback-popup { position: absolute; bottom: -2.5rem; left: 0; right: 0; display: none; }
+</style>
+</head>
+
+<body class="min-h-screen w-full bg-white text-slate-900 dark:bg-[#0b0f14] dark:text-slate-100 p-6 transition-colors">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Pulse — Weekly Momentum Board</h1>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Stage: Warm • Side: Selective Bull • Posture: Normal</p>
+      </div>
+      <div class="flex gap-2">
+        <button id="themeToggle" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-600 text-sm">🌙 Dark</button>
+        <button id="toggle" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-600 text-sm">⏸ Pause</button>
+      </div>
+    </div>
+
+    <!-- Subnav anchors -->
+    <nav class="mt-4 sticky top-2 z-40 bg-white/70 dark:bg-[#0b0f14]/70 backdrop-blur rounded-xl border border-slate-300/50 dark:border-slate-700/50 px-3 py-2">
+      <ul class="flex flex-wrap items-center gap-3 text-sm">
+        <li><a href="#new" class="px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">New</a></li>
+        <li><a href="#live" class="px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Live</a></li>
+        <li><a href="#history" class="px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">History</a></li>
+      </ul>
+    </nav>
+
+    <!-- Top Summary (New ideas + Live trades) -->
+    <section id="summary" class="mt-6 space-y-10">
+      <section id="new" class="space-y-3">
+        <div id="newIdeasRoot"></div>
+      </section>
+      <section id="live" class="space-y-3">
+        <div id="liveRoot"></div>
+      </section>
+    </section>
+
+    <!-- Weeks container (history) -->
+    <h2 id="history" class="mt-10 text-xl font-bold">History</h2>
+    <div id="weeks" class="mt-4 space-y-10"></div>
+
+    <div class="mt-6 text-xs text-slate-600 dark:text-slate-500">
+      * Demo simulation only. Current week prices drift to showcase states (WAIT → ENTERED → T1 → T2/EXIT/STOP). Past weeks are frozen examples.
+    </div>
+  </div>
+
+<script>
+/********************
+ * Constants & Utils *
+ ********************/
+const STAGES={WAITING:'WAITING',ENTERED:'ENTERED',T1_HIT:'T1_HIT',T2_HIT:'T2_HIT',EXITED:'EXITED',STOPPED:'STOPPED',EXPIRED:'EXPIRED',CANCELLED:'CANCELLED'};
+
+const colors={
+  WAITING:'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700',
+  ENTERED:'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 dark:border-emerald-500/40',
+  T1_HIT:'bg-amber-50 dark:bg-amber-900/20 border-amber-300 dark:border-amber-500/40',
+  T2_HIT:'bg-indigo-50 dark:bg-indigo-900/20 border-indigo-300 dark:border-indigo-500/40',
+  EXITED:'bg-cyan-50 dark:bg-cyan-900/20 border-cyan-300 dark:border-cyan-500/40',
+  STOPPED:'bg-rose-50 dark:bg-rose-900/20 border-rose-300 dark:border-rose-500/40',
+  EXPIRED:'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 opacity-60',
+  CANCELLED:'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 opacity-50'
+};
+
+const DAY_MS = 24*60*60*1000;
+const TEN_DAYS_MS = 10*DAY_MS; // trading-day approximation
+
+function fmt(n,d=2){return Number(n).toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d});}
+function pct(x){return (x*100).toFixed(2)+'%';}
+function R(entry,stop){return Math.max(entry-stop,0.0001);} // 1R distance
+function sparkPath(arr,w=160,h=50){const max=Math.max(...arr),min=Math.min(...arr);return arr.map((v,i)=>{const x=(i/(arr.length-1))*w;const y=h-((v-min)/(max-min||1))*h;return `${i?'L':'M'}${x},${y}`;}).join(' ');} 
+function timeLeftLabel(ms){ if(ms<=0) return '0d'; const d=Math.ceil(ms/DAY_MS); return `${d}d`; }
+
+// Monday-anchored weeks (instead of Sunday)
+const WEEK_ANCHOR_DOW = 1; // 0=Sun, 1=Mon
+function startOfWeek(ts, anchorDow=WEEK_ANCHOR_DOW){
+  const d = new Date(ts);
+  const day = d.getDay();
+  const diff = ((day - anchorDow + 7) % 7);
+  const start = new Date(d.getFullYear(), d.getMonth(), d.getDate() - diff);
+  return +start;
+}
+function endOfWeekAnchored(ts, anchorDow=WEEK_ANCHOR_DOW){
+  const start = startOfWeek(ts, anchorDow);
+  return start + 6*DAY_MS + (23*60+59)*60*1000; // Sat 23:59 relative to anchor start
+}
+function weekLabelFromTs(ts, anchorDow=WEEK_ANCHOR_DOW){
+  const start = startOfWeek(ts, anchorDow);
+  const dt = new Date(start);
+  const m = dt.toLocaleString(undefined,{month:'short'});
+  const dd = String(dt.getDate()).padStart(2,'0');
+  return `Week of ${m} ${dd}, ${dt.getFullYear()}`;
+}
+
+/****************
+ * Sample Weeks *
+ ****************/
+// Current week (example; input date may be Sunday, label will snap to Monday)
+const weekCurrent = {
+  id:'2025-10-12', label:'', current:true,
+  thesis:'Rates calm but sticky; breadth improving in chips and large-cap growth. Plan is selective long bias with tight risk and 1R partials. Avoid names below 20/50 MAs.',
+  startTs:+new Date('2025-10-12T00:00:00'),
+  picks:[
+    {id:'A',symbol:'AAPL',quality:82,pattern:'Hammer @ 20‑EMA',anchor:'H1 swing‑low −0.25×ATR',entry:229.8,stop:227.3,last:228.2,atr:2.45,status:STAGES.WAITING, runner:'EMA9'},
+    {id:'B',symbol:'TSLA',quality:88,pattern:'7‑bar Flag',anchor:'50‑EMA −0.25×ATR',entry:252.1,stop:247.9,last:250.6,atr:4.10,status:STAGES.WAITING, runner:'EMA10'},
+    {id:'C',symbol:'NVDA',quality:73,pattern:'Channel‑Top Break',anchor:'D1 shelf −0.40×ATR',entry:125.6,stop:122.0,last:124.7,atr:3.60,status:STAGES.WAITING, runner:'EMA20'}
+  ]
+};
+
+// Past weeks (frozen examples)
+const weekPrev1 = {
+  id:'2025-10-05', label:'', current:false,
+  thesis:'Choppy mid‑week after an early pop; only one clean follow‑through. Emphasis was on patience and quick partials.',
+  startTs:+new Date('2025-10-05T00:00:00'),
+  picks:[
+    {id:'P1A',symbol:'MSFT',quality:78,pattern:'Inside‑Day Break',anchor:'D1 base −0.25×ATR',entry:404.0,stop:398.5,last:416.2,atr:5.4,status:STAGES.EXITED,t1Hit:true,t2Hit:true,entryFill:404.1,exitFill:416.2,realized: (416.2-404.1)/404.1 },
+    {id:'P1B',symbol:'AMD',quality:70,pattern:'Pullback @ 20‑EMA',anchor:'20‑EMA −0.30×ATR',entry:164.0,stop:159.5,last:159.0,atr:4.8,status:STAGES.STOPPED,entryFill:164.1,exitFill:159.5,realized: (159.5-164.1)/164.1 },
+    {id:'P1C',symbol:'SNOW',quality:65,pattern:'Range Break Try',anchor:'H4 shelf −0.25×ATR',entry:158.0,stop:153.5,last:156.2,atr:3.9,status:STAGES.EXPIRED}
+  ]
+};
+
+const weekPrev2 = {
+  id:'2025-09-28', label:'', current:false,
+  thesis:'Rotation into software while energy cooled. Breakouts worked best with strong RS and volume confirmation.',
+  startTs:+new Date('2025-09-28T00:00:00'),
+  picks:[
+    {id:'P2A',symbol:'META',quality:81,pattern:'3‑Week Tight',anchor:'D1 tight base',entry:545.0,stop:534.0,last:560.0,atr:7.8,status:STAGES.EXITED,t1Hit:true,t2Hit:true,entryFill:545.3,exitFill:560.0,realized:(560-545.3)/545.3},
+    {id:'P2B',symbol:'NFLX',quality:72,pattern:'Flag → T1',anchor:'20‑EMA',entry:665.0,stop:651.0,last:678.0,atr:9.2,status:STAGES.T1_HIT,t1Hit:true,entryFill:665.2,halfFill:674.0},
+    {id:'P2C',symbol:'PANW',quality:66,pattern:'Pullback',anchor:'50‑EMA',entry:342.0,stop:334.0,last:339.0,atr:6.3,status:STAGES.STOPPED,entryFill:342.2,exitFill:334.0,realized:(334-342.2)/342.2}
+  ]
+};
+
+// Apply Monday anchoring to weeks (label + expiry)
+[weekCurrent, weekPrev1, weekPrev2].forEach(w => {
+  w.anchorStartTs = startOfWeek(w.startTs);
+  w.expireTs = endOfWeekAnchored(w.startTs);
+  w.label = weekLabelFromTs(w.startTs);
+});
+
+let WEEKS = [weekCurrent, weekPrev1, weekPrev2];
+
+// Price history per-pick (for sparkline)
+const history = {};
+WEEKS.forEach(w=>w.picks.forEach(p=>{ history[p.id] = [p.last ?? p.entry]; }));
+
+/**********************
+ * Rendering per Week  *
+ **********************/
+const weeksRoot = document.getElementById('weeks');
+const newRoot = document.getElementById('newIdeasRoot');
+const liveRoot = document.getElementById('liveRoot');
+
+function statusBadge(s){
+  const map = {
+    WAITING: ["WAIT","bg-slate-700 text-white"],
+    ENTERED: ["ENTERED","bg-emerald-600 text-white"],
+    T1_HIT: ["T1 HIT","bg-amber-600 text-white"],
+    T2_HIT: ["T2 HIT","bg-indigo-600 text-white"],
+    EXITED: ["EXITED","bg-cyan-600 text-white"],
+    STOPPED: ["STOPPED","bg-rose-600 text-white"],
+    EXPIRED: ["EXPIRED","bg-slate-600 text-white"],
+    CANCELLED: ["CANCELLED","bg-slate-600 text-white"],
+  };
+  const [t,cls]=map[s]; return `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${cls}">${t}</span>`;
+}
+
+function renderWeek(w){
+  const cards = w.picks.map(c=>renderCard(w, c)).join('');
+  return `
+    <section class="space-y-3">
+      <div>
+        <h2 class="text-xl font-bold">${w.label}</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${w.thesis}</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        ${cards}
+      </div>
+    </section>
+  `;
+}
+
+function renderSummary(){
+  // New ideas this week
+  if(newRoot){
+    const cards = weekCurrent.picks.map(p=>renderCard(weekCurrent,p)).join('');
+    newRoot.innerHTML = `
+      <div>
+        <h2 class="text-xl font-bold">New This Week</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${weekCurrent.thesis}</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 mt-3">${cards}</div>
+    `;
+  }
+
+  // Live trades across weeks (with countdown on each card)
+  if(liveRoot){
+    const live = [];
+    WEEKS.forEach(w=>w.picks.forEach(p=>{ if([STAGES.ENTERED, STAGES.T1_HIT].includes(p.status)) live.push({w,p}); }));
+    if(live.length){
+      liveRoot.innerHTML = `
+        <div>
+          <h2 class="text-xl font-bold">Live Trades Running</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Open positions still in play from current or prior weeks. Each card shows a countdown (10 trading-day limit).</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5 mt-3">
+          ${live.map(({w,p})=>`<div><div class=\"text-xs text-slate-500 dark:text-slate-400 mb-1\">From ${w.label}</div>${renderCard(w,p)}</div>`).join('')}
+        </div>
+      `;
+    } else {
+      liveRoot.innerHTML = `
+        <div>
+          <h2 class="text-xl font-bold">Live Trades Running</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No open positions at the moment.</p>
+        </div>
+      `;
+    }
+  }
+}
+
+function render(){
+  renderSummary();
+  weeksRoot.innerHTML = WEEKS.map(renderWeek).join('');
+  attachFeedback();
+}
+
+/*******************
+ * Card Rendering   *
+ *******************/
+function renderCard(week, c){
+  // compute metrics
+  const entryFill=c.entryFill??c.entry; const r=R(entryFill,c.stop);
+  const rrNow=(c.last-entryFill)/r; const t1Price=entryFill+1*r; const t2Price=entryFill+2*r;
+  const realized = c.status===STAGES.STOPPED ? ((c.exitFill??c.stop)-entryFill)/entryFill
+                  : c.status===STAGES.EXITED ? ((c.exitFill??c.last)-entryFill)/entryFill
+                  : c.t1Hit && !c.t2Hit ? 0.5*((c.halfFill??t1Price)-entryFill)/entryFill
+                  : c.t1Hit && c.t2Hit ? ((c.exitFill??t2Price)-entryFill)/entryFill
+                  : 0;
+  const open = [STAGES.ENTERED, STAGES.T1_HIT].includes(c.status) ? ((c.t1Hit?0.5:1)*((c.last-entryFill)/entryFill)) : 0;
+  const total = realized + open;
+
+  // sparkline
+  const path=sparkPath(history[c.id]);
+
+  // timers
+  const nowTs = Date.now();
+  let timerLabel = '';
+  if(c.status===STAGES.WAITING){
+    timerLabel = 'Expires in ' + timeLeftLabel(week.expireTs - nowTs);
+  } else if([STAGES.ENTERED, STAGES.T1_HIT].includes(c.status)){
+    if(!c.enteredDeadline){
+      const guessed = c.enteredAt || (week.anchorStartTs + 12*60*60*1000); // noon on week start if unknown
+      c.enteredAt = guessed;
+      c.enteredDeadline = guessed + TEN_DAYS_MS;
+    }
+    timerLabel = 'Time left: ' + timeLeftLabel(c.enteredDeadline - nowTs);
+  } else {
+    timerLabel = [STAGES.EXPIRED].includes(c.status) ? 'Expired' : 'Closed';
+  }
+
+  // trail label (display only, no dropdown)
+  const trailLabel = c.runner === 'EMA9' ? '9 EMA' : c.runner === 'EMA10' ? '10 EMA' : '20 EMA';
+
+  return `
+    <div class="relative border rounded-2xl p-4 ${colors[c.status]} card-shadow transition-colors">
+      <div class="flex items-start justify-between">
+        <div>
+          <div class="text-slate-800 dark:text-slate-200 text-lg font-semibold">${c.symbol}</div>
+          <div class="text-slate-600 dark:text-slate-400 text-xs">${c.pattern}</div>
+        </div>
+        <div class="text-right"><div class="text-2xl font-bold text-emerald-700 dark:text-indigo-300">${c.quality}</div><div class="text-slate-600 dark:text-slate-400 text-xs">Strong</div></div>
+      </div>
+
+      <div class="mt-3">
+        <svg viewBox="0 0 160 50" class="w-full h-14">
+          <path d="${path}" class="fill-none stroke-emerald-500 dark:stroke-emerald-400" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
+        <div>
+          <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Last</span><span class="text-slate-900 dark:text-slate-100">$${fmt(c.last)}</span></div>
+          <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Entry</span><span class="text-slate-900 dark:text-slate-100">$${fmt(c.entry)}</span></div>
+          <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Stop</span><span class="text-rose-700 dark:text-rose-300">$${fmt(c.stop)}</span></div>
+        </div>
+        <div>
+          <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">T1</span><span class="text-slate-900 dark:text-slate-100">$${fmt(t1Price)}</span></div>
+          <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">T2</span><span class="text-slate-900 dark:text-slate-100">$${fmt(t2Price)}</span></div>
+          <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">R:R now</span><span class="text-slate-900 dark:text-slate-100">${fmt(rrNow)}R</span></div>
+        </div>
+      </div>
+
+      <div class="mt-3 flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            ${statusBadge(c.status)}
+            <span class="text-xs text-slate-600 dark:text-slate-400">Anchor: ${c.anchor}</span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <button class="likeBtn text-lg" title="Like" data-id="${c.id}">👍</button>
+            <button class="disBtn text-lg" title="Dislike" data-id="${c.id}">👎</button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-3">
+          <span class="text-xs text-slate-700 dark:text-slate-300">Active Runner Trail:</span>
+          <span class="ml-auto text-xs rounded px-2 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100">${trailLabel}</span>
+        </div>
+      </div>
+
+      <div class="feedback-popup" id="fb-${c.id}">
+        <textarea placeholder="Leave feedback..." class="w-full text-xs p-1 rounded bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100"></textarea>
+        <button class="mt-1 w-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 rounded text-xs py-1" data-save="${c.id}">Submit</button>
+      </div>
+
+      <div class="mt-3 grid grid-cols-3 gap-3 text-xs">
+        <div class="rounded-xl p-2 bg-slate-100 dark:bg-slate-900/40">
+          <div class="text-slate-600 dark:text-slate-400">Realized</div><div class="text-slate-900 dark:text-slate-100">${pct(realized)}</div>
+        </div>
+        <div class="rounded-xl p-2 bg-slate-100 dark:bg-slate-900/40">
+          <div class="text-slate-600 dark:text-slate-400">Open</div><div class="text-slate-900 dark:text-slate-100">${pct(open)}</div>
+        </div>
+        <div class="rounded-xl p-2 bg-slate-100 dark:bg-slate-900/40">
+          <div class="text-slate-600 dark:text-slate-400">Total</div><div class="text-slate-900 dark:text-slate-100">${pct(total)}</div>
+        </div>
+      </div>
+
+      <div class="mt-2 text-[11px] text-right text-slate-600 dark:text-slate-400">${timerLabel}</div>
+    </div>`;
+}
+
+/**********************
+ * Feedback Handlers  *
+ **********************/
+function attachFeedback(){
+  document.querySelectorAll('.likeBtn,.disBtn').forEach(btn=>{
+    btn.onclick=(e)=>{
+      const id=e.currentTarget.dataset.id;
+      const popup=document.getElementById('fb-'+id);
+      if(!popup) return;
+      popup.style.display='block';
+      popup.querySelector('textarea')?.focus();
+    };
+  });
+  document.querySelectorAll('[data-save]').forEach(btn=>{
+    btn.onclick=(e)=>{
+      const id=e.currentTarget.dataset.save;
+      const popup=document.getElementById('fb-'+id);
+      const comment=popup.querySelector('textarea').value.trim();
+      if(comment){ console.log('Feedback for',id,':',comment); alert('Feedback saved!'); }
+      popup.style.display='none';
+      popup.querySelector('textarea').value='';
+    };
+  });
+}
+
+/************************
+ * Simulation (Current)  *
+ ************************/
+function tick(){
+  // Advance only the current week
+  const w = WEEKS.find(x=>x.current);
+  if(!w) return render();
+
+  const nowTs = Date.now();
+
+  // Expire end-of-week for untriggered
+  if(nowTs >= w.expireTs){
+    w.picks.forEach(c=>{ if(c.status===STAGES.WAITING) c.status=STAGES.EXPIRED; });
+  }
+
+  // Price drift + simple EMA approximation
+  w.picks = w.picks.map(c=>{
+    const drift=(Math.random()-0.45)*(c.atr/40);
+    const last=+(c.last+drift).toFixed(2);
+    const ema9  = +(0.20*last + 0.80*(c.ema9 ?? last)).toFixed(2);
+    const ema10 = +(0.18*last + 0.82*(c.ema10 ?? last)).toFixed(2);
+    const ema20 = +(0.10*last + 0.90*(c.ema20 ?? last)).toFixed(2);
+    const next={...c,last,ema9,ema10,ema20};
+
+    // spark history
+    (history[c.id] ||= []).push(last); if(history[c.id].length>60) history[c.id].shift();
+
+    return next;
+  });
+
+  // First-to-trigger (buy-stop behaviour): one live at a time
+  const haveLive = w.picks.some(c => [STAGES.ENTERED,STAGES.T1_HIT].includes(c.status));
+  if(!haveLive){
+    const triggered = w.picks.filter(c => c.status===STAGES.WAITING && c.last >= c.entry);
+    if(triggered.length){
+      const first = triggered[0];
+      first.status = STAGES.ENTERED;
+      first.enteredAt = nowTs;
+      first.entryFill = first.last;
+      first.enteredDeadline = nowTs + TEN_DAYS_MS;
+      // cancel others still waiting
+      w.picks.forEach(c=>{ if(c.id!==first.id && c.status===STAGES.WAITING) c.status = STAGES.CANCELLED; });
+    }
+  }
+
+  // Manage live trade: T1 -> T2/EXIT/STOP -> time limit
+  const live = w.picks.find(c => [STAGES.ENTERED, STAGES.T1_HIT].includes(c.status));
+  if(live){
+    const entryFill = live.entryFill ?? live.entry;
+    const r = R(entryFill, live.stop);
+    const t1Price = entryFill + 1*r;
+    const t2Price = entryFill + 2*r;
+
+    if(live.status===STAGES.ENTERED && live.last >= t1Price){
+      live.status = STAGES.T1_HIT;
+      live.t1Hit = true;
+      live.halfFill = live.last;
+    }
+    // hard stop if breaks stop
+    if([STAGES.ENTERED,STAGES.T1_HIT].includes(live.status) && live.last <= live.stop){
+      live.status = STAGES.STOPPED;
+      live.exitAt = nowTs;
+      live.exitFill = live.stop;
+    }
+    // T2 hit exits the rest
+    if(live.status===STAGES.T1_HIT && live.last >= t2Price){
+      live.status = STAGES.EXITED;
+      live.t2Hit = true;
+      live.exitAt = nowTs;
+      live.exitFill = live.last;
+    }
+    // 10 trading days limit
+    if([STAGES.ENTERED,STAGES.T1_HIT].includes(live.status) && nowTs >= (live.enteredDeadline || (live.enteredAt+TEN_DAYS_MS))){
+      live.status = STAGES.EXITED;
+      live.exitAt = nowTs;
+      live.exitFill = live.last;
+    }
+  }
+
+  render();
+}
+
+let running=true,handle=setInterval(tick,900);
+
+document.getElementById('toggle').onclick=()=>{
+  running=!running;
+  if(running){handle=setInterval(tick,900);document.getElementById('toggle').textContent='⏸ Pause';}
+  else{clearInterval(handle);document.getElementById('toggle').textContent='▶ Resume';}
+};
+
+/* Dark/Light toggle */
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.onclick = () => {
+  const el = document.documentElement;
+  const isDark = el.classList.contains('dark');
+  if (isDark) { el.classList.remove('dark'); themeBtn.textContent = '☀️ Light'; }
+  else { el.classList.add('dark'); themeBtn.textContent = '🌙 Dark'; }
+};
+
+render();
+</script>
+</body>
+</html>
