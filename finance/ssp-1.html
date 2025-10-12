@@ -1,0 +1,705 @@
+
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SimpleStockPicks – Simple stock picks, clearly explained.</title>
+  <meta name="description" content="SimpleStockPicks delivers transparent, momentum-driven trade ideas for retail traders and active pros. Public trade diary, clear signals, and a dashboard with an AI copilot." />  <!-- Open Graph / Twitter -->  <meta property="og:title" content="MomentumWorks – Trade with rhythm, not noise." />
+  <meta property="og:description" content="Transparent momentum signals, public trade diary, StockBuddy/TraderPal/SignalClub tiers, and an AI copilot for pros." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://momentumworks.example" />
+  <meta property="og:image" content="https://momentumworks.example/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />  <!-- Tailwind CSS -->  <script src="https://cdn.tailwindcss.com"></script>  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mwNavy: '#0A1F44',
+            mwCharcoal: '#0f172a',
+            mwTeal: '#1CE5B8',
+            pulseGreen: '#3EDC81',
+            torqueRed: '#E63946',
+            swingBlue: '#2B4C9A',
+            swingGold: '#F9C74F'
+          }
+        }
+      }
+    }
+  </script>  <!-- Schema.org JSON-LD -->  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "",
+    "url": "https://momentumworks.example",
+    "logo": "https://momentumworks.example/logo.png",
+    "sameAs": [
+      "https://twitter.com/yourhandle",
+      "https://instagram.com/yourhandle",
+      "https://www.reddit.com/user/yourhandle"
+    ]
+  }
+  </script>  <style>
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); }
+    .container { max-width: 1200px; }
+    html { scroll-behavior: smooth; }
+  </style></head>
+<body class="bg-mwCharcoal text-white font-sans">
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 bg-mwCharcoal/80 border-b border-white/5">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
+        <span class="text-lg tracking-wide font-semibold">SimpleStockPicks</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#diary" class="hover:text-mwTeal">Trade Diary</a>
+        <a href="#products" class="hover:text-mwTeal">Products</a>
+        <a href="#pricing" class="hover:text-mwTeal">Pricing</a>
+        <a href="#blog" class="hover:text-mwTeal">Blog</a>
+        <a href="#about" class="hover:text-mwTeal">About</a>
+      </nav>
+      <nav class="hidden md:flex items-center gap-6 text-sm md:ml-6">
+        <a href="#trending" class="hover:text-mwTeal">Trending</a>
+        <a href="#faq" class="hover:text-mwTeal">FAQ</a>
+      </nav>
+      <a href="#watchlist" class="inline-flex items-center gap-2 bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">Get Weekly Watchlist</a>
+    </div>
+  </header>  
+  
+ <!-- Hero -->
+<section id="top" class="relative overflow-hidden">
+  <!-- Static chart background -->
+  <div class="absolute inset-0 opacity-20" aria-hidden="true">
+    <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
+  <defs>
+    <linearGradient id="mwArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <filter id="mwGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Main uptrending line with strong ramp at the end -->
+    <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.8"
+      d="
+        M    0,360
+        C   80,350   120,355   170,335
+        C  230,315   280,338   330,312
+        C  390,288   430,300   480,275
+        C  530,252   570,262   620,242
+        C  670,225   710,235   760,220
+        C  810,208   850,218   890,205
+        C  920,195   950,185   980,170
+        C 1005,158 1035,142 1065,124
+        C 1085,112 1100,104 1115, 94
+        C 1125, 86 1135, 78 1145, 69
+        C 1155, 61 1165, 52 1175, 44
+        C 1185, 38 1193, 34 1200, 31
+      "/>
+
+    <!-- Matching filled area under the line -->
+    <path id="mwAreaPath" fill="url(#mwArea)"
+      d="
+        M    0,360
+        C   80,350   120,355   170,335
+        C  230,315   280,338   330,312
+        C  390,288   430,300   480,275
+        C  530,252   570,262   620,242
+        C  670,225   710,235   760,220
+        C  810,208   850,218   890,205
+        C  920,195   950,185   980,170
+        C 1005,158 1035,142 1065,124
+        C 1085,112 1100,104 1115, 94
+        C 1125, 86 1135, 78 1145, 69
+        C 1155, 61 1165, 52 1175, 44
+        C 1185, 38 1193, 34 1200, 31
+        L 1200,400 L 0,400 Z
+      "/>
+  </defs>
+
+  <!-- Draw static chart -->
+  <use href="#mwAreaPath"></use>
+  <use href="#mwPath"></use>
+
+  <!-- Gridlines -->
+  <g opacity="0.25">
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+  </g>
+
+  <!-- Glowing dot riding the curve -->
+  <circle id="mwDot" r="7" fill="#00FFD0" stroke="white" stroke-width="2" filter="url(#mwGlow)"></circle>
+</svg>
+
+  </div>
+
+  <div class="container mx-auto px-4 py-20 md:py-28 relative max-w-[1200px]">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+        Trade with <span class="text-mwTeal">rhythm</span>, not noise.
+      </h1>
+      <p class="mt-5 text-white/80 text-lg md:text-xl">
+        Transparent, AI-powered trade ideas and research.<br>
+        Built for people who want simplicity over noise.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">Get A Free Trial With StockBuddy</a>
+        <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">Review Our Trade Diary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #mwDot {
+    animation: mwDotPulse 1.4s ease-in-out infinite;
+  }
+  @keyframes mwDotPulse {
+    0%   { r: 6; opacity: 0.8; }
+    50%  { r: 8; opacity: 1; }
+    100% { r: 6; opacity: 0.8; }
+  }
+</style>
+
+<script>
+  // Dot moves smoothly along the line left → right (fixed chart)
+  (() => {
+    const path = document.getElementById('mwPath');
+    const dot = document.getElementById('mwDot');
+    const pathLen = path.getTotalLength();
+    const duration = 6000; // 6s = snappier, high-energy feel
+    let start = performance.now();
+
+    function animate(now) {
+      const elapsed = (now - start) % duration;
+      const progress = elapsed / duration;
+      const len = progress * pathLen;
+      const pt = path.getPointAtLength(len);
+      dot.setAttribute('cx', pt.x);
+      dot.setAttribute('cy', pt.y);
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  })();
+</script>
+
+  <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+        Built for traders who want to <span class="text-mwTeal">think less</span> and win more.
+      </h2>
+      <p class="text-white/80 text-lg md:text-xl mb-6">
+        SimpleStockPicks empowers retail investors to follow disciplined, transparent momentum strategies — built on data, not hype.
+      </p>
+      <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8">
+        We simplify professional trading by breaking it down into clear, actionable insights that anyone can learn from.
+        Every idea is explained in plain English — no jargon, no guesswork — so you can learn to trade with confidence, discipline, and rhythm.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#diary" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">
+          Explore the Trade Diary
+        </a>
+        <a href="#pricing" class="border border-white/20 px-6 py-3 rounded font-semibold">
+          Get Started with StockBuddy
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+ <!-- Trade Diary (public) -->
+<section id="diary" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+
+    <!-- Title + CTA -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-3xl font-bold">Trade Diary & Performance</h2>
+        <p class="text-white/70 mt-1">Plain-English reasoning. Transparent results. Educational only.</p>
+      </div>
+      <a href="#pricing" class="text-mwTeal font-semibold whitespace-nowrap">
+        Subscribe to our Free Weekly Watchlist →
+      </a>
+    </div>
+
+    <!-- Card wrapper (glass + teal glow) -->
+    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)] ring-1 ring-[rgba(28,229,184,0.18)] ring-inset">
+
+      <!-- Top bar -->
+      <div class="bg-gradient-to-tr from-[rgba(28,229,184,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
+        <div class="text-sm text-white/80">Public Trade Diary (demo data)</div>
+        <div class="text-xs text-white/50">Updated daily after market close</div>
+      </div>
+
+      <!-- Month Selector -->
+      <div class="flex justify-end px-4 md:px-6 py-3 border-b border-white/10">
+        <div class="flex items-center gap-2 text-xs text-white/70">
+          <label class="hidden md:block">Month</label>
+          <select id="diaryMonth" class="px-3 py-2 rounded bg-white/10 border border-white/10 text-sm"></select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="sticky top-0 z-10 bg-mwCharcoal/80 backdrop-blur">
+            <tr>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date (UTC)</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Type</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
+              <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Notes</th>
+              <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Realized</th>
+              <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Unrealized</th>
+            </tr>
+          </thead>
+
+          <!-- your JS will inject rows here -->
+          <tbody id="diaryRows" class="[&>tr:nth-child(odd)]:bg-white/[0.03] [&>tr:nth-child(even)]:bg-white/[0.015] [&>tr:hover]:bg-white/[0.08] transition-colors"></tbody>
+
+          <tfoot>
+            <tr class="bg-white/[0.05] border-t border-white/10">
+              <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">Monthly Total:</td>
+              <td id="monthTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
+            </tr>
+            <tr class="bg-white/[0.03]">
+              <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD Return (MomentumWorks):</td>
+              <td id="ytdTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
+            </tr>
+            <tr class="bg-white/[0.02] border-t border-white/10">
+              <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD vs SPY / QQQ:</td>
+              <td id="ytdCompare" colspan="2" class="p-4 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Card footer -->
+      <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10">
+        Demo data. Educational only. Past performance is not indicative of future results.
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+<!-- Value Props / Products Teaser -->
+<section id="products" class="container mx-auto px-4 py-16 max-w-[1200px]">
+  <h2 class="text-3xl font-bold mb-10">Products</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <!-- StockBuddy -->
+    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+      <div>
+        <div class="text-sm uppercase tracking-wider text-white/60">Retail</div>
+        <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-pulseGreen"></span> StockBuddy
+        </h3>
+        <p class="mt-4 text-white/80 text-base leading-relaxed">
+          Designed for the passive retail trader who wants clear, actionable ideas without the noise.
+        </p>
+        <div class="mt-3 text-3xl font-bold text-pulseGreen">$99<span class="text-base text-white/60">/mo</span></div>
+        <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+          <li>3 trade ideas every week to choose from</li>
+          <li>Clear entries, exits, targets, and risk levels</li>
+          <li>Live access to our public trading diary</li>
+          <li>Notes and thesis behind every setup</li>
+          <li>Educational commentary on each trade idea</li>
+        </ul>
+      </div>
+            <div class="mt-auto pt-6">
+        <a href="#pricing" class="inline-block text-pulseGreen font-semibold hover:underline">Get A Free Trial with StockBuddy →</a>
+      </div>
+    </div>
+
+    <!-- TraderPal -->
+    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+      <div>
+        <div class="text-sm uppercase tracking-wider text-white/60">Active Traders</div>
+        <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-torqueRed"></span> TraderPal
+        </h3>
+        <p class="mt-4 text-white/80 text-base leading-relaxed">
+          Everything from StockPuddy, plus more dynamic coverage and live market context.
+        </p>
+        <div class="mt-3 text-3xl font-bold text-torqueRed">$499<span class="text-base text-white/60">/mo</span></div>
+        <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+          <li>StockBuddy features included</li>
+          <li>Dynamic trade ideas refreshed 2× weekly (market-dependent)</li>
+          <li>Pre-market and post-market analysis with daily heat scores</li>
+          <li>Day-trade ideas with intraday updates</li>
+          <li>Access to Live FAQ and Trade Trends</li>
+          <li>Market summaries and sentiment snapshots</li>
+        </ul>
+      </div>
+      <div class="mt-auto pt-6">
+        <a href="#pricing" class="inline-block text-torqueRed font-semibold hover:underline">Coming Soon →</a>
+      </div>
+    </div>
+
+    <!-- SignalClub -->
+    <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+      <div>
+        <div class="text-sm uppercase tracking-wider text-white/60">Professional / Advisors</div>
+        <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-swingBlue"></span> SignalClub
+        </h3>
+        <p class="mt-4 text-white/80 text-base leading-relaxed">
+          The full ecosystem for power users — combining data, insight, and automation.
+        </p>
+        <div class="mt-3 text-3xl font-bold text-swingBlue">$3,999<span class="text-base text-white/60">/mo</span></div>
+        <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+          <li>Includes everything from StockBuddy + TraderPal</li>
+          <li>Custom watchlists and personal trade logging dashboard</li>
+          <li>Deep dive into signals, heat scores, and the Regime Director</li>
+          <li>Cross-sector, industry, and commodity analysis</li>
+          <li>Tilt display, top news, and social trend tracking</li>
+          <li><span class="font-semibold">Integrated LLM Copilot</span> for advanced analysis:
+            custom trade-idea research (fundamentals + technicals), entry/exit suggestions, and thesis generation for any ticker (add-on).</li>
+        </ul>
+      </div>
+      <div class="mt-auto pt-6">
+        <a href="#pricing" class="inline-block text-swingBlue font-semibold hover:underline">Coming Soon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trending Trades -->
+<section id="trending" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-bold">Trending Trades</h2>
+      <a href="#pricing" class="text-mwTeal font-semibold hover:underline">Real-time in TraderPal →</a>
+    </div>
+
+    <p class="text-white/80 mb-8 max-w-3xl">
+      “SEO for signals” — rankings based on anonymized usage: chat queries, trade plans, watchlist saves, alerts, and (optionally) executions.
+      Public view shows delayed data.
+    </p>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap gap-2 mb-6 text-sm">
+      <button class="trend-tab bg-white/10 px-3 py-1 rounded border border-white/10" data-target="#tab-top">Top</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-rising">Rising</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-sectors">Sectors</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-long">Long Bias</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-short">Short Bias</button>
+      <button class="trend-tab px-3 py-1 rounded border border-white/10" data-target="#tab-stretched">Stretched?</button>
+    </div>
+
+    <!-- Panels -->
+    <div id="tab-top" class="trend-panel grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold text-white">NVDA</h4>
+          <span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 92</span>
+        </div>
+        <div class="text-white/70 text-sm mt-1">Rising 2.1× • Asked 47 • Plans 18 • Saved 62</div>
+        <div class="text-xs text-white/50 mt-3">Delayed sample. Real-time in Torque & SwingLabs.</div>
+      </div>
+
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold text-white">AAPL</h4>
+          <span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 81</span>
+        </div>
+        <div class="text-white/70 text-sm mt-1">Rising 1.6× • Asked 32 • Plans 12 • Saved 54</div>
+        <div class="text-xs text-white/50 mt-3">Delayed sample.</div>
+      </div>
+
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold text-white">SMCI</h4>
+          <span class="text-xs bg-white/10 px-2 py-0.5 rounded">Score 77</span>
+        </div>
+        <div class="text-white/70 text-sm mt-1">Rising 2.9× • Asked 21 • Plans 9 • Saved 40</div>
+        <div class="text-xs text-white/50 mt-3">Delayed sample.</div>
+      </div>
+    </div>
+
+    <div id="tab-rising" class="trend-panel hidden text-white/80">Sample rising list…</div>
+    <div id="tab-sectors" class="trend-panel hidden text-white/80">Sector heat placeholder…</div>
+    <div id="tab-long" class="trend-panel hidden text-white/80">Long-biased tickers…</div>
+    <div id="tab-short" class="trend-panel hidden text-white/80">Short-biased tickers…</div>
+    <div id="tab-stretched" class="trend-panel hidden text-white/80">Most “stretched?” queries…</div>
+
+    <div class="mt-8 text-xs text-white/60 text-center italic">
+      Aggregated from anonymized usage. Educational only. Not advice.
+    </div>
+  </div>
+</section>
+  
+ <!-- Live FAQ -->
+<section id="faq" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-bold">Live FAQ (Auto-Generated Using AI From User Questions)</h2>
+      <a href="#pricing" class="text-mwTeal font-semibold hover:underline">Real-time in TraderPal →</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <h3 class="font-semibold">Is the market too stretched for longs today?</h3>
+        <p class="text-white/80 text-sm mt-2">
+          We review breadth, RVOL, and distance from 20/50 EMA. If RVOL is elevated and breadth narrows, we reduce risk
+          or wait for pullbacks. Educational research only.
+        </p>
+        <div class="text-xs text-white/50 mt-3">Asked by 42 users in last 24h • Updated 12:10 ET</div>
+      </article>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <h3 class="font-semibold">What’s a red-to-green setup?</h3>
+        <p class="text-white/80 text-sm mt-2">
+          A gap-down open that reclaims yesterday’s close, often paired with a VWAP reclaim + higher low.
+          Torque’s pre-market view surfaces examples for study.
+        </p>
+        <div class="text-xs text-white/50 mt-3">Asked by 27 users • Updated 10:05 ET</div>
+      </article>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
+        <h3 class="font-semibold">How do you place ATR stops?</h3>
+        <p class="text-white/80 text-sm mt-2">
+          For swings, we often reference ~1.2–1.5× ATR(14); intraday uses smaller multiples based on the volatility
+          regime. Educational research only.
+        </p>
+        <div class="text-xs text-white/50 mt-3">Asked by 31 users • Updated 09:40 ET</div>
+      </article>
+    </div>
+
+    <div class="mt-8 text-sm text-white/70 text-center">
+      Want a custom plan from any FAQ? <a href="#pricing" class="text-mwTeal hover:underline">Try SignalClub</a>.
+    </div>
+  </div>
+</section>
+
+ <!-- About + Watchlist (exact layout like screenshot) -->
+<section id="about" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-20 max-w-[1200px]">
+    <!-- Our Story -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Story</h2>
+    <p class="text-white/80 leading-relaxed max-w-3xl mb-10">
+      SimpleStockPicks was created to give traders clarity in a chaotic market. We combine disciplined momentum models
+      with simple communication and transparency. Every idea ships with a clear thesis, entries, stops, targets, and a
+      post-mortem—logged in a public diary. The goal isn’t to be perfect—it’s to be consistent and accountable.
+    </p>
+
+    <!-- Watchlist Card -->
+    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <!-- Left text -->
+        <div class="md:flex-1">
+          <h3 class="text-xl md:text-2xl font-extrabold">Get the Free Weekly Watchlist</h3>
+          <p class="text-white/80 mt-2 leading-relaxed">
+            One email each week with our top momentum candidates and what we’ll watch for. No spam, ever.
+          </p>
+        </div>
+
+        <!-- Right: input stacked over button -->
+        <form class="w-full md:w-[420px]" onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');">
+          <input
+            type="email"
+            placeholder="you@company.com"
+            required
+            class="w-full px-4 py-3 rounded-md bg-white text-mwCharcoal placeholder-gray-500 focus:outline-none"
+          />
+          <button
+            class="w-full mt-3 bg-mwTeal text-mwCharcoal font-semibold py-3 rounded-md hover:opacity-90 transition"
+            type="submit"
+          >
+            Send me the Watchlist
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Preview -->
+<section id="blog" class="bg-mwNavy/20 border-y border-white/5">
+  <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-bold">From the Blog</h2>
+      <a href="#" class="text-mwTeal font-semibold hover:underline">View all →</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+        <h3 class="text-xl font-bold text-white">Momentum vs Trend: Why Speed Matters</h3>
+        <p class="text-white/80 mt-3 leading-relaxed">
+          A quick guide to understanding momentum and how we use it to identify high-probability swing setups.
+        </p>
+        <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+      </article>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+        <h3 class="text-xl font-bold text-white">ATR Stops: Simple Risk Math</h3>
+        <p class="text-white/80 mt-3 leading-relaxed">
+          How to use ATR for consistent position sizing, stop placement, and risk control across trades.
+        </p>
+        <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+      </article>
+
+      <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+        <h3 class="text-xl font-bold text-white">Case Study: A Loss We Learned From</h3>
+        <p class="text-white/80 mt-3 leading-relaxed">
+          Transparency matters. Here’s how a losing trade reshaped our process and strengthened our discipline.
+        </p>
+        <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+      </article>
+    </div>
+  </div>
+</section>
+  
+  <!-- Footer -->  <footer class="border-t border-white/5">
+    <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">MW</div>
+          <span class="font-semibold">SimpleStockPicks</span>
+        </div>
+        <p class="text-white/60 mt-3">Educational content only. Not investment advice. Past performance is not indicative of future results.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Product</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#products" class="hover:text-mwTeal">StockBuddy</a></li>
+          <li><a href="#products" class="hover:text-mwTeal">TraderPal</a></li>
+          <li><a href="#products" class="hover:text-mwTeal">SignalClub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Company</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#about" class="hover:text-mwTeal">About</a></li>
+          <li><a href="#blog" class="hover:text-mwTeal">Blog</a></li>
+          <li><a href="#pricing" class="hover:text-mwTeal">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Legal</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
+          <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
+          <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-white/50 text-xs pb-8">© <span id="year"></span> SimpleStockPicks All rights reserved.</div>
+  </footer>  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>  <script>
+    // Trending tabs UX (static demo)
+    const tabs = document.querySelectorAll('.trend-tab');
+    const panels = document.querySelectorAll('.trend-panel');
+    function activateTab(el){
+      tabs.forEach(t=>t.classList.remove('bg-white/10'));
+      panels.forEach(p=>p.classList.add('hidden'));
+      el.classList.add('bg-white/10');
+      const target = document.querySelector(el.dataset.target);
+      if(target) target.classList.remove('hidden');
+    }
+    tabs.forEach((t,i)=>{
+      t.addEventListener('click',()=>activateTab(t));
+      if(i===0) activateTab(t);
+    });
+  </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // ---- Dummy data ----
+  const diaryDemo = {
+    months: ["2025-08","2025-09","2025-10"],
+    trades: [
+      { date_open:"2025-10-06", symbol:"AAPL", type:"Swing Long", status:"OPEN",   realized_pct:0.80, open_pct:0.35,
+        notes:"Apple had a calm week before new product launches. We expected buying interest to build as investors anticipate stronger holiday demand." },
+      { date_open:"2025-10-01", date_close:"2025-10-03", symbol:"TSLA", type:"Swing Long", status:"EXITED", realized_pct:2.54, open_pct:0.00,
+        notes:"Tesla had pulled back for several days and sentiment felt overly negative. We expected a relief move as short sellers covered ahead of earnings." },
+      { date_open:"2025-10-02", date_close:"2025-10-04", symbol:"NVDA", type:"Swing Long", status:"STOPPED", realized_pct:-1.28, open_pct:0.00,
+        notes:"We thought AI optimism might push Nvidia higher, but broader tech weakness pulled it back instead." },
+      { date_open:"2025-09-18", date_close:"2025-09-20", symbol:"MSFT", type:"Swing Long", status:"EXITED", realized_pct:1.90, open_pct:0.00,
+        notes:"Microsoft had steady enterprise momentum and consistent buying from funds, so we looked for a steady continuation move." },
+      { date_open:"2025-09-10", date_close:"2025-09-11", symbol:"AMD",  type:"Swing Long", status:"STOPPED", realized_pct:-0.72, open_pct:0.00,
+        notes:"We expected AMD to benefit from chip strength, but the stock lost steam after initial enthusiasm faded." },
+      { date_open:"2025-09-03", date_close:"2025-09-06", symbol:"SMCI", type:"Swing Long", status:"EXITED", realized_pct:4.10, open_pct:0.00,
+        notes:"We liked Super Micro for its leadership in AI servers and expected new orders to push shares higher — and they did." },
+      { date_open:"2025-08-22", date_close:"2025-08-26", symbol:"META", type:"Swing Long", status:"EXITED", realized_pct:3.25, open_pct:0.00,
+        notes:"Meta had been consolidating after strong results, and we thought renewed ad spending optimism could spark the next leg up." },
+      { date_open:"2025-08-15", date_close:"2025-08-16", symbol:"QQQ",  type:"Swing Long", status:"STOPPED", realized_pct:-0.60, open_pct:0.00,
+        notes:"We looked for a bounce in the Nasdaq after a quick drop, but selling pressure continued, so we cut the trade early." },
+      { date_open:"2025-08-05", date_close:"2025-08-08", symbol:"SHOP", type:"Swing Long", status:"EXITED", realized_pct:2.05, open_pct:0.00,
+        notes:"Shopify had strong e-commerce momentum and was attracting new fund inflows. We rode a short-term push before locking in gains." }
+    ]
+  };
+
+  // ---- Helpers ----
+  const $ = s => document.querySelector(s);
+  function monthFromDate(dateStr){
+    if(!dateStr) return "";
+    const d = new Date(dateStr + "T00:00:00Z");
+    return d.getUTCFullYear() + "-" + String(d.getUTCMonth()+1).padStart(2,"0");
+  }
+  function safePct(x){ const n=Number(x||0); return (n>=0?"+":"")+n.toFixed(2)+"%"; }
+  function statusBadge(s){
+    const map={OPEN:"bg-emerald-600/20 text-emerald-300",EXITED:"bg-cyan-600/20 text-cyan-300",STOPPED:"bg-rose-600/20 text-rose-300"};
+    const cls=map[s]||"bg-slate-500/20 text-slate-300";
+    return `<span class="px-2 py-0.5 rounded-full text-xs ${cls}">${s}</span>`;
+  }
+
+  // ---- Populate months ----
+  function populateMonths(data){
+    const sel = $("#diaryMonth");
+    if(!sel) return; // safety
+    const months = data.months?.length
+      ? data.months
+      : Array.from(new Set((data.trades||[]).map(t => monthFromDate(t.date_close || t.date_open)))).sort();
+    sel.innerHTML = months.map(m => `<option value="${m}">${m}</option>`).join("");
+    sel.value = months[months.length-1];
+  }
+
+  // ---- Render table ----
+  function renderDiary(data){
+    const sel = $("#diaryMonth");
+    const body = $("#diaryRows");
+    if(!sel || !body) return; // safety
+
+    const month = sel.value;
+    const rows = (data.trades||[]).filter(t => monthFromDate(t.date_close || t.date_open) === month);
+
+    body.innerHTML = rows.map(t => `
+      <tr>
+        <td class="p-3 text-sm whitespace-nowrap">${t.date_close || t.date_open}</td>
+        <td class="p-3 text-sm font-semibold">${t.symbol}</td>
+        <td class="p-3 text-sm">${t.type}</td>
+        <td class="p-3 text-sm">${statusBadge(t.status)}</td>
+        <td class="p-3 text-sm text-white/80">${t.notes}</td>
+        <td class="p-3 text-sm text-right">${safePct(t.realized_pct)}</td>
+        <td class="p-3 text-sm text-right">${safePct(t.open_pct)}</td>
+      </tr>
+    `).join("");
+
+    const monthGain = rows.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
+    const ytdGain   = data.trades.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
+    $("#monthTotal").textContent = (monthGain>=0?"+":"") + monthGain.toFixed(2) + "%";
+    $("#ytdTotal").textContent   = (ytdGain>=0?"+":"") + ytdGain.toFixed(2) + "%";
+    $("#ytdCompare").textContent = `SPY +8.3% | QQQ +12.4% | MW ${(ytdGain>=0?"+":"")+ytdGain.toFixed(2)}%`;
+  }
+
+  // ---- Init ----
+  populateMonths(diaryDemo);
+  renderDiary(diaryDemo);
+  const monthSel = $("#diaryMonth");
+  if(monthSel) monthSel.addEventListener("change", () => renderDiary(diaryDemo));
+});
+</script>
+</body>
+</html>
