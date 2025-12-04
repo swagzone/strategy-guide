@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SimpleStockPicks Blog – Learn the Model, Not the Hype</title>
+  <meta name="description" content="Educational articles from SimpleStockPicks on understanding the model, regime scores, entries, stops, targets, and how to use StockBuddy and TraderPal as learning tools." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="SimpleStockPicks Blog – Learn the Model, Not the Hype" />
+  <meta property="og:description" content="Plain-English posts about regime scores, trade structure, and how to read our ideas — built for beginners and retail traders." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://simplestockpicks.example/blog" />
+  <meta property="og:image" content="https://simplestockpicks.example/og-blog.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mwNavy: '#0A1F44',
+            mwCharcoal: '#0f172a',
+            mwTeal: '#1CE5B8',
+            pulseGreen: '#3EDC81',
+            torqueRed: '#E63946',
+            swingBlue: '#2B4C9A',
+            swingGold: '#F9C74F'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "SimpleStockPicks Blog",
+    "url": "https://simplestockpicks.example/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SimpleStockPicks",
+      "url": "https://simplestockpicks.example"
+    }
+  }
+  </script>
+
+  <style>
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); }
+    .container { max-width: 1200px; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-mwCharcoal text-white font-sans">
+  <!-- Nav (reused) -->
+  <header class="sticky top-0 z-50 bg-mwCharcoal/80 border-b border-white/5">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html#top" class="flex items-center gap-2 group">
+        <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
+        <span class="text-lg tracking-wide font-semibold">SimpleStockPicks</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html#diary" class="hover:text-mwTeal">Trade Diary</a>
+        <a href="index.html#products" class="hover:text-mwTeal">Products</a>
+        <a href="index.html#pricing" class="hover:text-mwTeal">Pricing</a>
+        <a href="blog.html" class="text-mwTeal font-semibold">Blog</a>
+        <a href="index.html#about" class="hover:text-mwTeal">About</a>
+      </nav>
+      <nav class="hidden md:flex items-center gap-6 text-sm md:ml-6">
+        <a href="index.html#watchlist" class="hover:text-mwTeal">Watchlist</a>
+        <a href="index.html#faq" class="hover:text-mwTeal">FAQ</a>
+      </nav>
+      <a href="index.html#watchlist" class="inline-flex items-center gap-2 bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">
+        Get Weekly Watchlist
+      </a>
+    </div>
+  </header>
+
+  <!-- Blog Hero -->
+  <section class="bg-mwNavy/40 border-b border-white/5">
+    <div class="container mx-auto px-4 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          Learn the <span class="text-mwTeal">model</span>, not the hype.
+        </h1>
+        <p class="mt-4 text-white/80 text-lg">
+          The SimpleStockPicks blog explains how our tools work — Regime Scores, entries, stops, targets, and 
+          daily ideas — in plain English, so you can understand the structure behind every setup.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="index.html#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">
+            Start TraderPal 14-Day Trial
+          </a>
+          <a href="index.html#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">
+            View Public Trade Diary
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories / Filters (static for now) -->
+  <section class="bg-mwNavy/20 border-b border-white/5">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex flex-wrap gap-2 text-sm">
+        <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15">All</span>
+        <button class="px-3 py-1 rounded-full border border-white/15 hover:bg-white/10">Using the Tools</button>
+        <button class="px-3 py-1 rounded-full border border-white/15 hover:bg-white/10">Model & Signals</button>
+        <button class="px-3 py-1 rounded-full border border-white/15 hover:bg-white/10">Risk & Structure</button>
+        <button class="px-3 py-1 rounded-full border border-white/15 hover:bg-white/10">Trade Diary Lessons</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Content -->
+  <main class="bg-mwNavy/10">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+
+      <!-- Featured Post -->
+      <section class="mb-12">
+        <article class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 md:p-8 flex flex-col md:flex-row gap-6">
+          <div class="md:flex-1">
+            <div class="text-xs uppercase tracking-wide text-mwTeal mb-2">Featured</div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white">
+              How to Read a SimpleStockPicks Idea: Long/Short, Entry, Stop, Target
+            </h2>
+            <p class="text-white/80 mt-3 leading-relaxed">
+              A step-by-step guide to understanding the structure behind every idea in StockBuddy and TraderPal —
+              from direction (Long or Short) to entry zones, stop zones, and model targets. No indicators, no charting
+              skills required.
+            </p>
+            <p class="text-white/60 text-xs mt-3">
+              7-minute read · Educational only · Not investment advice
+            </p>
+            <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">
+              Read the full guide →
+            </a>
+          </div>
+          <div class="md:w-72 flex flex-col justify-between gap-4">
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80">
+              <div class="font-semibold text-white mb-1">What you’ll learn:</div>
+              <ul class="list-disc list-inside space-y-1 text-white/75">
+                <li>What “Long” and “Short” actually mean in our model</li>
+                <li>How an Entry Zone differs from a random price</li>
+                <li>Why Stop Zones are about invalidation, not panic</li>
+                <li>How to think about Targets as model completion points</li>
+              </ul>
+            </div>
+            <div class="text-xs text-white/60 italic">
+              Use this as a companion while you look at live ideas in TraderPal.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Blog Grid -->
+      <section class="grid md:grid-cols-3 gap-6">
+
+        <!-- Post 1: Regime Score -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Model & Signals</div>
+          <h3 class="text-xl font-bold text-white">Understanding the Regime Score</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            Hot, Warm, Ice Cold — how we use simple “market weather” labels to describe the overall environment 
+            for ideas, and why some days are better left alone.
+          </p>
+          <p class="text-white/60 text-xs mt-3">5-minute read · Educational only</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Post 2: Using TraderPal -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Using the Tools</div>
+          <h3 class="text-xl font-bold text-white">How to Use TraderPal Daily (Without Overthinking)</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            A simple daily routine: check the Regime Score, skim the ideas, read the Conviction labels, and decide
+            how (or if) you want to learn from today’s setups.
+          </p>
+          <p class="text-white/60 text-xs mt-3">6-minute read · Educational only</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Post 3: Entry/Stop/Target explainer -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Risk & Structure</div>
+          <h3 class="text-xl font-bold text-white">Entry, Stop, Target: The Structure Behind Every Idea</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            What each zone means inside the model, and why they’re designed to show structure — not tell you 
+            how much to risk or where you “should” get in or out.
+          </p>
+          <p class="text-white/60 text-xs mt-3">5-minute read · Educational only</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Post 4: StockBuddy usage -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Using the Tools</div>
+          <h3 class="text-xl font-bold text-white">Getting the Most from StockBuddy’s Weekly Ideas</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            How some users treat the weekly 3-idea list as their “study list” — a small, focused set of structures
+            to watch and learn from each week.
+          </p>
+          <p class="text-white/60 text-xs mt-3">4-minute read · Educational only</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Post 5: Trade/No-Trade gate -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Model & Signals</div>
+          <h3 class="text-xl font-bold text-white">What Our “Trade / No Trade” Filter Is Really Saying</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            Why some sessions are tagged “No Trade” by the model, and how that label reflects stability and structure —
+            not a command to act or stay out.
+          </p>
+          <p class="text-white/60 text-xs mt-3">5-minute read · Educational only</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Post 6: Diary lessons -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Trade Diary Lessons</div>
+          <h3 class="text-xl font-bold text-white">A Loss We Learned From: Reading the Post-Mortem</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            Walking through a losing idea from the diary and how the model tagged it — structure, invalidation,
+            and what changed in the next playbook.
+          </p>
+          <p class="text-white/60 text-xs mt-3">6-minute read · Educational only</p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+      </section>
+
+      <!-- Simple Pagination Placeholder -->
+      <div class="mt-10 flex items-center justify-between text-sm text-white/70">
+        <span>Page 1 of 3</span>
+        <div class="flex items-center gap-2">
+          <button class="px-3 py-1 rounded border border-white/15 text-white/60 cursor-not-allowed">Previous</button>
+          <button class="px-3 py-1 rounded border border-white/15 hover:bg-white/10">Next</button>
+        </div>
+      </div>
+
+      <!-- CTA Strip -->
+      <section class="mt-16">
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm px-6 py-8 md:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h3 class="text-2xl font-semibold text-white">Turn the blog into a daily habit with TraderPal.</h3>
+            <p class="text-white/75 text-sm mt-2 max-w-xl">
+              Use the blog to understand the model, and TraderPal to see it in motion — with daily ideas, Regime Scores,
+              Conviction labels, and Trade/No-Trade filters. Educational structure only. You stay in control.
+            </p>
+          </div>
+          <a href="index.html#pricing" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-mwTeal text-mwCharcoal font-semibold hover:opacity-90 transition">
+            Start 14-Day TraderPal Trial →
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer (reused) -->
+  <footer class="border-t border-white/5 mt-12">
+    <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
+          <span class="font-semibold">SimpleStockPicks</span>
+        </div>
+        <p class="text-white/60 mt-3">
+          Educational content only. Not investment advice. Past performance is not indicative of future results.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Product</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="index.html#products" class="hover:text-mwTeal">StockBuddy</a></li>
+          <li><a href="index.html#products" class="hover:text-mwTeal">TraderPal</a></li>
+          <li><a href="index.html#products" class="hover:text-mwTeal">SignalClub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Company</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="index.html#about" class="hover:text-mwTeal">About</a></li>
+          <li><a href="blog.html" class="hover:text-mwTeal">Blog</a></li>
+          <li><a href="index.html#pricing" class="hover:text-mwTeal">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Legal</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
+          <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
+          <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-white/50 text-xs pb-8">
+      © <span id="year"></span> SimpleStockPicks. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
