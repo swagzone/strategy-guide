@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -172,6 +173,9 @@
             Review Our Trade Diary
           </a>
         </div>
+        <p class="mt-3 text-xs text-white/60">
+          Educational content only. Nothing here is investment advice.
+        </p>
       </div>
     </div>
   </section>
@@ -193,7 +197,7 @@
       const path = document.getElementById('mwPath');
       const dot = document.getElementById('mwDot');
       const pathLen = path.getTotalLength();
-      const duration = 6000; // 6s = snappier, high-energy feel
+      const duration = 6000; // 6s
       let start = performance.now();
 
       function animate(now) {
@@ -209,6 +213,31 @@
     })();
   </script>
 
+  <!-- SOCIAL PROOF BAND -->
+  <section class="border-y border-white/5 bg-mwNavy/30">
+    <div class="container mx-auto px-4 py-4 md:py-5">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs md:text-sm text-white/70">
+
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-mwTeal/15 text-mwTeal text-xs font-semibold">✓</span>
+          <span><span class="font-semibold text-white">100% transparent</span> — every idea logged in a public diary.</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-mwTeal/15 text-mwTeal text-xs font-semibold">Σ</span>
+          <span><span class="font-semibold text-white">Model-based</span> Regime, Conviction, and Trade/No-Trade layers.</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-mwTeal/15 text-mwTeal text-xs font-semibold">⚠</span>
+          <span><span class="font-semibold text-white">Educational only</span> — not a broker, not advice.</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
   <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
     <div class="container mx-auto px-4 py-20 md:py-28">
       <div class="max-w-4xl mx-auto text-center">
@@ -234,409 +263,7 @@
     </div>
   </section>
 
-  <!-- Trade Diary (public) -->
-  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
-
-      <!-- Title + CTA -->
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-        <div>
-          <h2 class="text-3xl font-bold">Trade Diary & Performance</h2>
-          <p class="text-white/70 mt-1">Plain-English reasoning. Transparent results. Educational only.</p>
-        </div>
-        <a href="#pricing" class="text-mwTeal font-semibold whitespace-nowrap">
-          Subscribe to our Free Weekly Watchlist →
-        </a>
-      </div>
-
-      <!-- Card wrapper (glass + teal glow) -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)] ring-1 ring-[rgba(28,229,184,0.18)] ring-inset">
-
-        <!-- Top bar -->
-        <div class="bg-gradient-to-tr from-[rgba(28,229,184,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
-          <div class="text-sm text-white/80">Public Trade Diary</div>
-          <div class="text-xs text-white/50">Check Out Our Past Month Trades</div>
-        </div>
-
-        <!-- Month Selector -->
-        <div class="flex justify-end px-4 md:px-6 py-3 border-b border-white/10">
-          <div class="flex items-center gap-2 text-xs text-white/70">
-            <label class="hidden md:block">Month</label>
-            <select id="diaryMonth" class="px-3 py-2 rounded bg-white/10 border border-white/10 text-sm"></select>
-          </div>
-        </div>
-
-        <!-- Table -->
-        <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead class="sticky top-0 z-10 bg-mwCharcoal/80 backdrop-blur">
-              <tr>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date (UTC)</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Type</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
-                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Notes</th>
-                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Realized</th>
-                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Unrealized</th>
-              </tr>
-            </thead>
-
-            <!-- your JS will inject rows here -->
-            <tbody id="diaryRows" class="[&>tr:nth-child(odd)]:bg-white/[0.03] [&>tr:nth-child(even)]:bg-white/[0.015] [&>tr:hover]:bg-white/[0.08] transition-colors"></tbody>
-
-            <tfoot>
-              <tr class="bg-white/[0.05] border-t border-white/10">
-                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">Last Month:</td>
-                <td id="monthTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
-              </tr>
-              <tr class="bg-white/[0.03]">
-                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD Return (MomentumWorks):</td>
-                <td id="ytdTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
-              </tr>
-              <tr class="bg-white/[0.02] border-t border-white/10">
-                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD vs SPY / QQQ:</td>
-                <td id="ytdCompare" colspan="2" class="p-4 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-
-        <!-- Card footer -->
-        <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10">
-          Educational only. Past performance is not indicative of future results.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- PRODUCTS SECTION WITH BILLING TOGGLE + DYNAMIC PRICING -->
-  <!-- ========================================================= -->
-
-  <!-- Anchor so #pricing scrolls here -->
-  <span id="pricing"></span>
-
-  <section id="products" class="container mx-auto px-4 py-16 max-w-[1200px]">
-    <h2 class="text-3xl font-bold mb-6 text-center">Products</h2>
-
-    <!-- Billing Toggle -->
-    <div class="flex justify-center mb-10">
-      <div class="inline-flex rounded-full border border-white/10 bg-white/5 p-1 text-sm">
-        <button type="button"
-          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
-          data-billing="monthly" data-active="true">Monthly</button>
-
-        <button type="button"
-          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
-          data-billing="quarterly">Quarterly</button>
-
-        <button type="button"
-          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
-          data-billing="annual">Annual</button>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- ========================================================= -->
-      <!-- StockBuddy -->
-      <!-- ========================================================= -->
-      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
-        <div>
-          <div class="text-sm uppercase tracking-wider text-white/60">Low Frequency</div>
-
-          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-pulseGreen"></span> StockBuddy
-          </h3>
-
-          <p class="mt-4 text-white/80 text-base leading-relaxed">
-            A simple weekly signal service — three clean setups every week with entries, stops, and targets. No noise, no extra layers.
-          </p>
-
-          <!-- Dynamic Price -->
-          <div class="mt-3 text-3xl font-bold text-pulseGreen"
-               data-price-monthly="99"
-               data-price-quarterly="249"
-               data-price-annual="899">
-
-            <span class="js-price-amount">$99</span>
-            <span class="text-base text-white/60 js-price-period">/mo</span>
-          </div>
-
-          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
-
-          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
-            <li>3 curated trade ideas every week</li>
-            <li>Entry, stop-loss, and target levels</li>
-            <li>Short thesis behind each setup</li>
-            <li>Access to our public trading diary</li>
-            <li>Bare-bones signal format — clean and simple</li>
-          </ul>
-        </div>
-
-        <div class="mt-auto pt-6">
-          <a href="#" class="inline-block text-pulseGreen font-semibold hover:underline">Subscribe →</a>
-        </div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!-- TraderPal -->
-      <!-- ========================================================= -->
-      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
-        <div>
-          <div class="text-sm uppercase tracking-wider text-white/60">Daily Signals</div>
-
-          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-torqueRed"></span> TraderPal
-          </h3>
-
-          <p class="mt-4 text-white/80 text-base leading-relaxed">
-            Daily trade ideas with full signal enhancement — Regime Score, Conviction Score, and a Trade/No-Trade recommendation for sharper decisions.
-          </p>
-
-          <!-- Dynamic Price -->
-          <div class="mt-3 text-3xl font-bold text-torqueRed"
-               data-price-monthly="299"
-               data-price-quarterly="749"
-               data-price-annual="2699">
-
-            <span class="js-price-amount">$299</span>
-            <span class="text-base text-white/60 js-price-period">/mo</span>
-          </div>
-
-          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
-
-          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
-            <li>Everything in StockBuddy</li>
-            <li><strong>New trade ideas every market day</strong></li>
-            <li><strong>Regime Score:</strong> Hot · Warm · Icy · Cold</li>
-            <li><strong>Trade Suggestion:</strong> Trade · No Trade</li>
-            <li><strong>Conviction Score:</strong> High · Medium · Low</li>
-            <li>Full entries, stops, targets & thesis</li>
-          </ul>
-        </div>
-
-        <div class="mt-auto pt-6">
-          <a href="#" class="inline-block text-torqueRed font-semibold hover:underline">Start 14-Day Free Trial →</a>
-        </div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!-- SignalClub -->
-      <!-- ========================================================= -->
-      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
-        <div>
-          <div class="text-sm uppercase tracking-wider text-white/60">Institutional</div>
-
-          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-swingBlue"></span> SignalClub
-          </h3>
-
-          <p class="mt-4 text-white/80 text-base leading-relaxed">
-            The full MomentumWorks ecosystem for power users — combining multi-signal dashboards, deeper analytics, and automated research.
-          </p>
-
-          <!-- Dynamic Price -->
-          <div class="mt-3 text-3xl font-bold text-swingBlue"
-               data-price-monthly="3999"
-               data-price-quarterly="10999"
-               data-price-annual="39999">
-
-            <span class="js-price-amount">$3,999</span>
-            <span class="text-base text-white/60 js-price-period">/mo</span>
-          </div>
-
-          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
-
-          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-accent leading-relaxed">
-            <li>Everything from StockBuddy + TraderPal</li>
-            <li>All signal dashboards</li>
-            <li>Deep dive into regimes, heat maps & more</li>
-            <li>Sector & industry rotation insights</li>
-            <li>LLM Copilot for advanced thesis generation</li>
-          </ul>
-        </div>
-
-        <div class="mt-auto pt-6">
-          <a href="#" class="inline-block text-swingBlue font-semibold hover:underline">Coming Soon →</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- BILLING TOGGLE LOGIC -->
-  <!-- ========================================================= -->
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleButtons = document.querySelectorAll(".billing-toggle");
-    const pricingBlocks = document.querySelectorAll("[data-price-monthly]");
-
-    function updateBilling(mode) {
-      toggleButtons.forEach(btn => {
-        btn.dataset.active = btn.dataset.billing === mode ? "true" : "false";
-      });
-
-      pricingBlocks.forEach(block => {
-        const monthly = block.getAttribute("data-price-monthly");
-        const quarterly = block.getAttribute("data-price-quarterly");
-        const annual = block.getAttribute("data-price-annual");
-
-        const amount = block.querySelector(".js-price-amount");
-        const period = block.querySelector(".js-price-period");
-        const note = block.parentElement.querySelector(".js-price-note");
-
-        if (mode === "monthly") {
-          amount.textContent = `$${monthly}`;
-          period.textContent = "/mo";
-          note.textContent = "Billed monthly.";
-        }
-        if (mode === "quarterly") {
-          amount.textContent = `$${quarterly}`;
-          period.textContent = "/qtr";
-          note.textContent = "Billed quarterly — save ~15%.";
-        }
-        if (mode === "annual") {
-          amount.textContent = `$${annual}`;
-          period.textContent = "/yr";
-          note.textContent = "Billed annually — save ~25%.";
-        }
-      });
-    }
-
-    toggleButtons.forEach(btn => {
-      btn.addEventListener("click", () => updateBilling(btn.dataset.billing));
-    });
-
-    updateBilling("monthly");
-  });
-  </script>
-
-  <!-- Weekly Watchlist -->
-  <section id="watchlist" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
-
-      <div class="flex items-center justify-between mb-10">
-        <h2 class="text-3xl font-bold">Weekly Watchlist</h2>
-        <a href="#pricing" class="text-mwTeal font-semibold hover:underline">
-          Full setups in StockBuddy & TraderPal →
-        </a>
-      </div>
-
-      <p class="text-white/80 mb-8 max-w-3xl">
-        Three names worth watching this week — based on shifts in structure, volume behavior, and trend momentum inside the model.
-        These are <span class="italic">not</span> trade signals, just directional ideas to keep on your radar.
-      </p>
-
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <!-- Idea 1 -->
-        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="font-semibold text-white text-xl">NVDA</h4>
-
-            <!-- LONG + High Conviction -->
-            <span class="flex items-center gap-1 text-xs bg-green-500/15 
-                         text-green-300 px-2 py-1 rounded-md border border-green-500/20">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                      d="M5 15l7-7 7 7" />
-              </svg>
-              LONG • High Conviction
-            </span>
-          </div>
-
-          <p class="text-white/70 text-sm">
-            Coiling near recent consolidation highs — strength in semis keeps it on the radar.
-          </p>
-
-          <div class="text-xs text-white/50 mt-3">Interest Level: High</div>
-          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
-            See full setup in TraderPal →
-          </a>
-        </div>
-
-        <!-- Idea 2 -->
-        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="font-semibold text-white text-xl">AAPL</h4>
-
-            <!-- LONG + Medium Conviction -->
-            <span class="flex items-center gap-1 text-xs bg-yellow-500/15 
-                         text-yellow-300 px-2 py-1 rounded-md border border-yellow-500/20">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                      d="M5 15l7-7 7 7" />
-              </svg>
-              LONG • Medium Conviction
-            </span>
-          </div>
-
-          <p class="text-white/70 text-sm">
-            Stabilizing after last week's pullback — watching for rotation back into mega-cap tech.
-          </p>
-
-          <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
-          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
-            See full setup in TraderPal →
-          </a>
-        </div>
-
-        <!-- Idea 3 -->
-        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="font-semibold text-white text-xl">SMCI</h4>
-
-            <!-- SHORT + Low Conviction -->
-            <span class="flex items-center gap-1 text-xs bg-red-500/15 
-                         text-red-300 px-2 py-1 rounded-md border border-red-500/20">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                      d="M19 9l-7 7-7-7" />
-              </svg>
-              SHORT • Low Conviction
-            </span>
-          </div>
-
-          <p class="text-white/70 text-sm">
-            Extended after recent volatility — monitoring for model-driven mean-reversion behavior.
-          </p>
-
-          <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
-          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
-            See full setup in TraderPal →
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Free Trial CTA -->
-      <div class="mt-14 text-center">
-        <div class="inline-block px-8 py-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-          <h3 class="text-2xl font-semibold text-white mb-2">Try TraderPal Free for 14 Days</h3>
-          <p class="text-white/70 text-sm mb-5 max-w-md mx-auto">
-            Experience daily ideas, regime scoring, conviction levels, and our Trade/No-Trade engine — completely free for your first 14 days.
-          </p>
-          <a href="#pricing"
-             class="inline-block bg-mwTeal text-black font-semibold px-6 py-2.5 rounded-xl hover:opacity-90 transition">
-            Start Free Trial →
-          </a>
-        </div>
-      </div>
-
-      <div class="mt-10 text-xs text-white/60 text-center italic">
-        Watchlist ideas are observational only — not trade signals.
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ / How the Product Works -->
+  <!-- FAQ / How the Product Works (MOVED UP) -->
   <section id="faq" class="bg-mwNavy/20 border-y border-white/5">
     <div class="container mx-auto px-4 py-16 max-w-[1200px]">
 
@@ -690,7 +317,7 @@
           </div>
         </article>
 
-        <!-- 4 — NEW FAQ -->
+        <!-- 4 -->
         <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
           <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
             <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -837,48 +464,442 @@
     });
   </script>
 
-  <!-- About + Watchlist (Upgraded messaging) -->
-  <section id="about" class="bg-mwNavy/20 border-y border-white/5">
-    <div class="container mx-auto px-4 py-20 max-w-[1200px]">
+  <!-- Trade Diary (public) -->
+  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
 
-      <!-- Our Story -->
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Story</h2>
-      <p class="text-white/80 leading-relaxed max-w-3xl mb-10">
-        SimpleStockPicks was created to give traders clarity in a chaotic market. We combine disciplined momentum models
-        with simple communication and transparency. Every idea ships with a clear thesis, entries, stops, targets, and a
-        post-mortem—logged in a public diary. The goal isn’t to be perfect—it’s to be consistent and accountable.
-      </p>
+      <!-- Title + CTA -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-3xl font-bold">Trade Diary & Performance</h2>
+          <p class="text-white/70 mt-1">Plain-English reasoning. Transparent results. Educational only.</p>
+        </div>
+        <a href="#pricing" class="text-mwTeal font-semibold whitespace-nowrap">
+          Subscribe to our Free Weekly Watchlist →
+        </a>
+      </div>
 
-      <!-- Watchlist Card -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+      <!-- Card wrapper (glass + teal glow) -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)] ring-1 ring-[rgba(28,229,184,0.18)] ring-inset">
 
-          <!-- Left text -->
-          <div class="md:flex-1">
-            <h3 class="text-xl md:text-2xl font-extrabold">Get the Free Weekly Watchlist</h3>
-            <p class="text-white/80 mt-2 leading-relaxed">
-              One email each week with our top 3 model-driven setups to keep an eye on — simple, beginner-friendly, and no charts required.
-            </p>
+        <!-- Top bar -->
+        <div class="bg-gradient-to-tr from-[rgba(28,229,184,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
+          <div class="text-sm text-white/80">Public Trade Diary</div>
+          <div class="text-xs text-white/50">Check Out Our Past Month Trades</div>
+        </div>
+
+        <!-- Month Selector -->
+        <div class="flex justify-end px-4 md:px-6 py-3 border-b border-white/10">
+          <div class="flex items-center gap-2 text-xs text-white/70">
+            <label class="hidden md:block">Month</label>
+            <select id="diaryMonth" class="px-3 py-2 rounded bg-white/10 border border-white/10 text-sm"></select>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="sticky top-0 z-10 bg-mwCharcoal/80 backdrop-blur">
+              <tr>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date (UTC)</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Type</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Notes</th>
+                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Realized</th>
+                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Unrealized</th>
+              </tr>
+            </thead>
+
+            <!-- rows injected by JS -->
+            <tbody id="diaryRows" class="[&>tr:nth-child(odd)]:bg-white/[0.03] [&>tr:nth-child(even)]:bg-white/[0.015] [&>tr:hover]:bg-white/[0.08] transition-colors"></tbody>
+
+            <tfoot>
+              <tr class="bg-white/[0.05] border-t border-white/10">
+                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">Last Month:</td>
+                <td id="monthTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
+              </tr>
+              <tr class="bg-white/[0.03]">
+                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD Return (MomentumWorks):</td>
+                <td id="ytdTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
+              </tr>
+              <tr class="bg-white/[0.02] border-t border-white/10">
+                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD vs SPY / QQQ:</td>
+                <td id="ytdCompare" colspan="2" class="p-4 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Card footer -->
+        <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10">
+          Educational only. Past performance is not indicative of future results.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- PRODUCTS SECTION WITH BILLING TOGGLE + DYNAMIC PRICING -->
+  <!-- ========================================================= -->
+
+  <!-- Anchor so #pricing scrolls here -->
+  <span id="pricing"></span>
+
+  <section id="products" class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <h2 class="text-3xl font-bold mb-6 text-center">Products</h2>
+
+    <p class="text-white/70 text-center max-w-2xl mx-auto mb-8">
+      Three ways to access the same model — from simple weekly emails to full daily dashboards with Regime, Conviction,
+      and Trade/No-Trade overlays.
+    </p>
+
+    <!-- Billing Toggle -->
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex rounded-full border border-white/10 bg-white/5 p-1 text-sm">
+        <button type="button"
+          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
+          data-billing="monthly" data-active="true">Monthly</button>
+
+        <button type="button"
+          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
+          data-billing="quarterly">Quarterly</button>
+
+        <button type="button"
+          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
+          data-billing="annual">Annual</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- StockBuddy -->
+      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+        <div>
+          <div class="text-sm uppercase tracking-wider text-white/60">Low Frequency</div>
+
+          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-pulseGreen"></span> StockBuddy
+          </h3>
+
+          <p class="mt-4 text-white/80 text-base leading-relaxed">
+            A simple weekly signal service — three clean setups every week with entries, stops, and targets. No noise, no extra layers.
+          </p>
+
+          <!-- Dynamic Price -->
+          <div class="mt-3 text-3xl font-bold text-pulseGreen"
+               data-price-monthly="99"
+               data-price-quarterly="249"
+               data-price-annual="899">
+
+            <span class="js-price-amount">$99</span>
+            <span class="text-base text-white/60 js-price-period">/mo</span>
           </div>
 
-          <!-- Right: input stacked over button -->
-          <form class="w-full md:w-[420px]" onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');">
+          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
+
+          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+            <li>3 curated trade ideas every week</li>
+            <li>Entry, stop-loss, and target levels</li>
+            <li>Short thesis behind each setup</li>
+            <li>Access to our public trading diary</li>
+            <li>Bare-bones signal format — clean and simple</li>
+          </ul>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <a href="#" class="inline-block text-pulseGreen font-semibold hover:underline">Subscribe →</a>
+        </div>
+      </div>
+
+      <!-- TraderPal -->
+      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+        <div>
+          <div class="text-sm uppercase tracking-wider text-white/60">Daily Signals</div>
+
+          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-torqueRed"></span> TraderPal
+          </h3>
+
+          <p class="mt-4 text-white/80 text-base leading-relaxed">
+            Daily trade ideas with full signal enhancement — Regime Score, Conviction Score, and a Trade/No-Trade recommendation for sharper decisions.
+          </p>
+
+          <!-- Dynamic Price -->
+          <div class="mt-3 text-3xl font-bold text-torqueRed"
+               data-price-monthly="299"
+               data-price-quarterly="749"
+               data-price-annual="2699">
+
+            <span class="js-price-amount">$299</span>
+            <span class="text-base text-white/60 js-price-period">/mo</span>
+          </div>
+
+          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
+
+          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+            <li>Everything in StockBuddy</li>
+            <li><strong>New trade ideas every market day</strong></li>
+            <li><strong>Regime Score:</strong> Hot · Warm · Icy · Cold</li>
+            <li><strong>Trade Suggestion:</strong> Trade · No Trade</li>
+            <li><strong>Conviction Score:</strong> High · Medium · Low</li>
+            <li>Full entries, stops, targets & thesis</li>
+          </ul>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <a href="#" class="inline-block text-torqueRed font-semibold hover:underline">Start 14-Day Free Trial →</a>
+        </div>
+      </div>
+
+      <!-- SignalClub -->
+      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+        <div>
+          <div class="text-sm uppercase tracking-wider text-white/60">Institutional</div>
+
+          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-swingBlue"></span> SignalClub
+          </h3>
+
+          <p class="mt-4 text-white/80 text-base leading-relaxed">
+            The full MomentumWorks ecosystem for power users — combining multi-signal dashboards, deeper analytics, and automated research.
+          </p>
+
+          <!-- Dynamic Price -->
+          <div class="mt-3 text-3xl font-bold text-swingBlue"
+               data-price-monthly="3999"
+               data-price-quarterly="10999"
+               data-price-annual="39999">
+
+            <span class="js-price-amount">$3,999</span>
+            <span class="text-base text-white/60 js-price-period">/mo</span>
+          </div>
+
+          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
+
+          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+            <li>Everything from StockBuddy + TraderPal</li>
+            <li>All signal dashboards</li>
+            <li>Deep dive into regimes, heat maps & more</li>
+            <li>Sector & industry rotation insights</li>
+            <li>LLM Copilot for advanced thesis generation</li>
+          </ul>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <a href="#" class="inline-block text-swingBlue font-semibold hover:underline">Coming Soon →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BILLING TOGGLE LOGIC -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".billing-toggle");
+    const pricingBlocks = document.querySelectorAll("[data-price-monthly]");
+
+    function updateBilling(mode) {
+      toggleButtons.forEach(btn => {
+        btn.dataset.active = btn.dataset.billing === mode ? "true" : "false";
+      });
+
+      pricingBlocks.forEach(block => {
+        const monthly = block.getAttribute("data-price-monthly");
+        const quarterly = block.getAttribute("data-price-quarterly");
+        const annual = block.getAttribute("data-price-annual");
+
+        const amount = block.querySelector(".js-price-amount");
+        const period = block.querySelector(".js-price-period");
+        const note = block.parentElement.querySelector(".js-price-note");
+
+        if (mode === "monthly") {
+          amount.textContent = `$${monthly}`;
+          period.textContent = "/mo";
+          note.textContent = "Billed monthly.";
+        }
+        if (mode === "quarterly") {
+          amount.textContent = `$${quarterly}`;
+          period.textContent = "/qtr";
+          note.textContent = "Billed quarterly — save ~15%.";
+        }
+        if (mode === "annual") {
+          amount.textContent = `$${annual}`;
+          period.textContent = "/yr";
+          note.textContent = "Billed annually — save ~25%.";
+        }
+      });
+    }
+
+    toggleButtons.forEach(btn => {
+      btn.addEventListener("click", () => updateBilling(btn.dataset.billing));
+    });
+
+    updateBilling("monthly");
+  });
+  </script>
+
+  <!-- Weekly Watchlist (REWRITTEN + EMAIL CAPTURE MERGED) -->
+  <section id="watchlist" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-3xl font-bold">Weekly Watchlist</h2>
+          <p class="text-white/80 mt-2 max-w-xl">
+            Three names worth watching this week — based on shifts in structure, volume behavior, and trend momentum inside the model.
+            These are <span class="italic">not</span> trade signals, just directional ideas to keep on your radar.
+          </p>
+        </div>
+        <a href="#pricing" class="text-mwTeal font-semibold hover:underline whitespace-nowrap">
+          See full setups in TraderPal →
+        </a>
+      </div>
+
+      <!-- 3 Tiles -->
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+        <!-- Idea 1 -->
+        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-semibold text-white text-xl">NVDA</h4>
+
+            <!-- LONG + High Conviction -->
+            <span class="flex items-center gap-1 text-xs bg-green-500/15 
+                         text-green-300 px-2 py-1 rounded-md border border-green-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 15l7-7 7 7" />
+              </svg>
+              LONG • High Conviction
+            </span>
+          </div>
+
+          <p class="text-white/70 text-sm">
+            Coiling near recent consolidation highs — strength in semis keeps it on the radar.
+          </p>
+
+          <div class="text-xs text-white/50 mt-3">Interest Level: High</div>
+          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
+            See the full NVDA model view →
+          </a>
+        </div>
+
+        <!-- Idea 2 -->
+        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-semibold text-white text-xl">AAPL</h4>
+
+            <!-- LONG + Medium Conviction -->
+            <span class="flex items-center gap-1 text-xs bg-yellow-500/15 
+                         text-yellow-300 px-2 py-1 rounded-md border border-yellow-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 15l7-7 7 7" />
+              </svg>
+              LONG • Medium Conviction
+            </span>
+          </div>
+
+          <p class="text-white/70 text-sm">
+            Stabilizing after last week's pullback — watching for rotation back into mega-cap tech.
+          </p>
+
+          <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
+          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
+            See the full AAPL model view →
+          </a>
+        </div>
+
+        <!-- Idea 3 -->
+        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-semibold text-white text-xl">SMCI</h4>
+
+            <!-- SHORT + Low Conviction -->
+            <span class="flex items-center gap-1 text-xs bg-red-500/15 
+                         text-red-300 px-2 py-1 rounded-md border border-red-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M19 9l-7 7-7-7" />
+              </svg>
+              SHORT • Low Conviction
+            </span>
+          </div>
+
+          <p class="text-white/70 text-sm">
+            Extended after recent volatility — monitoring for model-driven mean-reversion behavior.
+          </p>
+
+          <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
+          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
+            See the full SMCI model view →
+          </a>
+        </div>
+
+      </div>
+
+      <!-- EMAIL CAPTURE CARD (moved here from About) -->
+      <div class="mt-4 text-center">
+        <div class="inline-block w-full md:w-auto max-w-2xl px-8 py-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+          <h3 class="text-2xl font-semibold text-white mb-2">Get the Free Weekly Watchlist in Your Inbox</h3>
+          <p class="text-white/70 text-sm mb-5">
+            One email each week with our top 3 model-driven setups to keep an eye on — simple, beginner-friendly, and no charts required.
+          </p>
+          <form class="flex flex-col md:flex-row gap-3 justify-center"
+                onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');">
             <input
               type="email"
               placeholder="yourname@email.com"
               required
-              class="w-full px-4 py-3 rounded-md bg-white text-mwCharcoal placeholder-gray-500 focus:outline-none"
+              class="w-full md:w-64 px-4 py-3 rounded-md bg-white text-mwCharcoal placeholder-gray-500 focus:outline-none"
             />
             <button
-              class="w-full mt-3 bg-mwTeal text-mwCharcoal font-semibold py-3 rounded-md hover:opacity-90 transition"
+              class="w-full md:w-auto bg-mwTeal text-mwCharcoal font-semibold py-3 px-6 rounded-md hover:opacity-90 transition"
               type="submit"
             >
               Get This Week’s Picks
             </button>
           </form>
-
+          <p class="mt-3 text-[11px] text-white/50">
+            No spam, no promotions — just one concise email each week. Educational only.
+          </p>
         </div>
       </div>
+
+      <div class="mt-10 text-xs text-white/60 text-center italic">
+        Watchlist ideas are observational only — not trade signals or recommendations.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-20 max-w-[1200px]">
+
+      <!-- Our Story -->
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Story</h2>
+      <p class="text-white/80 leading-relaxed max-w-3xl mb-4">
+        SimpleStockPicks was created to give traders clarity in a chaotic market. We combine disciplined momentum models
+        with simple communication and transparency. Every idea ships with a clear thesis, entries, stops, targets, and a
+        post-mortem — logged in a public diary.
+      </p>
+      <p class="text-white/75 leading-relaxed max-w-3xl mb-6">
+        The goal isn’t to be perfect — it’s to be consistent and accountable. You see the logic, the structure, and the outcome.
+        No hidden trades, no selective screenshots, no hype.
+      </p>
+
+      <p class="text-white/70 text-sm">
+        Want to see what a typical week looks like?
+        <a href="#watchlist" class="text-mwTeal hover:underline">Join the free Weekly Watchlist</a> or
+        <a href="#diary" class="text-mwTeal hover:underline">browse the public Trade Diary</a>.
+      </p>
+
     </div>
   </section>
 
@@ -934,7 +955,9 @@
           <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
           <span class="font-semibold">SimpleStockPicks</span>
         </div>
-        <p class="text-white/60 mt-3">Educational content only. Not investment advice. Past performance is not indicative of future results.</p>
+        <p class="text-white/60 mt-3">
+          Educational content only. Not investment advice. Past performance is not indicative of future results.
+        </p>
       </div>
       <div>
         <h4 class="font-semibold mb-2">Product</h4>
@@ -961,15 +984,17 @@
         </ul>
       </div>
     </div>
-    <div class="text-center text-white/50 text-xs pb-8">© <span id="year"></span> SimpleStockPicks All rights reserved.</div>
+    <div class="text-center text-white/50 text-xs pb-8">
+      © <span id="year"></span> SimpleStockPicks. All rights reserved.
+    </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
+  <!-- Trending tabs UX (if you add them later; safe with no elements present) -->
   <script>
-    // Trending tabs UX (static demo)
     const tabs = document.querySelectorAll('.trend-tab');
     const panels = document.querySelectorAll('.trend-panel');
     function activateTab(el){
@@ -985,6 +1010,7 @@
     });
   </script>
 
+  <!-- Trade Diary Demo Script -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     // ---- Dummy data ----
@@ -1029,7 +1055,7 @@
     // ---- Populate months ----
     function populateMonths(data){
       const sel = $("#diaryMonth");
-      if(!sel) return; // safety
+      if(!sel) return;
       const months = data.months?.length
         ? data.months
         : Array.from(new Set((data.trades||[]).map(t => monthFromDate(t.date_close || t.date_open)))).sort();
@@ -1041,7 +1067,7 @@
     function renderDiary(data){
       const sel = $("#diaryMonth");
       const body = $("#diaryRows");
-      if(!sel || !body) return; // safety
+      if(!sel || !body) return;
 
       const month = sel.value;
       const rows = (data.trades||[]).filter(t => monthFromDate(t.date_close || t.date_open) === month);
