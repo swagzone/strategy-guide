@@ -947,51 +947,66 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/5">
-    <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
-      <div>
-        <div class="flex items-center gap-2">
-          <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
-          <span class="font-semibold">SimpleStockPicks</span>
-        </div>
-        <p class="text-white/60 mt-3">
-          Educational content only. Not investment advice. Past performance is not indicative of future results.
-        </p>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-2">Product</h4>
-        <ul class="space-y-1 text-white/70">
-          <li><a href="#products" class="hover:text-mwTeal">StockBuddy</a></li>
-          <li><a href="#products" class="hover:text-mwTeal">TraderPal</a></li>
-          <li><a href="#products" class="hover:text-mwTeal">SignalClub</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-2">Company</h4>
-        <ul class="space-y-1 text-white/70">
-          <li><a href="#about" class="hover:text-mwTeal">About</a></li>
-          <li><a href="#blog" class="hover:text-mwTeal">Blog</a></li>
-          <li><a href="#pricing" class="hover:text-mwTeal">Pricing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-2">Legal</h4>
-        <ul class="space-y-1 text-white/70">
-          <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
-          <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
-          <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="text-center text-white/50 text-xs pb-8">
-      © <span id="year"></span> SimpleStockPicks. All rights reserved.
-    </div>
-  </footer>
+ <!-- Footer -->
+<footer class="border-t border-white/5">
+  <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- Logo + Disclaimer -->
+    <div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
+        <span class="font-semibold">SimpleStockPicks</span>
+      </div>
+
+      <p class="text-white/60 mt-3">
+        SimpleStockPicks provides educational market commentary only and is not a registered investment adviser.
+        Nothing on this site is investment, tax, or legal advice. Past performance is not indicative of future results.
+        You are solely responsible for your investment decisions.
+      </p>
+    </div>
+
+    <!-- Product -->
+    <div>
+      <h4 class="font-semibold mb-2">Product</h4>
+      <ul class="space-y-1 text-white/70">
+        <li><a href="#products" class="hover:text-mwTeal">StockBuddy</a></li>
+        <li><a href="#products" class="hover:text-mwTeal">TraderPal</a></li>
+        <li><a href="#products" class="hover:text-mwTeal">SignalClub</a></li>
+      </ul>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <h4 class="font-semibold mb-2">Company</h4>
+      <ul class="space-y-1 text-white/70">
+        <li><a href="#about" class="hover:text-mwTeal">About</a></li>
+        <li><a href="#blog" class="hover:text-mwTeal">Blog</a></li>
+        <li><a href="#pricing" class="hover:text-mwTeal">Pricing</a></li>
+      </ul>
+    </div>
+
+    <!-- Legal -->
+    <div>
+      <h4 class="font-semibold mb-2">Legal</h4>
+      <ul class="space-y-1 text-white/70">
+        <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
+        <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
+        <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="text-center text-white/50 text-xs pb-8">
+    © <span id="year"></span> SimpleStockPicks. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 
   <!-- Trending tabs UX (if you add them later; safe with no elements present) -->
   <script>
