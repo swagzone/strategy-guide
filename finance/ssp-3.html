@@ -1,0 +1,1076 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SimpleStockPicks – Simple stock picks, clearly explained.</title>
+  <meta name="description" content="SimpleStockPicks delivers transparent, momentum-driven trade ideas for retail traders and active pros. Public trade diary, clear signals, and a dashboard with an AI copilot." />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="MomentumWorks – Trade with rhythm, not noise." />
+  <meta property="og:description" content="Transparent momentum signals, public trade diary, StockBuddy/TraderPal/SignalClub tiers, and an AI copilot for pros." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://momentumworks.example" />
+  <meta property="og:image" content="https://momentumworks.example/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mwNavy: '#0A1F44',
+            mwCharcoal: '#0f172a',
+            mwTeal: '#1CE5B8',
+            pulseGreen: '#3EDC81',
+            torqueRed: '#E63946',
+            swingBlue: '#2B4C9A',
+            swingGold: '#F9C74F'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "",
+    "url": "https://momentumworks.example",
+    "logo": "https://momentumworks.example/logo.png",
+    "sameAs": [
+      "https://twitter.com/yourhandle",
+      "https://instagram.com/yourhandle",
+      "https://www.reddit.com/user/yourhandle"
+    ]
+  }
+  </script>
+  <style>
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); }
+    .container { max-width: 1200px; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-mwCharcoal text-white font-sans">
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 bg-mwCharcoal/80 border-b border-white/5">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#top" class="flex items-center gap-2 group">
+        <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">
+          SSP
+        </div>
+        <span class="text-lg tracking-wide font-semibold">SimpleStockPicks</span>
+      </a>
+
+      <!-- Main Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#diary" class="hover:text-mwTeal">Trade Diary</a>
+        <a href="#faq" class="hover:text-mwTeal">How It Works</a>
+        <a href="#watchlist" class="hover:text-mwTeal">Weekly Watchlist</a>
+        <a href="#products" class="hover:text-mwTeal">Products &amp; Pricing</a>
+        <a href="#blog" class="hover:text-mwTeal">Blog</a>
+        <a href="#about" class="hover:text-mwTeal">About</a>
+      </nav>
+
+      <!-- Primary CTA -->
+      <a href="#products"
+         class="hidden md:inline-flex items-center gap-2 bg-mwTeal text-mwCharcoal px-4 py-2 rounded font-semibold">
+        Start TraderPal Free
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative overflow-hidden">
+    <!-- Static chart background -->
+    <div class="absolute inset-0 opacity-20" aria-hidden="true">
+      <svg id="mwHeroSvg" viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
+        <defs>
+          <linearGradient id="mwArea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1CE5B8" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#1CE5B8" stop-opacity="0.05"/>
+          </linearGradient>
+
+          <filter id="mwGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <!-- Main uptrending line with strong ramp at the end -->
+          <path id="mwPath" fill="none" stroke="#1CE5B8" stroke-width="2.8"
+            d="
+              M    0,360
+              C   80,350   120,355   170,335
+              C  230,315   280,338   330,312
+              C  390,288   430,300   480,275
+              C  530,252   570,262   620,242
+              C  670,225   710,235   760,220
+              C  810,208   850,218   890,205
+              C  920,195   950,185   980,170
+              C 1005,158 1035,142 1065,124
+              C 1085,112 1100,104 1115, 94
+              C 1125, 86 1135, 78 1145, 69
+              C 1155, 61 1165, 52 1175, 44
+              C 1185, 38 1193, 34 1200, 31
+            "/>
+
+          <!-- Matching filled area under the line -->
+          <path id="mwAreaPath" fill="url(#mwArea)"
+            d="
+              M    0,360
+              C   80,350   120,355   170,335
+              C  230,315   280,338   330,312
+              C  390,288   430,300   480,275
+              C  530,252   570,262   620,242
+              C  670,225   710,235   760,220
+              C  810,208   850,218   890,205
+              C  920,195   950,185   980,170
+              C 1005,158 1035,142 1065,124
+              C 1085,112 1100,104 1115, 94
+              C 1125, 86 1135, 78 1145, 69
+              C 1155, 61 1165, 52 1175, 44
+              C 1185, 38 1193, 34 1200, 31
+              L 1200,400 L 0,400 Z
+            "/>
+        </defs>
+
+        <!-- Draw static chart -->
+        <use href="#mwAreaPath"></use>
+        <use href="#mwPath"></use>
+
+        <!-- Gridlines -->
+        <g opacity="0.25">
+          <line x1="0" y1="100" x2="1200" y2="100" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+          <line x1="0" y1="200" x2="1200" y2="200" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+          <line x1="0" y1="300" x2="1200" y2="300" stroke="#1CE5B8" stroke-dasharray="4 8"/>
+        </g>
+
+        <!-- Glowing dot riding the curve -->
+        <circle id="mwDot" r="7" fill="#00FFD0" stroke="white" stroke-width="2" filter="url(#mwGlow)"></circle>
+      </svg>
+    </div>
+
+    <div class="container mx-auto px-4 py-20 md:py-28 relative max-w-[1200px]">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Trade with <span class="text-mwTeal">rhythm</span>, not noise.
+        </h1>
+        <p class="mt-5 text-white/80 text-lg md:text-xl">
+          Transparent, AI-powered trade ideas and research.<br>
+          Built for people who want simplicity over noise.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#pricing" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">
+            Get A 14 Day Free Trial With TraderPal
+          </a>
+          <a href="#diary" class="border border-white/20 px-6 py-3 rounded font-semibold">
+            Review Our Trade Diary
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #mwDot {
+      animation: mwDotPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes mwDotPulse {
+      0%   { r: 6; opacity: 0.8; }
+      50%  { r: 8; opacity: 1; }
+      100% { r: 6; opacity: 0.8; }
+    }
+  </style>
+
+  <script>
+    // Dot moves smoothly along the line left → right (fixed chart)
+    (() => {
+      const path = document.getElementById('mwPath');
+      const dot = document.getElementById('mwDot');
+      const pathLen = path.getTotalLength();
+      const duration = 6000; // 6s = snappier, high-energy feel
+      let start = performance.now();
+
+      function animate(now) {
+        const elapsed = (now - start) % duration;
+        const progress = elapsed / duration;
+        const len = progress * pathLen;
+        const pt = path.getPointAtLength(len);
+        dot.setAttribute('cx', pt.x);
+        dot.setAttribute('cy', pt.y);
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    })();
+  </script>
+
+  <section id="philosophy" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-20 md:py-28">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+          Built for traders who want to <span class="text-mwTeal">think less</span> and win more.
+        </h2>
+        <p class="text-white/80 text-lg md:text-xl mb-6">
+          SimpleStockPicks empowers retail investors to follow disciplined, transparent momentum strategies — built on data, not hype.
+        </p>
+        <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8">
+          We simplify professional trading by breaking it down into clear, actionable insights that anyone can learn from.
+          Every idea is explained in plain English — no jargon, no guesswork — so you can learn to trade with confidence, discipline, and rhythm.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#diary" class="bg-mwTeal text-mwCharcoal px-6 py-3 rounded font-semibold">
+            Explore the Trade Diary
+          </a>
+          <a href="#pricing" class="border border-white/20 px-6 py-3 rounded font-semibold">
+            Start Your 14-Day TraderPal Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trade Diary (public) -->
+  <section id="diary" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+
+      <!-- Title + CTA -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-3xl font-bold">Trade Diary & Performance</h2>
+          <p class="text-white/70 mt-1">Plain-English reasoning. Transparent results. Educational only.</p>
+        </div>
+        <a href="#pricing" class="text-mwTeal font-semibold whitespace-nowrap">
+          Subscribe to our Free Weekly Watchlist →
+        </a>
+      </div>
+
+      <!-- Card wrapper (glass + teal glow) -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)] ring-1 ring-[rgba(28,229,184,0.18)] ring-inset">
+
+        <!-- Top bar -->
+        <div class="bg-gradient-to-tr from-[rgba(28,229,184,0.16)] to-transparent px-4 md:px-6 py-3 flex items-center justify-between">
+          <div class="text-sm text-white/80">Public Trade Diary</div>
+          <div class="text-xs text-white/50">Check Out Our Past Month Trades</div>
+        </div>
+
+        <!-- Month Selector -->
+        <div class="flex justify-end px-4 md:px-6 py-3 border-b border-white/10">
+          <div class="flex items-center gap-2 text-xs text-white/70">
+            <label class="hidden md:block">Month</label>
+            <select id="diaryMonth" class="px-3 py-2 rounded bg-white/10 border border-white/10 text-sm"></select>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="sticky top-0 z-10 bg-mwCharcoal/80 backdrop-blur">
+              <tr>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Date (UTC)</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Ticker</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Type</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Status</th>
+                <th class="p-4 text-left text-xs font-semibold uppercase tracking-wider text-white/70">Notes</th>
+                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Realized</th>
+                <th class="p-4 text-right text-xs font-semibold uppercase tracking-wider text-white/70">% Unrealized</th>
+              </tr>
+            </thead>
+
+            <!-- your JS will inject rows here -->
+            <tbody id="diaryRows" class="[&>tr:nth-child(odd)]:bg-white/[0.03] [&>tr:nth-child(even)]:bg-white/[0.015] [&>tr:hover]:bg-white/[0.08] transition-colors"></tbody>
+
+            <tfoot>
+              <tr class="bg-white/[0.05] border-t border-white/10">
+                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">Last Month:</td>
+                <td id="monthTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
+              </tr>
+              <tr class="bg-white/[0.03]">
+                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD Return (MomentumWorks):</td>
+                <td id="ytdTotal" colspan="2" class="p-4 text-right text-lg font-bold text-emerald-400">+0.00%</td>
+              </tr>
+              <tr class="bg-white/[0.02] border-t border-white/10">
+                <td colspan="5" class="p-4 text-right text-sm font-semibold text-white/80">YTD vs SPY / QQQ:</td>
+                <td id="ytdCompare" colspan="2" class="p-4 text-right text-sm text-white/80">SPY +8.3% | QQQ +12.4%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Card footer -->
+        <div class="px-4 md:px-6 py-3 text-xs text-white/60 border-t border-white/10">
+          Educational only. Past performance is not indicative of future results.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- PRODUCTS SECTION WITH BILLING TOGGLE + DYNAMIC PRICING -->
+  <!-- ========================================================= -->
+
+  <!-- Anchor so #pricing scrolls here -->
+  <span id="pricing"></span>
+
+  <section id="products" class="container mx-auto px-4 py-16 max-w-[1200px]">
+    <h2 class="text-3xl font-bold mb-6 text-center">Products</h2>
+
+    <!-- Billing Toggle -->
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex rounded-full border border-white/10 bg-white/5 p-1 text-sm">
+        <button type="button"
+          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
+          data-billing="monthly" data-active="true">Monthly</button>
+
+        <button type="button"
+          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
+          data-billing="quarterly">Quarterly</button>
+
+        <button type="button"
+          class="billing-toggle px-4 py-1 rounded-full transition-colors data-[active=true]:bg-white data-[active=true]:text-black"
+          data-billing="annual">Annual</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- ========================================================= -->
+      <!-- StockBuddy -->
+      <!-- ========================================================= -->
+      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+        <div>
+          <div class="text-sm uppercase tracking-wider text-white/60">Low Frequency</div>
+
+          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-pulseGreen"></span> StockBuddy
+          </h3>
+
+          <p class="mt-4 text-white/80 text-base leading-relaxed">
+            A simple weekly signal service — three clean setups every week with entries, stops, and targets. No noise, no extra layers.
+          </p>
+
+          <!-- Dynamic Price -->
+          <div class="mt-3 text-3xl font-bold text-pulseGreen"
+               data-price-monthly="99"
+               data-price-quarterly="249"
+               data-price-annual="899">
+
+            <span class="js-price-amount">$99</span>
+            <span class="text-base text-white/60 js-price-period">/mo</span>
+          </div>
+
+          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
+
+          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+            <li>3 curated trade ideas every week</li>
+            <li>Entry, stop-loss, and target levels</li>
+            <li>Short thesis behind each setup</li>
+            <li>Access to our public trading diary</li>
+            <li>Bare-bones signal format — clean and simple</li>
+          </ul>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <a href="#" class="inline-block text-pulseGreen font-semibold hover:underline">Subscribe →</a>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- TraderPal -->
+      <!-- ========================================================= -->
+      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+        <div>
+          <div class="text-sm uppercase tracking-wider text-white/60">Daily Signals</div>
+
+          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-torqueRed"></span> TraderPal
+          </h3>
+
+          <p class="mt-4 text-white/80 text-base leading-relaxed">
+            Daily trade ideas with full signal enhancement — Regime Score, Conviction Score, and a Trade/No-Trade recommendation for sharper decisions.
+          </p>
+
+          <!-- Dynamic Price -->
+          <div class="mt-3 text-3xl font-bold text-torqueRed"
+               data-price-monthly="299"
+               data-price-quarterly="749"
+               data-price-annual="2699">
+
+            <span class="js-price-amount">$299</span>
+            <span class="text-base text-white/60 js-price-period">/mo</span>
+          </div>
+
+          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
+
+          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-inside leading-relaxed">
+            <li>Everything in StockBuddy</li>
+            <li><strong>New trade ideas every market day</strong></li>
+            <li><strong>Regime Score:</strong> Hot · Warm · Icy · Cold</li>
+            <li><strong>Trade Suggestion:</strong> Trade · No Trade</li>
+            <li><strong>Conviction Score:</strong> High · Medium · Low</li>
+            <li>Full entries, stops, targets & thesis</li>
+          </ul>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <a href="#" class="inline-block text-torqueRed font-semibold hover:underline">Start 14-Day Free Trial →</a>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- SignalClub -->
+      <!-- ========================================================= -->
+      <div class="rounded-2xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col">
+        <div>
+          <div class="text-sm uppercase tracking-wider text-white/60">Institutional</div>
+
+          <h3 class="mt-2 text-3xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-swingBlue"></span> SignalClub
+          </h3>
+
+          <p class="mt-4 text-white/80 text-base leading-relaxed">
+            The full MomentumWorks ecosystem for power users — combining multi-signal dashboards, deeper analytics, and automated research.
+          </p>
+
+          <!-- Dynamic Price -->
+          <div class="mt-3 text-3xl font-bold text-swingBlue"
+               data-price-monthly="3999"
+               data-price-quarterly="10999"
+               data-price-annual="39999">
+
+            <span class="js-price-amount">$3,999</span>
+            <span class="text-base text-white/60 js-price-period">/mo</span>
+          </div>
+
+          <p class="mt-1 text-xs text-white/60 js-price-note">Billed monthly.</p>
+
+          <ul class="mt-5 space-y-2 text-white/80 text-sm list-disc list-accent leading-relaxed">
+            <li>Everything from StockBuddy + TraderPal</li>
+            <li>All signal dashboards</li>
+            <li>Deep dive into regimes, heat maps & more</li>
+            <li>Sector & industry rotation insights</li>
+            <li>LLM Copilot for advanced thesis generation</li>
+          </ul>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <a href="#" class="inline-block text-swingBlue font-semibold hover:underline">Coming Soon →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- BILLING TOGGLE LOGIC -->
+  <!-- ========================================================= -->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".billing-toggle");
+    const pricingBlocks = document.querySelectorAll("[data-price-monthly]");
+
+    function updateBilling(mode) {
+      toggleButtons.forEach(btn => {
+        btn.dataset.active = btn.dataset.billing === mode ? "true" : "false";
+      });
+
+      pricingBlocks.forEach(block => {
+        const monthly = block.getAttribute("data-price-monthly");
+        const quarterly = block.getAttribute("data-price-quarterly");
+        const annual = block.getAttribute("data-price-annual");
+
+        const amount = block.querySelector(".js-price-amount");
+        const period = block.querySelector(".js-price-period");
+        const note = block.parentElement.querySelector(".js-price-note");
+
+        if (mode === "monthly") {
+          amount.textContent = `$${monthly}`;
+          period.textContent = "/mo";
+          note.textContent = "Billed monthly.";
+        }
+        if (mode === "quarterly") {
+          amount.textContent = `$${quarterly}`;
+          period.textContent = "/qtr";
+          note.textContent = "Billed quarterly — save ~15%.";
+        }
+        if (mode === "annual") {
+          amount.textContent = `$${annual}`;
+          period.textContent = "/yr";
+          note.textContent = "Billed annually — save ~25%.";
+        }
+      });
+    }
+
+    toggleButtons.forEach(btn => {
+      btn.addEventListener("click", () => updateBilling(btn.dataset.billing));
+    });
+
+    updateBilling("monthly");
+  });
+  </script>
+
+  <!-- Weekly Watchlist -->
+  <section id="watchlist" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+
+      <div class="flex items-center justify-between mb-10">
+        <h2 class="text-3xl font-bold">Weekly Watchlist</h2>
+        <a href="#pricing" class="text-mwTeal font-semibold hover:underline">
+          Full setups in StockBuddy & TraderPal →
+        </a>
+      </div>
+
+      <p class="text-white/80 mb-8 max-w-3xl">
+        Three names worth watching this week — based on shifts in structure, volume behavior, and trend momentum inside the model.
+        These are <span class="italic">not</span> trade signals, just directional ideas to keep on your radar.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Idea 1 -->
+        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-semibold text-white text-xl">NVDA</h4>
+
+            <!-- LONG + High Conviction -->
+            <span class="flex items-center gap-1 text-xs bg-green-500/15 
+                         text-green-300 px-2 py-1 rounded-md border border-green-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 15l7-7 7 7" />
+              </svg>
+              LONG • High Conviction
+            </span>
+          </div>
+
+          <p class="text-white/70 text-sm">
+            Coiling near recent consolidation highs — strength in semis keeps it on the radar.
+          </p>
+
+          <div class="text-xs text-white/50 mt-3">Interest Level: High</div>
+          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
+            See full setup in TraderPal →
+          </a>
+        </div>
+
+        <!-- Idea 2 -->
+        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-semibold text-white text-xl">AAPL</h4>
+
+            <!-- LONG + Medium Conviction -->
+            <span class="flex items-center gap-1 text-xs bg-yellow-500/15 
+                         text-yellow-300 px-2 py-1 rounded-md border border-yellow-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 15l7-7 7 7" />
+              </svg>
+              LONG • Medium Conviction
+            </span>
+          </div>
+
+          <p class="text-white/70 text-sm">
+            Stabilizing after last week's pullback — watching for rotation back into mega-cap tech.
+          </p>
+
+          <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
+          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
+            See full setup in TraderPal →
+          </a>
+        </div>
+
+        <!-- Idea 3 -->
+        <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-semibold text-white text-xl">SMCI</h4>
+
+            <!-- SHORT + Low Conviction -->
+            <span class="flex items-center gap-1 text-xs bg-red-500/15 
+                         text-red-300 px-2 py-1 rounded-md border border-red-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M19 9l-7 7-7-7" />
+              </svg>
+              SHORT • Low Conviction
+            </span>
+          </div>
+
+          <p class="text-white/70 text-sm">
+            Extended after recent volatility — monitoring for model-driven mean-reversion behavior.
+          </p>
+
+          <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
+          <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
+            See full setup in TraderPal →
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Free Trial CTA -->
+      <div class="mt-14 text-center">
+        <div class="inline-block px-8 py-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <h3 class="text-2xl font-semibold text-white mb-2">Try TraderPal Free for 14 Days</h3>
+          <p class="text-white/70 text-sm mb-5 max-w-md mx-auto">
+            Experience daily ideas, regime scoring, conviction levels, and our Trade/No-Trade engine — completely free for your first 14 days.
+          </p>
+          <a href="#pricing"
+             class="inline-block bg-mwTeal text-black font-semibold px-6 py-2.5 rounded-xl hover:opacity-90 transition">
+            Start Free Trial →
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10 text-xs text-white/60 text-center italic">
+        Watchlist ideas are observational only — not trade signals.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ / How the Product Works -->
+  <section id="faq" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+
+      <div class="flex items-center justify-between mb-10">
+        <h2 class="text-3xl font-bold">FAQ — How to Use the Product</h2>
+        <a href="#pricing" class="text-mwTeal font-semibold hover:underline">Start with TraderPal →</a>
+      </div>
+
+      <!-- FAQ GRID -->
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- 1 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What is the Regime Score?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              The Regime Score is a simple “market weather” label: Hot, Warm, Icy, or Cold.
+              It reflects how clean or choppy the overall environment is based on our model.
+            </p>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What does Trade / No Trade mean?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              This is our internal stability filter. “Trade” means the environment looks normal for setups.
+              “No Trade” means conditions are irregular or volatile. It’s not advice — just a signal from our system.
+            </p>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What is a Conviction Score?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              A clarity indicator for each setup: High, Medium, or Low.
+              It simply reflects how clean the structure looks in our model — not the outcome.
+            </p>
+          </div>
+        </article>
+
+        <!-- 4 — NEW FAQ -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What is a Long and what is a Short?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              A “Long” simply means the structure is pointing upward in our model — the idea is aligned with upward momentum.
+              A “Short” means the structure is pointing downward — aligned with downward momentum.
+              These labels show direction bias only. They are not recommendations to buy or sell.
+            </p>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What comes inside a trade idea?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              Each idea includes a ticker, direction bias, entry zone, stop zone, and target zone —
+              the basic structure of the model. No indicators or charting are required.
+            </p>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What is an Entry Zone?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              The price area where the setup becomes active according to our model.
+              It’s not a recommendation — just the point where the structure begins.
+            </p>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What is a Stop Zone?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              The area where the idea becomes invalid in our model.
+              It helps you understand when the structure breaks — how you use it is fully up to you.
+            </p>
+          </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What is a Target?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              A target is the model’s reference zone where the move completes structurally.
+              It’s not meant to dictate when you should exit — users can hold longer, exit earlier, scale out,
+              or do anything they prefer. It simply marks the model’s projected completion point.
+            </p>
+          </div>
+        </article>
+
+        <!-- 9 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">Do I need trading knowledge to use this?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              No. Ideas are written in plain language so beginners can follow the structure without charts or tools.
+            </p>
+          </div>
+        </article>
+
+        <!-- 10 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">What’s the difference between StockBuddy and TraderPal?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              StockBuddy provides 3 simplified ideas each week.
+              TraderPal provides new ideas daily plus the Regime Score, Conviction Score, and Trade/No-Trade filter.
+            </p>
+          </div>
+        </article>
+
+        <!-- 11 -->
+        <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+          <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+            <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+            <h3 class="font-semibold text-white flex-1">How am I supposed to use these ideas?</h3>
+          </button>
+          <div class="faq-content px-6 pb-6 hidden">
+            <p class="text-white/80 text-sm">
+              Most users track the ideas on their own platform, use them for awareness, or use them to build routine.
+              The ideas present the model — how you apply it is fully your choice.
+            </p>
+          </div>
+        </article>
+
+        <!-- AI FUTURE PLACEHOLDER -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/10 backdrop-blur-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 flex items-center justify-center rounded-full bg-mwTeal/20 text-mwTeal text-xs">AI</div>
+            <div>
+              <h3 class="font-semibold text-white">AI-Generated FAQs (Coming Soon)</h3>
+              <p class="text-white/80 text-sm mt-2">
+                In the future, this section will auto-generate answers based on what users ask most —
+                fully anonymous, real usage data, updated live.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="mt-8 text-sm text-white/70 text-center">
+        For all tools, signals, and daily ideas:
+        <a href="#pricing" class="text-mwTeal hover:underline">Start TraderPal Free for 14 Days</a>.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ ACCORDION SCRIPT -->
+  <script>
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+  <!-- About + Watchlist (Upgraded messaging) -->
+  <section id="about" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-20 max-w-[1200px]">
+
+      <!-- Our Story -->
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Story</h2>
+      <p class="text-white/80 leading-relaxed max-w-3xl mb-10">
+        SimpleStockPicks was created to give traders clarity in a chaotic market. We combine disciplined momentum models
+        with simple communication and transparency. Every idea ships with a clear thesis, entries, stops, targets, and a
+        post-mortem—logged in a public diary. The goal isn’t to be perfect—it’s to be consistent and accountable.
+      </p>
+
+      <!-- Watchlist Card -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+
+          <!-- Left text -->
+          <div class="md:flex-1">
+            <h3 class="text-xl md:text-2xl font-extrabold">Get the Free Weekly Watchlist</h3>
+            <p class="text-white/80 mt-2 leading-relaxed">
+              One email each week with our top 3 model-driven setups to keep an eye on — simple, beginner-friendly, and no charts required.
+            </p>
+          </div>
+
+          <!-- Right: input stacked over button -->
+          <form class="w-full md:w-[420px]" onsubmit="event.preventDefault(); alert('Thanks! Connect your email provider to capture this form.');">
+            <input
+              type="email"
+              placeholder="yourname@email.com"
+              required
+              class="w-full px-4 py-3 rounded-md bg-white text-mwCharcoal placeholder-gray-500 focus:outline-none"
+            />
+            <button
+              class="w-full mt-3 bg-mwTeal text-mwCharcoal font-semibold py-3 rounded-md hover:opacity-90 transition"
+              type="submit"
+            >
+              Get This Week’s Picks
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Preview -->
+  <section id="blog" class="bg-mwNavy/20 border-y border-white/5">
+    <div class="container mx-auto px-4 py-16 max-w-[1200px]">
+      <div class="flex items-center justify-between mb-10">
+        <h2 class="text-3xl font-bold">From the Blog</h2>
+        <a href="#" class="text-mwTeal font-semibold hover:underline">View all →</a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Blog 1 -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <h3 class="text-xl font-bold text-white">Understanding the Regime Score</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            Hot, Warm, Icy, Cold — what do these labels actually mean? A simple breakdown of how we measure
+            market “weather” inside the model so traders can understand the environment at a glance.
+          </p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Blog 2 -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <h3 class="text-xl font-bold text-white">How to Read Our Trade Ideas</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            For beginners and experienced users alike — here’s how to interpret entries, stop zones, and targets
+            in a simple model-driven format without charts, indicators, or technical complexity.
+          </p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+        <!-- Blog 3 -->
+        <article class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
+          <h3 class="text-xl font-bold text-white">Entry, Stop, Target: The Model Explained</h3>
+          <p class="text-white/80 mt-3 leading-relaxed">
+            A clear overview of the three structural components behind every idea — what each zone represents
+            inside the model and how traders typically use them to understand setup structure.
+          </p>
+          <a href="#" class="inline-block mt-4 text-mwTeal font-semibold hover:underline">Read more →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5">
+    <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-8 rounded bg-mwTeal flex items-center justify-center font-black text-mwCharcoal">SSP</div>
+          <span class="font-semibold">SimpleStockPicks</span>
+        </div>
+        <p class="text-white/60 mt-3">Educational content only. Not investment advice. Past performance is not indicative of future results.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Product</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#products" class="hover:text-mwTeal">StockBuddy</a></li>
+          <li><a href="#products" class="hover:text-mwTeal">TraderPal</a></li>
+          <li><a href="#products" class="hover:text-mwTeal">SignalClub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Company</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#about" class="hover:text-mwTeal">About</a></li>
+          <li><a href="#blog" class="hover:text-mwTeal">Blog</a></li>
+          <li><a href="#pricing" class="hover:text-mwTeal">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Legal</h4>
+        <ul class="space-y-1 text-white/70">
+          <li><a href="#" class="hover:text-mwTeal">Terms</a></li>
+          <li><a href="#" class="hover:text-mwTeal">Privacy</a></li>
+          <li><a href="#" class="hover:text-mwTeal">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-white/50 text-xs pb-8">© <span id="year"></span> SimpleStockPicks All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // Trending tabs UX (static demo)
+    const tabs = document.querySelectorAll('.trend-tab');
+    const panels = document.querySelectorAll('.trend-panel');
+    function activateTab(el){
+      tabs.forEach(t=>t.classList.remove('bg-white/10'));
+      panels.forEach(p=>p.classList.add('hidden'));
+      el.classList.add('bg-white/10');
+      const target = document.querySelector(el.dataset.target);
+      if(target) target.classList.remove('hidden');
+    }
+    tabs.forEach((t,i)=>{
+      t.addEventListener('click',()=>activateTab(t));
+      if(i===0) activateTab(t);
+    });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // ---- Dummy data ----
+    const diaryDemo = {
+      months: ["2025-08","2025-09","2025-10"],
+      trades: [
+        { date_open:"2025-10-06", symbol:"AAPL", type:"Swing Long", status:"OPEN",   realized_pct:0.80, open_pct:0.35,
+          notes:"Apple had a calm week before new product launches. We expected buying interest to build as investors anticipate stronger holiday demand." },
+        { date_open:"2025-10-01", date_close:"2025-10-03", symbol:"TSLA", type:"Swing Long", status:"EXITED", realized_pct:2.54, open_pct:0.00,
+          notes:"Tesla had pulled back for several days and sentiment felt overly negative. We expected a relief move as short sellers covered ahead of earnings." },
+        { date_open:"2025-10-02", date_close:"2025-10-04", symbol:"NVDA", type:"Swing Long", status:"STOPPED", realized_pct:-1.28, open_pct:0.00,
+          notes:"We thought AI optimism might push Nvidia higher, but broader tech weakness pulled it back instead." },
+        { date_open:"2025-09-18", date_close:"2025-09-20", symbol:"MSFT", type:"Swing Long", status:"EXITED", realized_pct:1.90, open_pct:0.00,
+          notes:"Microsoft had steady enterprise momentum and consistent buying from funds, so we looked for a steady continuation move." },
+        { date_open:"2025-09-10", date_close:"2025-09-11", symbol:"AMD",  type:"Swing Long", status:"STOPPED", realized_pct:-0.72, open_pct:0.00,
+          notes:"We expected AMD to benefit from chip strength, but the stock lost steam after initial enthusiasm faded." },
+        { date_open:"2025-09-03", date_close:"2025-09-06", symbol:"SMCI", type:"Swing Long", status:"EXITED", realized_pct:4.10, open_pct:0.00,
+          notes:"We liked Super Micro for its leadership in AI servers and expected new orders to push shares higher — and they did." },
+        { date_open:"2025-08-22", date_close:"2025-08-26", symbol:"META", type:"Swing Long", status:"EXITED", realized_pct:3.25, open_pct:0.00,
+          notes:"Meta had been consolidating after strong results, and we thought renewed ad spending optimism could spark the next leg up." },
+        { date_open:"2025-08-15", date_close:"2025-08-16", symbol:"QQQ",  type:"Swing Long", status:"STOPPED", realized_pct:-0.60, open_pct:0.00,
+          notes:"We looked for a bounce in the Nasdaq after a quick drop, but selling pressure continued, so we cut the trade early." },
+        { date_open:"2025-08-05", date_close:"2025-08-08", symbol:"SHOP", type:"Swing Long", status:"EXITED", realized_pct:2.05, open_pct:0.00,
+          notes:"Shopify had strong e-commerce momentum and was attracting new fund inflows. We rode a short-term push before locking in gains." }
+      ]
+    };
+
+    // ---- Helpers ----
+    const $ = s => document.querySelector(s);
+    function monthFromDate(dateStr){
+      if(!dateStr) return "";
+      const d = new Date(dateStr + "T00:00:00Z");
+      return d.getUTCFullYear() + "-" + String(d.getUTCMonth()+1).padStart(2,"0");
+    }
+    function safePct(x){ const n=Number(x||0); return (n>=0?"+":"")+n.toFixed(2)+"%"; }
+    function statusBadge(s){
+      const map={OPEN:"bg-emerald-600/20 text-emerald-300",EXITED:"bg-cyan-600/20 text-cyan-300",STOPPED:"bg-rose-600/20 text-rose-300"};
+      const cls=map[s]||"bg-slate-500/20 text-slate-300";
+      return `<span class="px-2 py-0.5 rounded-full text-xs ${cls}">${s}</span>`;
+    }
+
+    // ---- Populate months ----
+    function populateMonths(data){
+      const sel = $("#diaryMonth");
+      if(!sel) return; // safety
+      const months = data.months?.length
+        ? data.months
+        : Array.from(new Set((data.trades||[]).map(t => monthFromDate(t.date_close || t.date_open)))).sort();
+      sel.innerHTML = months.map(m => `<option value="${m}">${m}</option>`).join("");
+      sel.value = months[months.length-1];
+    }
+
+    // ---- Render table ----
+    function renderDiary(data){
+      const sel = $("#diaryMonth");
+      const body = $("#diaryRows");
+      if(!sel || !body) return; // safety
+
+      const month = sel.value;
+      const rows = (data.trades||[]).filter(t => monthFromDate(t.date_close || t.date_open) === month);
+
+      body.innerHTML = rows.map(t => `
+        <tr>
+          <td class="p-3 text-sm whitespace-nowrap">${t.date_close || t.date_open}</td>
+          <td class="p-3 text-sm font-semibold">${t.symbol}</td>
+          <td class="p-3 text-sm">${t.type}</td>
+          <td class="p-3 text-sm">${statusBadge(t.status)}</td>
+          <td class="p-3 text-sm text-white/80">${t.notes}</td>
+          <td class="p-3 text-sm text-right">${safePct(t.realized_pct)}</td>
+          <td class="p-3 text-sm text-right">${safePct(t.open_pct)}</td>
+        </tr>
+      `).join("");
+
+      const monthGain = rows.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
+      const ytdGain   = data.trades.reduce((a,t)=>a+Number(t.realized_pct||0)+Number(t.open_pct||0),0);
+      $("#monthTotal").textContent = (monthGain>=0?"+":"") + monthGain.toFixed(2) + "%";
+      $("#ytdTotal").textContent   = (ytdGain>=0?"+":"") + ytdGain.toFixed(2) + "%";
+      $("#ytdCompare").textContent = `SPY +8.3% | QQQ +12.4% | MW ${(ytdGain>=0?"+":"")+ytdGain.toFixed(2)}%`;
+    }
+
+    // ---- Init ----
+    populateMonths(diaryDemo);
+    renderDiary(diaryDemo);
+    const monthSel = $("#diaryMonth");
+    if(monthSel) monthSel.addEventListener("change", () => renderDiary(diaryDemo));
+  });
+  </script>
+</body>
+</html>
