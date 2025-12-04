@@ -502,25 +502,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <div class="flex items-center justify-between mb-10">
       <h2 class="text-3xl font-bold">Weekly Watchlist</h2>
-      <a href="#pricing" class="text-mwTeal font-semibold hover:underline">Full setups in StockBuddy & TraderPal →</a>
+      <a href="#pricing" class="text-mwTeal font-semibold hover:underline">
+        Full setups in StockBuddy & TraderPal →
+      </a>
     </div>
 
     <p class="text-white/80 mb-8 max-w-3xl">
-      Three names worth watching this week — based on momentum shifts, narrative flow, volume behavior, and sector rotation.
+      Three names worth watching this week — based on shifts in structure, volume behavior, and trend momentum inside the model.
       These are <span class="italic">not</span> trade signals, just directional ideas to keep on your radar.
     </p>
 
     <div class="grid md:grid-cols-3 gap-6">
 
       <!-- Idea 1 -->
-      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
-        <div class="flex items-center justify-between mb-1">
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+        <div class="flex items-center justify-between mb-2">
           <h4 class="font-semibold text-white text-xl">NVDA</h4>
-          <span class="text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">Bullish</span>
+
+          <!-- LONG + High Conviction -->
+          <span class="flex items-center gap-1 text-xs bg-green-500/15 
+                       text-green-300 px-2 py-1 rounded-md border border-green-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M5 15l7-7 7 7" />
+            </svg>
+            LONG • High
+          </span>
         </div>
+
         <p class="text-white/70 text-sm">
-          Coiling near recent consolidation highs — early strength in semis keeps it in focus.
+          Coiling near recent consolidation highs — strength in semis keeps it on the radar.
         </p>
+
         <div class="text-xs text-white/50 mt-3">Interest Level: High</div>
         <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
           See full setup in TraderPal →
@@ -528,14 +542,26 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <!-- Idea 2 -->
-      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
-        <div class="flex items-center justify-between mb-1">
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+        <div class="flex items-center justify-between mb-2">
           <h4 class="font-semibold text-white text-xl">AAPL</h4>
-          <span class="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded">Neutral</span>
+
+          <!-- LONG + Medium Conviction -->
+          <span class="flex items-center gap-1 text-xs bg-yellow-500/15 
+                       text-yellow-300 px-2 py-1 rounded-md border border-yellow-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M5 15l7-7 7 7" />
+            </svg>
+            LONG • Medium
+          </span>
         </div>
+
         <p class="text-white/70 text-sm">
-          Stabilizing after last week's pullback — watching for a rotation back into mega-cap tech.
+          Stabilizing after last week's pullback — watching for rotation back into mega-cap tech.
         </p>
+
         <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
         <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
           See full setup in TraderPal →
@@ -543,14 +569,26 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <!-- Idea 3 -->
-      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
-        <div class="flex items-center justify-between mb-1">
+      <div class="rounded-2xl p-6 border border-white/10 bg-white/5 backdrop-blur-sm transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(28,229,184,0.10)]">
+        <div class="flex items-center justify-between mb-2">
           <h4 class="font-semibold text-white text-xl">SMCI</h4>
-          <span class="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded">Bearish</span>
+
+          <!-- SHORT + Low Conviction -->
+          <span class="flex items-center gap-1 text-xs bg-red-500/15 
+                       text-red-300 px-2 py-1 rounded-md border border-red-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M19 9l-7 7-7-7" />
+            </svg>
+            SHORT • Low
+          </span>
         </div>
+
         <p class="text-white/70 text-sm">
-          Extended after recent volatility — on watch for potential mean-reversion behavior.
+          Extended after recent volatility — monitoring for model-driven mean-reversion behavior.
         </p>
+
         <div class="text-xs text-white/50 mt-3">Interest Level: Medium</div>
         <a href="#pricing" class="text-mwTeal text-xs mt-3 inline-block hover:underline">
           See full setup in TraderPal →
@@ -580,6 +618,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
+
   
 <!-- FAQ / How the Product Works -->
 <section id="faq" class="bg-mwNavy/20 border-y border-white/5">
@@ -592,9 +631,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- FAQ GRID -->
     <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- FAQ CARD TEMPLATE -->
-      <!-- Each FAQ card is now collapsible and includes an animated "?" icon -->
 
       <!-- 1 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
@@ -638,7 +674,22 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 4 -->
+      <!-- 4 — NEW FAQ -->
+      <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+        <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
+          <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
+          <h3 class="font-semibold text-white flex-1">What is a Long and what is a Short?</h3>
+        </button>
+        <div class="faq-content px-6 pb-6 hidden">
+          <p class="text-white/80 text-sm">
+            A “Long” simply means the structure is pointing upward in our model — the idea is aligned with upward momentum.
+            A “Short” means the structure is pointing downward — aligned with downward momentum.
+            These labels show direction bias only. They are not recommendations to buy or sell.
+          </p>
+        </div>
+      </article>
+
+      <!-- 5 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -652,7 +703,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 5 -->
+      <!-- 6 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -666,7 +717,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 6 -->
+      <!-- 7 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -680,7 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 7 -->
+      <!-- 8 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -695,7 +746,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 8 -->
+      <!-- 9 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -708,7 +759,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 9 -->
+      <!-- 10 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
@@ -722,7 +773,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
 
-      <!-- 10 -->
+      <!-- 11 -->
       <article class="faq-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <button class="faq-toggle w-full text-left p-6 flex items-start gap-3">
           <div class="faq-icon w-6 h-6 flex items-center justify-center rounded-full bg-white/10 text-white/70 text-xs animate-pulse">?</div>
