@@ -1,213 +1,505 @@
-<section class="bg-mwNavy/20 border-y border-white/5 py-20">
-  <div class="container mx-auto px-4 max-w-[900px]">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Regime Score: The Market Weather Report – SimpleStockPicks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A plain-English guide to the Regime Score used in StockBuddy and TraderPal to label the trading environment: Hot, Warm, Icy, or Cold." />
 
-    <!-- Breadcrumb -->
-    <nav class="text-xs text-white/50 mb-6 flex items-center gap-2">
-      <a href="/blog" class="hover:text-mwTeal">Blog</a>
-      <span class="text-white/40">/</span>
-      <span class="text-white/70">Regime Score Overview</span>
-    </nav>
+  <style>
+    /* =============== */
+    /* THEME VARIABLES */
+    /* =============== */
+    :root {
+      --mw-charcoal: #0f172a;
+      --mw-navy: #0a1f44;
+      --mw-teal: #1ce5b8;
+      --text-main: #ffffff;
+      --text-muted: rgba(255,255,255,0.75);
+      --text-soft: rgba(255,255,255,0.55);
+      --border-subtle: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.04);
+      --radius-lg: 18px;
+      --radius-md: 10px;
+    }
 
-    <!-- Card Wrapper -->
-    <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.45)] overflow-hidden">
+    /* GLOBAL */
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top left, #1a2436 0%, #020617 70%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-      <!-- Top Accent Bar -->
-      <div class="h-1 w-full bg-gradient-to-r from-mwTeal via-pulseGreen to-swingBlue"></div>
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.4rem;
+    }
 
-      <!-- Header -->
-      <header class="px-6 md:px-10 pt-8 pb-4 border-b border-white/5">
-        <p class="text-xs uppercase tracking-[0.18em] text-mwTeal/80 mb-3">
-          FRAMEWORKS
-        </p>
-        <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-3">
-          Regime Score: The Market “Weather Report”
-        </h1>
-        <p class="text-white/60 text-xs md:text-sm flex flex-wrap gap-3 items-center">
-          <span>4-minute read</span>
-          <span class="w-1 h-1 rounded-full bg-white/30"></span>
-          <span>Educational only · Not investment advice</span>
-        </p>
-      </header>
+    /* HEADER */
+    header.site-header {
+      background: rgba(15,23,42,0.95);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 50;
+    }
 
-      <!-- Body -->
-      <article class="px-6 md:px-10 py-8 space-y-12 text-white/80 leading-relaxed">
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        <!-- Intro -->
-        <section class="space-y-4">
-          <p>
-            Before looking at any idea in StockBuddy or TraderPal, we always ask one thing first:
-            <span class="font-semibold text-white">“What kind of market are we in today?”</span>
-          </p>
-          <p>
-            The <span class="font-semibold text-white">Regime Score</span> answers that in plain language.
-            It doesn’t tell you what to buy or sell — it simply labels the environment so you know whether
-            things look clean, mixed, or rough.
-          </p>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+    }
 
-          <!-- Soft highlight strip -->
-          <div class="mt-4 rounded-xl border border-mwTeal/20 bg-mwCharcoal/40 px-4 py-3 text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-            <p class="text-white/80">
-              You’ll see the Regime Score every day inside <span class="font-semibold text-mwTeal">TraderPal</span> —
-              right above the daily ideas.
+    .brand-mark {
+      width: 38px;
+      height: 28px;
+      background: var(--mw-teal);
+      color: var(--mw-charcoal);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    nav a {
+      color: var(--text-soft);
+      margin-left: 1.4rem;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    nav a:hover {
+      color: var(--mw-teal);
+    }
+
+    /* MAIN / ARTICLE */
+    .hero {
+      padding: 2.5rem 0 1rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumb a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { color: var(--mw-teal); }
+
+    h1.blog-title {
+      font-size: 2.3rem;
+      margin: 0;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 0.4rem;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 2rem 1.6rem;
+      margin-top: 1.6rem;
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(6px);
+    }
+
+    .article-card h2 {
+      font-size: 1.35rem;
+      margin-top: 2rem;
+    }
+
+    .article-card h3 {
+      font-size: 1rem;
+      margin-top: 1.2rem;
+      color: var(--mw-teal);
+    }
+
+    .article-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0.8rem 0;
+    }
+
+    ul {
+      margin-left: 1.1rem;
+      margin-top: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .callout {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: var(--text-muted);
+    }
+
+    /* SOCIAL PROOF */
+    .social-proof {
+      margin-top: 2rem;
+      padding: 1.3rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, rgba(28,229,184,0.12), rgba(15,23,42,0.9));
+    }
+
+    .social-proof-label {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .social-chip {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      margin: 0.3rem 0.3rem 0 0;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(0,0,0,0.2);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 3rem 0;
+    }
+
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 1.4rem;
+      text-align: center;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: radial-gradient(circle at top left, rgba(28,229,184,0.1), rgba(15,23,42,1));
+    }
+
+    .cta-box h2 {
+      margin-bottom: 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    .cta-box p {
+      margin: 0 auto 1.2rem;
+      max-width: 460px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.75rem 1.6rem;
+      background: var(--mw-teal);
+      color: var(--mw-charcoal);
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 25px rgba(28,229,184,0.25);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .cta-sub {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-top: 0.8rem;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem 0 1rem;
+      background: rgba(2,6,23,0.9);
+    }
+
+    footer .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      font-size: 0.85rem;
+    }
+
+    footer h4 {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: var(--text-soft);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    footer a:hover {
+      color: var(--mw-teal);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 768px) {
+      footer .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      footer .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inline header-inner">
+      <a href="/" class="brand">
+        <div class="brand-mark">SSP</div>
+        <span>SimpleStockPicks</span>
+      </a>
+
+      <nav>
+        <a href="/blog">Blog</a>
+        <a href="#cta">Free Trial</a>
+        <a href="#footer">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <section class="hero">
+      <div class="container">
+
+        <div class="breadcrumb">
+          <a href="/blog">Blog</a> / Regime Score Overview
+        </div>
+
+        <h1 class="blog-title">Regime Score: The Market “Weather Report”</h1>
+        <p class="meta">4-minute read · Educational only · Not investment advice</p>
+
+        <div class="article-card">
+
+          <article>
+
+            <p>
+              Before looking at any idea in StockBuddy or TraderPal, we always ask:
+              <strong>“What kind of market are we in today?”</strong>
             </p>
-            <a href="#pricing"
-               class="inline-flex items-center justify-center text-xs font-semibold bg-mwTeal text-mwCharcoal px-4 py-2 rounded-lg hover:opacity-90 transition">
-              Get 14-Day TraderPal Trial →
-            </a>
-          </div>
-        </section>
 
-        <!-- What is the Regime Score -->
-        <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-white">What Is the Regime Score?</h2>
-          <p>
-            The Regime Score is our daily “market weather” read. Behind the scenes, our system processes volatility,
-            strength, trend, credit, and news tone — then compresses everything into one simple label:
-          </p>
-
-          <!-- Regime chips -->
-          <div class="flex flex-wrap gap-2 mt-3">
-            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-pulseGreen/15 text-pulseGreen border border-pulseGreen/30">
-              Hot
-            </span>
-            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-mwTeal/10 text-mwTeal border border-mwTeal/30">
-              Warm
-            </span>
-            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-swingBlue/15 text-swingBlue border border-swingBlue/30">
-              Icy
-            </span>
-            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-torqueRed/15 text-torqueRed border border-torqueRed/30">
-              Cold
-            </span>
-          </div>
-
-          <p class="text-white/60 text-sm italic mt-2">
-            It’s context — not a signal. You decide how to use it.
-          </p>
-        </section>
-
-        <!-- Four Regimes -->
-        <section class="space-y-6">
-          <h2 class="text-2xl font-bold text-white mb-2">The Four Regimes (In Plain English)</h2>
-
-          <div class="grid md:grid-cols-2 gap-6">
-
-            <!-- HOT -->
-            <div class="rounded-xl border border-pulseGreen/25 bg-mwCharcoal/40 p-4">
-              <h3 class="text-sm font-semibold text-pulseGreen tracking-wide uppercase mb-1">1. Hot</h3>
-              <p class="text-white/80 text-sm">
-                A clean, supportive environment where trends behave and momentum works well.
-              </p>
-              <ul class="list-disc list-inside text-white/60 text-xs mt-2 space-y-1">
-                <li>Moves follow through more often</li>
-                <li>Pullbacks feel like dips, not danger</li>
-                <li>Momentum ideas behave cleaner</li>
-              </ul>
-            </div>
-
-            <!-- WARM -->
-            <div class="rounded-xl border border-mwTeal/25 bg-mwCharcoal/40 p-4">
-              <h3 class="text-sm font-semibold text-mwTeal tracking-wide uppercase mb-1">2. Warm</h3>
-              <p class="text-white/80 text-sm">
-                The “normal” regime — workable, but not perfect. Some trends clean, some choppy.
-              </p>
-              <ul class="list-disc list-inside text-white/60 text-xs mt-2 space-y-1">
-                <li>Mixed trend quality</li>
-                <li>Pullbacks matter a bit more</li>
-                <li>Still a healthy environment overall</li>
-              </ul>
-            </div>
-
-            <!-- ICY -->
-            <div class="rounded-xl border border-swingBlue/25 bg-mwCharcoal/40 p-4">
-              <h3 class="text-sm font-semibold text-swingBlue tracking-wide uppercase mb-1">3. Icy</h3>
-              <p class="text-white/80 text-sm">
-                A defensive or unstable environment. Trends break more easily, reversals show up faster.
-              </p>
-              <ul class="list-disc list-inside text-white/60 text-xs mt-2 space-y-1">
-                <li>Breakouts fail more often</li>
-                <li>Whipsaws and chop increase</li>
-                <li>A cue to slow down and stay alert</li>
-              </ul>
-            </div>
-
-            <!-- COLD -->
-            <div class="rounded-xl border border-torqueRed/25 bg-mwCharcoal/40 p-4">
-              <h3 class="text-sm font-semibold text-torqueRed tracking-wide uppercase mb-1">4. Cold</h3>
-              <p class="text-white/80 text-sm">
-                A risk-off environment. Volatility or macro pressure makes moves sharp, emotional, and news-driven.
-              </p>
-              <ul class="list-disc list-inside text-white/60 text-xs mt-2 space-y-1">
-                <li>Sharp moves and wider ranges</li>
-                <li>Gaps and intraday reversals common</li>
-                <li>More about defense than offense</li>
-              </ul>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- What it does / doesn't -->
-        <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-white">What the Regime Score Does (and Doesn’t) Tell You</h2>
-          <p>The Regime Score is intentionally simple:</p>
-          <ul class="list-disc list-inside space-y-1 text-sm">
-            <li>It <span class="font-semibold text-white">does</span> tell you how friendly or hostile the market looks.</li>
-            <li>It <span class="font-semibold text-white">does</span> tell you whether the environment feels steady or shaky.</li>
-            <li>It <span class="font-semibold text-white">does not</span> tell you what to trade.</li>
-            <li>It <span class="font-semibold text-white">does not</span> tell you anything about your own risk or portfolio.</li>
-          </ul>
-          <p class="text-white/60 text-sm italic">
-            It’s only one layer of context — you choose how to use it.
-          </p>
-        </section>
-
-        <!-- Product tie-in -->
-        <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-white">How It Fits Into StockBuddy & TraderPal</h2>
-          <p>
-            In <span class="font-semibold text-white">StockBuddy</span>, you see simplified weekly setups.
-            In <span class="font-semibold text-white">TraderPal</span>, the Regime Score sits above everything
-            to give you a quick “market mood” read before you look at entries, stops, and targets.
-          </p>
-          <p>
-            Most users check the Regime label (Hot / Warm / Icy / Cold) and the
-            <span class="italic">Trade · Caution · No-Trade</span> note first —
-            it keeps expectations realistic day-to-day.
-          </p>
-
-          <div class="mt-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-white/70">
-            <span class="font-semibold text-mwTeal">Quick mental model:</span>
-            Hot/Warm = offense allowed (with your own risk rules). Icy/Cold = assume the market is working against you.
-          </div>
-        </section>
-
-        <!-- Closing -->
-        <section class="space-y-4">
-          <p>
-            You don’t need to know how the Regime Score is calculated — just think of it as a daily weather icon for markets.
-          </p>
-        </section>
-
-      </article>
-
-      <!-- CTA -->
-      <div class="px-6 md:px-10 pb-10 pt-2">
-        <div class="mt-8 text-center">
-          <div class="inline-block px-8 py-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
-            <h3 class="text-2xl font-semibold text-white mb-2">Try TraderPal Free for 14 Days</h3>
-            <p class="text-white/60 text-sm max-w-md mx-auto mb-5">
-              Get daily ideas, Regime Score context, Conviction Levels, and our Trade/No-Trade engine — all in one clean, simple dashboard.
+            <p>
+              The <strong>Regime Score</strong> answers that in plain English.  
+              It doesn’t predict anything — it simply labels the environment so you know if the market feels
+              clean, mixed, or unstable.
             </p>
-            <a href="#pricing"
-               class="inline-block bg-mwTeal text-black font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition">
-              Start Free Trial →
-            </a>
+
+            <h2>What Is the Regime Score?</h2>
+            <p>
+              The Regime Score is our daily “market weather” read. Behind the scenes, our system processes volatility,
+              strength, trend behavior, and news tone — then compresses everything into one simple label:
+            </p>
+
+            <p><strong style="color: var(--mw-teal);">Hot · Warm · Icy · Cold</strong></p>
+
+            <p><em>It’s context — not a buy or sell signal.</em></p>
+
+            <h2>The Four Regimes (In Plain English)</h2>
+
+            <h3>1. Hot</h3>
+            <p>A clean, supportive environment where momentum behaves well.</p>
+            <ul>
+              <li>Moves follow through smoothly</li>
+              <li>Pullbacks feel like dips</li>
+              <li>Breakouts work more reliably</li>
+            </ul>
+
+            <h3>2. Warm</h3>
+            <p>The “normal” regime — workable, mixed, but healthy overall.</p>
+            <ul>
+              <li>Some setups are clean</li>
+              <li>Some are choppy</li>
+              <li>A stable but selective environment</li>
+            </ul>
+
+            <h3>3. Icy</h3>
+            <p>A defensive environment. Trends break more easily.</p>
+            <ul>
+              <li>Breakouts fail more often</li>
+              <li>Whipsaws increase</li>
+              <li>A cue to slow down</li>
+            </ul>
+
+            <h3>4. Cold</h3>
+            <p>A risk-off environment with sharp, emotional moves.</p>
+            <ul>
+              <li>Wide ranges</li>
+              <li>Gaps & fast reversals</li>
+              <li>More defense than offense</li>
+            </ul>
+
+            <h2>What the Regime Score Does / Doesn’t Tell You</h2>
+            <p>The Regime Score is intentionally simple:</p>
+
+            <ul>
+              <li>✔️ Shows how friendly or hostile the market feels</li>
+              <li>✔️ Highlights whether conditions are steady or shaky</li>
+              <li>❌ Does not tell you what to trade</li>
+              <li>❌ Does not apply to your personal risk or portfolio</li>
+            </ul>
+
+            <p><em>It’s one layer of context — how you use it is up to you.</em></p>
+
+            <h2>How It Fits Into StockBuddy & TraderPal</h2>
+            <p>
+              In <strong>StockBuddy</strong>, you get simplified weekly setups.  
+              In <strong>TraderPal</strong>, the Regime Score sits above everything,
+              shaping expectations before you look at entries, stops, and targets.
+            </p>
+
+            <p>
+              Most users check the Regime Score label first —  
+              Hot / Warm / Icy / Cold — because it explains the “why” behind daily behavior.
+            </p>
+
+            <h2>Think of It Like a Weather Icon</h2>
+            <p>
+              Sunshine doesn’t guarantee a perfect day, and rain doesn’t mean you can’t go outside —  
+              but it does help you plan.  
+              The Regime Score is the same: a quick environmental read that keeps you grounded.
+            </p>
+
+            <div class="callout">
+              This article is for education only.  
+              It is not investment advice or a recommendation.
+            </div>
+
+          </article>
+
+          <!-- SOCIAL PROOF BAND -->
+          <div class="social-proof">
+            <div class="social-proof-label">Trusted by traders worldwide</div>
+
+            <div style="margin-top:0.7rem;">
+              <span class="social-chip">Swing traders</span>
+              <span class="social-chip">Options traders</span>
+              <span class="social-chip">Part-time day traders</span>
+              <span class="social-chip">Fund professionals</span>
+            </div>
           </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Try TraderPal Free for 14 Days</h2>
+          <p>
+            Get daily ideas, Regime Score context, Conviction Levels,  
+            and our Trade/No-Trade engine — all in one clean dashboard.
+          </p>
+          <a href="#" class="btn-primary">Start Free Trial →</a>
+          <div class="cta-sub">No contracts. Cancel anytime.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="brand">
+            <div class="brand-mark">SSP</div>
+            <span>SimpleStockPicks</span>
+          </div>
+          <p style="color:var(--text-soft); margin-top:0.7rem;">
+            Transparent, model-driven trade ideas written in plain English.  
+            Educational only. Not investment advice.
+          </p>
+        </div>
+
+        <div>
+          <h4>Products</h4>
+          <a href="#">StockBuddy</a>
+          <a href="#">TraderPal</a>
+          <a href="#">SignalClub</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="/blog">Blog</a>
+          <a href="#cta">Pricing</a>
+        </div>
+
+        <div>
+          <h4>Legal</h4>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Disclaimer</a>
         </div>
       </div>
 
+      <div class="footer-bottom">
+        © <span id="year"></span> SimpleStockPicks. All rights reserved.
+      </div>
     </div>
+  </footer>
 
-  </div>
-</section>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
