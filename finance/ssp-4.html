@@ -579,93 +579,75 @@
 <style>
   :root {
     --pulseGreen: #3EDC81;
-    --torqueRed: #E63946;
     --swingBlue: #2B4C9A;
+    --torqueRed: #E63946;
   }
 
   .ssp-section {
-    padding: 110px 20px 120px;
+    padding: 120px 20px;
     background: #0a152b;
     color: #ffffff;
     text-align: center;
   }
 
   .ssp-title {
-    font-size: 46px;
+    font-size: 44px;
     font-weight: 800;
-    margin-bottom: 10px;
-    background: linear-gradient(to right, var(--pulseGreen), var(--swingBlue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    letter-spacing: -0.6px;
   }
 
   .ssp-subtitle {
     font-size: 20px;
     opacity: 0.75;
-    margin-bottom: 55px;
+    margin-bottom: 60px;
+    font-weight: 400;
   }
 
-  /* PRICE AREA */
   .ssp-price {
-    font-size: 70px;
+    font-size: 72px;
     font-weight: 900;
     color: var(--pulseGreen);
-    text-shadow: 0 0 22px rgba(62,220,129,0.25);
-    margin-bottom: 5px;
-    letter-spacing: -1px;
+    margin-bottom: 10px;
+    letter-spacing: -1.5px;
   }
 
   .ssp-price small {
-    font-size: 22px;
-    opacity: 0.75;
-    font-weight: 500;
+    font-size: 24px;
+    opacity: 0.7;
+    font-weight: 400;
   }
 
   .ssp-tagline {
-    font-size: 17px;
+    font-size: 18px;
     opacity: 0.55;
-    margin-bottom: 75px;
+    margin-bottom: 80px;
   }
 
-  /* GRID */
+  /* CLEAN TWO-COLUMN GRID */
   .ssp-grid {
     max-width: 900px;
-    margin: 0 auto 50px;
+    margin: 0 auto 80px;
     display: flex;
     gap: 60px;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
   }
 
-  /* Vertical line */
-  .ssp-grid::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 1.5px;
-    background: linear-gradient(to bottom, transparent, var(--swingBlue), transparent);
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.35;
-  }
-
-  .ssp-left, .ssp-right {
+  .ssp-col {
     flex: 1;
     min-width: 320px;
     text-align: left;
   }
 
   .ssp-header {
-    font-size: 24px;
-    color: var(--swingBlue);
-    margin-bottom: 22px;
+    font-size: 22px;
     font-weight: 700;
+    color: var(--pulseGreen);
+    margin-bottom: 22px;
   }
 
-  .ssp-features, .ssp-benefits {
+  .ssp-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -673,12 +655,8 @@
     line-height: 1.7;
   }
 
-  .ssp-features li, .ssp-benefits li {
-    margin-bottom: 18px;
-    padding-left: 18px;
-    border-left: 3px solid var(--pulseGreen);
-    background: rgba(255,255,255,0.02);
-    border-radius: 3px;
+  .ssp-list li {
+    margin-bottom: 14px;
   }
 
   /* CTA BUTTON */
@@ -687,82 +665,79 @@
     background: var(--pulseGreen);
     color: #0a152b;
     padding: 18px 42px;
-    border-radius: 12px;
+    border-radius: 8px;
     font-weight: 800;
     font-size: 18px;
     text-decoration: none;
-    box-shadow: 0 6px 30px rgba(62,220,129,0.45);
-    transition: 0.2s ease-in-out;
+    transition: 0.2s ease;
   }
 
   .ssp-btn:hover {
-    transform: translateY(-3px);
-    opacity: 0.92;
-    box-shadow: 0 8px 38px rgba(62,220,129,0.55);
-  }
-
-  /* MICROTEXT */
-  .ssp-guarantee {
-    margin-top: 22px;
-    font-size: 15px;
-    opacity: 0.6;
+    transform: translateY(-2px);
+    opacity: 0.9;
   }
 
   .ssp-urgency {
-    margin-top: 12px;
+    margin-top: 18px;
     color: var(--torqueRed);
     font-size: 15px;
-    font-weight: 600;
     opacity: 0.75;
   }
 
+  .ssp-guarantee {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.55;
+  }
 </style>
 
 <section id="products" class="ssp-section">
 
-  <!-- Title -->
+  <!-- Header -->
   <div class="ssp-title">The SimpleStockPicks Subscription</div>
-  <div class="ssp-subtitle">Daily momentum signals with zero noise — built for traders who want clarity, structure, and results.</div>
+  <div class="ssp-subtitle">Daily momentum signals — clear, structured, and built for real traders.</div>
 
   <!-- Price -->
   <div class="ssp-price">$99 <small>/month</small></div>
-  <div class="ssp-tagline">Full access to every signal, every model, and our transparent diary.</div>
+  <div class="ssp-tagline">Instant access to every signal, every model, and our trade diary.</div>
 
-  <!-- Value Grid -->
+  <!-- Columns -->
   <div class="ssp-grid">
 
-    <div class="ssp-left">
-      <div class="ssp-header">What You Get</div>
-      <ul class="ssp-features">
-        <li>Momentum-driven trade ideas on active market days</li>
-        <li>Exact entries, stop-loss levels, and target zones</li>
+    <div class="ssp-col">
+      <div class="ssp-header">What’s Included</div>
+      <ul class="ssp-list">
+        <li>Daily momentum-driven trade ideas</li>
+        <li>Exact entries, targets, and stop-loss levels</li>
         <li>Daily Regime Score (Hot · Warm · Ice Cold)</li>
         <li>Conviction tagging: High · Medium · Low</li>
-        <li>Transparent real-time trade diary</li>
-        <li>Plain-English breakdowns — no indicators required</li>
+        <li>Full trade diary access — every win & loss</li>
+        <li>Plain-English reasoning for every pick</li>
       </ul>
     </div>
 
-    <div class="ssp-right">
-      <div class="ssp-header">Why Traders Love It</div>
-      <ul class="ssp-benefits">
-        <li>No more guessing entries — everything is predefined</li>
-        <li>Eliminates emotional trades through structured logic</li>
-        <li>Never lose track of market tempo (Hot → Ice Cold)</li>
-        <li>We filter the noise so you don’t have to</li>
-        <li>Every win & loss publicly documented</li>
-        <li>Perfect for traders who want clarity and consistency fast</li>
+    <div class="ssp-col">
+      <div class="ssp-header">Why It Works</div>
+      <ul class="ssp-list">
+        <li>Removes emotional decision-making</li>
+        <li>Eliminates analysis paralysis & chart overload</li>
+        <li>Gives you structure and consistency</li>
+        <li>Shows market tempo in real-time</li>
+        <li>Cuts noise — focuses only on momentum strength</li>
+        <li>Built for traders who want clarity and results</li>
       </ul>
     </div>
 
   </div>
 
+  <!-- CTA -->
   <a href="#pricing" class="ssp-btn">Start Your 14 Day Free Trial →</a>
 
-  <div class="ssp-urgency">Limited trial slots available this month</div>
+  <div class="ssp-urgency">Limited trial spots this month</div>
   <div class="ssp-guarantee">Cancel anytime. Educational only.</div>
 
 </section>
+
 
   <!-- ========================================================= -->
   <!-- BILLING TOGGLE LOGIC (OPTIONAL / FUTURE USE) -->
