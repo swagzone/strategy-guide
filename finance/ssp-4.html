@@ -578,52 +578,79 @@
 
 <style>
   .ssp-section {
-    padding: 90px 20px;
+    padding: 100px 20px;
     background: #0a152b;
     color: #ffffff;
     text-align: center;
   }
 
-  .ssp-section h2 {
-    font-size: 42px;
-    font-weight: 700;
+  .ssp-title {
+    font-size: 46px;
+    font-weight: 800;
     margin-bottom: 12px;
-    letter-spacing: -0.5px;
   }
 
-  .ssp-section p.subtitle {
-    font-size: 18px;
-    opacity: 0.75;
-    margin-bottom: 45px;
+  .ssp-subtitle {
+    font-size: 20px;
+    opacity: 0.78;
+    margin-bottom: 50px;
+  }
+
+  .ssp-price-box {
+    margin: 0 auto 50px;
   }
 
   .ssp-price {
-    font-size: 60px;
-    font-weight: 800;
+    font-size: 64px;
+    font-weight: 900;
     color: #1ce5b8;
-    margin-bottom: 35px;
     letter-spacing: -1px;
   }
 
   .ssp-price small {
     font-size: 22px;
-    opacity: 0.7;
-    font-weight: 500;
+    opacity: 0.75;
   }
 
-  .ssp-features {
-    max-width: 620px;
-    margin: 0 auto 50px;
-    padding: 0;
-    list-style: none;
-    text-align: left;
+  .ssp-tagline {
+    margin-top: 12px;
     font-size: 17px;
-    line-height: 1.75;
+    opacity: 0.65;
   }
 
-  .ssp-features li {
+  /* 2-column flex zone */
+  .ssp-grid {
+    max-width: 900px;
+    margin: 60px auto;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .ssp-left, .ssp-right {
+    flex: 1;
+    min-width: 320px;
+    text-align: left;
+  }
+
+  .ssp-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1ce5b8;
+  }
+
+  .ssp-features, .ssp-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .ssp-features li, .ssp-benefits li {
     margin-bottom: 18px;
-    padding-left: 20px;
+    padding-left: 18px;
     border-left: 3px solid #1ce5b8;
   }
 
@@ -631,46 +658,75 @@
     display: inline-block;
     background: #1ce5b8;
     color: #0a152b;
-    padding: 16px 36px;
+    padding: 18px 40px;
     border-radius: 10px;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     text-decoration: none;
-    letter-spacing: 0.3px;
-    transition: 0.15s ease-in-out;
-    box-shadow: 0 4px 18px rgba(28,229,184,0.35);
+    box-shadow: 0 6px 28px rgba(28,229,184,0.45);
+    transition: 0.2s ease-in-out;
+    margin-top: 50px;
   }
 
   .ssp-btn:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(28,229,184,0.45);
+    transform: translateY(-3px);
+    opacity: 0.93;
   }
+
+  .ssp-guarantee {
+    margin-top: 30px;
+    font-size: 15px;
+    opacity: 0.6;
+  }
+
 </style>
 
 <section id="products" class="ssp-section">
 
-  <h2>The SimpleStockPicks Subscription</h2>
-  <p class="subtitle">Clean, daily momentum signals designed for everyday traders.</p>
+  <div class="ssp-title">The SimpleStockPicks Subscription</div>
+  <div class="ssp-subtitle">Daily momentum signals with zero noise — built for traders who want clarity, structure, and results.</div>
 
-  <div class="ssp-price">
-    $99 <small>/month</small>
+  <div class="ssp-price-box">
+    <div class="ssp-price">$99 <small>/month</small></div>
+    <div class="ssp-tagline">Full access to every signal, every model, and our transparent diary.</div>
   </div>
 
-  <ul class="ssp-features">
-    <li>Momentum-driven trade ideas on active market days</li>
-    <li>Exact entries, stop-loss levels, and target zones</li>
-    <li>Full access to our transparent public trade diary</li>
-    <li>Daily Regime Score: Hot · Warm · Ice Cold</li>
-    <li>Conviction tags: High · Medium · Low</li>
-    <li>Direct, plain-English analysis for every pick</li>
-  </ul>
+  <!-- Two column value zone -->
+  <div class="ssp-grid">
+
+    <div class="ssp-left">
+      <h3>What You Get</h3>
+      <ul class="ssp-features">
+        <li>Momentum-driven trade ideas on active market days</li>
+        <li>Exact entries, stop-loss levels, and target zones</li>
+        <li>Daily Regime Score: Hot · Warm · Ice Cold</li>
+        <li>Conviction labels: High · Medium · Low</li>
+        <li>Full access to our real-time trade diary</li>
+        <li>Plain-English breakdowns — no indicators required</li>
+      </ul>
+    </div>
+
+    <div class="ssp-right">
+      <h3>Why Traders Love It</h3>
+      <ul class="ssp-benefits">
+        <li>No more guessing entries or exits — everything is structured</li>
+        <li>Helps cut emotional decision-making with predefined logic</li>
+        <li>Never lose track of the market tempo (Hot · Warm · Ice Cold)</li>
+        <li>Eliminates chart overload — we do the filtering for you</li>
+        <li>Transparent performance: every win and loss documented</li>
+        <li>Built for everyday traders who want to level up fast</li>
+      </ul>
+    </div>
+
+  </div>
 
   <a href="#pricing" class="ssp-btn">Start Your 14 Day Free Trial →</a>
 
+  <div class="ssp-guarantee">
+    No commitments. Cancel anytime. Educational only.
+  </div>
+
 </section>
-
-
 
   <!-- ========================================================= -->
   <!-- BILLING TOGGLE LOGIC (OPTIONAL / FUTURE USE) -->
