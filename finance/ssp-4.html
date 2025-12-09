@@ -572,130 +572,101 @@
   });
   document.querySelector('.perf-tab').click();
   </script>
-
 <!-- ========================= -->
-<!--      PRODUCTS SECTION     -->
+<!--   SIMPLESTOCKPICKS SUBS   -->
 <!-- ========================= -->
 
 <style>
-  .product-section {
-    padding: 80px 20px;
+  .ssp-section {
+    padding: 90px 20px;
     background: #0a152b;
     color: #ffffff;
     text-align: center;
   }
 
-  .product-section h2 {
-    font-size: 40px;
+  .ssp-section h2 {
+    font-size: 42px;
     font-weight: 700;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
   }
 
-  .product-section p.subtitle {
+  .ssp-section p.subtitle {
     font-size: 18px;
     opacity: 0.75;
-    margin-bottom: 50px;
+    margin-bottom: 45px;
   }
 
-  .product-card {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 45px 40px 50px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .product-card::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to bottom, rgba(28,229,184,0.25), transparent);
-    pointer-events: none;
-  }
-
-  .product-price {
-    font-size: 52px;
+  .ssp-price {
+    font-size: 60px;
     font-weight: 800;
-    margin: 0 0 30px;
     color: #1ce5b8;
+    margin-bottom: 35px;
     letter-spacing: -1px;
   }
 
-  .product-price small {
-    font-size: 20px;
+  .ssp-price small {
+    font-size: 22px;
     opacity: 0.7;
     font-weight: 500;
   }
 
-  .product-list {
-    list-style: none;
+  .ssp-features {
+    max-width: 620px;
+    margin: 0 auto 50px;
     padding: 0;
-    margin: 0 0 40px;
+    list-style: none;
     text-align: left;
+    font-size: 17px;
     line-height: 1.75;
-    font-size: 16px;
   }
 
-  .product-list li {
-    margin-bottom: 14px;
-    padding: 10px 0 10px 18px;
+  .ssp-features li {
+    margin-bottom: 18px;
+    padding-left: 20px;
     border-left: 3px solid #1ce5b8;
-    background: rgba(255,255,255,0.02);
-    border-radius: 4px;
   }
 
-  .product-btn {
+  .ssp-btn {
     display: inline-block;
     background: #1ce5b8;
     color: #0a152b;
-    padding: 16px 32px;
+    padding: 16px 36px;
     border-radius: 10px;
     font-weight: 800;
-    font-size: 15px;
+    font-size: 16px;
     text-decoration: none;
     letter-spacing: 0.3px;
     transition: 0.15s ease-in-out;
     box-shadow: 0 4px 18px rgba(28,229,184,0.35);
   }
 
-  .product-btn:hover {
+  .ssp-btn:hover {
     opacity: 0.92;
     transform: translateY(-1px);
     box-shadow: 0 6px 24px rgba(28,229,184,0.45);
   }
 </style>
 
-<section id="products" class="product-section">
+<section id="products" class="ssp-section">
 
   <h2>The SimpleStockPicks Subscription</h2>
   <p class="subtitle">Clean, daily momentum signals designed for everyday traders.</p>
 
-  <div class="product-card">
-
-    <div class="product-price">
-      $99 <small>/month</small>
-    </div>
-
-    <ul class="product-list">
-      <li>Momentum-driven trade ideas on active market days</li>
-      <li>Clear entries, stop-loss levels, and target zones</li>
-      <li>Full access to our transparent public trade diary</li>
-      <li>Daily Regime Score: Hot · Warm · Ice Cold</li>
-      <li>Conviction tagging: High · Medium · Low</li>
-      <li>Direct, plain-English reasoning for every pick</li>
-    </ul>
-
-    <a href="#pricing" class="product-btn">Start Your 14 Day Free Trial →</a>
-
+  <div class="ssp-price">
+    $99 <small>/month</small>
   </div>
+
+  <ul class="ssp-features">
+    <li>Momentum-driven trade ideas on active market days</li>
+    <li>Exact entries, stop-loss levels, and target zones</li>
+    <li>Full access to our transparent public trade diary</li>
+    <li>Daily Regime Score: Hot · Warm · Ice Cold</li>
+    <li>Conviction tags: High · Medium · Low</li>
+    <li>Direct, plain-English analysis for every pick</li>
+  </ul>
+
+  <a href="#pricing" class="ssp-btn">Start Your 14 Day Free Trial →</a>
 
 </section>
 
