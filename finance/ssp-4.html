@@ -583,7 +583,6 @@
     background: #0a152b;
     color: #ffffff;
     text-align: center;
-    position: relative;
   }
 
   .product-section h2 {
@@ -611,7 +610,6 @@
     overflow: hidden;
   }
 
-  /* Glowing top gradient */
   .product-card::before {
     content: "";
     position: absolute;
@@ -621,12 +619,6 @@
     height: 80px;
     background: linear-gradient(to bottom, rgba(28,229,184,0.25), transparent);
     pointer-events: none;
-  }
-
-  .product-title {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 12px;
   }
 
   .product-price {
@@ -654,17 +646,10 @@
 
   .product-list li {
     margin-bottom: 14px;
-    padding-left: 26px;
-    position: relative;
-  }
-
-  .product-list li::before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    color: #1ce5b8;
-    font-weight: bold;
-    font-size: 14px;
+    padding: 10px 0 10px 18px;
+    border-left: 3px solid #1ce5b8;
+    background: rgba(255,255,255,0.02);
+    border-radius: 4px;
   }
 
   .product-btn {
@@ -688,27 +673,24 @@
   }
 </style>
 
-
 <section id="products" class="product-section">
 
   <h2>The SimpleStockPicks Subscription</h2>
-  <p class="subtitle">A clean, no-noise momentum signal service built for everyday traders.</p>
+  <p class="subtitle">Clean, daily momentum signals designed for everyday traders.</p>
 
   <div class="product-card">
-
-    <div class="product-title">SimpleStockPicks Membership</div>
 
     <div class="product-price">
       $99 <small>/month</small>
     </div>
 
     <ul class="product-list">
-      <li>New momentum-driven trade ideas on active market days</li>
-      <li>Exact entry levels, stop-loss, and target zones</li>
-      <li>YTD trade diary access with complete transparency</li>
+      <li>Momentum-driven trade ideas on active market days</li>
+      <li>Clear entries, stop-loss levels, and target zones</li>
+      <li>Full access to our transparent public trade diary</li>
       <li>Daily Regime Score: Hot · Warm · Ice Cold</li>
-      <li>Conviction level on every pick: High · Medium · Low</li>
-      <li>Written in plain-English — no indicators required</li>
+      <li>Conviction tagging: High · Medium · Low</li>
+      <li>Direct, plain-English reasoning for every pick</li>
     </ul>
 
     <a href="#pricing" class="product-btn">Start Your 14 Day Free Trial →</a>
@@ -716,6 +698,7 @@
   </div>
 
 </section>
+
 
 
   <!-- ========================================================= -->
