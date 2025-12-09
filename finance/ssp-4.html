@@ -561,17 +561,23 @@
   </section>
 
   <!-- Tab Script -->
-  <script>
-  document.querySelectorAll('.perf-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.perf-panel').forEach(p => p.classList.add('hidden'));
-      document.querySelector(btn.dataset.target).classList.remove('hidden');
-      document.querySelectorAll('.perf-tab').forEach(t => t.classList.remove('text-mwTeal','font-semibold'));
-      btn.classList.add('text-mwTeal','font-semibold');
-    });
+<script>
+document.querySelectorAll('.perf-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    document.querySelectorAll('.perf-panel').forEach(p => p.classList.add('hidden'));
+    document.querySelector(btn.dataset.target).classList.remove('hidden');
+
+    document.querySelectorAll('.perf-tab')
+      .forEach(t => t.classList.remove('!text-mwTeal','font-semibold'));
+
+    btn.classList.add('!text-mwTeal','font-semibold');
   });
-  document.querySelector('.perf-tab').click();
-  </script>
+});
+
+document.querySelector('.perf-tab').click();
+</script>
+
 <!-- ========================= -->
 <!--   SIMPLESTOCKPICKS SUBS   -->
 <!-- ========================= -->
@@ -694,7 +700,7 @@
 <section id="products" class="ssp-section">
 
   <!-- Header -->
-  <div class="ssp-title">The SimpleStockPicks Subscription</div>
+  <div class="ssp-title">  <span style="color:#ffffff;">The Subscription</span></div>
   <div class="ssp-subtitle">Daily momentum signals — clear, structured, and designed for real traders.</div>
 
   <!-- Price -->
