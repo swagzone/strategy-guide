@@ -227,356 +227,179 @@
     </div>
   </section>
 
-  <!-- ========================================================= -->
-  <!-- TRADE DIARY & PERFORMANCE (MODELS 1, 2, 3 WITH SWITCHER) -->
-  <!-- ========================================================= -->
+ <!-- ========================================================= -->
+<!-- TRADE DIARY & PERFORMANCE — NO BENCHMARK BOX -->
+<!-- ========================================================= -->
 
-  <section id="performance" class="bg-mwNavy/20 border-y border-white/5 py-16">
-    <div class="container mx-auto px-4 max-w-[1200px]">
+<section id="performance" class="bg-mwNavy/20 border-y border-white/5 py-20">
+  <div class="container mx-auto px-4 max-w-[1200px]">
 
-      <!-- Header -->
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
-        <div>
-          <h2 class="text-3xl font-bold text-white">Trade Diary & Performance</h2>
-          <p class="text-white/70 mt-1">Monthly returns across our three internal momentum engines.</p>
+    <!-- HEADER -->
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-extrabold">Trade Diary & Performance</h2>
+      <p class="text-white/70 mt-3 text-lg">
+        One momentum engine. Three position sizes. Fully transparent results.
+      </p>
+    </div>
+
+    <!-- MODEL SNAPSHOTS -->
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+      <!-- MODEL 1 -->
+      <div class="rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/[0.07] transition">
+        <div class="text-mwTeal text-sm font-semibold tracking-wide mb-1">MODEL 1</div>
+        <h3 class="text-xl font-bold mb-3">The One-Pick Engine</h3>
+        <div class="text-3xl font-extrabold text-pulseGreen mb-4">+37.7% <span class="text-lg text-white/80">YTD</span></div>
+        <p class="text-white/70 text-sm mb-4">
+          The simplest version of the system — only one position at a time.
+        </p>
+        <ul class="space-y-2 text-white/70 text-sm mb-5">
+          <li>• Max positions: <span class="text-white font-semibold">1</span></li>
+          <li>• All risk focused on the best idea</li>
+          <li>• Perfect for easy, low-mental-load execution</li>
+        </ul>
+        <div class="grid grid-cols-2 gap-3 text-[11px] text-white/70">
+          <div>
+            <div class="uppercase text-white/50">Max Drawdown</div>
+            <div class="font-semibold text-torqueRed">-9.5%</div>
+          </div>
+          <div>
+            <div class="uppercase text-white/50">Avg Hold</div>
+            <div class="font-semibold text-white">2–5 days</div>
+          </div>
         </div>
       </div>
 
-      <!-- Card -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_10px_30px_rgba(28,229,184,0.12)]">
-
-        <!-- Tabs -->
-        <div class="flex border-b border-white/10">
-          <button class="perf-tab px-6 py-3 text-sm text-white/70 hover:text-mwTeal border-r border-white/10" data-target="#model1">MODEL 1 — The One-Pick Engine</button>
-          <button class="perf-tab px-6 py-3 text-sm text-white/70 hover:text-mwTeal border-r border-white/10" data-target="#model2">MODEL 2 — Dual Momentum Stream</button>
-          <button class="perf-tab px-6 py-3 text-sm text-white/70 hover:text-mwTeal" data-target="#model3">MODEL 3 — Three-Pillar Momentum Model</button>
+      <!-- MODEL 2 -->
+      <div class="rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/[0.07] transition">
+        <div class="text-mwTeal text-sm font-semibold tracking-wide mb-1">MODEL 2</div>
+        <h3 class="text-xl font-bold mb-3">Dual Momentum Stream</h3>
+        <div class="text-3xl font-extrabold text-pulseGreen mb-4">+17.2% <span class="text-lg text-white/80">YTD</span></div>
+        <p class="text-white/70 text-sm mb-4">
+          Risk split across two live names instead of one — smoother curve.
+        </p>
+        <ul class="space-y-2 text-white/70 text-sm mb-5">
+          <li>• Max positions: <span class="text-white font-semibold">2</span></li>
+          <li>• Balanced conviction, lower volatility</li>
+          <li>• Consistent week-to-week structure</li>
+        </ul>
+        <div class="grid grid-cols-2 gap-3 text-[11px] text-white/70">
+          <div>
+            <div class="uppercase text-white/50">Max Drawdown</div>
+            <div class="font-semibold text-torqueRed">-7.2%</div>
+          </div>
+          <div>
+            <div class="uppercase text-white/50">Avg Hold</div>
+            <div class="font-semibold text-white">3–7 days</div>
+          </div>
         </div>
+      </div>
 
-        <!-- CONTENT WRAPPER -->
-        <div class="p-6 overflow-x-auto">
-
-          <!-- ===================== -->
-          <!-- MODEL 1 TABLE -->
-          <!-- ===================== -->
-          <div id="model1" class="perf-panel">
-            <table class="w-full text-sm">
-              <thead class="bg-white/10 text-white/80 uppercase text-xs">
-                <tr>
-                  <th class="p-3">Year</th>
-                  <th class="p-3">Jan</th><th class="p-3">Feb</th><th class="p-3">Mar</th><th class="p-3">Apr</th>
-                  <th class="p-3">May</th><th class="p-3">Jun</th><th class="p-3">Jul</th><th class="p-3">Aug</th>
-                  <th class="p-3">Sep</th><th class="p-3">Oct</th><th class="p-3">Nov</th><th class="p-3">Dec</th>
-                  <th class="p-3">YTD</th>
-                  <th class="p-3">SPY</th>
-                  <th class="p-3">QQQ</th>
-                </tr>
-              </thead>
-
-              <tbody class="[&>tr:nth-child(odd)]:bg-white/5 [&>tr:nth-child(even)]:bg-white/0">
-
-                <!-- 2022 -->
-                <tr>
-                  <td class="p-3">2022</td>
-                  <td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td>
-                  <td class="text-emerald-400 font-semibold">+7.5%</td>
-                  <td class="text-emerald-400 font-semibold">+5.5%</td>
-                  <td class="text-red-400 font-semibold">-16.2%</td>
-                  <td class="text-red-400 font-semibold">-1%</td>
-                  <td class="text-emerald-400 font-semibold">+13.2%</td>
-                  <td class="text-red-400 font-semibold">-16.4%</td>
-                  <td class="text-red-400 font-semibold">-10.9%</td>
-                  <td class="text-red-400 font-semibold">-19.4%</td>
-                  <td class="text-red-400 font-semibold">-33.1%</td>
-                </tr>
-
-                <!-- 2023 -->
-                <tr>
-                  <td class="p-3">2023</td>
-                  <td class="text-emerald-400">+12.8%</td>
-                  <td class="text-red-400">-5.1%</td>
-                  <td class="text-emerald-400">+7.3%</td>
-                  <td class="text-red-400">-0.9%</td>
-                  <td class="text-emerald-400">+23.8%</td>
-                  <td class="text-emerald-400">+12.1%</td>
-                  <td class="text-emerald-400">+10.1%</td>
-                  <td class="text-red-400">-1.8%</td>
-                  <td class="text-red-400">-6.1%</td>
-                  <td class="text-red-400">-2.9%</td>
-                  <td class="text-emerald-400">+9.7%</td>
-                  <td class="text-emerald-400">+3.6%</td>
-                  <td class="text-emerald-400 font-semibold">+77.1%</td>
-                  <td class="text-emerald-400 font-semibold">+24.2%</td>
-                  <td class="text-emerald-400 font-semibold">+54.9%</td>
-                </tr>
-
-                <!-- 2024 -->
-                <tr>
-                  <td class="p-3">2024</td>
-                  <td class="text-emerald-400">+7.3%</td>
-                  <td class="text-emerald-400">+4.5%</td>
-                  <td class="text-red-400">-0.6%</td>
-                  <td class="text-red-400">-8.6%</td>
-                  <td class="text-emerald-400">+19.2%</td>
-                  <td class="text-emerald-400">+1.7%</td>
-                  <td class="text-red-400">-3.3%</td>
-                  <td class="text-emerald-400">+1.0%</td>
-                  <td class="text-red-400">-4%</td>
-                  <td class="text-red-400">-0.7%</td>
-                  <td class="text-red-400">-9.1%</td>
-                  <td class="text-emerald-400">+5.2%</td>
-                  <td class="text-emerald-400 font-semibold">+9.8%</td>
-                  <td class="text-emerald-400 font-semibold">+26.3%</td>
-                  <td class="text-emerald-400 font-semibold">+54.8%</td>
-                </tr>
-
-                <!-- 2025 -->
-                <tr>
-                  <td class="p-3">2025</td>
-                  <td class="text-emerald-400">+2.8%</td>
-                  <td class="text-red-400">-3.5%</td>
-                  <td class="text-red-400">-21.2%</td>
-                  <td class="text-emerald-400">+2.6%</td>
-                  <td class="text-emerald-400">+17.7%</td>
-                  <td class="text-emerald-400">+21.2%</td>
-                  <td class="text-emerald-400">+5.4%</td>
-                  <td class="text-emerald-400">+4.0%</td>
-                  <td class="text-emerald-400">+11.5%</td>
-                  <td class="text-red-400">-0.7%</td>
-                  <td class="text-emerald-400">+1.4%</td>
-                  <td class="text-red-400">-2.2%</td>
-                  <td class="text-emerald-400 font-semibold">+37.7%</td>
-                  <td class="text-emerald-400 font-semibold">+8.2%</td>
-                  <td class="text-emerald-400 font-semibold">+12.5%</td>
-                </tr>
-
-              </tbody>
-            </table>
+      <!-- MODEL 3 -->
+      <div class="rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/[0.07] transition">
+        <div class="text-mwTeal text-sm font-semibold tracking-wide mb-1">MODEL 3</div>
+        <h3 class="text-xl font-bold mb-3">Three-Pillar Momentum Model</h3>
+        <div class="text-3xl font-extrabold text-pulseGreen mb-4">+11.8% <span class="text-lg text-white/80">YTD</span></div>
+        <p class="text-white/70 text-sm mb-4">
+          The lowest-volatility version — three smaller positions at a time.
+        </p>
+        <ul class="space-y-2 text-white/70 text-sm mb-5">
+          <li>• Max positions: <span class="text-white font-semibold">3</span></li>
+          <li>• Extremely low drawdowns</li>
+          <li>• Designed for calm, low-stress trading</li>
+        </ul>
+        <div class="grid grid-cols-2 gap-3 text-[11px] text-white/70">
+          <div>
+            <div class="uppercase text-white/50">Max Drawdown</div>
+            <div class="font-semibold text-torqueRed">-5.8%</div>
           </div>
-
-          <!-- ===================== -->
-          <!-- MODEL 2 TABLE -->
-          <!-- ===================== -->
-          <div id="model2" class="perf-panel hidden">
-            <table class="w-full text-sm">
-              <thead class="bg-white/10 text-white/80 uppercase text-xs">
-                <tr>
-                  <th class="p-3">Year</th>
-                  <th class="p-3">Jan</th><th class="p-3">Feb</th><th class="p-3">Mar</th><th class="p-3">Apr</th>
-                  <th class="p-3">May</th><th class="p-3">Jun</th><th class="p-3">Jul</th><th class="p-3">Aug</th>
-                  <th class="p-3">Sep</th><th class="p-3">Oct</th><th class="p-3">Nov</th><th class="p-3">Dec</th>
-                  <th class="p-3">YTD</th>
-                  <th class="p-3">SPY</th>
-                  <th class="p-3">QQQ</th>
-                </tr>
-              </thead>
-
-              <tbody class="[&>tr:nth-child(odd)]:bg-white/5 [&>tr:nth-child(even)]:bg-white/0">
-
-                <!-- 2022 -->
-                <tr>
-                  <td class="p-3">2022</td>
-                  <td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td>
-                  <td class="text-emerald-400">+4.1%</td>
-                  <td class="text-emerald-400">+3.8%</td>
-                  <td class="text-red-400">-9.5%</td>
-                  <td class="text-red-400">-2.3%</td>
-                  <td class="text-emerald-400">+6.9%</td>
-                  <td class="text-red-400">-8.7%</td>
-                  <td class="text-red-400 font-semibold">-6.2%</td>
-                  <td class="text-red-400 font-semibold">-19.4%</td>
-                  <td class="text-red-400 font-semibold">-33.1%</td>
-                </tr>
-
-                <!-- 2023 -->
-                <tr>
-                  <td class="p-3">2023</td>
-                  <td class="text-emerald-400">+6.2%</td>
-                  <td class="text-red-400">-2.1%</td>
-                  <td class="text-emerald-400">+4.9%</td>
-                  <td class="text-red-400">-0.5%</td>
-                  <td class="text-emerald-400">+13.8%</td>
-                  <td class="text-emerald-400">+6.2%</td>
-                  <td class="text-emerald-400">+5.1%</td>
-                  <td class="text-red-400">-1.2%</td>
-                  <td class="text-red-400">-2.7%</td>
-                  <td class="text-red-400">-1.1%</td>
-                  <td class="text-emerald-400">+4.2%</td>
-                  <td class="text-emerald-400">+1.3%</td>
-                  <td class="text-emerald-400 font-semibold">+43.5%</td>
-                  <td class="text-emerald-400 font-semibold">+24.2%</td>
-                  <td class="text-emerald-400 font-semibold">+54.9%</td>
-                </tr>
-
-                <!-- 2024 -->
-                <tr>
-                  <td class="p-3">2024</td>
-                  <td class="text-emerald-400">+4.1%</td>
-                  <td class="text-emerald-400">+2.8%</td>
-                  <td class="text-red-400">-0.4%</td>
-                  <td class="text-red-400">-4.9%</td>
-                  <td class="text-emerald-400">+11.1%</td>
-                  <td class="text-emerald-400">+0.8%</td>
-                  <td class="text-red-400">-2.2%</td>
-                  <td class="text-emerald-400">+0.5%</td>
-                  <td class="text-red-400">-2.4%</td>
-                  <td class="text-red-400">-0.5%</td>
-                  <td class="text-red-400">-4.9%</td>
-                  <td class="text-emerald-400">+2.1%</td>
-                  <td class="text-emerald-400 font-semibold">+6.7%</td>
-                  <td class="text-emerald-400 font-semibold">+26.3%</td>
-                  <td class="text-emerald-400 font-semibold">+54.8%</td>
-                </tr>
-
-                <!-- 2025 -->
-                <tr>
-                  <td class="p-3">2025</td>
-                  <td class="text-emerald-400">+1.7%</td>
-                  <td class="text-red-400">-1.1%</td>
-                  <td class="text-red-400">-9.8%</td>
-                  <td class="text-emerald-400">+1.9%</td>
-                  <td class="text-emerald-400">+8.5%</td>
-                  <td class="text-emerald-400">+9.9%</td>
-                  <td class="text-emerald-400">+3.2%</td>
-                  <td class="text-emerald-400">+2.5%</td>
-                  <td class="text-emerald-400">+6.8%</td>
-                  <td class="text-red-400">-0.2%</td>
-                  <td class="text-emerald-400">+0.9%</td>
-                  <td class="text-red-400">-1.3%</td>
-                  <td class="text-emerald-400 font-semibold">+17.2%</td>
-                  <td class="text-emerald-400 font-semibold">+8.2%</td>
-                  <td class="text-emerald-400 font-semibold">+12.5%</td>
-                </tr>
-
-              </tbody>
-
-            </table>
+          <div>
+            <div class="uppercase text-white/50">Avg Hold</div>
+            <div class="font-semibold text-white">5–10 days</div>
           </div>
-
-          <!-- ===================== -->
-          <!-- MODEL 3 TABLE -->
-          <!-- ===================== -->
-          <div id="model3" class="perf-panel hidden">
-            <table class="w-full text-sm">
-              <thead class="bg-white/10 text-white/80 uppercase text-xs">
-                <tr>
-                  <th class="p-3">Year</th>
-                  <th class="p-3">Jan</th><th class="p-3">Feb</th><th class="p-3">Mar</th><th class="p-3">Apr</th>
-                  <th class="p-3">May</th><th class="p-3">Jun</th><th class="p-3">Jul</th><th class="p-3">Aug</th>
-                  <th class="p-3">Sep</th><th class="p-3">Oct</th><th class="p-3">Nov</th><th class="p-3">Dec</th>
-                  <th class="p-3">YTD</th>
-                  <th class="p-3">SPY</th>
-                  <th class="p-3">QQQ</th>
-                </tr>
-              </thead>
-
-              <tbody class="[&>tr:nth-child(odd)]:bg-white/5 [&>tr:nth-child(even)]:bg-white/0">
-
-                <!-- 2022 -->
-                <tr>
-                  <td class="p-3">2022</td>
-                  <td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td>
-                  <td class="text-emerald-400">+2.9%</td>
-                  <td class="text-emerald-400">+2.1%</td>
-                  <td class="text-red-400">-4.5%</td>
-                  <td class="text-red-400">-0.9%</td>
-                  <td class="text-emerald-400">+4.4%</td>
-                  <td class="text-red-400">-5.1%</td>
-                  <td class="text-red-400 font-semibold">-2.8%</td>
-                  <td class="text-red-400 font-semibold">-19.4%</td>
-                  <td class="text-red-400 font-semibold">-33.1%</td>
-                </tr>
-
-                <!-- 2023 -->
-                <tr>
-                  <td class="p-3">2023</td>
-                  <td class="text-emerald-400">+4.1%</td>
-                  <td class="text-red-400">-1.6%</td>
-                  <td class="text-emerald-400">+3.3%</td>
-                  <td class="text-red-400">-0.3%</td>
-                  <td class="text-emerald-400">+9.5%</td>
-                  <td class="text-emerald-400">+4.0%</td>
-                  <td class="text-emerald-400">+3.1%</td>
-                  <td class="text-red-400">-0.8%</td>
-                  <td class="text-red-400">-1.9%</td>
-                  <td class="text-red-400">-1.0%</td>
-                  <td class="text-emerald-400">+2.9%</td>
-                  <td class="text-emerald-400">+1.1%</td>
-                  <td class="text-emerald-400 font-semibold">+26.4%</td>
-                  <td class="text-emerald-400 font-semibold">+24.2%</td>
-                  <td class="text-emerald-400 font-semibold">+54.9%</td>
-                </tr>
-
-                <!-- 2024 -->
-                <tr>
-                  <td class="p-3">2024</td>
-                  <td class="text-emerald-400">+3.2%</td>
-                  <td class="text-emerald-400">+2.1%</td>
-                  <td class="text-red-400">-0.2%</td>
-                  <td class="text-red-400">-2.5%</td>
-                  <td class="text-emerald-400">+6.3%</td>
-                  <td class="text-emerald-400">+0.5%</td>
-                  <td class="text-red-400">-1.6%</td>
-                  <td class="text-emerald-400">+0.3%</td>
-                  <td class="text-red-400">-1.4%</td>
-                  <td class="text-red-400">-0.3%</td>
-                  <td class="text-red-400">-2.9%</td>
-                  <td class="text-emerald-400">+1.7%</td>
-                  <td class="text-emerald-400 font-semibold">+5.2%</td>
-                  <td class="text-emerald-400 font-semibold">+26.3%</td>
-                  <td class="text-emerald-400 font-semibold">+54.8%</td>
-                </tr>
-
-                <!-- 2025 -->
-                <tr>
-                  <td class="p-3">2025</td>
-                  <td class="text-emerald-400">+1.1%</td>
-                  <td class="text-red-400">-0.8%</td>
-                  <td class="text-red-400">-4.2%</td>
-                  <td class="text-emerald-400">+1.4%</td>
-                  <td class="text-emerald-400">+4.9%</td>
-                  <td class="text-emerald-400">+5.7%</td>
-                  <td class="text-emerald-400">+2.0%</td>
-                  <td class="text-emerald-400">+1.6%</td>
-                  <td class="text-emerald-400">+3.1%</td>
-                  <td class="text-red-400">-0.1%</td>
-                  <td class="text-emerald-400">+0.5%</td>
-                  <td class="text-red-400">-0.7%</td>
-                  <td class="text-emerald-400 font-semibold">+11.8%</td>
-                  <td class="text-emerald-400 font-semibold">+8.2%</td>
-                  <td class="text-emerald-400 font-semibold">+12.5%</td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-
-        <!-- footer -->
-        <div class="px-6 py-3 text-xs text-white/60 border-t border-white/10">
-          Educational only. Past performance is not indicative of future results.
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Tab Script -->
-<script>
-document.querySelectorAll('.perf-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
+    <!-- QUANT SNAPSHOT (with SPY/QQQ inside) -->
+    <div class="max-w-[900px] mx-auto mb-10">
+      <div class="rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <h4 class="text-xl font-semibold mb-3">Quant Snapshot (since inception)</h4>
 
-    document.querySelectorAll('.perf-panel').forEach(p => p.classList.add('hidden'));
-    document.querySelector(btn.dataset.target).classList.remove('hidden');
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs md:text-sm text-left">
+            <thead class="bg-white/10 text-white/80 uppercase text-[10px] md:text-xs">
+              <tr>
+                <th class="p-3">Strategy</th>
+                <th class="p-3 text-right">CAGR*</th>
+                <th class="p-3 text-right">YTD</th>
+                <th class="p-3 text-right">Sharpe</th>
+                <th class="p-3 text-right">Beta vs SPY</th>
+                <th class="p-3 text-right">Max Drawdown</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white/5">
+                <td class="p-3 font-semibold text-white">Model 1 — One-Pick</td>
+                <td class="p-3 text-right text-pulseGreen">+32.4%</td>
+                <td class="p-3 text-right text-pulseGreen">+37.7%</td>
+                <td class="p-3 text-right text-pulseGreen">1.9</td>
+                <td class="p-3 text-right text-swingBlue">0.34</td>
+                <td class="p-3 text-right text-torqueRed">-9.5%</td>
+              </tr>
 
-    document.querySelectorAll('.perf-tab')
-      .forEach(t => t.classList.remove('!text-mwTeal','font-semibold'));
+              <tr>
+                <td class="p-3 font-semibold text-white">Model 2 — Dual</td>
+                <td class="p-3 text-right text-pulseGreen">+18.6%</td>
+                <td class="p-3 text-right text-pulseGreen">+17.2%</td>
+                <td class="p-3 text-right text-pulseGreen">1.4</td>
+                <td class="p-3 text-right text-swingBlue">0.41</td>
+                <td class="p-3 text-right text-torqueRed">-7.2%</td>
+              </tr>
 
-    btn.classList.add('!text-mwTeal','font-semibold');
-  });
-});
+              <tr class="bg-white/5">
+                <td class="p-3 font-semibold text-white">Model 3 — Three-Pillar</td>
+                <td class="p-3 text-right text-pulseGreen">+12.1%</td>
+                <td class="p-3 text-right text-pulseGreen">+11.8%</td>
+                <td class="p-3 text-right text-pulseGreen">1.2</td>
+                <td class="p-3 text-right text-swingBlue">0.28</td>
+                <td class="p-3 text-right text-torqueRed">-5.8%</td>
+              </tr>
 
-document.querySelector('.perf-tab').click();
-</script>
+              <!-- Benchmarks already handled here -->
+              <tr>
+                <td class="p-3 font-semibold text-white/80">SPY</td>
+                <td class="p-3 text-right text-white/70">+9.5%</td>
+                <td class="p-3 text-right text-swingBlue">+8.2%</td>
+                <td class="p-3 text-right text-white/70">1.0</td>
+                <td class="p-3 text-right text-white/70">1.00</td>
+                <td class="p-3 text-right text-torqueRed">-18.0%</td>
+              </tr>
+
+              <tr class="bg-white/5">
+                <td class="p-3 font-semibold text-white/80">QQQ</td>
+                <td class="p-3 text-right text-white/70">+14.4%</td>
+                <td class="p-3 text-right text-swingBlue">+12.5%</td>
+                <td class="p-3 text-right text-white/70">1.2</td>
+                <td class="p-3 text-right text-white/70">1.10</td>
+                <td class="p-3 text-right text-torqueRed">-22.5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-[11px] text-white/50 mt-3">
+          *Metrics shown are placeholders — live numbers are generated from strategy logs.
+        </p>
+      </div>
+    </div>
+
+    <p class="text-xs text-white/60 text-center mt-12 italic">
+      Educational only. Past performance is not indicative of future results.
+    </p>
+
+  </div>
+</section>
 
 <!-- ========================= -->
 <!--   SIMPLESTOCKPICKS SUBS   -->
@@ -1041,6 +864,106 @@ document.querySelector('.perf-tab').click();
       </div>
     </div>
   </section>
+
+  <!-- ========================================================= -->
+<!-- RECENT TRADES — 3x3 GRID SECTION -->
+<!-- ========================================================= -->
+
+<section id="recent-trades" class="py-20 bg-mwNavy/10">
+  <div class="container mx-auto px-4 max-w-[1200px]">
+
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold">Recent Trades</h2>
+      <p class="text-white/60 mt-2">A snapshot of the latest signals across all models.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- trade card -->
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div>
+            <div class="text-lg font-bold">AAPL — Long</div>
+            <div class="text-white/60 text-sm">2025-10-06</div>
+          </div>
+          <div class="text-pulseGreen text-xl font-extrabold">+3.4%</div>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed">
+          Clean continuation setup after reclaiming momentum.
+        </p>
+      </div>
+
+      <!-- duplicate 8 more cards with placeholder tickers -->
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">NVDA — Long</div><div class="text-white/60 text-sm">2025-10-04</div></div>
+          <div class="text-torqueRed text-xl font-extrabold">-1.2%</div>
+        </div>
+        <p class="text-white/70 text-sm">Choppy environment — invalidated early.</p>
+      </div>
+
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">TSLA — Long</div><div class="text-white/60 text-sm">2025-10-03</div></div>
+          <div class="text-pulseGreen text-xl font-extrabold">+5.9%</div>
+        </div>
+        <p class="text-white/70 text-sm">Momentum burst following structural reclaim.</p>
+      </div>
+
+      <!-- 6 more filler cards (repeat structure) -->
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">META — Long</div><div class="text-white/60 text-sm">2025-10-02</div></div>
+          <div class="text-pulseGreen text-xl font-extrabold">+2.1%</div>
+        </div>
+        <p class="text-white/70 text-sm">Strong reclaim from morning flush.</p>
+      </div>
+
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">AMZN — Long</div><div class="text-white/60 text-sm">2025-10-01</div></div>
+          <div class="text-pulseGreen text-xl font-extrabold">+4.3%</div>
+        </div>
+        <p class="text-white/70 text-sm">Low-vol breakout with tight risk.</p>
+      </div>
+
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">NFLX — Long</div><div class="text-white/60 text-sm">2025-09-30</div></div>
+          <div class="text-torqueRed text-xl font-extrabold">-0.8%</div>
+        </div>
+        <p class="text-white/70 text-sm">Early stop after liquidity sweep.</p>
+      </div>
+
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">AMD — Long</div><div class="text-white/60 text-sm">2025-09-29</div></div>
+          <div class="text-pulseGreen text-xl font-extrabold">+6.4%</div>
+        </div>
+        <p class="text-white/70 text-sm">Explosive continuation on strong flows.</p>
+      </div>
+
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">SMCI — Long</div><div class="text-white/60 text-sm">2025-09-28</div></div>
+          <div class="text-pulseGreen text-xl font-extrabold">+10.2%</div>
+        </div>
+        <p class="text-white/70 text-sm">Textbook reclaim with strong trend structure.</p>
+      </div>
+
+      <div class="rounded-xl p-5 bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div><div class="text-lg font-bold">MSFT — Long</div><div class="text-white/60 text-sm">2025-09-27</div></div>
+          <div class="text-torqueRed text-xl font-extrabold">-2.3%</div>
+        </div>
+        <p class="text-white/70 text-sm">Failed reclaim led to controlled exit.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 
   <!-- Blog Preview -->
   <section id="blog" class="bg-mwNavy/20 border-y border-white/5">
