@@ -3,124 +3,347 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ankle Plan (6 Weeks)</title>
+  <title>6-Week Recovery Plan: Ankles/Feet + Wrist/Thumb</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background: #f6f7fb; color: #111; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 28px 18px 60px; }
-    .card { background: #fff; border-radius: 16px; padding: 18px; box-shadow: 0 6px 20px rgba(0,0,0,.06); margin: 14px 0; }
-    h1 { font-size: 26px; margin: 6px 0 10px; }
-    h2 { font-size: 18px; margin: 0 0 10px; }
-    p { line-height: 1.45; margin: 8px 0; }
-    ul { margin: 8px 0 0 18px; }
-    li { margin: 6px 0; }
-    .tag { display: inline-block; padding: 6px 10px; border-radius: 999px; font-size: 12px; background: #eef2ff; }
-    .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    @media (min-width: 760px) { .row { grid-template-columns: 1fr 1fr; } }
-    .check { display: flex; gap: 10px; align-items: flex-start; }
-    input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; }
-    .muted { color: #555; font-size: 14px; }
-    .warn { background: #fff7ed; border: 1px solid #fed7aa; }
-    .good { background: #ecfeff; border: 1px solid #a5f3fc; }
-    .footer { margin-top: 18px; font-size: 13px; color: #555; }
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#555;
+      --line:#e9eaf2;
+      --good-bg:#ecfeff;
+      --good-bd:#a5f3fc;
+      --warn-bg:#fff7ed;
+      --warn-bd:#fed7aa;
+      --note-bg:#eef2ff;
+      --note-bd:#c7d2fe;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+      margin:14px 0;
+      border:1px solid var(--line);
+    }
+    h1{font-size:26px;margin:6px 0 6px}
+    h2{font-size:18px;margin:0 0 10px}
+    h3{font-size:15px;margin:14px 0 8px}
+    p{line-height:1.45;margin:8px 0}
+    ul{margin:8px 0 0 18px}
+    li{margin:6px 0}
+    .muted{color:var(--muted);font-size:14px}
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      background:var(--note-bg);
+      border:1px solid var(--note-bd);
+      margin-right:8px;
+    }
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width: 860px){ .grid{grid-template-columns:1fr 1fr} }
+    .good{background:var(--good-bg);border:1px solid var(--good-bd)}
+    .warn{background:var(--warn-bg);border:1px solid var(--warn-bd)}
+    .note{background:var(--note-bg);border:1px solid var(--note-bd)}
+    hr{border:none;border-top:1px solid var(--line);margin:14px 0}
+    .check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      margin:10px 0;
+    }
+    .check input{width:18px;height:18px;margin-top:2px;flex:0 0 auto}
+    .check .title{font-weight:700}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background:#111;
+      color:#fff;
+      padding:2px 7px;
+      border-radius:8px;
+      font-size:12px;
+    }
+    .footer{margin-top:10px;font-size:13px;color:var(--muted)}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    button{
+      appearance:none;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    button:hover{filter:brightness(.98)}
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <div class="card">
-      <span class="tag">Ankle • Achilles • Calves</span>
-      <h1>6-Week Ankle Plan</h1>
-      <p class="muted">Goal: restore ankle dorsiflexion + Achilles glide so the feet stop compensating (less morning pain, less cramping, less “rope” tightness).</p>
+      <div class="pillrow">
+        <span class="tag">6 Weeks</span>
+        <span class="tag">Ankles/Feet</span>
+        <span class="tag">Wrist/Thumb</span>
+        <span class="tag">Mobility + Strength</span>
+      </div>
+      <h1>6-Week Recovery Plan: Ankles/Feet + Wrist/Thumb</h1>
+      <p class="muted">
+        Goal: restore joint motion + tendon glide, then build strength so the system stops guarding.
+        Use pain as a guide: <strong>0–2/10 = OK</strong>, <strong>3–4/10 = reduce</strong>, <strong>sharp pain = stop</strong>.
+      </p>
+      <div class="btnrow">
+        <button onclick="window.print()">Print / Save as PDF</button>
+        <button onclick="clearChecks()">Clear all checkboxes</button>
+      </div>
+      <p class="footer">
+        Tip: On GitHub Pages, name this file <span class="kbd">index.html</span> and upload it to a public repo, then enable Pages (Settings → Pages → Deploy from branch → main / root).
+      </p>
     </div>
 
-    <div class="row">
-      <div class="card good">
-        <h2>Daily (Every Day)</h2>
+    <div class="card note">
+      <h2>Global Rules (applies to both)</h2>
+      <ul>
+        <li><strong>No aggressive “smashing”</strong> or forcing end-range stretches.</li>
+        <li><strong>Consistency beats intensity</strong>: small daily work + 3x/week strength.</li>
+        <li>If symptoms flare the next morning, <strong>reduce volume</strong> (not all-or-nothing).</li>
+      </ul>
+    </div>
 
-        <label class="check">
-          <input type="checkbox">
-          <div>
-            <strong>1) Soleus stretch (deep calf)</strong>
-            <div class="muted">Knee bent • heel down • lean in</div>
-            <div>⏱️ 60 sec × 2 each side</div>
-          </div>
-        </label>
+    <div class="grid">
+      <!-- ANKLE / FOOT PLAN -->
+      <div class="card">
+        <h2>Ankles / Feet Plan</h2>
+        <p class="muted">Main bottleneck: limited dorsiflexion + stiff Achilles/calf → plantar fascia compensates.</p>
 
-        <label class="check">
-          <input type="checkbox">
-          <div>
-            <strong>2) Knee-to-wall ankle rocks</strong>
-            <div class="muted">Heel down • smooth, slow • don’t force</div>
-            <div>🔁 10 reps × 2 sets each side</div>
-          </div>
-        </label>
+        <div class="card good">
+          <h3>Daily (Every day)</h3>
 
-        <label class="check">
-          <input type="checkbox">
-          <div>
-            <strong>3) Optional: light plantar release</strong>
-            <div class="muted">Only if it feels good (no pain)</div>
-            <div>30–45 sec each foot</div>
-          </div>
-        </label>
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">1) Soleus stretch (deep calf)</div>
+              <div class="muted">Knee bent • heel down • lean in (don’t force)</div>
+              <div>⏱️ 60 sec × 2 each side</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">2) Knee-to-wall ankle rocks</div>
+              <div class="muted">Heel down • smooth, slow • pain-free range</div>
+              <div>🔁 10 reps × 2 sets each side</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">3) Short-foot holds</div>
+              <div class="muted">Lift arch gently • toes stay relaxed (no curling)</div>
+              <div>Hold 5 sec • 2×10 reps</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">Optional: light plantar release (only if it feels good)</div>
+              <div class="muted">Ball/bottle • light pressure • stop before pain</div>
+              <div>30–45 sec each foot</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="card">
+          <h3>Strength (3× / week)</h3>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">4) Bent-knee calf raises (SOLEUS) — slow tempo</div>
+              <div class="muted">3 sec up • 3 sec down • full control</div>
+              <div>Week 1–2: 3×12 double-leg • Week 3–6: progress to single-leg (3×10–12)</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">5) Straight-knee calf raises (GASTROC) — slow tempo</div>
+              <div class="muted">Supports Achilles + ankle stiffness</div>
+              <div>3×12 (progress to single-leg as able)</div>
+            </div>
+          </label>
+
+          <p class="footer"><strong>Stop/modify</strong> if you get sharp heel pain at one exact spot.</p>
+        </div>
+
+        <div class="card warn">
+          <h3>Don’t do (during flare)</h3>
+          <ul>
+            <li>Barefoot on hard floors for long periods</li>
+            <li>High-impact (jump rope/running) until morning pain is consistently low</li>
+            <li>Aggressive toe-pull stretching if it reproduces pain</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- WRIST / THUMB PLAN -->
       <div class="card">
-        <h2>Strength (3× / Week)</h2>
+        <h2>Wrist / Thumb Plan (Right side focus)</h2>
+        <p class="muted">Main bottleneck: wrist stiffness + forearm rotation restriction → thumb/forearm fascia/tendons take load (clicking/snapping = stiffness/guarding).</p>
 
-        <label class="check">
-          <input type="checkbox">
-          <div>
-            <strong>4) Bent-knee calf raises (SOLEUS)</strong>
-            <div class="muted">Slow tempo: 3 sec up, 3 sec down</div>
-            <div>3×12 (start double-leg → progress single-leg)</div>
-          </div>
-        </label>
+        <div class="card good">
+          <h3>Daily (Every day)</h3>
 
-        <label class="check">
-          <input type="checkbox">
-          <div>
-            <strong>5) Straight-knee calf raises (GASTROC)</strong>
-            <div class="muted">Supports Achilles + ankle stiffness</div>
-            <div>3×12</div>
-          </div>
-        </label>
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">1) Forearm rotation (pronation/supination)</div>
+              <div class="muted">Elbow at side, bent 90° • rotate palm up ↔ palm down</div>
+              <div>🔁 10 reps × 2 sets (pain-free range)</div>
+            </div>
+          </label>
 
-        <div class="footer">
-          <strong>Rule:</strong> soreness is ok; <strong>sharp heel pain</strong> is not.
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">2) Wrist flexion/extension mobility</div>
+              <div class="muted">Slow, controlled • no forcing end range</div>
+              <div>🔁 10 reps each direction × 2 sets</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">3) Thumb tendon glide (NOT a hard stretch)</div>
+              <div class="muted">Open hand • move thumb away and back gently</div>
+              <div>🔁 10 reps × 2 sets</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="card">
+          <h3>Strength (3× / week)</h3>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">4) Wrist extension strength</div>
+              <div class="muted">Light dumbbell/band • 3 sec up • 3 sec down</div>
+              <div>3×12 (reduce load if pain > 2/10)</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">5) Wrist flexion strength</div>
+              <div class="muted">Same slow tempo</div>
+              <div>3×12</div>
+            </div>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" />
+            <div>
+              <div class="title">6) Grip (light, sub-max)</div>
+              <div class="muted">Stress ball or towel squeeze • avoid max effort</div>
+              <div>2×15</div>
+            </div>
+          </label>
+
+          <p class="footer"><strong>Clicks are OK</strong> if they’re not painful and don’t worsen after. Painful clicking = reduce range/load.</p>
+        </div>
+
+        <div class="card warn">
+          <h3>Don’t do (during flare)</h3>
+          <ul>
+            <li>Repeated “self-cracking” for relief</li>
+            <li>Aggressive thumb stretching when it reproduces pain</li>
+            <li>Heavy gripping (pull-ups, dead hangs, tight bars) until symptoms calm</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Progression</h2>
+    <div class="card note">
+      <h2>6-Week Progression (Both Plans)</h2>
       <ul>
-        <li><strong>Weeks 1–2:</strong> double-leg raises, perfect form, full range</li>
-        <li><strong>Weeks 3–4:</strong> progress toward single-leg • 3×10 if needed</li>
-        <li><strong>Weeks 5–6:</strong> single-leg + slow eccentrics • add balance if pain ≤ 2/10</li>
+        <li><strong>Weeks 1–2:</strong> Daily mobility + light foot/wrist control. Strength is conservative and pain-guided.</li>
+        <li><strong>Weeks 3–4:</strong> Increase strength consistency (3×/week), keep tempo slow, start progressing toward single-leg (ankles) and slightly heavier but still easy loads (wrist).</li>
+        <li><strong>Weeks 5–6:</strong> Maintain daily mobility, progress strength carefully (single-leg ankles; steadier wrist loading). Add balance for ankles if pain ≤ 2/10.</li>
       </ul>
-    </div>
-
-    <div class="card warn">
-      <h2>Don’t Do</h2>
-      <ul>
-        <li>Bouncing/forcing ankle stretch</li>
-        <li>Deep painful fascia smashing</li>
-        <li>Barefoot standing on hard floors during flare</li>
-        <li>Jump rope/running until symptoms calm</li>
-      </ul>
+      <hr />
+      <p class="muted">
+        If your symptoms came from a bike accident pattern: expect the nervous system to “re-check safety.”
+        The answer is <strong>smooth daily motion + slow progressive strength</strong>, not force.
+      </p>
     </div>
 
     <div class="card">
-      <h2>How you know it’s working</h2>
+      <h2>Weekly Self-Check (2 minutes)</h2>
       <ul>
-        <li>Knee gets closer to wall week to week (dorsiflexion improving)</li>
-        <li>Morning pain decreases</li>
-        <li>Cramping reduces</li>
-        <li>Feet re-tighten less after walking</li>
+        <li><strong>Ankles:</strong> knee-to-wall distance improving week to week (even small changes count).</li>
+        <li><strong>Feet:</strong> morning pain trend down and less cramping with toe flexion.</li>
+        <li><strong>Wrist:</strong> rotation range improves + fewer painful clicks; thumb tension reduces with fist/side movement.</li>
       </ul>
-      <p class="footer"><strong>Reminder:</strong> Stretch the soleus daily. Strengthen it 3×/week.</p>
+      <p class="footer">
+        Red flags: numbness/tingling, sudden weakness, swelling/warmth, sharp focal pain that worsens week-to-week → consider a clinician assessment.
+      </p>
     </div>
   </div>
+
+  <script>
+    // Persist checkboxes so progress survives refresh
+    const KEY = "recovery_plan_checks_v1";
+
+    function getCheckboxes(){
+      return Array.from(document.querySelectorAll('input[type="checkbox"]'));
+    }
+
+    function saveChecks(){
+      const states = getCheckboxes().map(cb => cb.checked);
+      localStorage.setItem(KEY, JSON.stringify(states));
+    }
+
+    function loadChecks(){
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return;
+      try{
+        const states = JSON.parse(raw);
+        const cbs = getCheckboxes();
+        states.forEach((v,i)=>{ if(cbs[i]) cbs[i].checked = !!v; });
+      }catch(e){}
+    }
+
+    function clearChecks(){
+      getCheckboxes().forEach(cb => cb.checked = false);
+      saveChecks();
+    }
+
+    document.addEventListener("change", (e)=>{
+      if(e.target && e.target.matches('input[type="checkbox"]')) saveChecks();
+    });
+
+    loadChecks();
+  </script>
 </body>
 </html>
