@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Three-day padel strength and hip capacity training plan." />
+  <title>Padel Strength Plan</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e4e8ef;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --brand-soft: #eaf1ff;
+      --success: #15803d;
+      --success-soft: #ecfdf3;
+      --warning: #9a3412;
+      --warning-soft: #fff7ed;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+      --radius: 20px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app {
+      width: min(100%, 900px);
+      margin: 0 auto;
+      padding: 18px 16px 80px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 26px 22px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.94));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      top: -80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .eyebrow {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 7px;
+      font-size: 0.77rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #bfdbfe;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(1.75rem, 7vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 12px 0 0;
+      color: #dbeafe;
+      font-size: 0.98rem;
+    }
+
+    .hero-stats {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 11px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.08);
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 2px;
+      color: #cbd5e1;
+      font-size: 0.72rem;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .tab-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 18px -16px 0;
+      padding: 10px 16px;
+      background: rgba(245, 247, 251, 0.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .tab {
+      min-height: 47px;
+      border: 0;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+      cursor: pointer;
+      transition: 160ms ease;
+    }
+
+    .tab.active {
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 5px 12px rgba(37, 99, 235, 0.26);
+    }
+
+    .panel {
+      display: none;
+      animation: fade 170ms ease;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .day-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 18px 2px 12px;
+    }
+
+    .day-title {
+      margin: 0;
+      font-size: 1.3rem;
+      letter-spacing: -0.025em;
+    }
+
+    .day-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .duration {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .progress-card {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .progress-track {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #eef2f7;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--brand), #60a5fa);
+      transition: width 220ms ease;
+    }
+
+    .exercise-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .exercise {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.035);
+      transition: 160ms ease;
+    }
+
+    .exercise.done {
+      border-color: #bbf7d0;
+      background: var(--success-soft);
+    }
+
+    .exercise-main {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .check {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 2px solid #cbd5e1;
+      border-radius: 9px;
+      background: #fff;
+      cursor: pointer;
+      transition: 150ms ease;
+    }
+
+    .check::after {
+      content: "✓";
+      opacity: 0;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 900;
+      transform: scale(0.5);
+      transition: 150ms ease;
+    }
+
+    .exercise.done .check {
+      border-color: var(--success);
+      background: var(--success);
+    }
+
+    .exercise.done .check::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .exercise-name {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .exercise-meta {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .details-toggle {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 10px;
+      color: var(--muted);
+      background: var(--surface-2);
+      cursor: pointer;
+      transition: 160ms ease;
+    }
+
+    .details-toggle.open {
+      transform: rotate(180deg);
+    }
+
+    .exercise-details {
+      display: none;
+      margin: 0 16px 16px 56px;
+      padding: 12px 13px;
+      border-radius: 13px;
+      color: #475467;
+      background: var(--surface-2);
+      font-size: 0.88rem;
+    }
+
+    .exercise-details.open {
+      display: block;
+    }
+
+    .exercise-details strong {
+      color: var(--text);
+    }
+
+    .note-card {
+      padding: 16px;
+      border: 1px solid #fed7aa;
+      border-radius: var(--radius);
+      background: var(--warning-soft);
+    }
+
+    .note-card h2,
+    .schedule-card h2,
+    .level-card h2 {
+      margin: 0 0 9px;
+      font-size: 1.05rem;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: #7c2d12;
+      font-size: 0.9rem;
+    }
+
+    .schedule-card,
+    .level-card {
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
+    }
+
+    .schedule-grid {
+      display: grid;
+      gap: 8px;
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .schedule-row:last-child {
+      border-bottom: 0;
+    }
+
+    .schedule-row strong {
+      color: var(--brand-dark);
+      font-size: 0.86rem;
+    }
+
+    .schedule-row span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .criteria {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .criteria li {
+      position: relative;
+      padding-left: 25px;
+      color: #475467;
+      font-size: 0.9rem;
+    }
+
+    .criteria li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--success);
+      font-weight: 900;
+    }
+
+    .footer-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .reset-btn {
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: #475467;
+      background: var(--surface);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .reset-btn:active,
+    .tab:active,
+    .details-toggle:active {
+      transform: scale(0.98);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: max(12px, env(safe-area-inset-bottom));
+      width: min(calc(100% - 24px), 560px);
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      padding: 7px;
+      border: 1px solid rgba(228, 232, 239, 0.95);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+      backdrop-filter: blur(16px);
+    }
+
+    .bottom-nav button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 12px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 0.82rem;
+      font-weight: 850;
+    }
+
+    .bottom-nav button.active {
+      color: #fff;
+      background: var(--brand);
+    }
+
+    @media (min-width: 700px) {
+      .app {
+        padding-top: 28px;
+      }
+
+      .hero {
+        padding: 34px;
+      }
+
+      .exercise-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .exercise-details {
+        margin-left: 16px;
+      }
+
+      .bottom-nav {
+        display: none;
+      }
+
+      .app {
+        padding-bottom: 40px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Level 1 · Four-Week Block</p>
+      <h1>Padel Strength Plan</h1>
+      <p class="hero-copy">
+        Three gym days designed to build hip, core, calf, foot and upper-body
+        strength without turning every session into another hard leg day.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>3</strong><span>Gym days</span></div>
+        <div class="stat"><strong>4–6</strong><span>Weeks</span></div>
+        <div class="stat"><strong>6–7/10</strong><span>Effort</span></div>
+      </div>
+    </header>
+
+    <div class="tab-wrap">
+      <nav class="tabs" aria-label="Workout days">
+        <button class="tab active" data-day="day1">Day 1</button>
+        <button class="tab" data-day="day2">Day 2</button>
+        <button class="tab" data-day="day3">Day 3</button>
+      </nav>
+    </div>
+
+    <section id="day1" class="panel active" aria-labelledby="day1-title">
+      <div class="day-header">
+        <div>
+          <h2 class="day-title" id="day1-title">Posterior Chain + Push/Pull</h2>
+          <p class="day-subtitle">Full body with controlled lower-body loading.</p>
+        </div>
+        <span class="duration">50–60 min</span>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-top">
+          <span>Day 1 progress</span>
+          <span class="progress-text">0 / 8 complete</span>
+        </div>
+        <div class="progress-track"><div class="progress-bar"></div></div>
+      </div>
+
+      <div class="exercise-list">
+        <article class="exercise" data-id="d1-deadbug">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark dead-bug heel slide complete"></button>
+            <div>
+              <h3 class="exercise-name">Dead-Bug Heel Slide</h3>
+              <p class="exercise-meta">3 × 6 each side</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep the foot on the floor. Slide only as far as you can without the
+            left lower back arching, rotating or “sticking.”
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-squat">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark goblet squat complete"></button>
+            <div>
+              <h3 class="exercise-name">Goblet Squat</h3>
+              <p class="exercise-meta">3 × 8</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Use a comfortable stance with only slight turnout. Avoid a deep,
+            wide sumo position or any front-of-hip pinch.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-rdl">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark Romanian deadlift complete"></button>
+            <div>
+              <h3 class="exercise-name">Romanian Deadlift</h3>
+              <p class="exercise-meta">3 × 8</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Push your hips backward and keep the weights close. Stop before you
+            feel pulling or pinching under the front of the left hip.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-bench">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark dumbbell bench press complete"></button>
+            <div>
+              <h3 class="exercise-name">Dumbbell Bench Press</h3>
+              <p class="exercise-meta">3 × 8–10</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep both feet comfortable and ribs controlled. Do not force a large
+            lower-back arch.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-row">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark chest-supported row complete"></button>
+            <div>
+              <h3 class="exercise-name">Chest-Supported Row</h3>
+              <p class="exercise-meta">3 × 8–10</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Pull the elbows toward your hips while keeping your chest supported.
+            Avoid shrugging the shoulders.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-bridge">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark glute bridge complete"></button>
+            <div>
+              <h3 class="exercise-name">Glute Bridge</h3>
+              <p class="exercise-meta">3 × 10–12</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Pause for two seconds at the top. Finish through the glutes without
+            arching through the lower back.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-calf">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark straight-knee calf raise complete"></button>
+            <div>
+              <h3 class="exercise-name">Straight-Knee Calf Raise</h3>
+              <p class="exercise-meta">3 × 12–15</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Move slowly and keep pressure through the heel and base of the big
+            toe. Start with both legs if needed.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d1-rotation">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark cable external rotation complete"></button>
+            <div>
+              <h3 class="exercise-name">Cable/Band External Rotation</h3>
+              <p class="exercise-meta">2 × 12–15 each arm</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep the elbow against your side. Use light resistance and move
+            slowly—this is shoulder-control work.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="day2" class="panel" aria-labelledby="day2-title">
+      <div class="day-header">
+        <div>
+          <h2 class="day-title" id="day2-title">Upper Body + Core</h2>
+          <p class="day-subtitle">Minimal leg fatigue; padel shoulder support.</p>
+        </div>
+        <span class="duration">40–50 min</span>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-top">
+          <span>Day 2 progress</span>
+          <span class="progress-text">0 / 9 complete</span>
+        </div>
+        <div class="progress-track"><div class="progress-bar"></div></div>
+      </div>
+
+      <div class="exercise-list">
+        <article class="exercise" data-id="d2-pallof">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark Pallof press complete"></button>
+            <div>
+              <h3 class="exercise-name">Pallof Press</h3>
+              <p class="exercise-meta">3 × 8 each direction</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Press the handle forward and resist rotation. Keep your ribs and
+            pelvis stacked.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-pulldown">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark lat pulldown complete"></button>
+            <div>
+              <h3 class="exercise-name">Lat Pulldown / Assisted Pull-Up</h3>
+              <p class="exercise-meta">3 × 8–10</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Pull the elbows down without leaning far backward. Keep the neck
+            relaxed.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-press">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark shoulder press complete"></button>
+            <div>
+              <h3 class="exercise-name">Seated Dumbbell Shoulder Press</h3>
+              <p class="exercise-meta">3 × 8–10</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Use back support. Stop the set if you need to arch or rotate through
+            the lower back.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-row">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark seated cable row complete"></button>
+            <div>
+              <h3 class="exercise-name">Seated Cable Row</h3>
+              <p class="exercise-meta">3 × 10</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Sit tall and pull toward your lower ribs. Keep the shoulders away
+            from your ears.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-incline">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark incline press complete"></button>
+            <div>
+              <h3 class="exercise-name">Incline Dumbbell Press / Push-Ups</h3>
+              <p class="exercise-meta">2–3 × 8–12</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep the shoulder blades controlled and avoid forcing the elbows
+            excessively wide.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-facepull">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark face pull complete"></button>
+            <div>
+              <h3 class="exercise-name">Face Pull</h3>
+              <p class="exercise-meta">2–3 × 12–15</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Pull toward eye level and finish with the hands apart. Keep the
+            movement smooth.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-sideplank">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark side plank complete"></button>
+            <div>
+              <h3 class="exercise-name">Side Plank From Knees</h3>
+              <p class="exercise-meta">3 × 20–30 sec each side</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep your pelvis stacked rather than rolling backward. Stop if the
+            left lower back catches.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-wrist">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark wrist extension complete"></button>
+            <div>
+              <h3 class="exercise-name">Wrist Extension</h3>
+              <p class="exercise-meta">2 × 12–15 each arm</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Rest your forearm on a bench, palm down. Lift normally and lower
+            slowly for about three seconds.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d2-arms">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark optional arms complete"></button>
+            <div>
+              <h3 class="exercise-name">Optional Biceps + Triceps</h3>
+              <p class="exercise-meta">2 × 10–12 each</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep these controlled and stop well before failure. They are
+            optional—not the priority of the program.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="day3" class="panel" aria-labelledby="day3-title">
+      <div class="day-header">
+        <div>
+          <h2 class="day-title" id="day3-title">Single-Leg Control + Push/Pull</h2>
+          <p class="day-subtitle">Hip stability, calves, feet and upper body.</p>
+        </div>
+        <span class="duration">50–60 min</span>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-top">
+          <span>Day 3 progress</span>
+          <span class="progress-text">0 / 8 complete</span>
+        </div>
+        <div class="progress-track"><div class="progress-bar"></div></div>
+      </div>
+
+      <div class="exercise-list">
+        <article class="exercise" data-id="d3-split">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark split squat complete"></button>
+            <div>
+              <h3 class="exercise-name">Short-Stance Split Squat</h3>
+              <p class="exercise-meta">3 × 6–8 each leg</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep the stance short. When the left leg is behind you, stop before
+            the front of the left hip stretches or catches.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-slrdl">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark single-leg Romanian deadlift complete"></button>
+            <div>
+              <h3 class="exercise-name">Supported Single-Leg RDL</h3>
+              <p class="exercise-meta">3 × 8 each leg</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Hold a wall or rack. Keep your pelvis facing forward and use a
+            smaller range on the left if needed.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-stepdown">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark lateral step-down complete"></button>
+            <div>
+              <h3 class="exercise-name">Low Lateral Step-Down</h3>
+              <p class="exercise-meta">3 × 6–8 each leg</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Use a low step and lower for about three seconds. Keep the knee over
+            the middle of the foot.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-row">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark one-arm cable row complete"></button>
+            <div>
+              <h3 class="exercise-name">One-Arm Cable Row</h3>
+              <p class="exercise-meta">3 × 8–10 each side</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Resist twisting as you row. Use a split or square stance—whichever
+            keeps your hip and lower back comfortable.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-press">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark machine or landmine press complete"></button>
+            <div>
+              <h3 class="exercise-name">Machine Chest Press / Landmine Press</h3>
+              <p class="exercise-meta">3 × 8–10</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Choose the version that lets you keep your pelvis and lower back
+            quiet. Use the machine if standing causes compensation.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-calf">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark bent-knee calf raise complete"></button>
+            <div>
+              <h3 class="exercise-name">Bent-Knee Calf Raise</h3>
+              <p class="exercise-meta">3 × 12–15</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Keep the knee slightly bent throughout. Move through a comfortable
+            range without provoking the left foot.
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-carry">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark suitcase carry complete"></button>
+            <div>
+              <h3 class="exercise-name">Suitcase Carry</h3>
+              <p class="exercise-meta">3 × 30 sec each side</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Walk slowly without leaning. Reduce the weight if the left lower
+            back tightens or “sticks.”
+          </div>
+        </article>
+
+        <article class="exercise" data-id="d3-foot">
+          <div class="exercise-main">
+            <button class="check" aria-label="Mark foot tripod complete"></button>
+            <div>
+              <h3 class="exercise-name">Foot Tripod Hold</h3>
+              <p class="exercise-meta">4 × 10 sec each foot</p>
+            </div>
+            <button class="details-toggle" aria-label="Show exercise details">⌄</button>
+          </div>
+          <div class="exercise-details">
+            Maintain contact under the heel, base of the big toe and base of the
+            little toe without curling your toes.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section note-card">
+      <h2>Pain and loading rules</h2>
+      <p>
+        Keep discomfort at 0–2/10. Reduce the range at 3/10. Stop for sharp
+        groin pain, catching, limping or left lower-back “sticking.” You should
+        be at your normal baseline by the next morning.
+      </p>
+    </section>
+
+    <section class="section schedule-card">
+      <h2>Suggested week</h2>
+      <div class="schedule-grid">
+        <div class="schedule-row"><strong>Monday</strong><span>Padel</span></div>
+        <div class="schedule-row"><strong>Tuesday</strong><span>Pilates + Day 1</span></div>
+        <div class="schedule-row"><strong>Wednesday</strong><span>Rest</span></div>
+        <div class="schedule-row"><strong>Thursday</strong><span>Padel</span></div>
+        <div class="schedule-row"><strong>Friday</strong><span>Pilates + Day 2</span></div>
+        <div class="schedule-row"><strong>Saturday</strong><span>Day 3</span></div>
+        <div class="schedule-row"><strong>Sunday</strong><span>Light padel or rest</span></div>
+      </div>
+    </section>
+
+    <section class="section level-card">
+      <h2>Move to Level 2 after 4–6 weeks when:</h2>
+      <ul class="criteria">
+        <li>Walking no longer causes the painful push-off transition.</li>
+        <li>No lower-back catching during the strength sessions.</li>
+        <li>Two normal padel sessions do not create a multi-day flare.</li>
+        <li>Split squats and single-leg hinges feel controlled.</li>
+        <li>You are back to baseline the morning after training.</li>
+        <li>A small lying march is comfortable without compensation.</li>
+      </ul>
+    </section>
+
+    <div class="footer-actions">
+      <button class="reset-btn" id="resetProgress">Reset all checkmarks</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Mobile workout navigation">
+    <button class="active" data-day="day1">Day 1</button>
+    <button data-day="day2">Day 2</button>
+    <button data-day="day3">Day 3</button>
+  </nav>
+
+  <script>
+    const STORAGE_KEY = "padel-strength-plan-v1";
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+
+    const allDayButtons = document.querySelectorAll("[data-day]");
+    const panels = document.querySelectorAll(".panel");
+
+    function switchDay(dayId, shouldScroll = true) {
+      panels.forEach(panel => panel.classList.toggle("active", panel.id === dayId));
+      allDayButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.day === dayId);
+      });
+
+      state.activeDay = dayId;
+      saveState();
+
+      if (shouldScroll) {
+        document.querySelector(".tab-wrap").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+
+    allDayButtons.forEach(button => {
+      button.addEventListener("click", () => switchDay(button.dataset.day));
+    });
+
+    document.querySelectorAll(".exercise").forEach(exercise => {
+      const id = exercise.dataset.id;
+      const checkButton = exercise.querySelector(".check");
+
+      if (state[id]) exercise.classList.add("done");
+
+      checkButton.addEventListener("click", () => {
+        exercise.classList.toggle("done");
+        state[id] = exercise.classList.contains("done");
+        saveState();
+        updateProgress();
+      });
+    });
+
+    document.querySelectorAll(".details-toggle").forEach(button => {
+      button.addEventListener("click", () => {
+        const details = button.closest(".exercise").querySelector(".exercise-details");
+        const isOpen = details.classList.toggle("open");
+        button.classList.toggle("open", isOpen);
+        button.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    function updateProgress() {
+      panels.forEach(panel => {
+        const exercises = [...panel.querySelectorAll(".exercise")];
+        const complete = exercises.filter(item => item.classList.contains("done")).length;
+        const total = exercises.length;
+        const percent = total ? (complete / total) * 100 : 0;
+
+        panel.querySelector(".progress-text").textContent =
+          `${complete} / ${total} complete`;
+
+        panel.querySelector(".progress-bar").style.width = `${percent}%`;
+      });
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    document.getElementById("resetProgress").addEventListener("click", () => {
+      const confirmed = window.confirm("Reset every exercise checkmark?");
+      if (!confirmed) return;
+
+      Object.keys(state).forEach(key => {
+        if (key !== "activeDay") delete state[key];
+      });
+
+      document.querySelectorAll(".exercise").forEach(exercise => {
+        exercise.classList.remove("done");
+      });
+
+      saveState();
+      updateProgress();
+    });
+
+    switchDay(state.activeDay || "day1", false);
+    updateProgress();
+  </script>
+</body>
+</html>
