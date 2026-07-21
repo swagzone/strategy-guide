@@ -456,6 +456,217 @@
       font-weight: 900;
     }
 
+
+    .storage-card {
+      padding: 15px 16px;
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius);
+      background: #eef2ff;
+    }
+
+    .storage-card strong {
+      color: #3730a3;
+    }
+
+    .storage-card p {
+      margin: 0;
+      color: #4338ca;
+      font-size: .88rem;
+    }
+
+    .last-log {
+      min-height: 20px;
+      margin: -5px 16px 13px 57px;
+      color: #475467;
+      font-size: .78rem;
+    }
+
+    .last-log.empty {
+      color: #98a2b3;
+    }
+
+    .last-log .gain {
+      color: var(--success);
+      font-weight: 850;
+    }
+
+    .session-toolbar {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 20px rgba(15,23,42,.04);
+    }
+
+    .session-toolbar-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 9px;
+      align-items: end;
+    }
+
+    .session-date label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 850;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .session-date input {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .session-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .session-btn {
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: #475467;
+      background: #fff;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .session-btn.save {
+      border-color: var(--brand);
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .history-panel {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .history-panel.open {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-empty {
+      padding: 15px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 13px;
+      color: var(--muted);
+      background: var(--surface-2);
+      text-align: center;
+      font-size: .87rem;
+    }
+
+    .history-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .history-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 13px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .history-head strong {
+      font-size: .9rem;
+    }
+
+    .history-head span {
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    .history-delete {
+      border: 0;
+      color: var(--danger);
+      background: transparent;
+      font-size: .78rem;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .history-body {
+      display: grid;
+    }
+
+    .history-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 10px;
+      padding: 10px 13px;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .history-row:last-child {
+      border-bottom: 0;
+    }
+
+    .history-row strong {
+      font-size: .82rem;
+    }
+
+    .history-row span {
+      color: #475467;
+      font-size: .8rem;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px));
+      transform: translate(-50%, 16px);
+      width: min(calc(100% - 32px), 420px);
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: #fff;
+      background: #101828;
+      box-shadow: 0 15px 38px rgba(15,23,42,.25);
+      opacity: 0;
+      pointer-events: none;
+      text-align: center;
+      font-size: .87rem;
+      font-weight: 750;
+      transition: 180ms ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .hidden-file {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
     .footer-actions {
       display: flex;
       flex-wrap: wrap;
@@ -536,10 +747,10 @@
 <body>
   <main class="app">
     <header class="hero">
-      <p class="eyebrow">Level 1+ · Strength & Physique Block</p>
+      <p class="eyebrow">Level 1+ · Strength, Physique & Progress Log</p>
       <h1>Padel Strength Plan</h1>
       <p class="hero-copy">
-        Three gym days combining hip rehabilitation, bending strength, athletic strength and enough
+        Three gym days combining hip rehabilitation, bending strength, distributed core training and enough
         chest, back, shoulder and arm volume to get stronger and look better.
       </p>
       <div class="hero-stats">
@@ -555,6 +766,15 @@
         On the big lifts, finish most working sets with only <strong>1–2 clean reps left</strong>.
         The final two reps should feel challenging while your technique stays controlled.
         Add weight next session when you comfortably hit the top of the rep range.
+      </p>
+    </section>
+
+
+    <section class="section storage-card">
+      <p>
+        <strong>Session history is stored in this browser.</strong>
+        Save each workout when finished. The page will show your previous weights and reps next time.
+        Export a backup before changing phones, browsers, or clearing site data.
       </p>
     </section>
 
@@ -614,9 +834,14 @@
     </section>
 
     <div class="footer-actions">
-      <button class="action-btn primary" id="resetDay">Reset current day</button>
-      <button class="action-btn" id="resetAll">Reset everything</button>
+      <button class="action-btn primary" id="exportData">Export workout backup</button>
+      <button class="action-btn" id="importData">Import backup</button>
+      <input class="hidden-file" id="importFile" type="file" accept="application/json,.json" />
+      <button class="action-btn" id="resetDay">Clear current checkmarks</button>
+      <button class="action-btn" id="resetAll">Delete all local data</button>
     </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
 
   <nav class="bottom-nav" aria-label="Mobile workout navigation">
@@ -629,13 +854,23 @@
     const plan = {
       day1: {
         title: "Heavy Full Body + Chest/Back",
-        subtitle: "Heavier posterior-chain work with balanced push and pull volume.",
+        subtitle: "Start with all mat work together, then move into heavier full-body training.",
         duration: "65–75 min",
         exercises: [
           {
             id: "d1-deadbug", name: "Dead-Bug Heel Slide", prescription: "2–3 × 6 each side",
-            tag: "Core", tagClass: "hip",
+            tag: "Mat 1", tagClass: "hip",
             details: "Keep the foot on the floor. Slide only as far as you can without the left lower back arching, rotating or sticking."
+          },
+          {
+            id: "d1-hipthrust", name: "Glute Bridge", prescription: "3 × 8–12",
+            tag: "Mat 2", tagClass: "hip",
+            details: "Use a comfortable height. Finish through the glutes without aggressively thrusting the pelvis forward or arching the back."
+          },
+          {
+            id: "d1-abduction", name: "Side-Lying Hip Abduction", prescription: "2–3 × 12–15 each",
+            tag: "Mat 3", tagClass: "hip",
+            details: "Keep the top leg slightly behind you with toes mostly forward or slightly down. Use a small clean range."
           },
           {
             id: "d1-squat", name: "Goblet Squat", prescription: "4 × 6–8",
@@ -662,21 +897,13 @@
             tag: "Main lift", tagClass: "main",
             details: "Pull elbows toward the hips, pause briefly and avoid shrugging. Use enough load that the final reps are difficult."
           },
-          {
-            id: "d1-hipthrust", name: "Hip Thrust or Glute Bridge", prescription: "3 × 8–12",
-            tag: "Glutes", tagClass: "hip",
-            details: "Use a comfortable height. Finish through the glutes without aggressively thrusting the pelvis forward or arching the back."
-          },
+
           {
             id: "d1-hamcurl", name: "Seated or Lying Hamstring Curl", prescription: "3 × 10–12",
             tag: "New", tagClass: "muscle",
             details: "Curl smoothly and lower for 2–3 seconds. You should feel the back of the thigh—not sharp pain directly behind the knee."
           },
-          {
-            id: "d1-abduction", name: "Side-Lying Hip Abduction", prescription: "2–3 × 12–15 each",
-            tag: "Glute med", tagClass: "hip",
-            details: "Keep the top leg slightly behind you with toes mostly forward or slightly down. Use a small clean range."
-          },
+
           {
             id: "d1-lateralraise", name: "Dumbbell or Cable Lateral Raise", prescription: "3 × 12–15",
             tag: "Shoulders", tagClass: "muscle",
@@ -696,14 +923,34 @@
       },
 
       day2: {
-        title: "Upper-Body Muscle & Strength",
-        subtitle: "Chest, back, shoulders and arms with almost no added leg fatigue.",
+        title: "Upper Body + Abs & Rotation",
+        subtitle: "Upper-body strength plus cable abs, controlled rotation and side-core work.",
         duration: "60–70 min",
         exercises: [
           {
+            id: "d2-curlup", name: "Modified Curl-Up", prescription: "3 × 8–12",
+            tag: "Mat 1", tagClass: "hip",
+            details: "Lie on your back with knees bent. Exhale and lift only the head and shoulder blades. Keep the pelvis quiet and avoid pulling with the neck."
+          },
+          {
+            id: "d2-sideplank", name: "Side Plank From Knees", prescription: "3 × 20–30 sec each side",
+            tag: "Mat 2", tagClass: "hip",
+            details: "Keep the pelvis stacked and ribs controlled. Stop if the left lower back grips or the hip pinches."
+          },
+          {
             id: "d2-pallof", name: "Pallof Press", prescription: "3 × 8 each direction",
-            tag: "Core", tagClass: "hip",
+            tag: "Anti-rotation", tagClass: "hip",
             details: "Press forward and resist rotation. Keep ribs stacked over the pelvis."
+          },
+          {
+            id: "d2-cablecrunch", name: "Cable Crunch", prescription: "3 × 10–15",
+            tag: "Abs", tagClass: "muscle",
+            details: "Curl the ribs toward the pelvis without sitting the hips backward. Move through the trunk rather than pulling with the arms."
+          },
+          {
+            id: "d2-cablechop", name: "Half-Kneeling Cable Chop", prescription: "3 × 8–10 each side",
+            tag: "Rotation", tagClass: "muscle",
+            details: "Rotate through the upper trunk while keeping the pelvis mostly square. Use a controlled range and do not twist aggressively through the lower back."
           },
           {
             id: "d2-pulldown", name: "Lat Pulldown or Assisted Pull-Up", prescription: "4 × 6–10",
@@ -759,10 +1006,20 @@
       },
 
       day3: {
-        title: "Single-Leg Control + Upper Body",
-        subtitle: "Hip stability plus another quality chest and back exposure.",
+        title: "Single-Leg Control + Side Core",
+        subtitle: "Start with mat-based trunk control, then train hip stability and upper body.",
         duration: "65–75 min",
         exercises: [
+          {
+            id: "d3-birddog", name: "Bird Dog", prescription: "2–3 × 6 each side",
+            tag: "Mat 1", tagClass: "hip",
+            details: "Reach the opposite arm and leg only as far as you can without arching or rotating. Hold for two seconds and return slowly."
+          },
+          {
+            id: "d3-sidecrunch", name: "Side-Lying Rib-to-Hip Crunch", prescription: "2–3 × 10–12 each side",
+            tag: "Mat 2", tagClass: "hip",
+            details: "Lie on your side with knees slightly bent. Gently bring the lower ribs toward the top of the hip without pulling on the neck or rolling backward."
+          },
           {
             id: "d3-split", name: "Short-Stance Split Squat", prescription: "3 × 6–8 each leg",
             tag: "Main lift", tagClass: "main",
@@ -819,6 +1076,11 @@
             details: "Walk slowly without leaning. Reduce load if the left lower back starts gripping."
           },
           {
+            id: "d3-cablesidebend", name: "Cable Side Bend", prescription: "2–3 × 10–12 each side",
+            tag: "Side core", tagClass: "muscle",
+            details: "Use a moderate load and a small controlled range. Keep the movement lateral—do not rotate or lean backward."
+          },
+          {
             id: "d3-foot", name: "Foot Tripod Hold", prescription: "4 × 10 sec each foot",
             tag: "Foot", tagClass: "hip",
             details: "Maintain contact under the heel, base of the big toe and base of the little toe without curling."
@@ -832,15 +1094,125 @@
       }
     };
 
-    const STORAGE_KEY = "padel-strength-plan-v2";
-    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    const STORAGE_KEY = "padel-strength-plan-v6";
+    const LEGACY_KEY = "padel-strength-plan-v2";
+
+    function emptyState() {
+      return {
+        activeDay: "day1",
+        drafts: {},
+        sessions: { day1: [], day2: [], day3: [] }
+      };
+    }
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+        if (saved && saved.drafts && saved.sessions) {
+          saved.sessions.day1 ||= [];
+          saved.sessions.day2 ||= [];
+          saved.sessions.day3 ||= [];
+          return saved;
+        }
+
+        // Carry forward weights, notes, and checkmarks from the previous page version.
+        const legacy = JSON.parse(localStorage.getItem(LEGACY_KEY) || "null");
+        const migrated = emptyState();
+
+        if (legacy && typeof legacy === "object") {
+          migrated.activeDay = legacy.activeDay || "day1";
+
+          Object.entries(legacy).forEach(([key, value]) => {
+            if (!key.startsWith("d") || !value || typeof value !== "object") return;
+            migrated.drafts[key] = {
+              done: Boolean(value.done),
+              weight: value.weight || "",
+              reps: value.note || "",
+              note: ""
+            };
+          });
+        }
+
+        return migrated;
+      } catch (error) {
+        console.warn("Could not read saved workout data:", error);
+        return emptyState();
+      }
+    }
+
+    const state = loadState();
     const root = document.getElementById("workoutRoot");
+    const toast = document.getElementById("toast");
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
 
     function escapeHtml(value = "") {
-      return value.replace(/[&<>"']/g, c => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;",
-        '"': "&quot;", "'": "&#039;"
-      })[c]);
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[character]);
+    }
+
+    function todayString() {
+      const now = new Date();
+      const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0, 10);
+    }
+
+    function readableDate(value) {
+      if (!value) return "Undated session";
+      const date = new Date(`${value}T12:00:00`);
+      return new Intl.DateTimeFormat(undefined, {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      }).format(date);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function latestEntry(dayId, exerciseId) {
+      const sessions = state.sessions[dayId] || [];
+
+      for (const session of sessions) {
+        const entry = session.entries?.find(item => item.id === exerciseId);
+        if (entry) return { ...entry, date: session.date };
+      }
+
+      return null;
+    }
+
+    function numericValue(text) {
+      const match = String(text || "").replace(",", ".").match(/-?\d+(\.\d+)?/);
+      return match ? Number(match[0]) : null;
+    }
+
+    function lastLogMarkup(dayId, exerciseId) {
+      const previous = latestEntry(dayId, exerciseId);
+
+      if (!previous) {
+        return '<span class="empty">No previous session saved yet.</span>';
+      }
+
+      const parts = [];
+      if (previous.weight) parts.push(escapeHtml(previous.weight));
+      if (previous.reps) parts.push(escapeHtml(previous.reps));
+      if (previous.note) parts.push(escapeHtml(previous.note));
+
+      return `<strong>Last — ${escapeHtml(readableDate(previous.date))}:</strong> ${
+        parts.length ? parts.join(" · ") : "completed"
+      }`;
     }
 
     function renderPlan() {
@@ -863,35 +1235,77 @@
           </div>
 
           <div class="exercise-list">
-            ${day.exercises.map(ex => `
-              <article class="exercise" data-id="${ex.id}">
+            ${day.exercises.map(exercise => `
+              <article class="exercise" data-id="${exercise.id}" data-day="${dayId}">
                 <div class="exercise-main">
-                  <button class="check" aria-label="Mark ${escapeHtml(ex.name)} complete"></button>
+                  <button class="check" aria-label="Mark ${escapeHtml(exercise.name)} complete"></button>
                   <div>
                     <h3 class="exercise-name">
-                      ${ex.name}
-                      <span class="tag ${ex.tagClass || ""}">${ex.tag}</span>
+                      ${exercise.name}
+                      <span class="tag ${exercise.tagClass || ""}">${exercise.tag}</span>
                     </h3>
-                    <p class="exercise-meta">${ex.prescription}</p>
+                    <p class="exercise-meta">${exercise.prescription}</p>
                   </div>
                   <button class="details-toggle" aria-label="Show exercise details" aria-expanded="false">⌄</button>
                 </div>
 
                 <div class="log-row">
                   <div class="field">
-                    <label for="${ex.id}-weight">Weight used</label>
-                    <input id="${ex.id}-weight" data-log="weight" inputmode="decimal" placeholder="e.g. 20 kg" />
+                    <label for="${exercise.id}-weight">Weight / resistance</label>
+                    <input
+                      id="${exercise.id}-weight"
+                      data-log="weight"
+                      inputmode="decimal"
+                      placeholder="e.g. 28 kg"
+                    />
                   </div>
                   <div class="field">
-                    <label for="${ex.id}-note">Rep / setup note</label>
-                    <input id="${ex.id}-note" data-log="note" placeholder="e.g. 8, 8, 7" />
+                    <label for="${exercise.id}-reps">Sets and reps completed</label>
+                    <input
+                      id="${exercise.id}-reps"
+                      data-log="reps"
+                      placeholder="e.g. 8, 8, 7"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="${exercise.id}-note">Optional note</label>
+                    <input
+                      id="${exercise.id}-note"
+                      data-log="note"
+                      placeholder="e.g. 2 RIR, felt good"
+                    />
                   </div>
                 </div>
 
-                <div class="exercise-details">${ex.details}</div>
+                <div class="last-log" data-last-for="${exercise.id}">
+                  ${lastLogMarkup(dayId, exercise.id)}
+                </div>
+
+                <div class="exercise-details">${exercise.details}</div>
               </article>
             `).join("")}
           </div>
+
+          <section class="session-toolbar">
+            <div class="session-toolbar-top">
+              <div class="session-date">
+                <label for="${dayId}-session-date">Workout date</label>
+                <input id="${dayId}-session-date" class="session-date-input" type="date" value="${todayString()}" />
+              </div>
+              <button class="session-btn save" data-save-session="${dayId}">Save session</button>
+            </div>
+
+            <div class="session-buttons">
+              <button class="session-btn" data-toggle-history="${dayId}">
+                View history (${(state.sessions[dayId] || []).length})
+              </button>
+              <button class="session-btn" data-prefill-last="${dayId}">
+                Copy last session
+              </button>
+            </div>
+
+            <div class="history-panel" id="${dayId}-history"></div>
+          </section>
         </section>
       `).join("");
     }
@@ -901,13 +1315,12 @@
     const panels = [...document.querySelectorAll(".panel")];
     const allDayButtons = [...document.querySelectorAll("[data-day]")];
 
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-
     function switchDay(dayId, shouldScroll = true) {
       panels.forEach(panel => panel.classList.toggle("active", panel.id === dayId));
-      allDayButtons.forEach(button => button.classList.toggle("active", button.dataset.day === dayId));
+      allDayButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.day === dayId);
+      });
+
       state.activeDay = dayId;
       saveState();
 
@@ -923,27 +1336,58 @@
       button.addEventListener("click", () => switchDay(button.dataset.day));
     });
 
+    function updateLastLabels(dayId) {
+      const panel = document.getElementById(dayId);
+
+      panel.querySelectorAll(".exercise").forEach(exercise => {
+        const target = exercise.querySelector(".last-log");
+        target.innerHTML = lastLogMarkup(dayId, exercise.dataset.id);
+
+        const previous = latestEntry(dayId, exercise.dataset.id);
+        const currentWeight = numericValue(
+          exercise.querySelector('[data-log="weight"]').value
+        );
+        const previousWeight = numericValue(previous?.weight);
+
+        if (
+          previous &&
+          currentWeight !== null &&
+          previousWeight !== null &&
+          currentWeight > previousWeight
+        ) {
+          const difference = Math.round((currentWeight - previousWeight) * 100) / 100;
+          target.insertAdjacentHTML(
+            "beforeend",
+            ` <span class="gain">↑ ${escapeHtml(difference)} heavier</span>`
+          );
+        }
+      });
+    }
+
     document.querySelectorAll(".exercise").forEach(exercise => {
       const id = exercise.dataset.id;
+      const dayId = exercise.dataset.day;
+      const draft = state.drafts[id] || {};
       const checkButton = exercise.querySelector(".check");
 
-      if (state[id]?.done) exercise.classList.add("done");
+      if (draft.done) exercise.classList.add("done");
 
       exercise.querySelectorAll("[data-log]").forEach(input => {
         const key = input.dataset.log;
-        input.value = state[id]?.[key] || "";
+        input.value = draft[key] || "";
 
         input.addEventListener("input", () => {
-          state[id] = state[id] || {};
-          state[id][key] = input.value;
+          state.drafts[id] ||= {};
+          state.drafts[id][key] = input.value;
           saveState();
+          updateLastLabels(dayId);
         });
       });
 
       checkButton.addEventListener("click", () => {
         exercise.classList.toggle("done");
-        state[id] = state[id] || {};
-        state[id].done = exercise.classList.contains("done");
+        state.drafts[id] ||= {};
+        state.drafts[id].done = exercise.classList.contains("done");
         saveState();
         updateProgress();
       });
@@ -963,38 +1407,284 @@
         const exercises = [...panel.querySelectorAll(".exercise")];
         const complete = exercises.filter(item => item.classList.contains("done")).length;
         const total = exercises.length;
-        panel.querySelector(".progress-text").textContent = `${complete} / ${total} complete`;
-        panel.querySelector(".progress-bar").style.width = `${total ? (complete / total) * 100 : 0}%`;
+
+        panel.querySelector(".progress-text").textContent =
+          `${complete} / ${total} complete`;
+
+        panel.querySelector(".progress-bar").style.width =
+          `${total ? (complete / total) * 100 : 0}%`;
       });
     }
 
+    function saveSession(dayId) {
+      const dateInput = document.getElementById(`${dayId}-session-date`);
+      const date = dateInput.value || todayString();
+      const day = plan[dayId];
+
+      const entries = day.exercises.map(exercise => {
+        const draft = state.drafts[exercise.id] || {};
+
+        return {
+          id: exercise.id,
+          name: exercise.name,
+          prescription: exercise.prescription,
+          done: Boolean(draft.done),
+          weight: String(draft.weight || "").trim(),
+          reps: String(draft.reps || "").trim(),
+          note: String(draft.note || "").trim()
+        };
+      }).filter(entry =>
+        entry.done || entry.weight || entry.reps || entry.note
+      );
+
+      if (!entries.length) {
+        showToast("Enter at least one weight, rep result, note, or checkmark first.");
+        return;
+      }
+
+      state.sessions[dayId] ||= [];
+      state.sessions[dayId].unshift({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        date,
+        savedAt: new Date().toISOString(),
+        entries
+      });
+
+      // Retain a generous history while preventing unlimited browser growth.
+      state.sessions[dayId] = state.sessions[dayId].slice(0, 100);
+
+      day.exercises.forEach(exercise => {
+        state.drafts[exercise.id] ||= {};
+        state.drafts[exercise.id].done = false;
+        document
+          .querySelector(`[data-id="${exercise.id}"]`)
+          ?.classList.remove("done");
+      });
+
+      saveState();
+      updateProgress();
+      updateLastLabels(dayId);
+      renderHistory(dayId);
+      updateHistoryButton(dayId);
+      showToast(`${dayId.replace("day", "Day ")} saved for ${readableDate(date)}.`);
+    }
+
+    function prefillLastSession(dayId) {
+      const lastSession = state.sessions[dayId]?.[0];
+
+      if (!lastSession) {
+        showToast("No previous session is available yet.");
+        return;
+      }
+
+      lastSession.entries.forEach(entry => {
+        state.drafts[entry.id] ||= {};
+        state.drafts[entry.id].weight = entry.weight || "";
+        state.drafts[entry.id].reps = entry.reps || "";
+        state.drafts[entry.id].note = "";
+
+        const exercise = document.querySelector(`[data-id="${entry.id}"]`);
+        if (!exercise) return;
+
+        exercise.querySelector('[data-log="weight"]').value = entry.weight || "";
+        exercise.querySelector('[data-log="reps"]').value = entry.reps || "";
+        exercise.querySelector('[data-log="note"]').value = "";
+      });
+
+      saveState();
+      updateLastLabels(dayId);
+      showToast("Last session copied into the current workout.");
+    }
+
+    function renderHistory(dayId) {
+      const container = document.getElementById(`${dayId}-history`);
+      const sessions = state.sessions[dayId] || [];
+
+      if (!sessions.length) {
+        container.innerHTML =
+          '<div class="history-empty">No saved sessions yet.</div>';
+        return;
+      }
+
+      container.innerHTML = sessions.slice(0, 12).map(session => `
+        <article class="history-card">
+          <div class="history-head">
+            <div>
+              <strong>${escapeHtml(readableDate(session.date))}</strong>
+              <span>${session.entries.length} exercises logged</span>
+            </div>
+            <button
+              class="history-delete"
+              data-delete-session="${escapeHtml(session.id)}"
+              data-delete-day="${dayId}"
+            >
+              Delete
+            </button>
+          </div>
+
+          <div class="history-body">
+            ${session.entries.map(entry => {
+              const result = [
+                entry.weight,
+                entry.reps,
+                entry.note
+              ].filter(Boolean).join(" · ") || "Completed";
+
+              return `
+                <div class="history-row">
+                  <strong>${escapeHtml(entry.name)}</strong>
+                  <span>${escapeHtml(result)}</span>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      container.querySelectorAll("[data-delete-session]").forEach(button => {
+        button.addEventListener("click", () => {
+          const targetDay = button.dataset.deleteDay;
+          const sessionId = button.dataset.deleteSession;
+
+          if (!window.confirm("Delete this saved session?")) return;
+
+          state.sessions[targetDay] =
+            (state.sessions[targetDay] || []).filter(session => session.id !== sessionId);
+
+          saveState();
+          renderHistory(targetDay);
+          updateHistoryButton(targetDay);
+          updateLastLabels(targetDay);
+          showToast("Session deleted.");
+        });
+      });
+    }
+
+    function updateHistoryButton(dayId) {
+      const button = document.querySelector(`[data-toggle-history="${dayId}"]`);
+      if (button) {
+        button.textContent = `View history (${(state.sessions[dayId] || []).length})`;
+      }
+    }
+
+    document.querySelectorAll("[data-save-session]").forEach(button => {
+      button.addEventListener("click", () => saveSession(button.dataset.saveSession));
+    });
+
+    document.querySelectorAll("[data-prefill-last]").forEach(button => {
+      button.addEventListener("click", () => {
+        prefillLastSession(button.dataset.prefillLast);
+      });
+    });
+
+    document.querySelectorAll("[data-toggle-history]").forEach(button => {
+      button.addEventListener("click", () => {
+        const dayId = button.dataset.toggleHistory;
+        const container = document.getElementById(`${dayId}-history`);
+        renderHistory(dayId);
+        container.classList.toggle("open");
+      });
+    });
+
     function resetDay(dayId) {
       const dayPanel = document.getElementById(dayId);
+
       dayPanel.querySelectorAll(".exercise").forEach(exercise => {
         const id = exercise.dataset.id;
         exercise.classList.remove("done");
-        state[id] = state[id] || {};
-        state[id].done = false;
+        state.drafts[id] ||= {};
+        state.drafts[id].done = false;
       });
+
       saveState();
       updateProgress();
     }
 
     document.getElementById("resetDay").addEventListener("click", () => {
       const dayId = state.activeDay || "day1";
-      if (window.confirm(`Reset checkmarks for ${dayId.replace("day", "Day ")}?`)) {
+
+      if (window.confirm(`Clear checkmarks for ${dayId.replace("day", "Day ")}?`)) {
         resetDay(dayId);
+        showToast("Current-day checkmarks cleared.");
+      }
+    });
+
+    document.getElementById("exportData").addEventListener("click", () => {
+      const exportPayload = {
+        app: "Padel Strength Plan",
+        version: 6,
+        exportedAt: new Date().toISOString(),
+        data: state
+      };
+
+      const blob = new Blob(
+        [JSON.stringify(exportPayload, null, 2)],
+        { type: "application/json" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `padel-workout-backup-${todayString()}.json`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      URL.revokeObjectURL(url);
+
+      showToast("Workout backup exported.");
+    });
+
+    const importFile = document.getElementById("importFile");
+
+    document.getElementById("importData").addEventListener("click", () => {
+      importFile.click();
+    });
+
+    importFile.addEventListener("change", async () => {
+      const file = importFile.files?.[0];
+      if (!file) return;
+
+      try {
+        const payload = JSON.parse(await file.text());
+        const imported = payload.data || payload;
+
+        if (!imported.drafts || !imported.sessions) {
+          throw new Error("Invalid backup format");
+        }
+
+        if (!window.confirm("Replace the workout data on this device with this backup?")) {
+          importFile.value = "";
+          return;
+        }
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+        showToast("That file is not a valid workout backup.");
+      } finally {
+        importFile.value = "";
       }
     });
 
     document.getElementById("resetAll").addEventListener("click", () => {
-      if (!window.confirm("Reset every checkmark, saved weight and note?")) return;
+      if (!window.confirm(
+        "Delete every saved session, weight, rep result, note, and checkmark from this browser?"
+      )) return;
+
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(LEGACY_KEY);
       window.location.reload();
     });
 
     switchDay(state.activeDay || "day1", false);
     updateProgress();
+
+    Object.keys(plan).forEach(dayId => {
+      updateLastLabels(dayId);
+      updateHistoryButton(dayId);
+    });
+
   </script>
 </body>
 </html>
