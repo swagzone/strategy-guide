@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Three-day padel strength, hip capacity, and upper-body muscle-building plan." />
-  <title>Padel Strength Plan — Level 1+</title>
-
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="A focused 3-day strength, Pilates, Zone 2 and padel weekly plan with WHOOP recovery rules." />
+  <title>Padel Strength + Health Plan — V7</title>
   <style>
     :root {
       --bg: #f4f6fb;
@@ -18,30 +17,30 @@
       --brand: #2563eb;
       --brand-dark: #1d4ed8;
       --brand-soft: #eaf1ff;
-      --success: #15803d;
-      --success-soft: #ecfdf3;
-      --warning: #9a3412;
-      --warning-soft: #fff7ed;
-      --danger: #b42318;
-      --shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
+      --green: #15803d;
+      --green-soft: #ecfdf3;
+      --yellow: #a16207;
+      --yellow-soft: #fffbeb;
+      --red: #b42318;
+      --red-soft: #fef3f2;
+      --purple: #7c3aed;
+      --purple-soft: #f3e8ff;
+      --shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
       --radius: 20px;
       --radius-sm: 14px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       min-height: 100vh;
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.11), transparent 30rem),
-        var(--bg);
       color: var(--text);
-      font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.11), transparent 28rem),
+        radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.10), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
@@ -50,31 +49,30 @@
     button { -webkit-tap-highlight-color: transparent; }
 
     .app {
-      width: min(100%, 940px);
+      width: min(100%, 980px);
       margin: 0 auto;
-      padding: 18px 16px 92px;
+      padding: 18px 16px 98px;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 27px 22px;
-      border-radius: 25px;
+      padding: 28px 22px;
+      border-radius: 26px;
       color: #fff;
-      background:
-        linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.95));
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.99), rgba(29, 78, 216, 0.96));
       box-shadow: var(--shadow);
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      width: 230px;
-      height: 230px;
-      right: -86px;
-      top: -96px;
+      width: 260px;
+      height: 260px;
+      right: -95px;
+      top: -110px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.10);
     }
 
     .eyebrow {
@@ -92,15 +90,15 @@
       position: relative;
       z-index: 1;
       margin: 0;
-      font-size: clamp(1.8rem, 7vw, 2.75rem);
-      line-height: 1.03;
-      letter-spacing: -0.05em;
+      font-size: clamp(1.85rem, 7vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
     }
 
     .hero-copy {
       position: relative;
       z-index: 1;
-      max-width: 670px;
+      max-width: 720px;
       margin: 12px 0 0;
       color: #dbeafe;
       font-size: .98rem;
@@ -110,7 +108,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       margin-top: 20px;
     }
@@ -123,30 +121,50 @@
       text-align: center;
       backdrop-filter: blur(6px);
     }
-
     .stat strong { display: block; font-size: 1rem; }
-    .stat span { display: block; margin-top: 2px; color: #cbd5e1; font-size: .71rem; }
+    .stat span { display: block; margin-top: 2px; color: #cbd5e1; font-size: .69rem; }
 
     .section { margin-top: 18px; }
 
-    .load-card {
+    .grid-2, .grid-3 { display: grid; gap: 12px; }
+    .grid-3 { grid-template-columns: 1fr; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 20px rgba(15,23,42,.035);
+    }
+
+    .card.pad { padding: 17px; }
+    .card h2, .card h3 { margin: 0 0 8px; }
+    .card h2 { font-size: 1.08rem; letter-spacing: -.02em; }
+    .card h3 { font-size: 1rem; }
+    .card p { margin: 0; color: #475467; font-size: .91rem; }
+
+    .summary-card {
       padding: 16px;
       border: 1px solid #bfdbfe;
-      border-radius: var(--radius);
       background: #eff6ff;
     }
+    .summary-card h2 { color: #1e3a8a; }
+    .summary-card p { color: #1e40af; }
 
-    .load-card h2 {
-      margin: 0 0 7px;
-      color: #1e3a8a;
-      font-size: 1.05rem;
+    .recovery-grid { display: grid; gap: 10px; }
+    .recovery-card {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--surface);
     }
-
-    .load-card p {
-      margin: 0;
-      color: #1e40af;
-      font-size: .91rem;
-    }
+    .recovery-card strong { display: block; margin-bottom: 4px; font-size: .95rem; }
+    .recovery-card span { display: block; color: #475467; font-size: .86rem; }
+    .recovery-card.green { border-color: #bbf7d0; background: var(--green-soft); }
+    .recovery-card.green strong { color: var(--green); }
+    .recovery-card.yellow { border-color: #fde68a; background: var(--yellow-soft); }
+    .recovery-card.yellow strong { color: var(--yellow); }
+    .recovery-card.red { border-color: #fecaca; background: var(--red-soft); }
+    .recovery-card.red strong { color: var(--red); }
 
     .tab-wrap {
       position: sticky;
@@ -159,40 +177,36 @@
     }
 
     .tabs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
       gap: 7px;
+      overflow-x: auto;
       padding: 6px;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: var(--surface);
       box-shadow: 0 5px 18px rgba(15,23,42,.05);
+      scrollbar-width: none;
     }
+    .tabs::-webkit-scrollbar { display: none; }
 
     .tab {
-      min-height: 47px;
+      flex: 0 0 auto;
+      min-height: 45px;
+      min-width: 94px;
       border: 0;
       border-radius: 11px;
+      padding: 0 13px;
       background: transparent;
       color: var(--muted);
       font-weight: 850;
       cursor: pointer;
       transition: 160ms ease;
     }
-
-    .tab.active {
-      color: #fff;
-      background: var(--brand);
-      box-shadow: 0 5px 12px rgba(37,99,235,.27);
-    }
+    .tab.active { color: #fff; background: var(--brand); box-shadow: 0 5px 12px rgba(37,99,235,.27); }
 
     .panel { display: none; animation: fade 170ms ease; }
     .panel.active { display: block; }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
     .day-header {
       display: flex;
@@ -201,10 +215,8 @@
       gap: 12px;
       margin: 18px 2px 12px;
     }
-
     .day-title { margin: 0; font-size: 1.3rem; letter-spacing: -.025em; }
     .day-subtitle { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
-
     .duration {
       flex: 0 0 auto;
       padding: 7px 10px;
@@ -222,7 +234,6 @@
       border-radius: var(--radius-sm);
       background: var(--surface);
     }
-
     .progress-top {
       display: flex;
       justify-content: space-between;
@@ -232,27 +243,10 @@
       font-size: .82rem;
       font-weight: 750;
     }
+    .progress-track { height: 9px; overflow: hidden; border-radius: 999px; background: #eef2f7; }
+    .progress-bar { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand), #60a5fa); transition: width 220ms ease; }
 
-    .progress-track {
-      height: 9px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: #eef2f7;
-    }
-
-    .progress-bar {
-      width: 0;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--brand), #60a5fa);
-      transition: width 220ms ease;
-    }
-
-    .exercise-list {
-      display: grid;
-      gap: 11px;
-    }
-
+    .exercise-list { display: grid; gap: 11px; }
     .exercise {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -260,52 +254,12 @@
       box-shadow: 0 4px 16px rgba(15,23,42,.035);
       transition: 160ms ease;
     }
-
-    .exercise.done {
-      border-color: #bbf7d0;
-      background: var(--success-soft);
-    }
-
-    .exercise-main {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 12px;
-      padding: 15px 16px 11px;
-    }
-
-    .check {
-      display: grid;
-      width: 29px;
-      height: 29px;
-      place-items: center;
-      border: 2px solid #cbd5e1;
-      border-radius: 9px;
-      background: #fff;
-      cursor: pointer;
-      transition: 150ms ease;
-    }
-
-    .check::after {
-      content: "✓";
-      opacity: 0;
-      color: #fff;
-      font-size: .9rem;
-      font-weight: 900;
-      transform: scale(.5);
-      transition: 150ms ease;
-    }
-
-    .exercise.done .check {
-      border-color: var(--success);
-      background: var(--success);
-    }
-
-    .exercise.done .check::after {
-      opacity: 1;
-      transform: scale(1);
-    }
-
+    .exercise.done { border-color: #bbf7d0; background: var(--green-soft); }
+    .exercise-main { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 15px 16px 11px; }
+    .check { display: grid; width: 29px; height: 29px; place-items: center; border: 2px solid #cbd5e1; border-radius: 9px; background: #fff; cursor: pointer; transition: 150ms ease; }
+    .check::after { content: "✓"; opacity: 0; color: #fff; font-size: .9rem; font-weight: 900; transform: scale(.5); transition: 150ms ease; }
+    .exercise.done .check { border-color: var(--green); background: var(--green); }
+    .exercise.done .check::after { opacity: 1; transform: scale(1); }
     .exercise-name { margin: 0; font-size: 1rem; line-height: 1.23; }
     .exercise-meta { margin: 4px 0 0; color: var(--muted); font-size: .83rem; }
 
@@ -322,874 +276,310 @@
       letter-spacing: .04em;
       vertical-align: 1px;
     }
-
     .tag.main { color: #1d4ed8; background: #dbeafe; }
-    .tag.muscle { color: #7c3aed; background: #ede9fe; }
     .tag.hip { color: #047857; background: #d1fae5; }
+    .tag.muscle { color: #7c3aed; background: #ede9fe; }
+    .tag.cardio { color: #be123c; background: #ffe4e6; }
+    .tag.optional { color: #475467; background: #f2f4f7; }
 
-    .details-toggle {
-      width: 35px;
-      height: 35px;
-      border: 0;
-      border-radius: 10px;
-      color: var(--muted);
-      background: var(--surface-2);
-      cursor: pointer;
-      transition: 160ms ease;
-    }
-
+    .details-toggle { width: 35px; height: 35px; border: 0; border-radius: 10px; color: var(--muted); background: var(--surface-2); cursor: pointer; transition: 160ms ease; }
     .details-toggle.open { transform: rotate(180deg); }
 
-    .log-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      padding: 0 16px 15px 57px;
-    }
+    .log-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; padding: 0 16px 15px 57px; }
+    .field label { display: block; margin-bottom: 4px; color: var(--muted); font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .045em; }
+    .field input { width: 100%; height: 39px; border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; color: var(--text); background: rgba(255,255,255,.9); outline: none; }
+    .field input:focus { border-color: #93c5fd; box-shadow: 0 0 0 3px rgba(37,99,235,.10); }
 
-    .field label {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-size: .7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .045em;
-    }
-
-    .field input {
-      width: 100%;
-      height: 39px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 0 10px;
-      color: var(--text);
-      background: rgba(255,255,255,.9);
-      outline: none;
-    }
-
-    .field input:focus {
-      border-color: #93c5fd;
-      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
-    }
-
-    .exercise-details {
-      display: none;
-      margin: 0 16px 16px 57px;
-      padding: 12px 13px;
-      border-radius: 13px;
-      color: #475467;
-      background: var(--surface-2);
-      font-size: .87rem;
-    }
-
+    .exercise-details { display: none; margin: 0 16px 16px 57px; padding: 12px 13px; border-radius: 13px; color: #475467; background: var(--surface-2); font-size: .87rem; }
     .exercise-details.open { display: block; }
     .exercise-details strong { color: var(--text); }
-
-    .note-card, .schedule-card, .level-card, .volume-card {
-      padding: 17px;
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: 0 5px 20px rgba(15,23,42,.035);
-    }
-
-    .note-card {
-      border: 1px solid #fed7aa;
-      background: var(--warning-soft);
-    }
-
-    .schedule-card, .level-card, .volume-card { border: 1px solid var(--line); }
-
-    .note-card h2, .schedule-card h2, .level-card h2, .volume-card h2 {
-      margin: 0 0 9px;
-      font-size: 1.05rem;
-    }
-
-    .note-card p {
-      margin: 0;
-      color: #7c2d12;
-      font-size: .9rem;
-    }
+    .last-log { min-height: 20px; margin: -5px 16px 13px 57px; color: #475467; font-size: .78rem; }
+    .last-log.empty { color: #98a2b3; }
+    .last-log .gain { color: var(--green); font-weight: 850; }
 
     .schedule-grid { display: grid; gap: 8px; }
-
-    .schedule-row {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 10px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
+    .schedule-row { display: grid; grid-template-columns: 92px 1fr; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--line); }
     .schedule-row:last-child { border-bottom: 0; }
     .schedule-row strong { color: var(--brand-dark); font-size: .86rem; }
-    .schedule-row span { color: var(--muted); font-size: .88rem; }
+    .schedule-row span { color: #475467; font-size: .88rem; }
 
-    .criteria, .volume-list {
-      display: grid;
-      gap: 9px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+    .rule-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    .rule-list li { position: relative; padding-left: 25px; color: #475467; font-size: .9rem; }
+    .rule-list li::before { content: "→"; position: absolute; left: 0; color: var(--brand); font-weight: 900; }
 
-    .criteria li, .volume-list li {
-      position: relative;
-      padding-left: 25px;
-      color: #475467;
-      font-size: .9rem;
-    }
+    .session-toolbar { display: grid; gap: 10px; margin-top: 15px; padding: 15px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 5px 20px rgba(15,23,42,.04); }
+    .session-toolbar-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 9px; align-items: end; }
+    .session-date label { display: block; margin-bottom: 4px; color: var(--muted); font-size: .7rem; font-weight: 850; letter-spacing: .045em; text-transform: uppercase; }
+    .session-date input { width: 100%; min-height: 44px; padding: 0 11px; border: 1px solid var(--line); border-radius: 11px; color: var(--text); background: #fff; }
+    .session-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    .session-btn { min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 11px; color: #475467; background: #fff; font-weight: 850; cursor: pointer; }
+    .session-btn.save { border-color: var(--brand); color: #fff; background: var(--brand); }
 
-    .criteria li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--success);
-      font-weight: 900;
-    }
+    .history-panel { display: none; margin-top: 12px; }
+    .history-panel.open { display: grid; gap: 10px; }
+    .history-empty { padding: 15px; border: 1px dashed #cbd5e1; border-radius: 13px; color: var(--muted); background: var(--surface-2); text-align: center; font-size: .87rem; }
+    .history-card { overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .history-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 13px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
+    .history-head strong { font-size: .9rem; }
+    .history-head span { color: var(--muted); font-size: .75rem; }
+    .history-delete { border: 0; color: var(--red); background: transparent; font-size: .78rem; font-weight: 850; cursor: pointer; }
+    .history-body { display: grid; }
+    .history-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 10px; padding: 10px 13px; border-bottom: 1px solid #eef2f6; }
+    .history-row:last-child { border-bottom: 0; }
+    .history-row strong { font-size: .82rem; }
+    .history-row span { color: #475467; font-size: .8rem; text-align: right; overflow-wrap: anywhere; }
 
-    .volume-list li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--brand);
-      font-weight: 900;
-    }
+    .toast { position: fixed; z-index: 100; left: 50%; bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px)); transform: translate(-50%, 16px); width: min(calc(100% - 32px), 420px); padding: 12px 14px; border-radius: 12px; color: #fff; background: #101828; box-shadow: 0 15px 38px rgba(15,23,42,.25); opacity: 0; pointer-events: none; text-align: center; font-size: .87rem; font-weight: 750; transition: 180ms ease; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+    .hidden-file { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .footer-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 20px; }
+    .action-btn { min-height: 44px; padding: 0 15px; border: 1px solid var(--line); border-radius: 12px; color: #475467; background: var(--surface); font-weight: 800; cursor: pointer; }
+    .action-btn.primary { border-color: var(--brand); color: #fff; background: var(--brand); }
 
-    .storage-card {
-      padding: 15px 16px;
-      border: 1px solid #c7d2fe;
-      border-radius: var(--radius);
-      background: #eef2ff;
-    }
-
-    .storage-card strong {
-      color: #3730a3;
-    }
-
-    .storage-card p {
-      margin: 0;
-      color: #4338ca;
-      font-size: .88rem;
-    }
-
-    .last-log {
-      min-height: 20px;
-      margin: -5px 16px 13px 57px;
-      color: #475467;
-      font-size: .78rem;
-    }
-
-    .last-log.empty {
-      color: #98a2b3;
-    }
-
-    .last-log .gain {
-      color: var(--success);
-      font-weight: 850;
-    }
-
-    .session-toolbar {
-      display: grid;
-      gap: 10px;
-      margin-top: 15px;
-      padding: 15px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: 0 5px 20px rgba(15,23,42,.04);
-    }
-
-    .session-toolbar-top {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 9px;
-      align-items: end;
-    }
-
-    .session-date label {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-size: .7rem;
-      font-weight: 850;
-      letter-spacing: .045em;
-      text-transform: uppercase;
-    }
-
-    .session-date input {
-      width: 100%;
-      min-height: 44px;
-      padding: 0 11px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      color: var(--text);
-      background: #fff;
-    }
-
-    .session-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .session-btn {
-      min-height: 44px;
-      padding: 0 14px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      color: #475467;
-      background: #fff;
-      font-weight: 850;
-      cursor: pointer;
-    }
-
-    .session-btn.save {
-      border-color: var(--brand);
-      color: #fff;
-      background: var(--brand);
-    }
-
-    .history-panel {
-      display: none;
-      margin-top: 12px;
-    }
-
-    .history-panel.open {
-      display: grid;
-      gap: 10px;
-    }
-
-    .history-empty {
-      padding: 15px;
-      border: 1px dashed #cbd5e1;
-      border-radius: 13px;
-      color: var(--muted);
-      background: var(--surface-2);
-      text-align: center;
-      font-size: .87rem;
-    }
-
-    .history-card {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      background: #fff;
-    }
-
-    .history-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 11px 13px;
-      background: var(--surface-2);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .history-head strong {
-      font-size: .9rem;
-    }
-
-    .history-head span {
-      color: var(--muted);
-      font-size: .75rem;
-    }
-
-    .history-delete {
-      border: 0;
-      color: var(--danger);
-      background: transparent;
-      font-size: .78rem;
-      font-weight: 850;
-      cursor: pointer;
-    }
-
-    .history-body {
-      display: grid;
-    }
-
-    .history-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
-      gap: 10px;
-      padding: 10px 13px;
-      border-bottom: 1px solid #eef2f6;
-    }
-
-    .history-row:last-child {
-      border-bottom: 0;
-    }
-
-    .history-row strong {
-      font-size: .82rem;
-    }
-
-    .history-row span {
-      color: #475467;
-      font-size: .8rem;
-      text-align: right;
-      overflow-wrap: anywhere;
-    }
-
-    .toast {
-      position: fixed;
-      z-index: 100;
-      left: 50%;
-      bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px));
-      transform: translate(-50%, 16px);
-      width: min(calc(100% - 32px), 420px);
-      padding: 12px 14px;
-      border-radius: 12px;
-      color: #fff;
-      background: #101828;
-      box-shadow: 0 15px 38px rgba(15,23,42,.25);
-      opacity: 0;
-      pointer-events: none;
-      text-align: center;
-      font-size: .87rem;
-      font-weight: 750;
-      transition: 180ms ease;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-
-    .hidden-file {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-    }
-
-    .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 9px;
-      margin-top: 20px;
-    }
-
-    .action-btn {
-      min-height: 44px;
-      padding: 0 15px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      color: #475467;
-      background: var(--surface);
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .action-btn.primary {
-      border-color: var(--brand);
-      color: #fff;
-      background: var(--brand);
-    }
-
-    .bottom-nav {
-      position: fixed;
-      z-index: 50;
-      left: 50%;
-      bottom: max(12px, env(safe-area-inset-bottom));
-      width: min(calc(100% - 24px), 560px);
-      transform: translateX(-50%);
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 7px;
-      padding: 7px;
-      border: 1px solid rgba(228,232,239,.95);
-      border-radius: 18px;
-      background: rgba(255,255,255,.95);
-      box-shadow: 0 14px 34px rgba(15,23,42,.16);
-      backdrop-filter: blur(16px);
-    }
-
-    .bottom-nav button {
-      min-height: 44px;
-      border: 0;
-      border-radius: 12px;
-      color: var(--muted);
-      background: transparent;
-      font-size: .82rem;
-      font-weight: 850;
-    }
-
+    .bottom-nav { position: fixed; z-index: 50; left: 50%; bottom: max(12px, env(safe-area-inset-bottom)); width: min(calc(100% - 24px), 620px); transform: translateX(-50%); display: grid; grid-template-columns: repeat(5,1fr); gap: 7px; padding: 7px; border: 1px solid rgba(228,232,239,.95); border-radius: 18px; background: rgba(255,255,255,.95); box-shadow: 0 14px 34px rgba(15,23,42,.16); backdrop-filter: blur(16px); }
+    .bottom-nav button { min-height: 44px; border: 0; border-radius: 12px; color: var(--muted); background: transparent; font-size: .74rem; font-weight: 850; }
     .bottom-nav button.active { color: #fff; background: var(--brand); }
 
-    @media (min-width: 720px) {
+    @media (min-width: 760px) {
       .app { padding-top: 28px; padding-bottom: 42px; }
-      .hero { padding: 35px; }
+      .hero { padding: 36px; }
+      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .exercise-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .bottom-nav { display: none; }
+      .recovery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
-
-    @media (max-width: 390px) {
+    @media (max-width: 520px) {
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .log-row { grid-template-columns: 1fr; }
-      .hero-stats { gap: 5px; }
-      .stat { padding-inline: 4px; }
+      .session-toolbar-top { grid-template-columns: 1fr; }
+      .session-btn.save { width: 100%; }
     }
-
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-      }
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
   </style>
 </head>
 <body>
   <main class="app">
     <header class="hero">
-      <p class="eyebrow">Level 1+ · Strength, Physique & Progress Log</p>
-      <h1>Padel Strength Plan</h1>
+      <p class="eyebrow">V7 · Strength, Pilates, Zone 2 & Padel</p>
+      <h1>Padel Strength + Health Plan</h1>
       <p class="hero-copy">
-        Three gym days combining hip rehabilitation, bending strength, distributed core training and enough
-        chest, back, shoulder and arm volume to get stronger and look better.
+        A cleaner weekly system: three focused strength days, two Pilates + Zone 2 days,
+        two default padel sessions, and recovery rules based on your WHOOP pattern.
       </p>
       <div class="hero-stats">
-        <div class="stat"><strong>3</strong><span>Gym days</span></div>
-        <div class="stat"><strong>4–6</strong><span>Weeks</span></div>
-        <div class="stat"><strong>1–2 RIR</strong><span>Main sets</span></div>
+        <div class="stat"><strong>3</strong><span>Strength days</span></div>
+        <div class="stat"><strong>2</strong><span>Pilates + Z2</span></div>
+        <div class="stat"><strong>2–3</strong><span>Padel days</span></div>
+        <div class="stat"><strong>7h+</strong><span>Sleep floor</span></div>
       </div>
     </header>
 
-    <section class="section load-card">
-      <h2>Day 1 felt too light—here is the new target</h2>
+    <section class="section card summary-card pad">
+      <h2>The new target</h2>
       <p>
-        On the big lifts, finish most working sets with only <strong>1–2 clean reps left</strong>.
-        The final two reps should feel challenging while your technique stays controlled.
-        Add weight next session when you comfortably hit the top of the rep range.
+        You are already active enough. The goal now is better structure: fewer junk exercises,
+        progressive strength, true Zone 2 cardio, and smarter decisions on low-recovery days.
       </p>
     </section>
 
-
-    <section class="section storage-card">
-      <p>
-        <strong>Session history is stored in this browser.</strong>
-        Save each workout when finished. The page will show your previous weights and reps next time.
-        Export a backup before changing phones, browsers, or clearing site data.
-      </p>
+    <section class="section recovery-grid">
+      <div class="recovery-card green"><strong>Green WHOOP</strong><span>Full plan. Push main lifts at 1–2 RIR. Padel can be competitive.</span></div>
+      <div class="recovery-card yellow"><strong>Yellow WHOOP</strong><span>Train, but cut 1–2 accessories. Keep padel technical or moderate.</span></div>
+      <div class="recovery-card red"><strong>Red / high RHR</strong><span>Recovery-only version. Walk, mobility, Pilates basics, light bike. No ego padel.</span></div>
     </section>
 
     <div class="tab-wrap">
-      <nav class="tabs" aria-label="Workout days">
-        <button class="tab active" data-day="day1">Day 1</button>
-        <button class="tab" data-day="day2">Day 2</button>
-        <button class="tab" data-day="day3">Day 3</button>
+      <nav class="tabs" aria-label="Plan sections">
+        <button class="tab active" data-panel="week">Week</button>
+        <button class="tab" data-panel="strength1">Day 1</button>
+        <button class="tab" data-panel="strength2">Day 2</button>
+        <button class="tab" data-panel="strength3">Day 3</button>
+        <button class="tab" data-panel="pilates">Pilates + Z2</button>
+        <button class="tab" data-panel="rules">Rules</button>
       </nav>
     </div>
 
-    <div id="workoutRoot"></div>
+    <div id="planRoot"></div>
 
-    <section class="section volume-card">
-      <h2>How hard to train</h2>
-      <ul class="volume-list">
-        <li><strong>Main lifts:</strong> 1–2 reps in reserve. Rest 2–3 minutes.</li>
-        <li><strong>Upper-body isolation:</strong> 0–2 reps in reserve. Rest 60–90 seconds.</li>
-        <li><strong>Hip/core rehab:</strong> controlled, never through sharp pain or compensation.</li>
-        <li>When all sets reach the top of the rep range, add the smallest weight increase.</li>
-        <li>If padel performance or next-day hip symptoms worsen, remove one set—not the whole exercise.</li>
-      </ul>
-    </section>
-
-    <section class="section note-card">
-      <h2>Pain and loading rules</h2>
-      <p>
-        Keep familiar hip discomfort at 0–2/10. Reduce range at 3/10. Stop for sharp
-        groin pain, catching, limping, a foot shock, or left lower-back “sticking.”
-        You should be close to your normal baseline the next morning.
-      </p>
-    </section>
-
-    <section class="section schedule-card">
-      <h2>Suggested week</h2>
-      <div class="schedule-grid">
-        <div class="schedule-row"><strong>Monday</strong><span>Padel</span></div>
-        <div class="schedule-row"><strong>Tuesday</strong><span>Pilates + Day 1</span></div>
-        <div class="schedule-row"><strong>Wednesday</strong><span>Rest</span></div>
-        <div class="schedule-row"><strong>Thursday</strong><span>Padel</span></div>
-        <div class="schedule-row"><strong>Friday</strong><span>Pilates + Day 2</span></div>
-        <div class="schedule-row"><strong>Saturday</strong><span>Day 3</span></div>
-        <div class="schedule-row"><strong>Sunday</strong><span>Light padel or rest</span></div>
-      </div>
-    </section>
-
-    <section class="section level-card">
-      <h2>Move to Level 2 after 4–6 weeks when:</h2>
-      <ul class="criteria">
-        <li>Walking no longer causes the painful push-off transition.</li>
-        <li>No lower-back catching during the strength sessions.</li>
-        <li>Two normal padel sessions do not create a multi-day flare.</li>
-        <li>Split squats and single-leg hinges feel controlled.</li>
-        <li>You are back to baseline the morning after training.</li>
-        <li>A small lying march is comfortable without compensation.</li>
+    <section class="section card pad">
+      <h2>Progression rule</h2>
+      <ul class="rule-list">
+        <li><strong>Main lifts:</strong> finish most working sets with 1–2 clean reps left. Add weight after you hit the top of the rep range on all sets.</li>
+        <li><strong>Rehab/core:</strong> progress control first, range second, load last. No sharp pain or next-day flare.</li>
+        <li><strong>Zone 2:</strong> stay easy enough to talk in full sentences. Do not turn it into another hard session.</li>
+        <li><strong>Padel:</strong> third weekly session is allowed only when recovery is green and sleep was decent.</li>
       </ul>
     </section>
 
     <div class="footer-actions">
-      <button class="action-btn primary" id="exportData">Export workout backup</button>
+      <button class="action-btn primary" id="exportData">Export backup</button>
       <button class="action-btn" id="importData">Import backup</button>
       <input class="hidden-file" id="importFile" type="file" accept="application/json,.json" />
-      <button class="action-btn" id="resetDay">Clear current checkmarks</button>
+      <button class="action-btn" id="resetPanel">Clear current checkmarks</button>
       <button class="action-btn" id="resetAll">Delete all local data</button>
     </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
 
-  <nav class="bottom-nav" aria-label="Mobile workout navigation">
-    <button class="active" data-day="day1">Day 1</button>
-    <button data-day="day2">Day 2</button>
-    <button data-day="day3">Day 3</button>
+  <nav class="bottom-nav" aria-label="Mobile plan navigation">
+    <button class="active" data-panel="week">Week</button>
+    <button data-panel="strength1">Day 1</button>
+    <button data-panel="strength2">Day 2</button>
+    <button data-panel="strength3">Day 3</button>
+    <button data-panel="pilates">Z2</button>
   </nav>
 
   <script>
     const plan = {
-      day1: {
-        title: "Heavy Full Body + Chest/Back",
-        subtitle: "Start with all mat work together, then move into heavier full-body training.",
-        duration: "65–75 min",
-        exercises: [
-          {
-            id: "d1-deadbug", name: "Dead-Bug Heel Slide", prescription: "2–3 × 6 each side",
-            tag: "Mat 1", tagClass: "hip",
-            details: "Keep the foot on the floor. Slide only as far as you can without the left lower back arching, rotating or sticking."
-          },
-          {
-            id: "d1-hipthrust", name: "Glute Bridge", prescription: "3 × 8–12",
-            tag: "Mat 2", tagClass: "hip",
-            details: "Use a comfortable height. Finish through the glutes without aggressively thrusting the pelvis forward or arching the back."
-          },
-          {
-            id: "d1-abduction", name: "Side-Lying Hip Abduction", prescription: "2–3 × 12–15 each",
-            tag: "Mat 3", tagClass: "hip",
-            details: "Keep the top leg slightly behind you with toes mostly forward or slightly down. Use a small clean range."
-          },
-          {
-            id: "d1-squat", name: "Goblet Squat", prescription: "4 × 6–8",
-            tag: "Main lift", tagClass: "main",
-            details: "Use a comfortable stance with slight turnout. Choose a weight that makes reps 6–8 genuinely challenging without a front-of-hip pinch."
-          },
-          {
-            id: "d1-kbdeadlift", name: "Kettlebell Deadlift", prescription: "3 × 6–8",
-            tag: "Bending strength", tagClass: "hip",
-            details: "Start with the kettlebell raised on blocks if needed. Keep it close, bend through the hips and knees, stand tall, and finish at neutral without leaning backward."
-          },
-          {
-            id: "d1-rdl", name: "Romanian Deadlift", prescription: "3 × 6–8",
-            tag: "Main lift", tagClass: "main",
-            details: "Push the hips backward, keep weights close and load the glutes and hamstrings. Stop before the front of the left hip pinches. Finish tall without hyperextending."
-          },
-          {
-            id: "d1-bench", name: "Dumbbell Bench Press", prescription: "4 × 6–10",
-            tag: "Main lift", tagClass: "main",
-            details: "Keep both feet comfortable and ribs controlled. The last two reps should be hard without losing shoulder position."
-          },
-          {
-            id: "d1-row", name: "Chest-Supported Row", prescription: "4 × 8–10",
-            tag: "Main lift", tagClass: "main",
-            details: "Pull elbows toward the hips, pause briefly and avoid shrugging. Use enough load that the final reps are difficult."
-          },
-
-          {
-            id: "d1-hamcurl", name: "Seated or Lying Hamstring Curl", prescription: "3 × 10–12",
-            tag: "New", tagClass: "muscle",
-            details: "Curl smoothly and lower for 2–3 seconds. You should feel the back of the thigh—not sharp pain directly behind the knee."
-          },
-
-          {
-            id: "d1-lateralraise", name: "Dumbbell or Cable Lateral Raise", prescription: "3 × 12–15",
-            tag: "Shoulders", tagClass: "muscle",
-            details: "Raise with control to roughly shoulder height. Keep the neck relaxed and stop before swinging."
-          },
-          {
-            id: "d1-calf", name: "Straight-Knee Calf Raise", prescription: "3 × 10–15",
-            tag: "Lower leg", tagClass: "hip",
-            details: "Use a full comfortable range and slow lowering. Progress from two legs to single-leg when the foot tolerates it."
-          },
-          {
-            id: "d1-rotation", name: "Cable/Band External Rotation", prescription: "2 × 15 each arm",
-            tag: "Shoulder health", tagClass: "",
-            details: "Keep the elbow against your side. Use light resistance and perfect control."
-          }
+      week: {
+        type: "info",
+        title: "Weekly rhythm",
+        subtitle: "Default version. Add a third padel day only when recovery is green.",
+        cards: [
+          { title: "Monday", body: "Padel. Competitive is fine if sleep was good." },
+          { title: "Tuesday", body: "Pilates + 25–35 min Zone 2." },
+          { title: "Wednesday", body: "Strength Day 1 — Heavy full body." },
+          { title: "Thursday", body: "Padel. Keep it technical if Wednesday was heavy." },
+          { title: "Friday", body: "Pilates + 25–35 min Zone 2." },
+          { title: "Saturday", body: "Strength Day 2 — Upper body + core." },
+          { title: "Sunday", body: "Strength Day 3, or recovery walk if WHOOP is red/yellow." }
+        ],
+        notes: [
+          "If you play a third padel session, do it Sunday and move Strength Day 3 earlier or skip it that week.",
+          "If Pilates is a hard class, keep Zone 2 shorter and easier.",
+          "Do not stack hard padel + heavy legs + short sleep."
         ]
       },
-
-      day2: {
-        title: "Upper Body + Abs & Rotation",
-        subtitle: "Upper-body strength plus cable abs, controlled rotation and side-core work.",
-        duration: "60–70 min",
+      strength1: {
+        type: "workout",
+        title: "Day 1 — Heavy Full Body",
+        subtitle: "Focused version of your old Day 1: hip/core prep, squat, hinge, push, pull, calves.",
+        duration: "55–70 min",
         exercises: [
-          {
-            id: "d2-curlup", name: "Modified Curl-Up", prescription: "3 × 8–12",
-            tag: "Mat 1", tagClass: "hip",
-            details: "Lie on your back with knees bent. Exhale and lift only the head and shoulder blades. Keep the pelvis quiet and avoid pulling with the neck."
-          },
-          {
-            id: "d2-sideplank", name: "Side Plank From Knees", prescription: "3 × 20–30 sec each side",
-            tag: "Mat 2", tagClass: "hip",
-            details: "Keep the pelvis stacked and ribs controlled. Stop if the left lower back grips or the hip pinches."
-          },
-          {
-            id: "d2-pallof", name: "Pallof Press", prescription: "3 × 8 each direction",
-            tag: "Anti-rotation", tagClass: "hip",
-            details: "Press forward and resist rotation. Keep ribs stacked over the pelvis."
-          },
-          {
-            id: "d2-cablecrunch", name: "Cable Crunch", prescription: "3 × 10–15",
-            tag: "Abs", tagClass: "muscle",
-            details: "Curl the ribs toward the pelvis without sitting the hips backward. Move through the trunk rather than pulling with the arms."
-          },
-          {
-            id: "d2-cablechop", name: "Half-Kneeling Cable Chop", prescription: "3 × 8–10 each side",
-            tag: "Rotation", tagClass: "muscle",
-            details: "Rotate through the upper trunk while keeping the pelvis mostly square. Use a controlled range and do not twist aggressively through the lower back."
-          },
-          {
-            id: "d2-pulldown", name: "Lat Pulldown or Assisted Pull-Up", prescription: "4 × 6–10",
-            tag: "Main lift", tagClass: "main",
-            details: "Pull elbows down without leaning far backward. Progress the load when all four sets reach 10 clean reps."
-          },
-          {
-            id: "d2-incline", name: "Incline Dumbbell Press", prescription: "4 × 8–10",
-            tag: "Main lift", tagClass: "main",
-            details: "Use a low-to-moderate incline. Keep shoulder blades controlled and stop 1–2 reps before form breaks."
-          },
-          {
-            id: "d2-row", name: "Seated Cable Row", prescription: "3 × 8–12",
-            tag: "Back", tagClass: "muscle",
-            details: "Sit tall and pull toward the lower ribs. Pause briefly without leaning backward."
-          },
-          {
-            id: "d2-shoulderpress", name: "Seated Dumbbell Shoulder Press", prescription: "3 × 8–10",
-            tag: "Shoulders", tagClass: "muscle",
-            details: "Use back support. Stop if you need to arch or rotate the lower back."
-          },
-          {
-            id: "d2-pecfly", name: "Cable or Machine Chest Fly", prescription: "2–3 × 10–15",
-            tag: "Chest", tagClass: "muscle",
-            details: "Use a controlled stretch and squeeze. Do not force the shoulders far behind the body."
-          },
-          {
-            id: "d2-reardelt", name: "Face Pull or Rear-Delt Fly", prescription: "3 × 12–15",
-            tag: "Rear delts", tagClass: "muscle",
-            details: "Move smoothly and keep the shoulders down. Choose whichever version feels better on your joints."
-          },
-          {
-            id: "d2-lateralraise", name: "Cable Lateral Raise", prescription: "3 × 12–20",
-            tag: "Shoulders", tagClass: "muscle",
-            details: "Use constant tension and controlled reps. The last set may finish very close to failure."
-          },
-          {
-            id: "d2-biceps", name: "Dumbbell or Cable Curl", prescription: "3 × 8–12",
-            tag: "Biceps", tagClass: "muscle",
-            details: "Keep the upper arm quiet. Add weight once all three sets reach 12 clean reps."
-          },
-          {
-            id: "d2-triceps", name: "Cable Triceps Pressdown", prescription: "3 × 8–12",
-            tag: "Triceps", tagClass: "muscle",
-            details: "Keep elbows pinned near the ribs. Reach full extension without swinging."
-          },
-          {
-            id: "d2-wrist", name: "Wrist Extension", prescription: "2 × 12–15 each arm",
-            tag: "Padel", tagClass: "",
-            details: "Rest the forearm on a bench, palm down. Lift normally and lower over about three seconds."
-          }
+          { id: "s1-deadbug", name: "Dead-Bug Heel Slide", prescription: "2 × 6 each side", tag: "Prep", tagClass: "hip", details: "Keep the foot on the floor. Slide only as far as you can without the left lower back arching, rotating, or sticking." },
+          { id: "s1-glute", name: "Glute Bridge", prescription: "3 × 8–12", tag: "Glute", tagClass: "hip", details: "Finish through the glutes without aggressively thrusting the pelvis or arching the back." },
+          { id: "s1-squat", name: "Goblet Squat", prescription: "4 × 6–8", tag: "Main", tagClass: "main", details: "Use a stance that avoids front-of-hip pinch. Last two reps should be challenging but clean." },
+          { id: "s1-rdl", name: "Romanian Deadlift", prescription: "3 × 6–8", tag: "Main", tagClass: "main", details: "Push hips back, keep weights close, and stop before the left hip or low back grabs. Use KB deadlift instead on iffy days." },
+          { id: "s1-bench", name: "Dumbbell Bench Press", prescription: "4 × 6–10", tag: "Main", tagClass: "main", details: "Keep ribs controlled and shoulders packed. Add load when all sets hit 10 clean reps." },
+          { id: "s1-row", name: "Chest-Supported Row", prescription: "4 × 8–10", tag: "Main", tagClass: "main", details: "Pull elbows toward hips, pause briefly, and avoid shrugging." },
+          { id: "s1-hamcurl", name: "Hamstring Curl", prescription: "3 × 10–12", tag: "Hamstring", tagClass: "muscle", details: "Curl smoothly and lower for 2–3 seconds. Feel the back of the thigh, not sharp pain behind the knee." },
+          { id: "s1-calf", name: "Straight-Knee Calf Raise", prescription: "3 × 10–15", tag: "Lower leg", tagClass: "hip", details: "Full comfortable range. Progress from two legs to single-leg when the foot tolerates it." },
+          { id: "s1-optional", name: "Lateral Raise or External Rotation", prescription: "2–3 × 12–15", tag: "Optional", tagClass: "optional", details: "Only do this if you have time and recovery is good. Skip it on yellow days." }
         ]
       },
-
-      day3: {
-        title: "Single-Leg Control + Side Core",
-        subtitle: "Start with mat-based trunk control, then train hip stability and upper body.",
-        duration: "65–75 min",
+      strength2: {
+        type: "workout",
+        title: "Day 2 — Upper Body + Core",
+        subtitle: "Upper strength with enough core and shoulder work for padel without turning into a 15-exercise menu.",
+        duration: "55–70 min",
         exercises: [
-          {
-            id: "d3-birddog", name: "Bird Dog", prescription: "2–3 × 6 each side",
-            tag: "Mat 1", tagClass: "hip",
-            details: "Reach the opposite arm and leg only as far as you can without arching or rotating. Hold for two seconds and return slowly."
-          },
-          {
-            id: "d3-sidecrunch", name: "Side-Lying Rib-to-Hip Crunch", prescription: "2–3 × 10–12 each side",
-            tag: "Mat 2", tagClass: "hip",
-            details: "Lie on your side with knees slightly bent. Gently bring the lower ribs toward the top of the hip without pulling on the neck or rolling backward."
-          },
-          {
-            id: "d3-split", name: "Short-Stance Split Squat", prescription: "3 × 6–8 each leg",
-            tag: "Main lift", tagClass: "main",
-            details: "Keep the stance short. When the left leg is behind, stop before the front of the hip stretches or catches."
-          },
-          {
-            id: "d3-slrdl", name: "Supported Single-Leg RDL", prescription: "3 × 8 each leg",
-            tag: "Glute/ham", tagClass: "hip",
-            details: "Hold a wall or rack, keep the pelvis square and use a range you can control."
-          },
-          {
-            id: "d3-stepdown", name: "Low Lateral Step-Down", prescription: "3 × 8 each leg",
-            tag: "Glute med", tagClass: "hip",
-            details: "Lower for roughly three seconds and keep the knee tracking over the middle of the foot."
-          },
-          {
-            id: "d3-bandwalk", name: "Lateral Band Walk", prescription: "2–3 × 10 steps each way",
-            tag: "Glute med", tagClass: "hip",
-            details: "Place the band above the knees initially. Keep toes mostly forward and take small controlled steps without swaying."
-          },
-          {
-            id: "d3-padelsquat", name: "Supported Padel Squat", prescription: "2 × 6 each side",
-            tag: "Padel movement", tagClass: "hip",
-            details: "Hold a rack or pole, shift diagonally toward one leg, bend through the hip and knee, then push through the whole foot to return. Start shallow and stop before any hip pinch."
-          },
-          {
-            id: "d3-row", name: "One-Arm Cable Row", prescription: "3 × 8–10 each side",
-            tag: "Back", tagClass: "muscle",
-            details: "Resist trunk rotation as you row. Use a stance that keeps the hip and lower back comfortable."
-          },
-          {
-            id: "d3-chestpress", name: "Machine Chest Press or Landmine Press", prescription: "3 × 8–10",
-            tag: "Chest", tagClass: "muscle",
-            details: "Choose the version that lets you keep the pelvis and lower back quiet. Progress the load steadily."
-          },
-          {
-            id: "d3-neutralpulldown", name: "Neutral-Grip Lat Pulldown", prescription: "3 × 8–12",
-            tag: "Back", tagClass: "muscle",
-            details: "Keep the chest tall and pull elbows toward the sides. Avoid excessive backward lean."
-          },
-          {
-            id: "d3-reardelt", name: "Rear-Delt Fly", prescription: "2–3 × 12–15",
-            tag: "Shoulders", tagClass: "muscle",
-            details: "Lead with the elbows and keep the weight light enough to avoid shrugging."
-          },
-          {
-            id: "d3-calf", name: "Bent-Knee Calf Raise", prescription: "3 × 12–15",
-            tag: "Lower leg", tagClass: "hip",
-            details: "Keep the knee slightly bent and move through a comfortable range without provoking the left foot."
-          },
-          {
-            id: "d3-carry", name: "Suitcase Carry", prescription: "3 × 30–40 sec each side",
-            tag: "Core", tagClass: "hip",
-            details: "Walk slowly without leaning. Reduce load if the left lower back starts gripping."
-          },
-          {
-            id: "d3-cablesidebend", name: "Cable Side Bend", prescription: "2–3 × 10–12 each side",
-            tag: "Side core", tagClass: "muscle",
-            details: "Use a moderate load and a small controlled range. Keep the movement lateral—do not rotate or lean backward."
-          },
-          {
-            id: "d3-foot", name: "Foot Tripod Hold", prescription: "4 × 10 sec each foot",
-            tag: "Foot", tagClass: "hip",
-            details: "Maintain contact under the heel, base of the big toe and base of the little toe without curling."
-          },
-          {
-            id: "d3-arms", name: "Hammer Curl + Overhead Cable Extension", prescription: "2 × 10–12 each",
-            tag: "Arms", tagClass: "muscle",
-            details: "Optional finisher. Skip it if you are short on time or your elbows feel heavily worked from padel."
-          }
+          { id: "s2-sideplank", name: "Side Plank From Knees", prescription: "3 × 20–30 sec each", tag: "Core", tagClass: "hip", details: "Keep pelvis stacked and ribs controlled. Stop if left lower back grips or hip pinches." },
+          { id: "s2-pallof", name: "Pallof Press", prescription: "3 × 8 each direction", tag: "Anti-rotation", tagClass: "hip", details: "Press forward and resist rotation. Ribs stacked over pelvis." },
+          { id: "s2-pulldown", name: "Lat Pulldown or Assisted Pull-Up", prescription: "4 × 6–10", tag: "Main", tagClass: "main", details: "Pull elbows down without leaning far backward. Add load after all sets hit 10." },
+          { id: "s2-incline", name: "Incline Dumbbell Press", prescription: "4 × 8–10", tag: "Main", tagClass: "main", details: "Low-to-moderate incline. Stop 1–2 reps before form breaks." },
+          { id: "s2-row", name: "Seated Cable Row", prescription: "3 × 8–12", tag: "Back", tagClass: "muscle", details: "Sit tall and pull toward lower ribs. Pause briefly without leaning back." },
+          { id: "s2-press", name: "Seated Dumbbell Shoulder Press", prescription: "3 × 8–10", tag: "Shoulders", tagClass: "muscle", details: "Use back support. Stop if you need to arch the lower back." },
+          { id: "s2-reardelt", name: "Face Pull or Rear-Delt Fly", prescription: "3 × 12–15", tag: "Shoulder health", tagClass: "muscle", details: "Smooth reps, shoulders down. Choose the version that feels best on joints." },
+          { id: "s2-curl", name: "Dumbbell or Cable Curl", prescription: "3 × 8–12", tag: "Biceps", tagClass: "muscle", details: "Keep upper arm quiet. Add weight once all sets hit 12 clean reps." },
+          { id: "s2-triceps", name: "Cable Triceps Pressdown", prescription: "3 × 8–12", tag: "Triceps", tagClass: "muscle", details: "Elbows pinned near ribs. Full extension without swinging." },
+          { id: "s2-lateral", name: "Cable Lateral Raise", prescription: "2 × 12–20", tag: "Optional", tagClass: "optional", details: "Do this only on green days or when shoulders need extra volume." }
+        ]
+      },
+      strength3: {
+        type: "workout",
+        title: "Day 3 — Single-Leg Control",
+        subtitle: "Hip stability, foot/calf capacity, anti-rotation and enough upper body to maintain balance.",
+        duration: "55–70 min",
+        exercises: [
+          { id: "s3-birddog", name: "Bird Dog", prescription: "2 × 6 each side", tag: "Prep", tagClass: "hip", details: "Reach only as far as you can without arching or rotating. Hold for two seconds." },
+          { id: "s3-split", name: "Short-Stance Split Squat", prescription: "3 × 6–8 each leg", tag: "Main", tagClass: "main", details: "Short stance. When left leg is behind, stop before the front of the hip catches." },
+          { id: "s3-slrdl", name: "Supported Single-Leg RDL", prescription: "3 × 8 each leg", tag: "Glute/ham", tagClass: "hip", details: "Hold a wall or rack. Keep pelvis square and use a range you can control." },
+          { id: "s3-stepdown", name: "Low Lateral Step-Down", prescription: "3 × 8 each leg", tag: "Glute med", tagClass: "hip", details: "Lower for about three seconds. Knee tracks over middle of foot." },
+          { id: "s3-padelsquat", name: "Supported Padel Squat", prescription: "2 × 6 each side", tag: "Padel", tagClass: "hip", details: "Hold a rack, shift diagonally, bend through hip/knee, and return through the whole foot. Start shallow." },
+          { id: "s3-onearmrow", name: "One-Arm Cable Row", prescription: "3 × 8–10 each side", tag: "Back", tagClass: "muscle", details: "Resist trunk rotation as you row. Choose a stance that keeps hip and lower back calm." },
+          { id: "s3-chest", name: "Machine Chest Press or Landmine Press", prescription: "3 × 8–10", tag: "Chest", tagClass: "muscle", details: "Pick the version that lets pelvis and lower back stay quiet." },
+          { id: "s3-pulldown", name: "Neutral-Grip Lat Pulldown", prescription: "3 × 8–12", tag: "Back", tagClass: "muscle", details: "Chest tall, elbows toward sides. Avoid excessive backward lean." },
+          { id: "s3-calf", name: "Bent-Knee Calf Raise", prescription: "3 × 12–15", tag: "Lower leg", tagClass: "hip", details: "Slight bend in knee. Comfortable range without provoking left foot." },
+          { id: "s3-carry", name: "Suitcase Carry", prescription: "3 × 30–40 sec each side", tag: "Core", tagClass: "hip", details: "Walk slowly without leaning. Reduce load if left lower back grips." },
+          { id: "s3-foot", name: "Foot Tripod Hold", prescription: "4 × 10 sec each foot", tag: "Foot", tagClass: "hip", details: "Maintain heel, base of big toe, and base of little toe contact without curling." }
+        ]
+      },
+      pilates: {
+        type: "workout",
+        title: "Pilates + Zone 2 Days",
+        subtitle: "Do Pilates first, then easy Zone 2. These are engine-building days, not extra punishment.",
+        duration: "70–95 min total",
+        exercises: [
+          { id: "pz-pilates", name: "Pilates / Reformer Class", prescription: "45–60 min", tag: "Control", tagClass: "hip", details: "Treat this as joint control, core, glute/hip capacity and mobility. If class is hard, reduce the cardio after." },
+          { id: "pz-bike", name: "Zone 2 Bike / Incline Walk / Elliptical", prescription: "25–35 min", tag: "Cardio", tagClass: "cardio", details: "Talk test: you can speak in full sentences, but you are clearly working. Keep this easy." },
+          { id: "pz-hr", name: "Keep HR Steady", prescription: "No hard intervals", tag: "Cardio", tagClass: "cardio", details: "Bangkok heat can spike heart rate. Indoor bike or incline treadmill is usually best." },
+          { id: "pz-mobility", name: "Cool Down Mobility", prescription: "5–8 min", tag: "Recovery", tagClass: "hip", details: "Couch stretch, 90/90 switches, easy calves, and breathing." },
+          { id: "pz-hydrate", name: "Hydration + Salt", prescription: "Before/after", tag: "Recovery", tagClass: "optional", details: "Especially important if you sweat heavily or train in humidity." }
+        ]
+      },
+      rules: {
+        type: "info",
+        title: "Operating rules",
+        subtitle: "The rules that matter most for getting fitter without flaring the hip/back or nuking recovery.",
+        cards: [
+          { title: "Sleep floor", body: "Hard padel or heavy legs only after decent sleep. Under 5.5–6 hours = recovery day or easy movement." },
+          { title: "Alcohol rule", body: "If you drink, avoid the late heavy meal. Alcohol + late food + short sleep is the bad stack." },
+          { title: "Red-day rule", body: "No heavy RDL, no ego padel, no max-effort lower body. Walk, mobility, Pilates basics, light Zone 2." },
+          { title: "Yellow-day rule", body: "Do the session, but cut optional exercises first. Keep main lifts clean, not heroic." },
+          { title: "Pain rule", body: "Familiar discomfort 0–2/10 is okay. Sharp groin pain, catching, limping, foot shock, or back sticking = stop/modify." },
+          { title: "Body composition", body: "3 strength days + 2 Zone 2 days + protein + sleep consistency will change your look more than more random sport." }
+        ],
+        notes: [
+          "Main lifts: 1–2 reps in reserve. Isolation: 0–2 reps in reserve when recovery is good.",
+          "If padel performance or next-day hip symptoms worsen, remove one set, not the whole exercise.",
+          "One lighter week every fourth week: reduce total sets by about 30%."
         ]
       }
     };
 
-    const STORAGE_KEY = "padel-strength-plan-v6";
-    const LEGACY_KEY = "padel-strength-plan-v2";
+    const STORAGE_KEY = "padel-strength-health-plan-v7";
 
     function emptyState() {
-      return {
-        activeDay: "day1",
-        drafts: {},
-        sessions: { day1: [], day2: [], day3: [] }
-      };
+      return { activePanel: "week", drafts: {}, sessions: { strength1: [], strength2: [], strength3: [], pilates: [] } };
     }
 
     function loadState() {
       try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
         if (saved && saved.drafts && saved.sessions) {
-          saved.sessions.day1 ||= [];
-          saved.sessions.day2 ||= [];
-          saved.sessions.day3 ||= [];
+          saved.sessions.strength1 ||= [];
+          saved.sessions.strength2 ||= [];
+          saved.sessions.strength3 ||= [];
+          saved.sessions.pilates ||= [];
           return saved;
         }
-
-        // Carry forward weights, notes, and checkmarks from the previous page version.
-        const legacy = JSON.parse(localStorage.getItem(LEGACY_KEY) || "null");
-        const migrated = emptyState();
-
-        if (legacy && typeof legacy === "object") {
-          migrated.activeDay = legacy.activeDay || "day1";
-
-          Object.entries(legacy).forEach(([key, value]) => {
-            if (!key.startsWith("d") || !value || typeof value !== "object") return;
-            migrated.drafts[key] = {
-              done: Boolean(value.done),
-              weight: value.weight || "",
-              reps: value.note || "",
-              note: ""
-            };
-          });
-        }
-
-        return migrated;
       } catch (error) {
         console.warn("Could not read saved workout data:", error);
-        return emptyState();
       }
+      return emptyState();
     }
 
     const state = loadState();
-    const root = document.getElementById("workoutRoot");
+    const root = document.getElementById("planRoot");
     const toast = document.getElementById("toast");
 
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
+    function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    function escapeHtml(value = "") { return String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character]); }
+    function todayString() { const now = new Date(); const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000); return local.toISOString().slice(0, 10); }
+    function readableDate(value) { if (!value) return "Undated session"; const date = new Date(`${value}T12:00:00`); return new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short", year: "numeric" }).format(date); }
+    function showToast(message) { toast.textContent = message; toast.classList.add("show"); window.clearTimeout(showToast.timer); showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2600); }
 
-    function escapeHtml(value = "") {
-      return String(value).replace(/[&<>"']/g, character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-      })[character]);
-    }
-
-    function todayString() {
-      const now = new Date();
-      const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
-      return local.toISOString().slice(0, 10);
-    }
-
-    function readableDate(value) {
-      if (!value) return "Undated session";
-      const date = new Date(`${value}T12:00:00`);
-      return new Intl.DateTimeFormat(undefined, {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      }).format(date);
-    }
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      window.clearTimeout(showToast.timer);
-      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2600);
-    }
-
-    function latestEntry(dayId, exerciseId) {
-      const sessions = state.sessions[dayId] || [];
-
+    function latestEntry(panelId, exerciseId) {
+      const sessions = state.sessions[panelId] || [];
       for (const session of sessions) {
         const entry = session.entries?.find(item => item.id === exerciseId);
         if (entry) return { ...entry, date: session.date };
       }
-
       return null;
     }
 
@@ -1198,192 +588,135 @@
       return match ? Number(match[0]) : null;
     }
 
-    function lastLogMarkup(dayId, exerciseId) {
-      const previous = latestEntry(dayId, exerciseId);
-
-      if (!previous) {
-        return '<span class="empty">No previous session saved yet.</span>';
-      }
-
+    function lastLogMarkup(panelId, exerciseId) {
+      const previous = latestEntry(panelId, exerciseId);
+      if (!previous) return '<span class="empty">No previous session saved yet.</span>';
       const parts = [];
       if (previous.weight) parts.push(escapeHtml(previous.weight));
       if (previous.reps) parts.push(escapeHtml(previous.reps));
       if (previous.note) parts.push(escapeHtml(previous.note));
-
-      return `<strong>Last — ${escapeHtml(readableDate(previous.date))}:</strong> ${
-        parts.length ? parts.join(" · ") : "completed"
-      }`;
+      return `<strong>Last — ${escapeHtml(readableDate(previous.date))}:</strong> ${parts.length ? parts.join(" · ") : "completed"}`;
     }
 
-    function renderPlan() {
-      root.innerHTML = Object.entries(plan).map(([dayId, day], index) => `
-        <section id="${dayId}" class="panel ${index === 0 ? "active" : ""}" aria-labelledby="${dayId}-title">
+    function renderWorkout(panelId, data, index) {
+      return `
+        <section id="${panelId}" class="panel ${index === 0 ? "active" : ""}" aria-labelledby="${panelId}-title">
           <div class="day-header">
             <div>
-              <h2 class="day-title" id="${dayId}-title">${day.title}</h2>
-              <p class="day-subtitle">${day.subtitle}</p>
+              <h2 class="day-title" id="${panelId}-title">${data.title}</h2>
+              <p class="day-subtitle">${data.subtitle}</p>
             </div>
-            <span class="duration">${day.duration}</span>
+            <span class="duration">${data.duration}</span>
           </div>
-
           <div class="progress-card">
-            <div class="progress-top">
-              <span>${dayId.replace("day", "Day ")} progress</span>
-              <span class="progress-text">0 / ${day.exercises.length} complete</span>
-            </div>
+            <div class="progress-top"><span>${data.title} progress</span><span class="progress-text">0 / ${data.exercises.length} complete</span></div>
             <div class="progress-track"><div class="progress-bar"></div></div>
           </div>
-
           <div class="exercise-list">
-            ${day.exercises.map(exercise => `
-              <article class="exercise" data-id="${exercise.id}" data-day="${dayId}">
+            ${data.exercises.map(exercise => `
+              <article class="exercise" data-id="${exercise.id}" data-panel-id="${panelId}">
                 <div class="exercise-main">
                   <button class="check" aria-label="Mark ${escapeHtml(exercise.name)} complete"></button>
                   <div>
-                    <h3 class="exercise-name">
-                      ${exercise.name}
-                      <span class="tag ${exercise.tagClass || ""}">${exercise.tag}</span>
-                    </h3>
-                    <p class="exercise-meta">${exercise.prescription}</p>
+                    <h3 class="exercise-name">${escapeHtml(exercise.name)}<span class="tag ${exercise.tagClass || ""}">${escapeHtml(exercise.tag)}</span></h3>
+                    <p class="exercise-meta">${escapeHtml(exercise.prescription)}</p>
                   </div>
                   <button class="details-toggle" aria-label="Show exercise details" aria-expanded="false">⌄</button>
                 </div>
-
                 <div class="log-row">
-                  <div class="field">
-                    <label for="${exercise.id}-weight">Weight / resistance</label>
-                    <input
-                      id="${exercise.id}-weight"
-                      data-log="weight"
-                      inputmode="decimal"
-                      placeholder="e.g. 28 kg"
-                    />
-                  </div>
-                  <div class="field">
-                    <label for="${exercise.id}-reps">Sets and reps completed</label>
-                    <input
-                      id="${exercise.id}-reps"
-                      data-log="reps"
-                      placeholder="e.g. 8, 8, 7"
-                    />
-                  </div>
-                  <div class="field">
-                    <label for="${exercise.id}-note">Optional note</label>
-                    <input
-                      id="${exercise.id}-note"
-                      data-log="note"
-                      placeholder="e.g. 2 RIR, felt good"
-                    />
-                  </div>
+                  <div class="field"><label for="${exercise.id}-weight">Weight / resistance</label><input id="${exercise.id}-weight" data-log="weight" inputmode="decimal" placeholder="e.g. 28 kg" /></div>
+                  <div class="field"><label for="${exercise.id}-reps">Sets and reps / time</label><input id="${exercise.id}-reps" data-log="reps" placeholder="e.g. 8, 8, 7 or 32 min" /></div>
+                  <div class="field"><label for="${exercise.id}-note">Optional note</label><input id="${exercise.id}-note" data-log="note" placeholder="e.g. 2 RIR, felt good" /></div>
                 </div>
-
-                <div class="last-log" data-last-for="${exercise.id}">
-                  ${lastLogMarkup(dayId, exercise.id)}
-                </div>
-
-                <div class="exercise-details">${exercise.details}</div>
+                <div class="last-log" data-last-for="${exercise.id}">${lastLogMarkup(panelId, exercise.id)}</div>
+                <div class="exercise-details">${escapeHtml(exercise.details)}</div>
               </article>
             `).join("")}
           </div>
-
           <section class="session-toolbar">
             <div class="session-toolbar-top">
-              <div class="session-date">
-                <label for="${dayId}-session-date">Workout date</label>
-                <input id="${dayId}-session-date" class="session-date-input" type="date" value="${todayString()}" />
-              </div>
-              <button class="session-btn save" data-save-session="${dayId}">Save session</button>
+              <div class="session-date"><label for="${panelId}-session-date">Session date</label><input id="${panelId}-session-date" class="session-date-input" type="date" value="${todayString()}" /></div>
+              <button class="session-btn save" data-save-session="${panelId}">Save session</button>
             </div>
-
             <div class="session-buttons">
-              <button class="session-btn" data-toggle-history="${dayId}">
-                View history (${(state.sessions[dayId] || []).length})
-              </button>
-              <button class="session-btn" data-prefill-last="${dayId}">
-                Copy last session
-              </button>
+              <button class="session-btn" data-toggle-history="${panelId}">View history (${(state.sessions[panelId] || []).length})</button>
+              <button class="session-btn" data-prefill-last="${panelId}">Copy last session</button>
             </div>
-
-            <div class="history-panel" id="${dayId}-history"></div>
+            <div class="history-panel" id="${panelId}-history"></div>
           </section>
-        </section>
-      `).join("");
+        </section>`;
+    }
+
+    function renderInfo(panelId, data, index) {
+      const cards = data.cards || [];
+      const notes = data.notes || [];
+      return `
+        <section id="${panelId}" class="panel ${index === 0 ? "active" : ""}" aria-labelledby="${panelId}-title">
+          <div class="day-header">
+            <div>
+              <h2 class="day-title" id="${panelId}-title">${data.title}</h2>
+              <p class="day-subtitle">${data.subtitle}</p>
+            </div>
+            <span class="duration">Plan</span>
+          </div>
+          <div class="grid-2">
+            ${cards.map(card => `<article class="card pad"><h3>${escapeHtml(card.title)}</h3><p>${escapeHtml(card.body)}</p></article>`).join("")}
+          </div>
+          ${notes.length ? `<section class="section card pad"><h2>Notes</h2><ul class="rule-list">${notes.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul></section>` : ""}
+        </section>`;
+    }
+
+    function renderPlan() {
+      root.innerHTML = Object.entries(plan).map(([panelId, data], index) => data.type === "workout" ? renderWorkout(panelId, data, index) : renderInfo(panelId, data, index)).join("");
     }
 
     renderPlan();
 
     const panels = [...document.querySelectorAll(".panel")];
-    const allDayButtons = [...document.querySelectorAll("[data-day]")];
+    const allPanelButtons = [...document.querySelectorAll("[data-panel]")];
 
-    function switchDay(dayId, shouldScroll = true) {
-      panels.forEach(panel => panel.classList.toggle("active", panel.id === dayId));
-      allDayButtons.forEach(button => {
-        button.classList.toggle("active", button.dataset.day === dayId);
-      });
-
-      state.activeDay = dayId;
+    function switchPanel(panelId, shouldScroll = true) {
+      panels.forEach(panel => panel.classList.toggle("active", panel.id === panelId));
+      allPanelButtons.forEach(button => button.classList.toggle("active", button.dataset.panel === panelId));
+      state.activePanel = panelId;
       saveState();
-
-      if (shouldScroll) {
-        document.querySelector(".tab-wrap").scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
+      if (shouldScroll) document.querySelector(".tab-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    allDayButtons.forEach(button => {
-      button.addEventListener("click", () => switchDay(button.dataset.day));
-    });
+    allPanelButtons.forEach(button => button.addEventListener("click", () => switchPanel(button.dataset.panel)));
 
-    function updateLastLabels(dayId) {
-      const panel = document.getElementById(dayId);
-
+    function updateLastLabels(panelId) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
       panel.querySelectorAll(".exercise").forEach(exercise => {
         const target = exercise.querySelector(".last-log");
-        target.innerHTML = lastLogMarkup(dayId, exercise.dataset.id);
-
-        const previous = latestEntry(dayId, exercise.dataset.id);
-        const currentWeight = numericValue(
-          exercise.querySelector('[data-log="weight"]').value
-        );
+        target.innerHTML = lastLogMarkup(panelId, exercise.dataset.id);
+        const previous = latestEntry(panelId, exercise.dataset.id);
+        const currentWeight = numericValue(exercise.querySelector('[data-log="weight"]').value);
         const previousWeight = numericValue(previous?.weight);
-
-        if (
-          previous &&
-          currentWeight !== null &&
-          previousWeight !== null &&
-          currentWeight > previousWeight
-        ) {
+        if (previous && currentWeight !== null && previousWeight !== null && currentWeight > previousWeight) {
           const difference = Math.round((currentWeight - previousWeight) * 100) / 100;
-          target.insertAdjacentHTML(
-            "beforeend",
-            ` <span class="gain">↑ ${escapeHtml(difference)} heavier</span>`
-          );
+          target.insertAdjacentHTML("beforeend", ` <span class="gain">↑ ${escapeHtml(difference)} heavier</span>`);
         }
       });
     }
 
     document.querySelectorAll(".exercise").forEach(exercise => {
       const id = exercise.dataset.id;
-      const dayId = exercise.dataset.day;
+      const panelId = exercise.dataset.panelId;
       const draft = state.drafts[id] || {};
       const checkButton = exercise.querySelector(".check");
-
       if (draft.done) exercise.classList.add("done");
-
       exercise.querySelectorAll("[data-log]").forEach(input => {
         const key = input.dataset.log;
         input.value = draft[key] || "";
-
         input.addEventListener("input", () => {
           state.drafts[id] ||= {};
           state.drafts[id][key] = input.value;
           saveState();
-          updateLastLabels(dayId);
+          updateLastLabels(panelId);
         });
       });
-
       checkButton.addEventListener("click", () => {
         exercise.classList.toggle("done");
         state.drafts[id] ||= {};
@@ -1405,286 +738,156 @@
     function updateProgress() {
       panels.forEach(panel => {
         const exercises = [...panel.querySelectorAll(".exercise")];
+        if (!exercises.length) return;
         const complete = exercises.filter(item => item.classList.contains("done")).length;
         const total = exercises.length;
-
-        panel.querySelector(".progress-text").textContent =
-          `${complete} / ${total} complete`;
-
-        panel.querySelector(".progress-bar").style.width =
-          `${total ? (complete / total) * 100 : 0}%`;
+        panel.querySelector(".progress-text").textContent = `${complete} / ${total} complete`;
+        panel.querySelector(".progress-bar").style.width = `${total ? (complete / total) * 100 : 0}%`;
       });
     }
 
-    function saveSession(dayId) {
-      const dateInput = document.getElementById(`${dayId}-session-date`);
+    function saveSession(panelId) {
+      const dateInput = document.getElementById(`${panelId}-session-date`);
       const date = dateInput.value || todayString();
-      const day = plan[dayId];
-
-      const entries = day.exercises.map(exercise => {
+      const data = plan[panelId];
+      if (!data || data.type !== "workout") return;
+      const entries = data.exercises.map(exercise => {
         const draft = state.drafts[exercise.id] || {};
-
-        return {
-          id: exercise.id,
-          name: exercise.name,
-          prescription: exercise.prescription,
-          done: Boolean(draft.done),
-          weight: String(draft.weight || "").trim(),
-          reps: String(draft.reps || "").trim(),
-          note: String(draft.note || "").trim()
-        };
-      }).filter(entry =>
-        entry.done || entry.weight || entry.reps || entry.note
-      );
-
-      if (!entries.length) {
-        showToast("Enter at least one weight, rep result, note, or checkmark first.");
-        return;
-      }
-
-      state.sessions[dayId] ||= [];
-      state.sessions[dayId].unshift({
-        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-        date,
-        savedAt: new Date().toISOString(),
-        entries
-      });
-
-      // Retain a generous history while preventing unlimited browser growth.
-      state.sessions[dayId] = state.sessions[dayId].slice(0, 100);
-
-      day.exercises.forEach(exercise => {
+        return { id: exercise.id, name: exercise.name, prescription: exercise.prescription, done: Boolean(draft.done), weight: String(draft.weight || "").trim(), reps: String(draft.reps || "").trim(), note: String(draft.note || "").trim() };
+      }).filter(entry => entry.done || entry.weight || entry.reps || entry.note);
+      if (!entries.length) { showToast("Enter at least one weight, rep result, note, or checkmark first."); return; }
+      state.sessions[panelId] ||= [];
+      state.sessions[panelId].unshift({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date, savedAt: new Date().toISOString(), entries });
+      state.sessions[panelId] = state.sessions[panelId].slice(0, 100);
+      data.exercises.forEach(exercise => {
         state.drafts[exercise.id] ||= {};
         state.drafts[exercise.id].done = false;
-        document
-          .querySelector(`[data-id="${exercise.id}"]`)
-          ?.classList.remove("done");
+        document.querySelector(`[data-id="${exercise.id}"]`)?.classList.remove("done");
       });
-
       saveState();
       updateProgress();
-      updateLastLabels(dayId);
-      renderHistory(dayId);
-      updateHistoryButton(dayId);
-      showToast(`${dayId.replace("day", "Day ")} saved for ${readableDate(date)}.`);
+      updateLastLabels(panelId);
+      renderHistory(panelId);
+      updateHistoryButton(panelId);
+      showToast(`${data.title} saved for ${readableDate(date)}.`);
     }
 
-    function prefillLastSession(dayId) {
-      const lastSession = state.sessions[dayId]?.[0];
-
-      if (!lastSession) {
-        showToast("No previous session is available yet.");
-        return;
-      }
-
+    function prefillLastSession(panelId) {
+      const lastSession = state.sessions[panelId]?.[0];
+      if (!lastSession) { showToast("No previous session is available yet."); return; }
       lastSession.entries.forEach(entry => {
         state.drafts[entry.id] ||= {};
         state.drafts[entry.id].weight = entry.weight || "";
         state.drafts[entry.id].reps = entry.reps || "";
         state.drafts[entry.id].note = "";
-
         const exercise = document.querySelector(`[data-id="${entry.id}"]`);
         if (!exercise) return;
-
         exercise.querySelector('[data-log="weight"]').value = entry.weight || "";
         exercise.querySelector('[data-log="reps"]').value = entry.reps || "";
         exercise.querySelector('[data-log="note"]').value = "";
       });
-
       saveState();
-      updateLastLabels(dayId);
+      updateLastLabels(panelId);
       showToast("Last session copied into the current workout.");
     }
 
-    function renderHistory(dayId) {
-      const container = document.getElementById(`${dayId}-history`);
-      const sessions = state.sessions[dayId] || [];
-
-      if (!sessions.length) {
-        container.innerHTML =
-          '<div class="history-empty">No saved sessions yet.</div>';
-        return;
-      }
-
+    function renderHistory(panelId) {
+      const container = document.getElementById(`${panelId}-history`);
+      if (!container) return;
+      const sessions = state.sessions[panelId] || [];
+      if (!sessions.length) { container.innerHTML = '<div class="history-empty">No saved sessions yet.</div>'; return; }
       container.innerHTML = sessions.slice(0, 12).map(session => `
         <article class="history-card">
-          <div class="history-head">
-            <div>
-              <strong>${escapeHtml(readableDate(session.date))}</strong>
-              <span>${session.entries.length} exercises logged</span>
-            </div>
-            <button
-              class="history-delete"
-              data-delete-session="${escapeHtml(session.id)}"
-              data-delete-day="${dayId}"
-            >
-              Delete
-            </button>
-          </div>
-
-          <div class="history-body">
-            ${session.entries.map(entry => {
-              const result = [
-                entry.weight,
-                entry.reps,
-                entry.note
-              ].filter(Boolean).join(" · ") || "Completed";
-
-              return `
-                <div class="history-row">
-                  <strong>${escapeHtml(entry.name)}</strong>
-                  <span>${escapeHtml(result)}</span>
-                </div>
-              `;
-            }).join("")}
-          </div>
-        </article>
-      `).join("");
-
+          <div class="history-head"><div><strong>${escapeHtml(readableDate(session.date))}</strong><span>${session.entries.length} exercises logged</span></div><button class="history-delete" data-delete-session="${escapeHtml(session.id)}" data-delete-panel="${panelId}">Delete</button></div>
+          <div class="history-body">${session.entries.map(entry => {
+            const result = [entry.weight, entry.reps, entry.note].filter(Boolean).join(" · ") || "Completed";
+            return `<div class="history-row"><strong>${escapeHtml(entry.name)}</strong><span>${escapeHtml(result)}</span></div>`;
+          }).join("")}</div>
+        </article>`).join("");
       container.querySelectorAll("[data-delete-session]").forEach(button => {
         button.addEventListener("click", () => {
-          const targetDay = button.dataset.deleteDay;
+          const targetPanel = button.dataset.deletePanel;
           const sessionId = button.dataset.deleteSession;
-
           if (!window.confirm("Delete this saved session?")) return;
-
-          state.sessions[targetDay] =
-            (state.sessions[targetDay] || []).filter(session => session.id !== sessionId);
-
+          state.sessions[targetPanel] = (state.sessions[targetPanel] || []).filter(session => session.id !== sessionId);
           saveState();
-          renderHistory(targetDay);
-          updateHistoryButton(targetDay);
-          updateLastLabels(targetDay);
+          renderHistory(targetPanel);
+          updateHistoryButton(targetPanel);
+          updateLastLabels(targetPanel);
           showToast("Session deleted.");
         });
       });
     }
 
-    function updateHistoryButton(dayId) {
-      const button = document.querySelector(`[data-toggle-history="${dayId}"]`);
-      if (button) {
-        button.textContent = `View history (${(state.sessions[dayId] || []).length})`;
-      }
+    function updateHistoryButton(panelId) {
+      const button = document.querySelector(`[data-toggle-history="${panelId}"]`);
+      if (button) button.textContent = `View history (${(state.sessions[panelId] || []).length})`;
     }
 
-    document.querySelectorAll("[data-save-session]").forEach(button => {
-      button.addEventListener("click", () => saveSession(button.dataset.saveSession));
-    });
+    document.querySelectorAll("[data-save-session]").forEach(button => button.addEventListener("click", () => saveSession(button.dataset.saveSession)));
+    document.querySelectorAll("[data-prefill-last]").forEach(button => button.addEventListener("click", () => prefillLastSession(button.dataset.prefillLast)));
+    document.querySelectorAll("[data-toggle-history]").forEach(button => button.addEventListener("click", () => { const panelId = button.dataset.toggleHistory; const container = document.getElementById(`${panelId}-history`); renderHistory(panelId); container.classList.toggle("open"); }));
 
-    document.querySelectorAll("[data-prefill-last]").forEach(button => {
-      button.addEventListener("click", () => {
-        prefillLastSession(button.dataset.prefillLast);
-      });
-    });
-
-    document.querySelectorAll("[data-toggle-history]").forEach(button => {
-      button.addEventListener("click", () => {
-        const dayId = button.dataset.toggleHistory;
-        const container = document.getElementById(`${dayId}-history`);
-        renderHistory(dayId);
-        container.classList.toggle("open");
-      });
-    });
-
-    function resetDay(dayId) {
-      const dayPanel = document.getElementById(dayId);
-
-      dayPanel.querySelectorAll(".exercise").forEach(exercise => {
+    function resetPanel(panelId) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      panel.querySelectorAll(".exercise").forEach(exercise => {
         const id = exercise.dataset.id;
         exercise.classList.remove("done");
         state.drafts[id] ||= {};
         state.drafts[id].done = false;
       });
-
       saveState();
       updateProgress();
     }
 
-    document.getElementById("resetDay").addEventListener("click", () => {
-      const dayId = state.activeDay || "day1";
-
-      if (window.confirm(`Clear checkmarks for ${dayId.replace("day", "Day ")}?`)) {
-        resetDay(dayId);
-        showToast("Current-day checkmarks cleared.");
-      }
+    document.getElementById("resetPanel").addEventListener("click", () => {
+      const panelId = state.activePanel || "week";
+      if (!plan[panelId] || plan[panelId].type !== "workout") { showToast("Open a workout tab first."); return; }
+      if (window.confirm(`Clear checkmarks for ${plan[panelId].title}?`)) { resetPanel(panelId); showToast("Current checkmarks cleared."); }
     });
 
     document.getElementById("exportData").addEventListener("click", () => {
-      const exportPayload = {
-        app: "Padel Strength Plan",
-        version: 6,
-        exportedAt: new Date().toISOString(),
-        data: state
-      };
-
-      const blob = new Blob(
-        [JSON.stringify(exportPayload, null, 2)],
-        { type: "application/json" }
-      );
-
+      const exportPayload = { app: "Padel Strength + Health Plan", version: 7, exportedAt: new Date().toISOString(), data: state };
+      const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement("a");
       anchor.href = url;
-      anchor.download = `padel-workout-backup-${todayString()}.json`;
+      anchor.download = `padel-strength-health-backup-${todayString()}.json`;
       document.body.appendChild(anchor);
       anchor.click();
       anchor.remove();
       URL.revokeObjectURL(url);
-
       showToast("Workout backup exported.");
     });
 
     const importFile = document.getElementById("importFile");
-
-    document.getElementById("importData").addEventListener("click", () => {
-      importFile.click();
-    });
-
+    document.getElementById("importData").addEventListener("click", () => importFile.click());
     importFile.addEventListener("change", async () => {
       const file = importFile.files?.[0];
       if (!file) return;
-
       try {
         const payload = JSON.parse(await file.text());
         const imported = payload.data || payload;
-
-        if (!imported.drafts || !imported.sessions) {
-          throw new Error("Invalid backup format");
-        }
-
-        if (!window.confirm("Replace the workout data on this device with this backup?")) {
-          importFile.value = "";
-          return;
-        }
-
+        if (!imported.drafts || !imported.sessions) throw new Error("Invalid backup format");
+        if (!window.confirm("Replace the workout data on this device with this backup?")) { importFile.value = ""; return; }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
         window.location.reload();
       } catch (error) {
         console.error(error);
         showToast("That file is not a valid workout backup.");
-      } finally {
-        importFile.value = "";
-      }
+      } finally { importFile.value = ""; }
     });
 
     document.getElementById("resetAll").addEventListener("click", () => {
-      if (!window.confirm(
-        "Delete every saved session, weight, rep result, note, and checkmark from this browser?"
-      )) return;
-
+      if (!window.confirm("Delete every saved session, weight, rep result, note, and checkmark from this browser?")) return;
       localStorage.removeItem(STORAGE_KEY);
-      localStorage.removeItem(LEGACY_KEY);
       window.location.reload();
     });
 
-    switchDay(state.activeDay || "day1", false);
+    switchPanel(state.activePanel || "week", false);
     updateProgress();
-
-    Object.keys(plan).forEach(dayId => {
-      updateLastLabels(dayId);
-      updateHistoryButton(dayId);
-    });
-
+    Object.keys(plan).forEach(panelId => { updateLastLabels(panelId); updateHistoryButton(panelId); });
   </script>
 </body>
 </html>
