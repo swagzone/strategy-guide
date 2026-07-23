@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCREENER v9 — The Heat Board</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1320; --panel:#161D2E; --panel2:#1B2438; --line:#26314A;
+    --text:#DCE3F0; --dim:#8B97B0; --faint:#5A6680;
+    --green:#2FBF71; --green-deep:#156A44; --red:#E5484D; --blue:#5B8DEF; --amber:#E8B84B;
+    /* thermal axis — never collides with price green/red */
+    --t-nuclear-bg:#FFD666; --t-nuclear-fg:#3A2604;
+    --t-hot-bg:#E8833A;     --t-hot-fg:#2A1206;
+    --t-warm-bg:#5C4A22;    --t-warm-fg:#F0DFAE;
+    --t-room-bg:#333D52;    --t-room-fg:#AEB9CF;
+    --t-cooling-bg:#2B3A52; --t-cooling-fg:#9FC0E8;
+    --t-cold-bg:#274566;    --t-cold-fg:#BBD9F5;
+    --t-frozen-bg:#BFE3F7;  --t-frozen-fg:#12324A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-variant-numeric:tabular-nums;display:flex;justify-content:center;min-height:100vh}
+  .wrap{width:100%;max-width:700px}
+  .disp{font-family:'IBM Plex Sans Condensed',sans-serif;letter-spacing:.05em}
+  .mono{font-family:'IBM Plex Mono',monospace}
+
+  /* header */
+  .hdr{display:flex;justify-content:space-between;align-items:baseline;padding:18px 16px 10px}
+  .hdr h1{font-size:20px;font-weight:700}
+  .hdr h1 b{color:var(--amber);font-weight:700}
+  .hdr .date{color:var(--faint);font-size:12px;margin-top:2px}
+  .hdr .reg{font-size:11px;color:var(--dim);text-align:right;line-height:1.5}
+  .hdr .reg b{color:var(--amber);font-weight:600}
+
+  /* breadth */
+  .breadth{padding:0 16px 6px}
+  .bbar{display:flex;height:6px;border-radius:3px;overflow:hidden}
+  .blegend{display:flex;justify-content:space-between;font-size:10.5px;color:var(--faint);margin-top:5px}
+
+  /* funnel — the signature */
+  .funnel{padding:14px 16px 4px}
+  .fbar{display:flex;height:30px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+  .fbar div{width:0;border-right:1px solid var(--bg);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+  @media (prefers-reduced-motion:reduce){.fbar div{transition:none}}
+  .flegend{display:flex;justify-content:space-between;font-size:10.5px;color:var(--faint);margin-top:5px}
+  .flegend b{color:var(--dim);font-weight:600}
+  .flegend .tk{color:var(--green)} .flegend .tk b{color:var(--green)}
+
+  /* verdict */
+  .verdict{margin:12px 16px;padding:14px 16px;border-radius:10px}
+  .verdict.ok{background:var(--green-deep);border:1px solid #1F8A58}
+  .verdict.no{background:#5C1F24;border:1px solid #8A3238}
+  .verdict .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .verdict.ok .eyebrow{color:#A9E8C8} .verdict.no .eyebrow{color:#F0B7BB}
+  .verdict .main{font-size:17px;font-weight:600;margin-top:3px}
+
+  /* tier chip */
+  .tier{border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
+  .tier.NUCLEAR{background:var(--t-nuclear-bg);color:var(--t-nuclear-fg)}
+  .tier.HOT{background:var(--t-hot-bg);color:var(--t-hot-fg)}
+  .tier.WARM{background:var(--t-warm-bg);color:var(--t-warm-fg)}
+  .tier.ROOM{background:var(--t-room-bg);color:var(--t-room-fg)}
+  .tier.COOLING{background:var(--t-cooling-bg);color:var(--t-cooling-fg)}
+  .tier.COLD{background:var(--t-cold-bg);color:var(--t-cold-fg)}
+  .tier.FROZEN{background:var(--t-frozen-bg);color:var(--t-frozen-fg)}
+
+  /* ticket card */
+  .card{margin:0 16px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);overflow:hidden}
+  .card .top{padding:14px 16px 10px;display:flex;justify-content:space-between;align-items:center}
+  .card .tk{font-size:26px;font-weight:700}
+  .card .mode{font-size:12px;color:var(--amber)}
+  .card .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+  .card .cell{background:var(--panel2);padding:10px 8px;text-align:center}
+  .card .cell .k{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+  .card .cell .v{font-size:15px;font-weight:600;margin-top:2px}
+  .card .cell .v.stop{color:#E08087}
+  .card .meta{padding:10px 16px 13px}
+  .card .stats{font-size:11.5px;color:var(--dim)}
+  .card .stats b{color:var(--text);font-weight:600}
+  .card .stats .tag{margin-left:8px;color:var(--blue)}
+  .card .stats .tag.warn{color:var(--amber)}
+  .card .read{font-size:13px;color:var(--dim);margin-top:7px;line-height:1.5}
+  .card .whycard{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:11px;color:var(--faint);line-height:1.7}
+  .card .whycard b{color:var(--text);font-weight:600}
+  .card .whycard span{color:var(--green);white-space:nowrap;margin-right:2px}
+  .held{color:var(--amber);font-weight:600}
+
+  /* sections */
+  section{border-top:1px solid var(--line)}
+  .secbtn{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:none;padding:14px 16px;cursor:pointer}
+  .secbtn .lbl{color:var(--dim);font-size:13px;font-weight:700;text-transform:uppercase;font-family:'IBM Plex Sans Condensed',sans-serif;letter-spacing:.05em}
+  .secbtn .lbl span{color:var(--faint);font-weight:500}
+  .secbtn .aff{color:var(--faint);font-size:12px}
+  .secbtn .toggle{font-size:10.5px;color:var(--blue);font-family:'IBM Plex Mono',monospace;padding:4px 2px}
+  .secbtn .toggle.off{color:var(--faint)}
+  .sec-body{display:none;padding-bottom:8px}
+  section.open .sec-body{display:block}
+
+  /* ranked table */
+  .thead,.trow{display:grid;grid-template-columns:30px 62px 84px 1fr 52px 56px;gap:6px;padding:9px 16px;align-items:center}
+  .thead{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line);padding-top:2px;padding-bottom:8px;font-family:'IBM Plex Mono',monospace}
+  .trow{cursor:pointer}
+  .trow:active{background:var(--panel2)}
+  .trow .r{font-size:11px;color:var(--faint)}
+  .trow .t{font-size:15px;font-weight:600;font-family:'IBM Plex Sans Condensed',sans-serif}
+  .trow .shape{font-size:10.5px;color:var(--faint);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:'IBM Plex Mono',monospace}
+  .trow .rr{font-size:12px;text-align:right;font-family:'IBM Plex Mono',monospace}
+  .trow .rr.x{color:var(--faint)}
+  .trow .tim{font-size:10.5px;text-align:right;font-family:'IBM Plex Mono',monospace}
+  .tim.FRESH{color:var(--green)} .tim.LATE{color:var(--amber)} .tim.OK{color:var(--dim)}
+  .read-line{padding:0 16px 10px 98px;font-size:12px;color:var(--faint);line-height:1.45;margin-top:-4px}
+  body.reads-off .read-line{display:none}
+  body.reads-off .trow.expanded + .read-line{display:block}
+  .more{padding:6px 16px;font-size:11.5px;color:var(--faint)}
+
+  /* watch / parked / killed */
+  .wrow{display:flex;align-items:baseline;gap:10px;padding:8px 16px;flex-wrap:wrap}
+  .wrow .t{font-size:15px;font-weight:600;width:56px;font-family:'IBM Plex Sans Condensed',sans-serif}
+  .wrow .needs{font-size:11px;color:var(--amber);font-family:'IBM Plex Mono',monospace}
+  .wrow .why{font-size:12px;color:var(--faint);flex:1;min-width:180px}
+  .chips{padding:4px 16px 10px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12px;color:var(--dim);background:var(--panel2);border-radius:5px;padding:4px 9px;font-family:'IBM Plex Mono',monospace}
+  .chip.kill{font-size:11.5px;color:#C08A90;background:#2A1A1E}
+  .note{padding:0 16px 8px;font-size:12px;color:var(--faint)}
+
+  /* heat scale key + footer */
+  .heatkey{padding:18px 16px 6px}
+  .heatkey .lbl{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;margin-bottom:7px;font-family:'IBM Plex Mono',monospace}
+  .scale{display:flex;gap:4px;flex-wrap:wrap}
+  footer{padding:14px 16px 28px;font-size:11px;color:var(--faint);border-top:1px solid var(--line);line-height:1.6;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div>
+      <h1 class="disp">THE <b>HEAT</b> BOARD</h1>
+      <div class="date">Sat 18 Jul 2026 · scored on Friday's close</div>
+    </div>
+    <div class="reg mono">PULLBACK TAPE<br><b>BUY SUPPORT · DON'T CHASE</b></div>
+  </div>
+
+  <div class="breadth">
+    <div class="bbar">
+      <div style="width:10%;background:var(--green)"></div>
+      <div style="width:44%;background:#3E4C6B"></div>
+      <div style="width:46%;background:#7A2E35"></div>
+    </div>
+    <div class="blegend mono">
+      <span style="color:var(--green)">10% momentum</span>
+      <span>44% chop</span>
+      <span style="color:#C96A72">46% bearish · 214 names</span>
+    </div>
+  </div>
+
+  <div class="funnel">
+    <div class="fbar" id="fbar">
+      <div data-w="76" style="background:#40222A" title="Cut 174"></div>
+      <div data-w="4"  style="background:#3A3A55" title="Benched 8"></div>
+      <div data-w="3.5" style="background:#4A4430" title="Watchlist 5"></div>
+      <div data-w="11.5" style="background:#274C7A" title="Ranked 33"></div>
+      <div data-w="5"  style="background:var(--green)" title="Trade card 1"></div>
+    </div>
+    <div class="flegend mono">
+      <span>cut <b>174</b></span><span>benched <b>8</b></span><span>watch <b>5</b></span><span>ranked <b>33</b></span><span class="tk">trade <b>1</b></span>
+    </div>
+  </div>
+
+  <div class="verdict ok">
+    <div class="eyebrow disp">Verdict — trade</div>
+    <div class="main">1 actionable — LLY, enter at the open</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="tk disp">LLY</span>
+        <span class="tier HOT">HOT</span>
+        <span class="mono" style="font-size:11px;color:var(--green)">FRESH</span>
+      </div>
+      <span class="mode mono">ENTER AT OPEN</span>
+    </div>
+    <div class="grid">
+      <div class="cell"><div class="k">Entry</div><div class="v mono">1179.11</div></div>
+      <div class="cell"><div class="k">Stop</div><div class="v mono stop">1123.06</div></div>
+      <div class="cell"><div class="k">Target</div><div class="v mono">1279</div></div>
+      <div class="cell"><div class="k">Shares</div><div class="v mono">63</div></div>
+    </div>
+    <div class="meta">
+      <div class="stats mono">Reward:risk <b>1.8×</b> · first test of the rising trend
+        <span class="tag">Earnings-gap runner</span><span class="tag warn">Reports Aug 5 — time-boxed</span>
+      </div>
+      <div class="read">Money flowing in while price sat still · pullback came on quiet volume · daily closes firming toward the highs · momentum turning up.</div>
+      <div class="whycard mono">Why this card: the only name today clearing <b>all four bars</b> — <span>HOT ✓</span> <span>FRESH ✓</span> <span>R:R 1.8 ✓</span> <span>CLEAN CANDLE ✓</span></div>
+    </div>
+  </div>
+
+  <section class="open" id="sec-ranked">
+    <button class="secbtn" onclick="tog('sec-ranked')">
+      <span class="lbl">Ranked <span>· 33</span></span>
+      <span class="toggle" id="readsBtn" onclick="event.stopPropagation();togReads()">reads on</span>
+    </button>
+    <div class="sec-body">
+      <div class="thead"><span>#</span><span>Ticker</span><span>Heat</span><span>Setup</span><span style="text-align:right">R:R</span><span style="text-align:right">Timing</span></div>
+      <div id="rows"></div>
+      <div class="more">… 21 more rows · ranked is information — the trade card is the decision</div>
+    </div>
+  </section>
+
+  <section id="sec-watch">
+    <button class="secbtn" onclick="tog('sec-watch')"><span class="lbl">Watchlist — strong flow, structure not ready <span>· 5</span></span><span class="aff">▸</span></button>
+    <div class="sec-body" id="watch"></div>
+  </section>
+
+  <section id="sec-parked">
+    <button class="secbtn" onclick="tog('sec-parked')"><span class="lbl">Benched — right chart, wrong tape <span>· 8</span></span><span class="aff">▸</span></button>
+    <div class="sec-body">
+      <div class="chips" id="parked"></div>
+      <div class="note">The tape's leaders sit here during pullbacks. When one moves onto the ranked list, that migration is itself a signal.</div>
+    </div>
+  </section>
+
+  <section id="sec-killed">
+    <button class="secbtn" onclick="tog('sec-killed')"><span class="lbl">Cut <span>· 174</span></span><span class="aff">▸</span></button>
+    <div class="sec-body">
+      <div class="chips" id="kills"></div>
+      <div class="note">Every cut has a reason: bearish momentum, broken structure, earnings inside the window, bull-trap reclaims, heavy-volume selling. One failure removes a name — nothing buys it back.</div>
+    </div>
+  </section>
+
+  <div class="heatkey">
+    <div class="lbl">The heat scale</div>
+    <div class="scale">
+      <span class="tier NUCLEAR">NUCLEAR</span><span class="tier HOT">HOT</span><span class="tier WARM">WARM</span>
+      <span class="tier ROOM">ROOM</span><span class="tier COOLING">COOLING</span><span class="tier COLD">COLD</span><span class="tier FROZEN">FROZEN</span>
+    </div>
+  </div>
+
+  <footer>
+    Heat measures observed buying and selling pressure over the last two weeks — a reading of what money did, not a prediction of what price will do. Scored nightly on completed daily bars after the US close. Every name on this board is logged with 5- and 10-day forward returns; the record is the product. Not investment advice.
+  </footer>
+</div>
+
+<script>
+  const ROWS = [
+    {r:1, t:"LLY",  tier:"HOT",  setup:"Dip", rr:"1.8", tim:"FRESH", read:"Money flowing in while price sat still · quiet pullback · closes firming · momentum turning up."},
+    {r:2, t:"BAND", tier:"HOT",  setup:"Dip", rr:"1.9", tim:"LATE",  hold:"late — the move is mature", read:"Quiet accumulation · sellers drying up · pullback on light volume."},
+    {r:3, t:"IBP",  tier:"HOT",  setup:"Dip", rr:"1.0", tim:"LATE",  hold:"late · reward too thin vs the stop", read:"Net buying with price · closes firming.", x:1},
+    {r:4, t:"ARQT", tier:"HOT",  setup:"Dip", rr:"0.4", tim:"LATE",  hold:"late — 4th test of the trend, odds decayed", read:"Buyers present, structure tired.", x:1},
+    {r:5, t:"RAL",  tier:"WARM", setup:"Dip", rr:"1.2", tim:"FRESH", read:"Closes migrating off the lows · momentum turning — heat below the HOT bar, reward thin.", x:1},
+    {r:6, t:"JPM",  tier:"WARM", setup:"Dip", rr:"0.9", tim:"FRESH", read:"Mild net buying · quiet dip — constructive, not compelling.", x:1},
+    {r:7, t:"SHOP", tier:"WARM", setup:"Dip", rr:"1.8", tim:"LATE",  read:"Volume in while price flat — but late in its move."},
+    {r:8, t:"META", tier:"WARM", setup:"Dip", rr:"0.7", tim:"LATE",  read:"Sellers thinning on the dip · reward too small from this price.", x:1},
+    {r:9, t:"NET",  tier:"WARM", setup:"Dip", rr:"1.6", tim:"LATE",  read:"Money in while price flat — mature move, watch for the next fresh test."},
+    {r:10,t:"AMZN", tier:"WARM", setup:"Dip", rr:"1.6", tim:"LATE",  read:"Mixed: net buying but closes sinking — no clean claim either way."},
+    {r:31,t:"GLUE", tier:"COLD", setup:"Dip", rr:"3.6", tim:"LATE",  read:"Rally being sold — volume leaves on every bounce."},
+    {r:33,t:"TXG",  tier:"COLD", setup:"Dip", rr:"1.5", tim:"LATE",  read:"Rally being sold, heavily. On the board for completeness, not consideration."}
+  ];
+  const WATCH = [
+    {t:"WFC",  needs:"Failed breakout — queued for the retry",   why:"Strong accumulation behind a cross that failed once."},
+    {t:"CDNA", needs:"Event 1 day ago — settling",               why:"Gapped on news. Eligible in 2 sessions if it holds."},
+    {t:"KYMR", needs:"Still falling",                            why:"Conviction buying inside a decline — a knife with a bid under it."},
+    {t:"MOD",  needs:"Below its falling trend line",             why:"Accumulating under a falling roof. Needs the reclaim."},
+    {t:"NOVT", needs:"Bounce inside a downtrend",                why:"Flow arriving before structure. Structure decides."}
+  ];
+  const PARKED = ["XYZ","CRWD","CROX","AXP","DDOG","U","RH","CVX"];
+  const KILLS = [["Bearish momentum",84],["Downtrend bounce",41],["Earnings window",20],["Broken trend",13],["Bad trigger candle",7],["Event settling",4],["Weak health",3],["Heavy selling",2]];
+
+  document.getElementById('rows').innerHTML = ROWS.map(o => `
+    <div class="trow" onclick="this.classList.toggle('expanded')">
+      <span class="r mono">${o.r}</span>
+      <span class="t">${o.t}</span>
+      <span><span class="tier ${o.tier}">${o.tier}</span></span>
+      <span class="shape">${o.setup}</span>
+      <span class="rr ${o.x?'x':''}">${o.rr}</span>
+      <span class="tim ${o.tim}">${o.tim}</span>
+    </div>
+    <div class="read-line">${o.hold ? `<span class="held">Held back — ${o.hold}.</span> ` : ''}${o.read}</div>`).join('');
+
+  document.getElementById('watch').innerHTML = WATCH.map(w => `
+    <div class="wrow"><span class="t">${w.t}</span><span class="tier HOT">HOT</span>
+      <span class="needs">${w.needs}</span><span class="why">${w.why}</span></div>`).join('');
+
+  document.getElementById('parked').innerHTML = PARKED.map(p => `<span class="chip">${p}</span>`).join('');
+  document.getElementById('kills').innerHTML = KILLS.map(([k,n]) => `<span class="chip kill">${k} <b>${n}</b></span>`).join('');
+
+  function tog(id){ document.getElementById(id).classList.toggle('open'); }
+  function togReads(){
+    const off = document.body.classList.toggle('reads-off');
+    const b = document.getElementById('readsBtn');
+    b.textContent = off ? 'reads off' : 'reads on';
+    b.classList.toggle('off', off);
+  }
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('#fbar div').forEach(d => { d.style.width = d.dataset.w + '%'; });
+    });
+  });
+</script>
+</body>
+</html>
