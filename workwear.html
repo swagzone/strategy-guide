@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workwear &amp; Uniform Programs — SwagZone (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181D;
+    --steel:#5A6572;
+    --concrete:#F2F3F1;
+    --line:#DDE0DC;
+    --sz-red:#D7282F;
+    --sz-red-dark:#B01F25;
+    --hivis:#FFD100;
+    --canvas:#C8A776;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);line-height:1.55;}
+  .wz-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wz-mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);}
+  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.015em;line-height:1.05;}
+
+  /* utility bar + nav */
+  .wz-util{background:var(--ink);color:#C7CCD2;font-size:12px;}
+  .wz-util .wz-wrap{display:flex;justify-content:space-between;padding-top:7px;padding-bottom:7px;}
+  .wz-nav{border-bottom:1px solid var(--line);}
+  .wz-nav .wz-wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;}
+  .wz-logo{font-family:'Barlow Condensed';font-weight:700;font-size:24px;text-transform:uppercase;}
+  .wz-logo span{color:var(--sz-red);}
+  .wz-nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--steel);}
+  .wz-nav-cta{background:var(--sz-red);color:#fff;font-weight:600;font-size:14px;padding:10px 18px;border-radius:4px;text-decoration:none;}
+
+  /* hi-vis stripe device */
+  .wz-stripe{height:14px;background:repeating-linear-gradient(-45deg,var(--hivis) 0 22px,var(--ink) 22px 44px);}
+
+  /* hero */
+  .wz-hero{background:var(--concrete);}
+  .wz-hero .wz-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;padding-top:72px;padding-bottom:72px;align-items:center;}
+  .wz-hero h1{font-size:clamp(42px,5.4vw,64px);font-weight:700;margin:14px 0 18px;}
+  .wz-hero h1 em{font-style:normal;color:var(--sz-red);}
+  .wz-hero p{font-size:17px;color:var(--steel);max-width:46ch;margin-bottom:28px;}
+  .wz-btn{display:inline-block;background:var(--sz-red);color:#fff;font-weight:600;font-size:16px;padding:15px 28px;border-radius:4px;text-decoration:none;border:0;cursor:pointer;}
+  .wz-btn:hover{background:var(--sz-red-dark);}
+  .wz-btn-ghost{display:inline-block;color:var(--ink);font-weight:600;font-size:15px;padding:15px 20px;text-decoration:none;border-bottom:2px solid var(--hivis);margin-left:18px;}
+
+  /* spec card — signature */
+  .wz-spec{background:var(--white);border:1.5px solid var(--ink);border-radius:6px;box-shadow:8px 8px 0 rgba(20,24,29,.08);padding:22px 24px;position:relative;}
+  .wz-spec-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:12px;margin-bottom:16px;}
+  .wz-spec-head h3{font-size:20px;}
+  .wz-stamp{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;color:var(--sz-red);border:1.5px solid var(--sz-red);border-radius:3px;padding:3px 8px;transform:rotate(-3deg);}
+  .wz-garment{display:flex;gap:20px;align-items:center;margin-bottom:16px;}
+  .wz-garment svg{flex-shrink:0;}
+  .wz-garment-notes{font-size:13px;color:var(--steel);}
+  .wz-garment-notes strong{color:var(--ink);display:block;font-size:14px;}
+  .wz-sizerun{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:14px;}
+  .wz-size{background:var(--concrete);border:1px solid var(--line);border-radius:4px;text-align:center;padding:7px 0 5px;}
+  .wz-size b{font-family:'Barlow Condensed';font-size:16px;display:block;}
+  .wz-size span{font-family:'IBM Plex Mono';font-size:10px;color:var(--steel);}
+  .wz-spec-foot{font-family:'IBM Plex Mono';font-size:11px;color:var(--steel);display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding-top:12px;}
+
+  /* trust strip */
+  .wz-trust{border-bottom:1px solid var(--line);}
+  .wz-trust .wz-wrap{display:flex;gap:36px;justify-content:center;padding-top:18px;padding-bottom:18px;flex-wrap:wrap;}
+
+  /* mechanics */
+  .wz-mech{padding:72px 0;}
+  .wz-mech h2{font-size:clamp(30px,3.6vw,42px);margin:10px 0 40px;max-width:22ch;}
+  .wz-rows{border-top:1.5px solid var(--ink);}
+  .wz-row{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line);}
+  .wz-row h3{font-size:22px;}
+  .wz-row p{color:var(--steel);font-size:15px;max-width:64ch;}
+
+  /* categories */
+  .wz-cats{background:var(--concrete);padding:72px 0;}
+  .wz-cats h2{font-size:clamp(30px,3.6vw,42px);margin:10px 0 36px;}
+  .wz-cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .wz-cat{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:22px;transition:border-color .15s;}
+  .wz-cat:hover{border-color:var(--ink);}
+  .wz-cat svg{margin-bottom:14px;}
+  .wz-cat h3{font-size:19px;margin-bottom:6px;}
+  .wz-cat p{font-size:13px;color:var(--steel);}
+
+  /* kit pricing */
+  .wz-kits{padding:72px 0;}
+  .wz-kits h2{font-size:clamp(30px,3.6vw,42px);margin:10px 0 8px;}
+  .wz-kits .wz-sub{color:var(--steel);margin-bottom:36px;max-width:60ch;}
+  .wz-kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .wz-kit{border:1px solid var(--line);border-radius:6px;padding:26px;}
+  .wz-kit.hot{border:1.5px solid var(--sz-red);position:relative;}
+  .wz-kit.hot::before{content:"MOST PROGRAMS";font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.1em;background:var(--sz-red);color:#fff;padding:3px 10px;border-radius:3px;position:absolute;top:-11px;left:22px;}
+  .wz-kit h3{font-size:22px;margin-bottom:2px;}
+  .wz-kit .wz-crew{font-family:'IBM Plex Mono';font-size:12px;color:var(--steel);margin-bottom:16px;display:block;}
+  .wz-kit ul{list-style:none;font-size:14px;color:var(--steel);}
+  .wz-kit li{padding:7px 0;border-bottom:1px dashed var(--line);}
+  .wz-kit li b{color:var(--ink);font-weight:600;}
+
+  /* compliance */
+  .wz-comp{border:1px solid var(--line);border-left:4px solid var(--hivis);border-radius:4px;background:var(--concrete);padding:18px 22px;font-size:14px;color:var(--steel);margin-top:36px;}
+  .wz-comp b{color:var(--ink);}
+
+  /* reviews */
+  .wz-reviews{background:var(--ink);color:#E8EAED;padding:64px 0;}
+  .wz-reviews .wz-mono{color:#9AA3AD;}
+  .wz-review-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:28px;}
+  .wz-review p{font-size:17px;line-height:1.6;margin-bottom:14px;}
+  .wz-review span{font-family:'IBM Plex Mono';font-size:12px;color:#9AA3AD;}
+
+  /* form */
+  .wz-form-sec{padding:72px 0;}
+  .wz-form-sec .wz-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;}
+  .wz-form-sec h2{font-size:clamp(30px,3.6vw,42px);margin:10px 0 16px;}
+  .wz-form-sec .wz-lead{color:var(--steel);max-width:44ch;}
+  .wz-form{background:var(--white);border:1.5px solid var(--ink);border-radius:6px;padding:28px;box-shadow:8px 8px 0 rgba(20,24,29,.08);}
+  .wz-field{margin-bottom:16px;}
+  .wz-field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;}
+  .wz-field input,.wz-field select{width:100%;border:1px solid var(--line);border-radius:4px;padding:11px 12px;font-family:'Inter';font-size:14px;background:var(--concrete);}
+  .wz-crew-picker{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .wz-crew-opt{border:1px solid var(--line);border-radius:4px;text-align:center;padding:10px 4px;font-size:13px;font-weight:500;cursor:pointer;background:var(--concrete);}
+  .wz-crew-opt.on{border-color:var(--sz-red);color:var(--sz-red);font-weight:600;background:#fff;}
+  .wz-form .wz-btn{width:100%;text-align:center;margin-top:6px;}
+  .wz-form-note{font-size:12px;color:var(--steel);text-align:center;margin-top:12px;}
+
+  footer{border-top:1px solid var(--line);}
+  footer .wz-wrap{display:flex;justify-content:space-between;padding-top:22px;padding-bottom:22px;font-size:13px;color:var(--steel);}
+
+  @media(max-width:900px){
+    .wz-hero .wz-wrap,.wz-form-sec .wz-wrap{grid-template-columns:1fr;gap:36px;}
+    .wz-cat-grid,.wz-kit-grid{grid-template-columns:1fr 1fr;}
+    .wz-review-grid{grid-template-columns:1fr;}
+    .wz-row{grid-template-columns:1fr;gap:8px;}
+    .wz-nav-links{display:none;}
+  }
+  @media(max-width:560px){
+    .wz-cat-grid,.wz-kit-grid,.wz-crew-picker{grid-template-columns:1fr 1fr;}
+    .wz-sizerun{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div class="wz-util">
+  <div class="wz-wrap">
+    <span>Workwear &amp; uniform programs · US &amp; Canada</span>
+    <span>Crews of 25 – 1,000+</span>
+  </div>
+</div>
+
+<nav class="wz-nav">
+  <div class="wz-wrap">
+    <div class="wz-logo">Swag<span>Zone</span></div>
+    <div class="wz-nav-links">
+      <span>Solutions</span><span>Catalog</span><span>How It Works</span><span>Reviews</span>
+    </div>
+    <a class="wz-nav-cta" href="#quote">Get a Program Quote</a>
+  </div>
+</nav>
+
+<header class="wz-hero">
+  <div class="wz-wrap">
+    <div>
+      <span class="wz-mono">Uniform Programs · Spec On File</span>
+      <h1>Workwear &amp; uniform programs for <em>growing crews</em></h1>
+      <p>Branded workwear for construction, field services, marine, and logistics teams — 25 to 1,000+ employees. Sizes, logos, and specs stay on file, so outfitting a new hire takes one email.</p>
+      <a class="wz-btn" href="#quote">Get a Program Quote</a>
+      <a class="wz-btn-ghost" href="#quote">Start with a sample run</a>
+    </div>
+
+    <!-- SIGNATURE: program spec card -->
+    <div class="wz-spec">
+      <div class="wz-spec-head">
+        <h3>Crew Jacket — Spec</h3>
+        <span class="wz-stamp">ON FILE</span>
+      </div>
+      <div class="wz-garment">
+        <svg width="92" height="96" viewBox="0 0 92 96" fill="none" aria-hidden="true">
+          <path d="M30 8 L14 16 L6 44 L18 48 L18 88 L74 88 L74 48 L86 44 L78 16 L62 8 C58 16 34 16 30 8 Z" stroke="#14181D" stroke-width="2.5" fill="#F2F3F1"/>
+          <path d="M18 52 L74 52" stroke="#DDE0DC" stroke-width="1.5"/>
+          <circle cx="60" cy="34" r="7" stroke="#D7282F" stroke-width="2" fill="#fff"/>
+          <path d="M60 27 V22 M67 34 H72" stroke="#D7282F" stroke-width="1.5"/>
+          <rect x="20" y="66" width="52" height="6" fill="#FFD100"/>
+          <rect x="20" y="66" width="52" height="6" fill="url(#hv)" />
+          <defs><pattern id="hv" width="10" height="6" patternUnits="userSpaceOnUse"><path d="M0 6 L6 0 H10 L4 6 Z" fill="#14181D" opacity=".85"/></pattern></defs>
+        </svg>
+        <div class="wz-garment-notes">
+          <strong>Left-chest embroidery · 3.5"</strong>
+          Logo files, thread colors, and placement locked from order one. Hi-vis band optional per role.
+        </div>
+      </div>
+      <div class="wz-sizerun">
+        <div class="wz-size"><b>S</b><span>×4</span></div>
+        <div class="wz-size"><b>M</b><span>×12</span></div>
+        <div class="wz-size"><b>L</b><span>×18</span></div>
+        <div class="wz-size"><b>XL</b><span>×9</span></div>
+        <div class="wz-size"><b>2XL</b><span>×5</span></div>
+        <div class="wz-size"><b>3XL</b><span>×2</span></div>
+      </div>
+      <div class="wz-spec-foot">
+        <span>CREW: 50</span><span>REORDER: 1 EMAIL</span><span>NEXT BATCH MATCHES LAST</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="wz-stripe" aria-hidden="true"></div>
+
+<div class="wz-trust">
+  <div class="wz-wrap">
+    <span class="wz-mono">Construction</span>
+    <span class="wz-mono">Marine</span>
+    <span class="wz-mono">Field Services</span>
+    <span class="wz-mono">Logistics</span>
+    <span class="wz-mono">Property &amp; Facilities</span>
+  </div>
+</div>
+
+<section class="wz-mech">
+  <div class="wz-wrap">
+    <span class="wz-mono">How a program works</span>
+    <h2>Built for headcount that changes</h2>
+    <div class="wz-rows">
+      <div class="wz-row">
+        <h3>Sizes &amp; specs on file</h3>
+        <p>Every employee's size, your logo files, thread colors, and decoration placement — stored with your account. Nothing gets re-explained, re-uploaded, or re-approved on the next order.</p>
+      </div>
+      <div class="wz-row">
+        <h3>Order on your hiring calendar</h3>
+        <p>Order what today's crew needs. When you hire, the next batch matches the last one exactly — same garment, same logo, same fit. No minimum re-setup, reorders from 25 units.</p>
+      </div>
+      <div class="wz-row">
+        <h3>One partner, every season</h3>
+        <p>Tees and hi-vis for summer. Hoodies and insulated jackets for winter. Same logo, same account manager, one quote thread — your whole crew, year-round.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wz-cats">
+  <div class="wz-wrap">
+    <span class="wz-mono">What we outfit</span>
+    <h2>Four lines, one logo</h2>
+    <div class="wz-cat-grid">
+      <div class="wz-cat">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M13 5 L7 8 L4 18 L9 20 L9 36 L31 36 L31 20 L36 18 L33 8 L27 5 C25 8 15 8 13 5Z" stroke="#14181D" stroke-width="2" fill="#FFD100" fill-opacity=".25"/><rect x="9" y="26" width="22" height="4" fill="#FFD100"/></svg>
+        <h3>Hi-Vis &amp; Safety Apparel</h3>
+        <p>Vests, hi-vis tees, and outer layers with your logo — visibility for every role on site.</p>
+      </div>
+      <div class="wz-cat">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M13 5 L7 8 L4 18 L9 20 L9 36 L31 36 L31 20 L36 18 L33 8 L27 5 C25 8 15 8 13 5Z" stroke="#14181D" stroke-width="2" fill="#C8A776" fill-opacity=".3"/><path d="M9 22 H31" stroke="#14181D" stroke-width="1.5"/></svg>
+        <h3>Workwear</h3>
+        <p>Duck jackets, canvas pants, coveralls, and shop shirts built for daily wear.</p>
+      </div>
+      <div class="wz-cat">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M13 6 L8 9 L6 16 L10 18 L10 35 L30 35 L30 18 L34 16 L32 9 L27 6 C25 9 15 9 13 6Z" stroke="#14181D" stroke-width="2"/><circle cx="20" cy="22" r="4" stroke="#D7282F" stroke-width="1.5"/></svg>
+        <h3>Branded Basics</h3>
+        <p>Tees, hoodies, and caps for the whole crew — the everyday layer of the program.</p>
+      </div>
+      <div class="wz-cat">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M13 5 L7 8 L4 18 L9 20 L9 36 L31 36 L31 20 L36 18 L33 8 L27 5 C25 8 15 8 13 5Z" stroke="#14181D" stroke-width="2" fill="#5A6572" fill-opacity=".18"/><path d="M14 12 L26 12 M12 16 L28 16" stroke="#5A6572" stroke-width="1.5"/></svg>
+        <h3>Cold-Weather Gear</h3>
+        <p>Insulated jackets, softshells, and beanies — winter batches sized to the same file.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wz-kits">
+  <div class="wz-wrap">
+    <span class="wz-mono">Program pricing</span>
+    <h2>Priced per person, not per SKU</h2>
+    <p class="wz-sub">A typical crew kit: 3 tees + hoodie + cap. Your quote lands as one number per person — volume pricing steps down as the crew grows.</p>
+    <div class="wz-kit-grid">
+      <div class="wz-kit">
+        <h3>Crew</h3>
+        <span class="wz-crew">25 – 50 people</span>
+        <ul>
+          <li><b>Kit pricing</b> from $__ / person</li>
+          <li>Logo + sizes on file</li>
+          <li>Reorders from 25 units</li>
+        </ul>
+      </div>
+      <div class="wz-kit hot">
+        <h3>Company</h3>
+        <span class="wz-crew">50 – 250 people</span>
+        <ul>
+          <li><b>Volume tier</b> from $__ / person</li>
+          <li>Seasonal batch planning</li>
+          <li>Dedicated account manager</li>
+        </ul>
+      </div>
+      <div class="wz-kit">
+        <h3>Rollout</h3>
+        <span class="wz-crew">250 – 1,000+ people</span>
+        <ul>
+          <li><b>Program pricing</b> — quoted</li>
+          <li>Multi-location coordination</li>
+          <li>Annual uniform calendar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wz-comp">
+      <b>Certified PPE:</b> for CSA/ANSI-rated fall protection, FR-rated, or certified safety garments, we'll refer you to a certified safety supplier — we handle everything your crew wears that carries your logo.
+    </div>
+  </div>
+</section>
+
+<section class="wz-reviews">
+  <div class="wz-wrap">
+    <span class="wz-mono">From teams we outfit</span>
+    <div class="wz-review-grid">
+      <div class="wz-review">
+        <p>"Another vendor pulled out suddenly and SwagZone saved us — communication and delivery were flawless."</p>
+        <span>OPERATIONS · REVIEW EXCERPT</span>
+      </div>
+      <div class="wz-review">
+        <p>"Reordering for our new hires took one email. Same jackets, same logo, three weeks later."</p>
+        <span>FIELD SERVICES · REVIEW EXCERPT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wz-stripe" aria-hidden="true"></div>
+
+<section class="wz-form-sec" id="quote">
+  <div class="wz-wrap">
+    <div>
+      <span class="wz-mono">Program quote · 24h</span>
+      <h2>Tell us your crew size, we'll build the quote</h2>
+      <p class="wz-lead">You'll get per-person kit pricing and a digital mockup with your logo placed — before you commit to anything. Prefer to see it in hand first? Ask about a sample run.</p>
+    </div>
+    <form class="wz-form" onsubmit="return false">
+      <div class="wz-field"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="wz-field"><label>Work email</label><input type="email" placeholder="you@company.com"></div>
+      <div class="wz-field"><label>Company</label><input type="text" placeholder="Company name"></div>
+      <div class="wz-field">
+        <label>Crew size</label>
+        <div class="wz-crew-picker">
+          <div class="wz-crew-opt">Under 25</div>
+          <div class="wz-crew-opt on">25–100</div>
+          <div class="wz-crew-opt">100–500</div>
+          <div class="wz-crew-opt">500+</div>
+        </div>
+      </div>
+      <div class="wz-field">
+        <label>When do you need it?</label>
+        <select><option>Flexible / planning ahead</option><option>Within 4–6 weeks</option><option>Within 2–4 weeks</option><option>Rush</option></select>
+      </div>
+      <button class="wz-btn" type="submit">Get a Program Quote</button>
+      <div class="wz-form-note">Quote + mockup within one business day. Sample runs available before full orders.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wz-wrap">
+    <span>SwagZone Custom Merch Inc. · US &amp; Canada</span>
+    <span class="wz-mono">Mockup — internal test page</span>
+  </div>
+</footer>
+
+</body>
+</html>
