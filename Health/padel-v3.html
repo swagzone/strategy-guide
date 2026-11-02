@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Efficient 4-day rolling padel strength program with shoulder and hip control, persistent local workout history." />
+  <title>Padel Strength Plan V12 — Efficient + Shoulder Progression</title>
+
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e4e8ef;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --brand-soft: #eaf1ff;
+      --success: #15803d;
+      --success-soft: #ecfdf3;
+      --warning: #9a3412;
+      --warning-soft: #fff7ed;
+      --danger: #b42318;
+      --shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+      --radius-sm: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.11), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, textarea { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .app {
+      width: min(100%, 940px);
+      margin: 0 auto;
+      padding: 18px 16px 92px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 27px 22px;
+      border-radius: 25px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.95));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      right: -86px;
+      top: -96px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.09);
+    }
+
+    .eyebrow {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 7px;
+      color: #bfdbfe;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(1.8rem, 7vw, 2.75rem);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 670px;
+      margin: 12px 0 0;
+      color: #dbeafe;
+      font-size: .98rem;
+    }
+
+    .hero-stats {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 11px 8px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 13px;
+      background: rgba(255,255,255,.08);
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .stat strong { display: block; font-size: 1rem; }
+    .stat span { display: block; margin-top: 2px; color: #cbd5e1; font-size: .71rem; }
+
+    .section { margin-top: 18px; }
+
+    .load-card {
+      padding: 16px;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius);
+      background: #eff6ff;
+    }
+
+    .load-card h2 {
+      margin: 0 0 7px;
+      color: #1e3a8a;
+      font-size: 1.05rem;
+    }
+
+    .load-card p {
+      margin: 0;
+      color: #1e40af;
+      font-size: .91rem;
+    }
+
+    .tab-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      margin: 18px -16px 0;
+      padding: 10px 16px;
+      background: rgba(244, 246, 251, 0.90);
+      backdrop-filter: blur(14px);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(15,23,42,.05);
+    }
+
+    .tab {
+      min-height: 47px;
+      border: 0;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 850;
+      cursor: pointer;
+      transition: 160ms ease;
+    }
+
+    .tab.active {
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 5px 12px rgba(37,99,235,.27);
+    }
+
+    .panel { display: none; animation: fade 170ms ease; }
+    .panel.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 18px 2px 12px;
+    }
+
+    .day-title { margin: 0; font-size: 1.3rem; letter-spacing: -.025em; }
+    .day-subtitle { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .duration {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-size: .77rem;
+      font-weight: 850;
+    }
+
+    .progress-card {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 750;
+    }
+
+    .progress-track {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #eef2f7;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--brand), #60a5fa);
+      transition: width 220ms ease;
+    }
+
+    .exercise-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .exercise {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 4px 16px rgba(15,23,42,.035);
+      transition: 160ms ease;
+    }
+
+    .exercise.done {
+      border-color: #bbf7d0;
+      background: var(--success-soft);
+    }
+
+    .exercise-main {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 16px 11px;
+    }
+
+    .check {
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border: 2px solid #cbd5e1;
+      border-radius: 9px;
+      background: #fff;
+      cursor: pointer;
+      transition: 150ms ease;
+    }
+
+    .check::after {
+      content: "✓";
+      opacity: 0;
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 900;
+      transform: scale(.5);
+      transition: 150ms ease;
+    }
+
+    .exercise.done .check {
+      border-color: var(--success);
+      background: var(--success);
+    }
+
+    .exercise.done .check::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .exercise-name { margin: 0; font-size: 1rem; line-height: 1.23; }
+    .exercise-meta { margin: 4px 0 0; color: var(--muted); font-size: .83rem; }
+
+    .tag {
+      display: inline-block;
+      margin-left: 5px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      color: #344054;
+      background: #f2f4f7;
+      font-size: .66rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      vertical-align: 1px;
+    }
+
+    .tag.main { color: #1d4ed8; background: #dbeafe; }
+    .tag.muscle { color: #7c3aed; background: #ede9fe; }
+    .tag.hip { color: #047857; background: #d1fae5; }
+
+    .details-toggle {
+      width: 35px;
+      height: 35px;
+      border: 0;
+      border-radius: 10px;
+      color: var(--muted);
+      background: var(--surface-2);
+      cursor: pointer;
+      transition: 160ms ease;
+    }
+
+    .details-toggle.open { transform: rotate(180deg); }
+
+    .log-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      padding: 0 16px 15px 57px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .045em;
+    }
+
+    .field input {
+      width: 100%;
+      height: 39px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0 10px;
+      color: var(--text);
+      background: rgba(255,255,255,.9);
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+    }
+
+    .exercise-details {
+      display: none;
+      margin: 0 16px 16px 57px;
+      padding: 12px 13px;
+      border-radius: 13px;
+      color: #475467;
+      background: var(--surface-2);
+      font-size: .87rem;
+    }
+
+    .exercise-details.open { display: block; }
+    .exercise-details strong { color: var(--text); }
+
+    .note-card, .schedule-card, .level-card, .volume-card {
+      padding: 17px;
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 20px rgba(15,23,42,.035);
+    }
+
+    .note-card {
+      border: 1px solid #fed7aa;
+      background: var(--warning-soft);
+    }
+
+    .schedule-card, .level-card, .volume-card { border: 1px solid var(--line); }
+
+    .note-card h2, .schedule-card h2, .level-card h2, .volume-card h2 {
+      margin: 0 0 9px;
+      font-size: 1.05rem;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: #7c2d12;
+      font-size: .9rem;
+    }
+
+    .schedule-grid { display: grid; gap: 8px; }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .schedule-row:last-child { border-bottom: 0; }
+    .schedule-row strong { color: var(--brand-dark); font-size: .86rem; }
+    .schedule-row span { color: var(--muted); font-size: .88rem; }
+
+    .criteria, .volume-list {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .criteria li, .volume-list li {
+      position: relative;
+      padding-left: 25px;
+      color: #475467;
+      font-size: .9rem;
+    }
+
+    .criteria li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 900;
+    }
+
+    .volume-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+
+
+    .arm-rebuild-card {
+      padding: 16px;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius);
+      background: #eff6ff;
+    }
+    .arm-rebuild-card h2 { margin: 0 0 8px; color: #1e3a8a; font-size: 1.05rem; }
+    .arm-rebuild-card p { margin: 6px 0; color: #1e40af; font-size: .87rem; line-height: 1.5; }
+    .arm-rebuild-card strong { color: #1e3a8a; }
+    .arm-phase-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
+    .arm-phase { padding:9px; border-radius:10px; background:rgba(255,255,255,.72); color:#1e3a8a; font-size:.78rem; line-height:1.35; }
+    @media (max-width:620px){ .arm-phase-grid{grid-template-columns:1fr;} }
+
+    .next-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius);
+      background: #f0fdf4;
+    }
+
+    .next-card .next-label {
+      margin: 0 0 3px;
+      color: #15803d;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .next-card h2 {
+      margin: 0;
+      color: #14532d;
+      font-size: 1.05rem;
+    }
+
+    .next-card p {
+      margin: 3px 0 0;
+      color: #166534;
+      font-size: .84rem;
+    }
+
+    .next-card button {
+      min-height: 44px;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 11px;
+      color: #fff;
+      background: #15803d;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .storage-card {
+      padding: 15px 16px;
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius);
+      background: #eef2ff;
+    }
+
+    .storage-card strong {
+      color: #3730a3;
+    }
+
+    .storage-card p {
+      margin: 0;
+      color: #4338ca;
+      font-size: .88rem;
+    }
+
+    .last-log {
+      min-height: 20px;
+      margin: -5px 16px 13px 57px;
+      color: #475467;
+      font-size: .78rem;
+    }
+
+    .last-log.empty {
+      color: #98a2b3;
+    }
+
+    .last-log .gain {
+      color: var(--success);
+      font-weight: 850;
+    }
+
+    .session-toolbar {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 20px rgba(15,23,42,.04);
+    }
+
+    .session-toolbar-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 9px;
+      align-items: end;
+    }
+
+    .session-date label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 850;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .session-date input {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .session-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .session-btn {
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: #475467;
+      background: #fff;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .session-btn.save {
+      border-color: var(--brand);
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .history-panel {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .history-panel.open {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-empty {
+      padding: 15px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 13px;
+      color: var(--muted);
+      background: var(--surface-2);
+      text-align: center;
+      font-size: .87rem;
+    }
+
+    .history-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .history-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 13px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .history-head strong {
+      font-size: .9rem;
+    }
+
+    .history-head span {
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    .history-delete {
+      border: 0;
+      color: var(--danger);
+      background: transparent;
+      font-size: .78rem;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .history-body {
+      display: grid;
+    }
+
+    .history-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 10px;
+      padding: 10px 13px;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .history-row:last-child {
+      border-bottom: 0;
+    }
+
+    .history-row strong {
+      font-size: .82rem;
+    }
+
+    .history-row span {
+      color: #475467;
+      font-size: .8rem;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px));
+      transform: translate(-50%, 16px);
+      width: min(calc(100% - 32px), 420px);
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: #fff;
+      background: #101828;
+      box-shadow: 0 15px 38px rgba(15,23,42,.25);
+      opacity: 0;
+      pointer-events: none;
+      text-align: center;
+      font-size: .87rem;
+      font-weight: 750;
+      transition: 180ms ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .hidden-file {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      min-height: 44px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: #475467;
+      background: var(--surface);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .action-btn.primary {
+      border-color: var(--brand);
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: max(12px, env(safe-area-inset-bottom));
+      width: min(calc(100% - 24px), 560px);
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 7px;
+      padding: 7px;
+      border: 1px solid rgba(228,232,239,.95);
+      border-radius: 18px;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 14px 34px rgba(15,23,42,.16);
+      backdrop-filter: blur(16px);
+    }
+
+    .bottom-nav button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 12px;
+      color: var(--muted);
+      background: transparent;
+      font-size: .82rem;
+      font-weight: 850;
+    }
+
+    .bottom-nav button.active { color: #fff; background: var(--brand); }
+
+    @media (min-width: 720px) {
+      .app { padding-top: 28px; padding-bottom: 42px; }
+      .hero { padding: 35px; }
+      .exercise-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bottom-nav { display: none; }
+    }
+
+    @media (max-width: 390px) {
+      .log-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 5px; }
+      .stat { padding-inline: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    .phase-label { display:block; margin: 14px 0 6px; font-size:.8rem; font-weight:800; color: #1e40af; }
+    .phase-select { width:100%; min-height:46px; padding:9px 12px; border:1px solid #93c5fd; border-radius:12px; background:white; color:#173050; font-weight:750; }
+    .phase-details { margin-top:10px; padding:12px 13px; border-radius:13px; background:rgba(255,255,255,.78); line-height:1.48; color:#23364c; font-size:.91rem; }
+    .phase-details strong {display:block; margin-bottom:5px; font-size:.95rem;}
+    .phase-details ul{margin: 5px 0 0; padding-left:20px;}
+    .phase-rule {margin-top:12px!important;}
+    .arm-medical {font-size:.83rem!important; opacity:.85;}
+    .symptom-card {background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;}
+    .symptom-card h2{margin:0;font-size:1.04rem;}
+    .symptom-card p{margin:3px 0 10px;font-size:.83rem;color:var(--muted);}
+    .symptom-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;}
+    .symptom-grid label,.symptom-note-label{display:block;font-size:.74rem;font-weight:780;color:var(--muted);}
+    .symptom-grid select,.symptom-note-label input{width:100%;min-width:0;min-height:42px;margin-top:5px;padding:8px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--text);font-size:.83rem;}
+    .symptom-note-label{margin-top:9px;}
+    .symptom-action{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:11px;}
+    .symptom-action span{font-size:.8rem;color:var(--muted);}
+    @media(max-width:620px){.symptom-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">V12 · Rolling Four-Day Plan · Strength + Shoulder Control</p>
+      <h1>Padel Strength Plan</h1>
+      <p class="hero-copy">
+        Two or three gym visits weekly. Build strength and padel capacity while gradually improving shoulder control. Continue Day 1 → 4 in order; never restart on Mondays.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><strong>2–3</strong><span>Gym visits / week</span></div>
+        <div class="stat"><strong>1→4</strong><span>Rolling sequence</span></div>
+        <div class="stat"><strong>35–45</strong><span>Minutes / workout</span></div>
+      </div>
+    </header>
+
+    <section class="section load-card">
+      <h2>Simple session formula</h2>
+      <p><strong>4-minute warm-up</strong>: easy bike/walk, comfortable shoulder circles, a few hip hinges and unloaded squats (or leg-press practice if ankle is sensitive). Add 1–2 lighter ramp-up sets before the first big lift. Then do the listed exercises. Most working sets stop with <strong>1–3 reps in reserve</strong>. Pair A / Pair B exercises if stations are available. No extra rehab circuit is required.</p>
+    </section>
+
+    <section class="section storage-card">
+      <p>
+        <strong>Your workout records carry forward across updates on this website.</strong>
+        Weights, reps, notes, sessions, check-ins and progression phase use the permanent storage key <code>padel-strength-plan-data</code>. Older versions are imported automatically if they were used on the same site and browser.
+        <strong>Export a backup before installing an update</strong>, and before switching phones/browsers or clearing site data. Importing a backup in V12 <strong>merges sessions</strong> instead of deleting existing history. Open future versions on the <em>same site and browser</em>—separately downloaded files may not share storage.
+      </p>
+    </section>
+
+    <section class="section next-card" id="nextWorkoutCard">
+      <div>
+        <p class="next-label">Next workout</p>
+        <h2 id="nextWorkoutTitle">Day 1</h2>
+        <p id="nextWorkoutSubtitle">Continue the rolling sequence wherever you left off.</p>
+      </div>
+      <button id="goToNextWorkout">Open</button>
+    </section>
+
+    <div class="tab-wrap">
+      <nav class="tabs" aria-label="Workout days">
+        <button class="tab active" data-day="day1">Day 1</button>
+        <button class="tab" data-day="day2">Day 2</button>
+        <button class="tab" data-day="day3">Day 3</button>
+        <button class="tab" data-day="day4">Day 4</button>
+      </nav>
+    </div>
+
+    <div id="workoutRoot"></div>
+
+    <section class="section arm-rebuild-card" id="shoulderProgression">
+      <h2>Shoulder progression — train without the jolt</h2>
+      <p>Your normal raises are fine; the <strong>thumb-down/internal-rotation raise</strong> causes a jolt and position-specific weakness on both sides. We are strengthening comfortable rotations and elevation instead of repeatedly provoking that response.</p>
+      <label class="phase-label" for="shoulderStage">Current progression phase</label>
+      <select id="shoulderStage" class="phase-select">
+        <option value="1">Phase 1 · Easy rotation</option>
+        <option value="2">Phase 2 · Controlled elevation</option>
+        <option value="3">Phase 3 · Rotation variety</option>
+      </select>
+      <div id="phaseDetails" class="phase-details" aria-live="polite"></div>
+      <p class="phase-rule"><strong>Advance based on symptoms, not the calendar:</strong> move up only after at least two comfortable exposures without the jolt, new numbness, or worse symptoms the next day. If symptoms recur, reduce load/range or return to the previous phase. Full thumb-down cable raises are <strong>not a required goal</strong>.</p>
+      <p class="arm-medical">Persistent daytime/nighttime numbness and right-hand changes are not explained by this shoulder exercise alone. Arrange an assessment of shoulder, neck and nerve function. Stop exercise that causes jolts, new numbness or progressive weakness.</p>
+    </section>
+
+    <section class="section symptom-card" id="symptoms">
+      <div class="symptom-head">
+        <div><h2>Quick weekly check-in</h2><p>Only record what happened naturally — do not test the painful movement to create symptoms.</p></div>
+      </div>
+      <div class="symptom-grid">
+        <label>Shoulder tightness (0–10)<select id="tightnessScore"><option value="">Not rated</option></select></label>
+        <label>Daytime arm numbness<select id="dayNumbness"><option value="none">None</option><option value="once">Once</option><option value="few">2–3 episodes</option><option value="often">4+ episodes</option></select></label>
+        <label>Nighttime numbness<select id="nightNumbness"><option value="none">None</option><option value="once">Once</option><option value="few">2–3 nights</option><option value="often">4+ nights</option></select></label>
+      </div>
+      <label class="symptom-note-label">Optional note<input id="symptomNote" maxlength="240" placeholder="e.g. Less shoulder tension, no exercise jolts" /></label>
+      <div class="symptom-action"><button id="saveCheckin" class="action-btn primary" type="button">Save check-in</button><span id="checkinSummary">No check-ins saved yet.</span></div>
+    </section>
+
+
+    <section class="section volume-card">
+      <h2>How hard to train</h2>
+      <ul class="volume-list">
+        <li><strong>Main lifts:</strong> leave ~2 reps in reserve; rest 90–150 seconds on demanding leg movements.</li>
+        <li><strong>Accessories:</strong> 2 sets usually suffice. Rest ~45–75 seconds after a comfortable pair of exercises.</li>
+        <li><strong>Hip/shoulder control:</strong> very light and smooth. Never chase the jolt, force a thumb-down raise or perform nerve stretches.</li>
+        <li>When all sets comfortably hit the top of the rep range, increase resistance slightly.</li>
+        <li><strong>Busy-day rule:</strong> keep the first four exercises, then do the shoulder-control item. Skip optional calves/arms/core if short on time.</li>
+      </ul>
+    </section>
+
+    <section class="section note-card">
+      <h2>Pain and loading rules</h2>
+      <p>
+        Keep the old hip and lower-back movements within comfortable ranges. If your ankle is still painful, swollen or causing a limp, choose stable leg-press options and omit aggravating calf or single-leg work. Stop training through increasing arm numbness, shooting sensations, true weakness, sharp groin pain or catching. Aim to return to baseline by the following morning.
+      </p>
+    </section>
+
+    <section class="section schedule-card">
+      <h2>How the rolling sequence works</h2>
+      <div class="schedule-grid">
+        <div class="schedule-row"><strong>Rule</strong><span>Always perform the next numbered workout. Do not reset to Day 1 on Monday.</span></div>
+        <div class="schedule-row"><strong>Example</strong><span>Week 1: Day 1 → Day 2 → Day 3. Week 2: Day 4 → Day 1. Continue from there, regardless of calendar week.</span></div>
+        <div class="schedule-row"><strong>2 visits</strong><span>A full cycle takes about 14 days. This automatically lowers weekly volume when life or padel is busier.</span></div>
+        <div class="schedule-row"><strong>3 visits</strong><span>A full cycle takes about 9–10 days, giving you more hypertrophy volume without changing the program.</span></div>
+        <div class="schedule-row"><strong>Padel</strong><span>Day 2 and Day 4 are upper-body dominant. Use them when your legs need recovery from padel.</span></div>
+      </div>
+    </section>
+
+    <section class="section level-card">
+      <h2>When to progress the plan</h2>
+      <ul class="criteria">
+        <li>Most sessions fit comfortably into 35–45 minutes (up to 50 on lower-body days).</li>
+        <li>Padel performance and next-day recovery remain steady.</li>
+        <li>Hip and ankle motions feel controlled and symptom-free.</li>
+        <li>Shoulder-control work stays free of jolts and new numbness or tingling.</li>
+        <li>Any recurrent sensory symptoms are assessed rather than explained away by posture.</li>
+      </ul>
+    </section>
+
+    <div class="footer-actions">
+      <button class="action-btn primary" id="exportData">Export workout backup</button>
+      <button class="action-btn" id="importData">Merge backup</button>
+      <input class="hidden-file" id="importFile" type="file" accept="application/json,.json" />
+      <button class="action-btn" id="resetDay">Clear current checkmarks</button>
+      <button class="action-btn" id="resetAll">Delete all local data</button>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Mobile workout navigation">
+    <button class="active" data-day="day1">Day 1</button>
+    <button data-day="day2">Day 2</button>
+    <button data-day="day3">Day 3</button>
+    <button data-day="day4">Day 4</button>
+  </nav>
+
+  <script>
+    const plan = {
+  "day1": {
+    "title": "Strength A — Hinge + Push / Pull",
+    "subtitle": "Build posterior-chain strength, chest and back. Pair the bench and row.",
+    "duration": "40–45 min",
+    "exercises": [
+      {
+        "id": "d1-rdl",
+        "name": "Romanian Deadlift",
+        "prescription": "3 × 6–8",
+        "tag": "Main · Hinge",
+        "tagClass": "main",
+        "details": "2 warm-up sets first. Keep the dumbbells close, hips back, and spine neutral. Stop before your low back compensates; finish with about 2 reps in reserve."
+      },
+      {
+        "id": "d1-squat",
+        "name": "Goblet Squat or Leg Press",
+        "prescription": "2 × 8–10",
+        "tag": "Squat",
+        "tagClass": "main",
+        "details": "Comfortable depth and stable knees. Use leg press if your ankle remains painful or you are limping. Leave 2 reps in reserve."
+      },
+      {
+        "id": "d1-bench",
+        "name": "Dumbbell Bench Press",
+        "prescription": "3 × 6–10",
+        "tag": "Pair A · Push",
+        "tagClass": "main",
+        "details": "Superset with chest-supported row if practical. Use a shoulder-comfortable grip, avoid the jolting thumb-down position, and keep 1–2 reps in reserve."
+      },
+      {
+        "id": "d1-row",
+        "name": "Chest-Supported Row",
+        "prescription": "3 × 8–12",
+        "tag": "Pair A · Pull",
+        "tagClass": "main",
+        "details": "Allow natural scapular motion instead of pinching shoulder blades forcefully. Pull elbows down and back without shrugging."
+      },
+      {
+        "id": "d1-calf",
+        "name": "Standing Calf Raise",
+        "prescription": "2 × 10–15",
+        "tag": "Ankle · Optional",
+        "tagClass": "hip",
+        "details": "Slow up/down, full comfortable range. Skip while your ankle is still swollen, tender, or causing a limp."
+      },
+      {
+        "id": "d1-externalrotation",
+        "name": "Band External Rotation — Elbow at Side",
+        "prescription": "2 × 10–12 each",
+        "tag": "Shoulder · Easy",
+        "tagClass": "hip",
+        "details": "Elbow rests by your ribs with a small towel. Start very light; rotation should be smooth and not produce a jolt, numbness or pulling down the arm."
+      }
+    ]
+  },
+  "day2": {
+    "title": "Upper A — Chest, Lats + Arms",
+    "subtitle": "Efficient upper-body hypertrophy with gentle shoulder-rotation practice.",
+    "duration": "35–45 min",
+    "exercises": [
+      {
+        "id": "d2-incline",
+        "name": "Incline Dumbbell Press",
+        "prescription": "2 × 8–10",
+        "tag": "Pair A · Push",
+        "tagClass": "main",
+        "details": "Low incline, neutral-to-comfortable grip. Pair with pulldown when possible. Avoid pushing into electric or radiating sensations."
+      },
+      {
+        "id": "d2-pulldown",
+        "name": "Neutral-Grip Lat Pulldown",
+        "prescription": "3 × 8–12",
+        "tag": "Pair A · Pull",
+        "tagClass": "main",
+        "details": "Pull elbows down and slightly forward; no neck thrusting. Increase weight when all sets hit 12 smooth reps."
+      },
+      {
+        "id": "d2-lateralraise",
+        "name": "Neutral / Slight Thumb-Up Cable Lateral Raise",
+        "prescription": "2 × 12–15",
+        "tag": "Side delts",
+        "tagClass": "muscle",
+        "details": "Thumb neutral or slightly upward, NOT thumb toward the floor or machine. Keep resistance light enough to lift smoothly without a jolt."
+      },
+      {
+        "id": "d2-biceps",
+        "name": "Cable Curl",
+        "prescription": "2 × 10–12",
+        "tag": "Pair B · Biceps",
+        "tagClass": "muscle",
+        "details": "Use the comfortable grip. Skip or lighten if your forearm or elbow becomes symptomatic. No forceful stretching at the bottom."
+      },
+      {
+        "id": "d2-triceps",
+        "name": "Cable Triceps Pressdown",
+        "prescription": "2 × 10–12",
+        "tag": "Pair B · Triceps",
+        "tagClass": "muscle",
+        "details": "No aggressive lockout; avoid any shoulder/triceps jolt or tingling. Pair with the curl for efficiency."
+      },
+      {
+        "id": "d2-wallslide",
+        "name": "Serratus Wall Slide",
+        "prescription": "1–2 × 8",
+        "tag": "Shoulder blade",
+        "tagClass": "hip",
+        "details": "Forearms on wall, glide upward without shrugging or forcing posture. This is controlled practice, not a hard workout."
+      },
+      {
+        "id": "d2-internalrotation",
+        "name": "Band Internal Rotation — Elbow at Side",
+        "prescription": "2 × 10–12 each",
+        "tag": "Rotator cuff · Easy",
+        "tagClass": "hip",
+        "details": "Elbow against ribs with a towel. Rotate the forearm toward your abdomen using very light resistance. This is not a thumb-down lateral raise. Stop if you feel the jolt."
+      }
+    ]
+  },
+  "day3": {
+    "title": "Strength B — Single-Leg + Hip",
+    "subtitle": "Padel-specific leg capacity and balance, plus core and scapular control.",
+    "duration": "40–45 min",
+    "exercises": [
+      {
+        "id": "d3-split",
+        "name": "Split Squat or Leg Press",
+        "prescription": "3 × 6–10 each",
+        "tag": "Main · Legs",
+        "tagClass": "main",
+        "details": "Steady stance and small initial range. If the ankle is not recovered or you still limp, switch to a stable leg press with a comfortable range."
+      },
+      {
+        "id": "d3-slrdl",
+        "name": "Supported Single-Leg Romanian Deadlift",
+        "prescription": "2 × 8 each",
+        "tag": "Hip stability",
+        "tagClass": "main",
+        "details": "Hold onto a rack so balance is not the limiting factor. Move from the hip, pelvis level, stop before back rotation."
+      },
+      {
+        "id": "d3-hamcurl",
+        "name": "Hamstring Curl",
+        "prescription": "2 × 10–15",
+        "tag": "Hamstrings",
+        "tagClass": "main",
+        "details": "Use seated or lying machine; smooth contraction without using momentum."
+      },
+      {
+        "id": "d3-abduction",
+        "name": "Side-Lying or Cable Hip Abduction",
+        "prescription": "2 × 12–15 each",
+        "tag": "Lateral hip",
+        "tagClass": "hip",
+        "details": "Keep pelvis stacked and toes near forward. Feel the side glute rather than the front hip. Start with body weight or a small load."
+      },
+      {
+        "id": "d3-pallof",
+        "name": "Pallof Press",
+        "prescription": "2 × 8–10 each",
+        "tag": "Anti-rotation",
+        "tagClass": "hip",
+        "details": "Cable or band at chest height. Exhale while pressing straight ahead; resist twisting. If the shoulder is irritated, hold close to the chest."
+      },
+      {
+        "id": "d3-pushupplus",
+        "name": "Wall Push-Up Plus",
+        "prescription": "2 × 8–10",
+        "tag": "Shoulder blade",
+        "tagClass": "hip",
+        "details": "At a wall, gently spread the shoulder blades at the top. Keep the elbows soft and stop any radiating arm sensation."
+      }
+    ]
+  },
+  "day4": {
+    "title": "Upper B — Back, Delts + Core",
+    "subtitle": "Second upper-body stimulus without duplicating a long list of isolation work.",
+    "duration": "35–45 min",
+    "exercises": [
+      {
+        "id": "d4-chestpress",
+        "name": "Machine or Neutral-Grip Dumbbell Chest Press",
+        "prescription": "2 × 8–12",
+        "tag": "Pair A · Push",
+        "tagClass": "main",
+        "details": "Choose the version that feels most stable. Normal controlled shoulder range only; no electric jolts."
+      },
+      {
+        "id": "d4-row",
+        "name": "Seated Cable Row",
+        "prescription": "3 × 8–12",
+        "tag": "Pair A · Pull",
+        "tagClass": "main",
+        "details": "Pair with chest press. Use controlled scapular motion and a comfortable grip; no neck shrugging."
+      },
+      {
+        "id": "d4-scaption",
+        "name": "Thumb-Up Scaption Raise",
+        "prescription": "2 × 8–12",
+        "tag": "Shoulder · Reach",
+        "tagClass": "hip",
+        "details": "Very light weight or no weight. Raise in the plane slightly forward of your sides, thumb pointing UP, to a comfortable height. This replaces thumb-down Jobe-style loading."
+      },
+      {
+        "id": "d4-biceps",
+        "name": "Cable Curl",
+        "prescription": "2 × 10–12",
+        "tag": "Pair B · Biceps",
+        "tagClass": "muscle",
+        "details": "Optional if you played padel hard or the forearm is tired. Choose the comfortable grip."
+      },
+      {
+        "id": "d4-triceps",
+        "name": "Cable Triceps Pressdown",
+        "prescription": "2 × 10–12",
+        "tag": "Pair B · Triceps",
+        "tagClass": "muscle",
+        "details": "Stop short of forceful extension. Skip if it creates the familiar shoulder/triceps jolt."
+      },
+      {
+        "id": "d4-chop",
+        "name": "Half-Kneeling Cable Chop",
+        "prescription": "2 × 8 each",
+        "tag": "Core",
+        "tagClass": "hip",
+        "details": "Rotate through the trunk without wrenching your shoulder or lower back. Comfortable controlled load."
+      },
+      {
+        "id": "d4-externalrotation",
+        "name": "Band External Rotation — Elbow at Side",
+        "prescription": "2 × 10–12 each",
+        "tag": "Rotator cuff · Easy",
+        "tagClass": "hip",
+        "details": "Light resistance. No forced elbow-pit-forward posture. This reinforces smooth external rotation in a comfortable position."
+      }
+    ]
+  }
+};
+
+    // Keep this key unchanged in every future release. The workout plan can
+    // evolve independently of the workout records stored on the user's device.
+    const STORAGE_KEY = "padel-strength-plan-data";
+    const BACKUP_KEY = "padel-strength-plan-data-backup";
+    const LEGACY_KEY_PATTERN = /^padel-strength-plan(?:-v\d+(?:-[a-z0-9-]+)?)?$/i;
+    const DAY_ORDER = ["day1", "day2", "day3", "day4"];
+
+    function emptyState() {
+      return {
+        activeDay: "day1",
+        nextDay: "day1",
+        drafts: {},
+        sessions: { day1: [], day2: [], day3: [], day4: [] },
+        shoulderStage: 1,
+        checkIns: []
+      };
+    }
+
+    function nextDayAfter(dayId) {
+      const index = DAY_ORDER.indexOf(dayId);
+      return DAY_ORDER[(index + 1 + DAY_ORDER.length) % DAY_ORDER.length] || "day1";
+    }
+
+    function deriveNextDay(candidateState) {
+      if (DAY_ORDER.includes(candidateState?.nextDay)) return candidateState.nextDay;
+      let latest = null;
+      let latestDay = null;
+      DAY_ORDER.forEach(dayId => {
+        (candidateState?.sessions?.[dayId] || []).forEach(session => {
+          const stamp = session.savedAt || `${session.date || ""}T12:00:00`;
+          const time = Date.parse(stamp);
+          if (!Number.isNaN(time) && (latest === null || time > latest)) {
+            latest = time;
+            latestDay = dayId;
+          }
+        });
+      });
+      return latestDay ? nextDayAfter(latestDay) : "day1";
+    }
+
+    function readSaved(key) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : null;
+      } catch (error) {
+        console.warn(`Could not read workout records from ${key}`, error);
+        return null;
+      }
+    }
+
+    function hasModernShape(value) {
+      return value && typeof value === "object" &&
+        value.drafts && typeof value.drafts === "object" &&
+        value.sessions && typeof value.sessions === "object";
+    }
+
+    function normalizeSaved(value) {
+      if (!hasModernShape(value)) return null;
+      const normalized = { ...emptyState(), ...value };
+      normalized.activeDay = DAY_ORDER.includes(value.activeDay) ? value.activeDay : "day1";
+      normalized.drafts = value.drafts || {};
+      normalized.shoulderStage = [1,2,3].includes(Number(value.shoulderStage)) ? Number(value.shoulderStage) : 1;
+      normalized.checkIns = Array.isArray(value.checkIns) ? value.checkIns : [];
+      DAY_ORDER.forEach(day => {
+        normalized.sessions[day] = Array.isArray(value.sessions[day])
+          ? value.sessions[day].filter(session => session && typeof session === "object")
+          : [];
+      });
+      normalized.nextDay = deriveNextDay(value);
+      return normalized;
+    }
+
+    function findOldWorkoutKeys() {
+      const keys = [];
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && LEGACY_KEY_PATTERN.test(key) && key !== STORAGE_KEY) keys.push(key);
+        }
+      } catch (error) {
+        console.warn("Could not list old workout versions", error);
+      }
+      // Prefer newer versions if an exercise draft exists in several versions.
+      return keys.sort((left, right) => {
+        const version = key => Number(key.match(/-v(\d+)/i)?.[1] || 0);
+        return version(right) - version(left);
+      });
+    }
+
+    function loadState() {
+      // Once upgraded, always reuse the stable record. Do not resurrect stale
+      // legacy drafts when somebody imports or clears part of their history.
+      const stable = normalizeSaved(readSaved(STORAGE_KEY));
+      if (stable) return stable;
+
+      // A previous complete copy is kept as a local corruption fallback.
+      const backup = normalizeSaved(readSaved(BACKUP_KEY));
+      if (backup) return backup;
+
+      const migrated = emptyState();
+      const seen = new Set();
+      let found = false;
+
+      for (const key of findOldWorkoutKeys()) {
+        const legacy = readSaved(key);
+        if (!legacy || typeof legacy !== "object") continue;
+
+        if (hasModernShape(legacy)) {
+          if (!found) {
+            migrated.activeDay = DAY_ORDER.includes(legacy.activeDay) ? legacy.activeDay : "day1";
+            migrated.shoulderStage = [1,2,3].includes(Number(legacy.shoulderStage)) ? Number(legacy.shoulderStage) : 1;
+            migrated.checkIns = Array.isArray(legacy.checkIns) ? legacy.checkIns : [];
+            found = true;
+          }
+          Object.entries(legacy.drafts).forEach(([id, draft]) => {
+            if (!(id in migrated.drafts)) migrated.drafts[id] = draft;
+          });
+          DAY_ORDER.forEach(day => {
+            (Array.isArray(legacy.sessions[day]) ? legacy.sessions[day] : []).forEach(session => {
+              if (!session || typeof session !== "object") return;
+              const sessionKey = session.id
+                ? `${day}:${session.id}`
+                : `${day}:${JSON.stringify([session.date, session.savedAt, session.entries])}`;
+              if (seen.has(sessionKey)) return;
+              seen.add(sessionKey);
+              migrated.sessions[day].push(session);
+            });
+          });
+        } else {
+          // Older versions used a flat map of exercise IDs rather than drafts.
+          Object.entries(legacy).forEach(([id, value]) => {
+            if (!/^d\d+-/.test(id) || !value || typeof value !== "object") return;
+            if (!(id in migrated.drafts)) migrated.drafts[id] = {
+              done: Boolean(value.done),
+              weight: value.weight || "",
+              reps: value.reps || value.note || "",
+              note: ""
+            };
+          });
+          found = true;
+        }
+      }
+      DAY_ORDER.forEach(day => migrated.sessions[day].sort((a,b) =>
+        Date.parse(b.savedAt || `${b.date || ""}T12:00:00`) -
+        Date.parse(a.savedAt || `${a.date || ""}T12:00:00`)
+      ));
+      // Recalculate the workout rotation from the most recent saved session.
+      migrated.nextDay = deriveNextDay({ sessions: migrated.sessions });
+      return migrated;
+    }
+
+    const state = loadState();
+    const root = document.getElementById("workoutRoot");
+    const toast = document.getElementById("toast");
+    const nextWorkoutTitle = document.getElementById("nextWorkoutTitle");
+    const nextWorkoutSubtitle = document.getElementById("nextWorkoutSubtitle");
+    const goToNextWorkout = document.getElementById("goToNextWorkout");
+
+    function saveState() {
+      try {
+        const previous = localStorage.getItem(STORAGE_KEY);
+        const next = JSON.stringify(state);
+        if (previous && previous !== next) {
+          localStorage.setItem(BACKUP_KEY, previous);
+        }
+        localStorage.setItem(STORAGE_KEY, next);
+        return true;
+      } catch (error) {
+        console.error("Workout data could not be saved", error);
+        if (typeof showToast === "function") showToast("Storage unavailable — export a backup before closing.");
+        return false;
+      }
+    }
+
+    function escapeHtml(value = "") {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[character]);
+    }
+
+    function todayString() {
+      const now = new Date();
+      const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0, 10);
+    }
+
+    function readableDate(value) {
+      if (!value) return "Undated session";
+      const date = new Date(`${value}T12:00:00`);
+      return new Intl.DateTimeFormat(undefined, {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      }).format(date);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    const PHASES = {
+      1: { title: "Phase 1 · Establish easy rotation", bullets: [
+        "Use the band internal/external rotations already listed on Days 1, 2 and 4; keep elbows by your sides.",
+        "Practice shoulder elevation only in normal thumb-neutral or thumb-up positions.",
+        "Very light load; smooth reps. No thumb-down cable raise, no forcing a protective jolt."
+      ]},
+      2: { title: "Phase 2 · Build comfortable reach", bullets: [
+        "Keep light rotational work. Gradually increase the range of thumb-up scaption on Day 4 if symptom-free.",
+        "Increase the neutral-grip lateral raise on Day 2 in small steps, staying smooth.",
+        "Keep at least two comfortable exposures before progressing further."
+      ]},
+      3: { title: "Phase 3 · Optional rotation variety", bullets: [
+        "Only if earlier phases feel reliably comfortable: explore small, unloaded variations in arm rotation below shoulder level.",
+        "Use tiny ranges and stop before any jolt, tingling or new weakness. Don't force a fully thumb-down loaded cable raise.",
+        "If that position remains sharply painful or weak, get it examined rather than pushing through."
+      ]}
+    };
+
+    const phaseSelect = document.getElementById("shoulderStage");
+    const phaseDetails = document.getElementById("phaseDetails");
+    function renderPhase() {
+      const stage = [1,2,3].includes(Number(state.shoulderStage)) ? Number(state.shoulderStage) : 1;
+      phaseSelect.value = String(stage);
+      const phase = PHASES[stage];
+      phaseDetails.innerHTML = `<strong>${escapeHtml(phase.title)}</strong><ul>${phase.bullets.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`;
+    }
+    phaseSelect.addEventListener("change", () => {
+      state.shoulderStage = Number(phaseSelect.value);
+      saveState();
+      renderPhase();
+      showToast("Shoulder phase saved on this device.");
+    });
+    renderPhase();
+
+    const tightnessScore = document.getElementById("tightnessScore");
+    for (let rating = 0; rating <= 10; rating++) {
+      const option = document.createElement("option");
+      option.value = String(rating);
+      option.textContent = String(rating);
+      tightnessScore.appendChild(option);
+    }
+    function renderCheckIns() {
+      const summary = document.getElementById("checkinSummary");
+      const last = state.checkIns?.[0];
+      if (!last) {summary.textContent = "No check-ins saved yet.";return;}
+      summary.textContent = `Last check-in ${last.date}: tightness ${last.tightness === "" ? "not rated" : last.tightness + "/10"}, daytime ${last.dayNumbness}, nighttime ${last.nightNumbness}`;
+    }
+    document.getElementById("saveCheckin").addEventListener("click", () => {
+      state.checkIns ||= [];
+      const checkin = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+        date: todayString(), savedAt: new Date().toISOString(),
+        tightness: tightnessScore.value,
+        dayNumbness: document.getElementById("dayNumbness").value,
+        nightNumbness: document.getElementById("nightNumbness").value,
+        note: document.getElementById("symptomNote").value.trim()
+      };
+      state.checkIns.unshift(checkin);
+      saveState();
+      document.getElementById("symptomNote").value = "";
+      renderCheckIns();
+      showToast("Weekly check-in saved with workout records.");
+    });
+    renderCheckIns();
+
+    function latestEntry(dayId, exerciseId) {
+      const sessions = state.sessions[dayId] || [];
+
+      for (const session of sessions) {
+        const entry = session.entries?.find(item => item.id === exerciseId);
+        if (entry) return { ...entry, date: session.date };
+      }
+
+      return null;
+    }
+
+    function numericValue(text) {
+      const match = String(text || "").replace(",", ".").match(/-?\d+(\.\d+)?/);
+      return match ? Number(match[0]) : null;
+    }
+
+    function lastLogMarkup(dayId, exerciseId) {
+      const previous = latestEntry(dayId, exerciseId);
+
+      if (!previous) {
+        return '<span class="empty">No previous session saved yet.</span>';
+      }
+
+      const parts = [];
+      if (previous.weight) parts.push(escapeHtml(previous.weight));
+      if (previous.reps) parts.push(escapeHtml(previous.reps));
+      if (previous.note) parts.push(escapeHtml(previous.note));
+
+      return `<strong>Last — ${escapeHtml(readableDate(previous.date))}:</strong> ${
+        parts.length ? parts.join(" · ") : "completed"
+      }`;
+    }
+
+
+    function updateNextWorkoutCard() {
+      const dayId = deriveNextDay(state);
+      state.nextDay = dayId;
+      const day = plan[dayId];
+
+      if (nextWorkoutTitle && day) {
+        nextWorkoutTitle.textContent = `${dayId.replace("day", "Day ")} — ${day.title}`;
+        nextWorkoutSubtitle.textContent = day.subtitle;
+      }
+    }
+
+    function renderPlan() {
+      root.innerHTML = Object.entries(plan).map(([dayId, day], index) => `
+        <section id="${dayId}" class="panel ${index === 0 ? "active" : ""}" aria-labelledby="${dayId}-title">
+          <div class="day-header">
+            <div>
+              <h2 class="day-title" id="${dayId}-title">${day.title}</h2>
+              <p class="day-subtitle">${day.subtitle}</p>
+            </div>
+            <span class="duration">${day.duration}</span>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-top">
+              <span>${dayId.replace("day", "Day ")} progress</span>
+              <span class="progress-text">0 / ${day.exercises.length} complete</span>
+            </div>
+            <div class="progress-track"><div class="progress-bar"></div></div>
+          </div>
+
+          <div class="exercise-list">
+            ${day.exercises.map(exercise => `
+              <article class="exercise" data-id="${exercise.id}" data-day="${dayId}">
+                <div class="exercise-main">
+                  <button class="check" aria-label="Mark ${escapeHtml(exercise.name)} complete"></button>
+                  <div>
+                    <h3 class="exercise-name">
+                      ${exercise.name}
+                      <span class="tag ${exercise.tagClass || ""}">${exercise.tag}</span>
+                    </h3>
+                    <p class="exercise-meta">${exercise.prescription}</p>
+                  </div>
+                  <button class="details-toggle" aria-label="Show exercise details" aria-expanded="false">⌄</button>
+                </div>
+
+                <div class="log-row">
+                  <div class="field">
+                    <label for="${exercise.id}-weight">Weight / resistance</label>
+                    <input
+                      id="${exercise.id}-weight"
+                      data-log="weight"
+                      inputmode="decimal"
+                      placeholder="e.g. 28 kg"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="${exercise.id}-reps">Sets and reps completed</label>
+                    <input
+                      id="${exercise.id}-reps"
+                      data-log="reps"
+                      placeholder="e.g. 8, 8, 7"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="${exercise.id}-note">Optional note</label>
+                    <input
+                      id="${exercise.id}-note"
+                      data-log="note"
+                      placeholder="e.g. 2 RIR, felt good"
+                    />
+                  </div>
+                </div>
+
+                <div class="last-log" data-last-for="${exercise.id}">
+                  ${lastLogMarkup(dayId, exercise.id)}
+                </div>
+
+                <div class="exercise-details">${exercise.details}</div>
+              </article>
+            `).join("")}
+          </div>
+
+          <section class="session-toolbar">
+            <div class="session-toolbar-top">
+              <div class="session-date">
+                <label for="${dayId}-session-date">Workout date</label>
+                <input id="${dayId}-session-date" class="session-date-input" type="date" value="${todayString()}" />
+              </div>
+              <button class="session-btn save" data-save-session="${dayId}">Save session</button>
+            </div>
+
+            <div class="session-buttons">
+              <button class="session-btn" data-toggle-history="${dayId}">
+                View history (${(state.sessions[dayId] || []).length})
+              </button>
+              <button class="session-btn" data-prefill-last="${dayId}">
+                Copy last session
+              </button>
+            </div>
+
+            <div class="history-panel" id="${dayId}-history"></div>
+          </section>
+        </section>
+      `).join("");
+    }
+
+    renderPlan();
+
+    const panels = [...document.querySelectorAll(".panel")];
+    const allDayButtons = [...document.querySelectorAll("[data-day]")];
+
+    function switchDay(dayId, shouldScroll = true) {
+      panels.forEach(panel => panel.classList.toggle("active", panel.id === dayId));
+      allDayButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.day === dayId);
+      });
+
+      state.activeDay = dayId;
+      saveState();
+
+      if (shouldScroll) {
+        document.querySelector(".tab-wrap").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+
+    allDayButtons.forEach(button => {
+      button.addEventListener("click", () => switchDay(button.dataset.day));
+    });
+
+    function updateLastLabels(dayId) {
+      const panel = document.getElementById(dayId);
+
+      panel.querySelectorAll(".exercise").forEach(exercise => {
+        const target = exercise.querySelector(".last-log");
+        target.innerHTML = lastLogMarkup(dayId, exercise.dataset.id);
+
+        const previous = latestEntry(dayId, exercise.dataset.id);
+        const currentWeight = numericValue(
+          exercise.querySelector('[data-log="weight"]').value
+        );
+        const previousWeight = numericValue(previous?.weight);
+
+        if (
+          previous &&
+          currentWeight !== null &&
+          previousWeight !== null &&
+          currentWeight > previousWeight
+        ) {
+          const difference = Math.round((currentWeight - previousWeight) * 100) / 100;
+          target.insertAdjacentHTML(
+            "beforeend",
+            ` <span class="gain">↑ ${escapeHtml(difference)} heavier</span>`
+          );
+        }
+      });
+    }
+
+    document.querySelectorAll(".exercise").forEach(exercise => {
+      const id = exercise.dataset.id;
+      const dayId = exercise.dataset.day;
+      const draft = state.drafts[id] || {};
+      const checkButton = exercise.querySelector(".check");
+
+      if (draft.done) exercise.classList.add("done");
+
+      exercise.querySelectorAll("[data-log]").forEach(input => {
+        const key = input.dataset.log;
+        input.value = draft[key] || "";
+
+        input.addEventListener("input", () => {
+          state.drafts[id] ||= {};
+          state.drafts[id][key] = input.value;
+          saveState();
+          updateLastLabels(dayId);
+        });
+      });
+
+      checkButton.addEventListener("click", () => {
+        exercise.classList.toggle("done");
+        state.drafts[id] ||= {};
+        state.drafts[id].done = exercise.classList.contains("done");
+        saveState();
+        updateProgress();
+      });
+    });
+
+    document.querySelectorAll(".details-toggle").forEach(button => {
+      button.addEventListener("click", () => {
+        const details = button.closest(".exercise").querySelector(".exercise-details");
+        const isOpen = details.classList.toggle("open");
+        button.classList.toggle("open", isOpen);
+        button.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    function updateProgress() {
+      panels.forEach(panel => {
+        const exercises = [...panel.querySelectorAll(".exercise")];
+        const complete = exercises.filter(item => item.classList.contains("done")).length;
+        const total = exercises.length;
+
+        panel.querySelector(".progress-text").textContent =
+          `${complete} / ${total} complete`;
+
+        panel.querySelector(".progress-bar").style.width =
+          `${total ? (complete / total) * 100 : 0}%`;
+      });
+    }
+
+    function saveSession(dayId) {
+      const dateInput = document.getElementById(`${dayId}-session-date`);
+      const date = dateInput.value || todayString();
+      const day = plan[dayId];
+
+      const entries = day.exercises.map(exercise => {
+        const draft = state.drafts[exercise.id] || {};
+
+        return {
+          id: exercise.id,
+          name: exercise.name,
+          prescription: exercise.prescription,
+          done: Boolean(draft.done),
+          weight: String(draft.weight || "").trim(),
+          reps: String(draft.reps || "").trim(),
+          note: String(draft.note || "").trim()
+        };
+      }).filter(entry =>
+        entry.done || entry.weight || entry.reps || entry.note
+      );
+
+      if (!entries.length) {
+        showToast("Enter at least one weight, rep result, note, or checkmark first.");
+        return;
+      }
+
+      state.sessions[dayId] ||= [];
+      state.sessions[dayId].unshift({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        date,
+        savedAt: new Date().toISOString(),
+        entries
+      });
+
+      // Do not silently discard older workouts as the number of sessions grows.
+      // For long-term safety, export JSON backups periodically.
+      state.nextDay = nextDayAfter(dayId);
+
+      day.exercises.forEach(exercise => {
+        state.drafts[exercise.id] ||= {};
+        state.drafts[exercise.id].done = false;
+        document
+          .querySelector(`[data-id="${exercise.id}"]`)
+          ?.classList.remove("done");
+      });
+
+      saveState();
+      updateProgress();
+      updateLastLabels(dayId);
+      renderHistory(dayId);
+      updateHistoryButton(dayId);
+      updateNextWorkoutCard();
+      showToast(`${dayId.replace("day", "Day ")} saved. Next: ${state.nextDay.replace("day", "Day ")}.`);
+    }
+
+    function prefillLastSession(dayId) {
+      const lastSession = state.sessions[dayId]?.[0];
+
+      if (!lastSession) {
+        showToast("No previous session is available yet.");
+        return;
+      }
+
+      lastSession.entries.forEach(entry => {
+        state.drafts[entry.id] ||= {};
+        state.drafts[entry.id].weight = entry.weight || "";
+        state.drafts[entry.id].reps = entry.reps || "";
+        state.drafts[entry.id].note = "";
+
+        const exercise = document.querySelector(`[data-id="${entry.id}"]`);
+        if (!exercise) return;
+
+        exercise.querySelector('[data-log="weight"]').value = entry.weight || "";
+        exercise.querySelector('[data-log="reps"]').value = entry.reps || "";
+        exercise.querySelector('[data-log="note"]').value = "";
+      });
+
+      saveState();
+      updateLastLabels(dayId);
+      showToast("Last session copied into the current workout.");
+    }
+
+    function renderHistory(dayId) {
+      const container = document.getElementById(`${dayId}-history`);
+      const sessions = state.sessions[dayId] || [];
+
+      if (!sessions.length) {
+        container.innerHTML =
+          '<div class="history-empty">No saved sessions yet.</div>';
+        return;
+      }
+
+      container.innerHTML = sessions.slice(0, 12).map(session => `
+        <article class="history-card">
+          <div class="history-head">
+            <div>
+              <strong>${escapeHtml(readableDate(session.date))}</strong>
+              <span>${session.entries.length} exercises logged</span>
+            </div>
+            <button
+              class="history-delete"
+              data-delete-session="${escapeHtml(session.id)}"
+              data-delete-day="${dayId}"
+            >
+              Delete
+            </button>
+          </div>
+
+          <div class="history-body">
+            ${session.entries.map(entry => {
+              const result = [
+                entry.weight,
+                entry.reps,
+                entry.note
+              ].filter(Boolean).join(" · ") || "Completed";
+
+              return `
+                <div class="history-row">
+                  <strong>${escapeHtml(entry.name)}</strong>
+                  <span>${escapeHtml(result)}</span>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      container.querySelectorAll("[data-delete-session]").forEach(button => {
+        button.addEventListener("click", () => {
+          const targetDay = button.dataset.deleteDay;
+          const sessionId = button.dataset.deleteSession;
+
+          if (!window.confirm("Delete this saved session?")) return;
+
+          state.sessions[targetDay] =
+            (state.sessions[targetDay] || []).filter(session => session.id !== sessionId);
+
+          saveState();
+          renderHistory(targetDay);
+          updateHistoryButton(targetDay);
+          updateLastLabels(targetDay);
+          showToast("Session deleted.");
+        });
+      });
+    }
+
+    function updateHistoryButton(dayId) {
+      const button = document.querySelector(`[data-toggle-history="${dayId}"]`);
+      if (button) {
+        button.textContent = `View history (${(state.sessions[dayId] || []).length})`;
+      }
+    }
+
+    document.querySelectorAll("[data-save-session]").forEach(button => {
+      button.addEventListener("click", () => saveSession(button.dataset.saveSession));
+    });
+
+    document.querySelectorAll("[data-prefill-last]").forEach(button => {
+      button.addEventListener("click", () => {
+        prefillLastSession(button.dataset.prefillLast);
+      });
+    });
+
+    document.querySelectorAll("[data-toggle-history]").forEach(button => {
+      button.addEventListener("click", () => {
+        const dayId = button.dataset.toggleHistory;
+        const container = document.getElementById(`${dayId}-history`);
+        renderHistory(dayId);
+        container.classList.toggle("open");
+      });
+    });
+
+    function resetDay(dayId) {
+      const dayPanel = document.getElementById(dayId);
+
+      dayPanel.querySelectorAll(".exercise").forEach(exercise => {
+        const id = exercise.dataset.id;
+        exercise.classList.remove("done");
+        state.drafts[id] ||= {};
+        state.drafts[id].done = false;
+      });
+
+      saveState();
+      updateProgress();
+    }
+
+
+    if (goToNextWorkout) {
+      goToNextWorkout.addEventListener("click", () => {
+        const dayId = deriveNextDay(state);
+        switchDay(dayId);
+      });
+    }
+
+    document.getElementById("resetDay").addEventListener("click", () => {
+      const dayId = state.activeDay || "day1";
+
+      if (window.confirm(`Clear checkmarks for ${dayId.replace("day", "Day ")}?`)) {
+        resetDay(dayId);
+        showToast("Current-day checkmarks cleared.");
+      }
+    });
+
+    document.getElementById("exportData").addEventListener("click", () => {
+      const exportPayload = {
+        app: "Padel Strength Plan",
+        version: 12,
+        exportedAt: new Date().toISOString(),
+        data: state
+      };
+
+      const blob = new Blob(
+        [JSON.stringify(exportPayload, null, 2)],
+        { type: "application/json" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `padel-workout-backup-${todayString()}.json`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      URL.revokeObjectURL(url);
+
+      showToast("Workout backup exported.");
+    });
+
+    const importFile = document.getElementById("importFile");
+
+    document.getElementById("importData").addEventListener("click", () => {
+      importFile.click();
+    });
+
+    importFile.addEventListener("change", async () => {
+      const file = importFile.files?.[0];
+      if (!file) return;
+
+      try {
+        const payload = JSON.parse(await file.text());
+        const imported = payload.data || payload;
+
+        if (!imported.drafts || !imported.sessions) {
+          throw new Error("Invalid backup format");
+        }
+
+        const importedNormalized = normalizeSaved(imported);
+        if (!importedNormalized) throw new Error("Invalid backup contents");
+
+        if (!window.confirm("Merge this backup into the workouts on this device? Existing sessions will be kept.")) {
+          importFile.value = "";
+          return;
+        }
+
+        // Non-destructive import: union sessions with de-duplication; keep current
+        // in-progress drafts, and bring back any older removed-exercise drafts.
+        Object.entries(importedNormalized.drafts).forEach(([id, draft]) => {
+          if (!(id in state.drafts)) state.drafts[id] = draft;
+        });
+        DAY_ORDER.forEach(day => {
+          const seen = new Set((state.sessions[day] || []).map(s => s.id || JSON.stringify([s.date,s.savedAt,s.entries])));
+          (importedNormalized.sessions[day] || []).forEach(session => {
+            const identity = session.id || JSON.stringify([session.date,session.savedAt,session.entries]);
+            if (!seen.has(identity)) {
+              state.sessions[day].push(session);
+              seen.add(identity);
+            }
+          });
+          state.sessions[day].sort((a,b) =>
+            Date.parse(b.savedAt || `${b.date || ""}T12:00:00`) - Date.parse(a.savedAt || `${a.date || ""}T12:00:00`)
+          );
+        });
+        state.checkIns ||= [];
+        const seenChecks = new Set(state.checkIns.map(c => c.id || JSON.stringify(c)));
+        (importedNormalized.checkIns || []).forEach(check => {
+          const key = check.id || JSON.stringify(check);
+          if (!seenChecks.has(key)) { state.checkIns.push(check); seenChecks.add(key); }
+        });
+        state.checkIns.sort((a,b) => Date.parse(b.savedAt || b.date) - Date.parse(a.savedAt || a.date));
+        if (!state.shoulderStage && importedNormalized.shoulderStage) state.shoulderStage = importedNormalized.shoulderStage;
+        saveState();
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+        showToast("That file is not a valid workout backup.");
+      } finally {
+        importFile.value = "";
+      }
+    });
+
+    document.getElementById("resetAll").addEventListener("click", () => {
+      if (!window.confirm(
+        "Delete every saved session, weight, rep result, note, and checkmark from this browser?"
+      )) return;
+
+      const keysToRemove = [STORAGE_KEY, BACKUP_KEY, ...findOldWorkoutKeys()];
+      keysToRemove.forEach(key => localStorage.removeItem(key));
+      window.location.reload();
+    });
+
+    // Persist the stable data location on first visit. On subsequent updates,
+    // the same key is reused without changing the original workout history.
+    saveState();
+    switchDay(state.activeDay || "day1", false);
+    updateProgress();
+    updateNextWorkoutCard();
+
+    Object.keys(plan).forEach(dayId => {
+      updateLastLabels(dayId);
+      updateHistoryButton(dayId);
+    });
+
+  </script>
+</body>
+</html>
