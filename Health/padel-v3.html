@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Efficient 4-day rolling padel strength program with shoulder and hip control, persistent local workout history." />
-  <title>Padel Strength Plan V12 — Efficient + Shoulder Progression</title>
+  <meta name="description" content="Three-day full-body strength plan for padel with shoulder and hip control, persistent local workout history." />
+  <title>Padel Strength Plan V13 — Full-Body Strength + Shoulder Control</title>
 
   <style>
     :root {
@@ -160,7 +160,7 @@
 
     .tabs {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 7px;
       padding: 6px;
       border: 1px solid var(--line);
@@ -757,7 +757,7 @@
       width: min(calc(100% - 24px), 560px);
       transform: translateX(-50%);
       display: grid;
-      grid-template-columns: repeat(4,1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 7px;
       padding: 7px;
       border: 1px solid rgba(228,232,239,.95);
@@ -800,6 +800,14 @@
       }
     }
 
+    .quick-card{padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+    .quick-card h2{margin:0 0 11px;font-size:1.05rem}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .quick-grid div{padding:11px;border-radius:12px;background:var(--surface-2)}
+    .quick-grid strong,.quick-grid span{display:block}
+    .quick-grid strong{font-size:.86rem;margin-bottom:5px}
+    .quick-grid span{color:var(--muted);font-size:.78rem;line-height:1.45}
+    @media(max-width:680px){.quick-grid{grid-template-columns:1fr}}
     .phase-label { display:block; margin: 14px 0 6px; font-size:.8rem; font-weight:800; color: #1e40af; }
     .phase-select { width:100%; min-height:46px; padding:9px 12px; border:1px solid #93c5fd; border-radius:12px; background:white; color:#173050; font-weight:750; }
     .phase-details { margin-top:10px; padding:12px 13px; border-radius:13px; background:rgba(255,255,255,.78); line-height:1.48; color:#23364c; font-size:.91rem; }
@@ -822,28 +830,38 @@
 <body>
   <main class="app">
     <header class="hero">
-      <p class="eyebrow">V12 · Rolling Four-Day Plan · Strength + Shoulder Control</p>
+      <p class="eyebrow">V13 · Full-Body Rotation · Strength + Shoulder Control</p>
       <h1>Padel Strength Plan</h1>
       <p class="hero-copy">
-        Two or three gym visits weekly. Build strength and padel capacity while gradually improving shoulder control. Continue Day 1 → 4 in order; never restart on Mondays.
+        Aim for three gym visits weekly (two when padel is busy). Train the whole body each visit, build muscle and padel capacity, and progress shoulder control gradually. Rotate A → B → C without restarting on Mondays.
       </p>
       <div class="hero-stats">
         <div class="stat"><strong>2–3</strong><span>Gym visits / week</span></div>
-        <div class="stat"><strong>1→4</strong><span>Rolling sequence</span></div>
-        <div class="stat"><strong>35–45</strong><span>Minutes / workout</span></div>
+        <div class="stat"><strong>A→C</strong><span>Rolling rotation</span></div>
+        <div class="stat"><strong>50–60</strong><span>Minutes / workout</span></div>
       </div>
     </header>
 
     <section class="section load-card">
-      <h2>Simple session formula</h2>
-      <p><strong>4-minute warm-up</strong>: easy bike/walk, comfortable shoulder circles, a few hip hinges and unloaded squats (or leg-press practice if ankle is sensitive). Add 1–2 lighter ramp-up sets before the first big lift. Then do the listed exercises. Most working sets stop with <strong>1–3 reps in reserve</strong>. Pair A / Pair B exercises if stations are available. No extra rehab circuit is required.</p>
+      <h2>How to finish within an hour</h2>
+      <p><strong>5–7-minute warm-up</strong>: gentle cycle/walk, unloaded hinges and squats, comfortable shoulder movement. Add 1–2 lighter ramp-up sets before the first challenging lift. Do the main legs/hinge first; then superset <strong>Pair A</strong> (press + row/pulldown) and compatible <strong>Pair B/C</strong> items when stations are close. Rest 90–120 seconds on heavy legs and about 60–90 seconds between paired rounds. Finish most working sets with <strong>1–3 reps in reserve</strong>. Shoulder drills are included—no extra rehab circuit.</p>
+    </section>
+
+
+    <section class="section quick-card" aria-label="Workout at a glance">
+      <h2>Three full-body days. No filler.</h2>
+      <div class="quick-grid">
+        <div><strong>A · Strength base</strong><span>Squat + RDL · Bench + Row · Delts + Core · External rotation</span></div>
+        <div><strong>B · Unilateral + upper</strong><span>Split squat · Incline + Pulldown · Hamstrings · Arms · Hips + Internal rotation</span></div>
+        <div><strong>C · Glutes + volume</strong><span>Leg press + Hip thrust · Chest + Row · Rear delts + Scaption · Core</span></div>
+      </div>
     </section>
 
     <section class="section storage-card">
       <p>
         <strong>Your workout records carry forward across updates on this website.</strong>
         Weights, reps, notes, sessions, check-ins and progression phase use the permanent storage key <code>padel-strength-plan-data</code>. Older versions are imported automatically if they were used on the same site and browser.
-        <strong>Export a backup before installing an update</strong>, and before switching phones/browsers or clearing site data. Importing a backup in V12 <strong>merges sessions</strong> instead of deleting existing history. Open future versions on the <em>same site and browser</em>—separately downloaded files may not share storage.
+        <strong>Export a backup before installing an update</strong>, and before switching phones/browsers or clearing site data. Importing a backup in V13 <strong>merges sessions</strong> instead of deleting existing history. Open future versions on the <em>same site and browser</em>—separately downloaded files may not share storage.
       </p>
     </section>
 
@@ -858,10 +876,9 @@
 
     <div class="tab-wrap">
       <nav class="tabs" aria-label="Workout days">
-        <button class="tab active" data-day="day1">Day 1</button>
-        <button class="tab" data-day="day2">Day 2</button>
-        <button class="tab" data-day="day3">Day 3</button>
-        <button class="tab" data-day="day4">Day 4</button>
+        <button class="tab active" data-day="day1">Workout A</button>
+        <button class="tab" data-day="day2">Workout B</button>
+        <button class="tab" data-day="day3">Workout C</button>
       </nav>
     </div>
 
@@ -869,7 +886,7 @@
 
     <section class="section arm-rebuild-card" id="shoulderProgression">
       <h2>Shoulder progression — train without the jolt</h2>
-      <p>Your normal raises are fine; the <strong>thumb-down/internal-rotation raise</strong> causes a jolt and position-specific weakness on both sides. We are strengthening comfortable rotations and elevation instead of repeatedly provoking that response.</p>
+      <p>You reported a jolt and position-specific weakness during loaded thumb-down/internal-rotation raises on both sides, despite comfortable normal raises. This plan builds shoulder control in tolerable positions; it does not assume guarding is the sole cause.</p>
       <label class="phase-label" for="shoulderStage">Current progression phase</label>
       <select id="shoulderStage" class="phase-select">
         <option value="1">Phase 1 · Easy rotation</option>
@@ -877,7 +894,7 @@
         <option value="3">Phase 3 · Rotation variety</option>
       </select>
       <div id="phaseDetails" class="phase-details" aria-live="polite"></div>
-      <p class="phase-rule"><strong>Advance based on symptoms, not the calendar:</strong> move up only after at least two comfortable exposures without the jolt, new numbness, or worse symptoms the next day. If symptoms recur, reduce load/range or return to the previous phase. Full thumb-down cable raises are <strong>not a required goal</strong>.</p>
+      <p class="phase-rule"><strong>Progress based on function and symptoms, not the calendar:</strong> advance only after several comfortable sessions with no jolt, new numbness, or worse symptoms the next day. If symptoms recur, reduce load/range or return to the previous phase. Full thumb-down cable raises are <strong>not a required goal</strong>.</p>
       <p class="arm-medical">Persistent daytime/nighttime numbness and right-hand changes are not explained by this shoulder exercise alone. Arrange an assessment of shoulder, neck and nerve function. Stop exercise that causes jolts, new numbness or progressive weakness.</p>
     </section>
 
@@ -899,40 +916,35 @@
       <h2>How hard to train</h2>
       <ul class="volume-list">
         <li><strong>Main lifts:</strong> leave ~2 reps in reserve; rest 90–150 seconds on demanding leg movements.</li>
-        <li><strong>Accessories:</strong> 2 sets usually suffice. Rest ~45–75 seconds after a comfortable pair of exercises.</li>
+        <li><strong>Accessories:</strong> 2 working sets for most isolation exercises; some optional arm work. Rest ~60–90 seconds after paired rounds.</li>
         <li><strong>Hip/shoulder control:</strong> very light and smooth. Never chase the jolt, force a thumb-down raise or perform nerve stretches.</li>
-        <li>When all sets comfortably hit the top of the rep range, increase resistance slightly.</li>
-        <li><strong>Busy-day rule:</strong> keep the first four exercises, then do the shoulder-control item. Skip optional calves/arms/core if short on time.</li>
+        <li>When every working set reaches the top of the rep range with good control and ~2 reps in reserve, increase weight by the smallest practical amount (often 2–5%).</li>
+        <li><strong>Busy-day rule:</strong> complete the first four exercises and one comfortable shoulder-control drill. Skip optional arm work or additional accessories if time or recovery is limited.</li>
       </ul>
     </section>
 
     <section class="section note-card">
       <h2>Pain and loading rules</h2>
       <p>
-        Keep the old hip and lower-back movements within comfortable ranges. If your ankle is still painful, swollen or causing a limp, choose stable leg-press options and omit aggravating calf or single-leg work. Stop training through increasing arm numbness, shooting sensations, true weakness, sharp groin pain or catching. Aim to return to baseline by the following morning.
+        Keep hip and lower-back work in comfortable ranges. If the recent ankle sprain is still painful, swollen or causing a limp, substitute stable lower-body exercises and do not force split squats. Avoid exercises that cause the familiar electric shoulder jolt, increasing arm numbness or new weakness. Recurring hand/arm numbness needs an in-person assessment; this workout is not a diagnosis.
       </p>
     </section>
 
     <section class="section schedule-card">
-      <h2>How the rolling sequence works</h2>
+      <h2>The schedule that actually works</h2>
       <div class="schedule-grid">
-        <div class="schedule-row"><strong>Rule</strong><span>Always perform the next numbered workout. Do not reset to Day 1 on Monday.</span></div>
-        <div class="schedule-row"><strong>Example</strong><span>Week 1: Day 1 → Day 2 → Day 3. Week 2: Day 4 → Day 1. Continue from there, regardless of calendar week.</span></div>
-        <div class="schedule-row"><strong>2 visits</strong><span>A full cycle takes about 14 days. This automatically lowers weekly volume when life or padel is busier.</span></div>
-        <div class="schedule-row"><strong>3 visits</strong><span>A full cycle takes about 9–10 days, giving you more hypertrophy volume without changing the program.</span></div>
-        <div class="schedule-row"><strong>Padel</strong><span>Day 2 and Day 4 are upper-body dominant. Use them when your legs need recovery from padel.</span></div>
+        <div class="schedule-row"><strong>3 gym days</strong><span>Week 1: A → B → C. Repeat next week if you recover well alongside padel.</span></div>
+        <div class="schedule-row"><strong>2 gym days</strong><span>Week 1: A → B. Week 2: C → A. Week 3: B → C. Never reset to A just because it's Monday.</span></div>
+        <div class="schedule-row"><strong>Progression</strong><span>For main lifts, build reps within the range before increasing load. Use stable technique and about 1–3 reps in reserve.</span></div>
+        <div class="schedule-row"><strong>Padel-heavy week</strong><span>Reduce lower-body working sets by one if legs are fatigued or a match is imminent. Avoid hard leg work immediately before a demanding match.</span></div>
       </div>
     </section>
 
-    <section class="section level-card">
-      <h2>When to progress the plan</h2>
-      <ul class="criteria">
-        <li>Most sessions fit comfortably into 35–45 minutes (up to 50 on lower-body days).</li>
-        <li>Padel performance and next-day recovery remain steady.</li>
-        <li>Hip and ankle motions feel controlled and symptom-free.</li>
-        <li>Shoulder-control work stays free of jolts and new numbness or tingling.</li>
-        <li>Any recurrent sensory symptoms are assessed rather than explained away by posture.</li>
-      </ul>
+    <section class="section storage-card" id="legacyArchive">
+      <h2 style="margin:0 0 7px;font-size:1.05rem">Previous four-day workout history</h2>
+      <p>Your earlier Day 1–3 sessions remain in their original day histories. Old Day 4 sessions are preserved here, even though the new plan has only three days.</p>
+      <button class="session-btn" data-toggle-history="day4" id="oldHistoryToggle" type="button">View archived Day 4 history</button>
+      <div class="history-panel" id="day4-history"></div>
     </section>
 
     <div class="footer-actions">
@@ -947,34 +959,33 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Mobile workout navigation">
-    <button class="active" data-day="day1">Day 1</button>
-    <button data-day="day2">Day 2</button>
-    <button data-day="day3">Day 3</button>
-    <button data-day="day4">Day 4</button>
+    <button class="active" data-day="day1">A</button>
+    <button data-day="day2">B</button>
+    <button data-day="day3">C</button>
   </nav>
 
   <script>
     const plan = {
   "day1": {
-    "title": "Strength A — Hinge + Push / Pull",
-    "subtitle": "Build posterior-chain strength, chest and back. Pair the bench and row.",
-    "duration": "40–45 min",
+    "title": "Full Body A — Squat + Hinge",
+    "subtitle": "Lower-body strength, chest/back supersets and rotator-cuff control.",
+    "duration": "50–60 min",
     "exercises": [
-      {
-        "id": "d1-rdl",
-        "name": "Romanian Deadlift",
-        "prescription": "3 × 6–8",
-        "tag": "Main · Hinge",
-        "tagClass": "main",
-        "details": "2 warm-up sets first. Keep the dumbbells close, hips back, and spine neutral. Stop before your low back compensates; finish with about 2 reps in reserve."
-      },
       {
         "id": "d1-squat",
         "name": "Goblet Squat or Leg Press",
-        "prescription": "2 × 8–10",
-        "tag": "Squat",
+        "prescription": "3 × 6–10",
+        "tag": "1 · Main squat",
         "tagClass": "main",
-        "details": "Comfortable depth and stable knees. Use leg press if your ankle remains painful or you are limping. Leave 2 reps in reserve."
+        "details": "Complete 1–2 lighter warm-up sets first. Choose a stable, comfortable depth. Use leg press while an ankle sprain is still painful or you are limping. Rest 90–120 seconds. Keep ~2 reps in reserve."
+      },
+      {
+        "id": "d1-rdl",
+        "name": "Romanian Deadlift",
+        "prescription": "3 × 6–10",
+        "tag": "2 · Main hinge",
+        "tagClass": "main",
+        "details": "Dumbbells or bar. Hips back, weight near legs, soft knees and a neutral spine. Rest 90–120 seconds. Stop short of low-back compensation. No loaded stretching into nerve symptoms."
       },
       {
         "id": "d1-bench",
@@ -982,7 +993,7 @@
         "prescription": "3 × 6–10",
         "tag": "Pair A · Push",
         "tagClass": "main",
-        "details": "Superset with chest-supported row if practical. Use a shoulder-comfortable grip, avoid the jolting thumb-down position, and keep 1–2 reps in reserve."
+        "details": "Superset with the chest-supported row if equipment permits. Normal or neutral grip, controlled lowering; choose the comfortable shoulder path. Leave 1–3 reps in reserve."
       },
       {
         "id": "d1-row",
@@ -990,38 +1001,54 @@
         "prescription": "3 × 8–12",
         "tag": "Pair A · Pull",
         "tagClass": "main",
-        "details": "Allow natural scapular motion instead of pinching shoulder blades forcefully. Pull elbows down and back without shrugging."
+        "details": "Pair with bench press; rest 75–90 seconds after the two exercises. Allow natural shoulder-blade movement; no forced posture or shrugging."
       },
       {
-        "id": "d1-calf",
-        "name": "Standing Calf Raise",
-        "prescription": "2 × 10–15",
-        "tag": "Ankle · Optional",
+        "id": "d1-lateralraise",
+        "name": "Neutral-Grip Lateral Raise",
+        "prescription": "2 × 12–15",
+        "tag": "Pair B · Delts",
+        "tagClass": "muscle",
+        "details": "Dumbbell or cable. Thumb neutral or slightly up, light-to-moderate resistance, no inward/thumb-down cable raise that causes the jolt. Pair with Pallof press if convenient."
+      },
+      {
+        "id": "d1-pallof",
+        "name": "Pallof Press",
+        "prescription": "2 × 8–12 / side",
+        "tag": "Pair B · Core",
         "tagClass": "hip",
-        "details": "Slow up/down, full comfortable range. Skip while your ankle is still swollen, tender, or causing a limp."
+        "details": "Band or cable at chest height. Resist trunk rotation while slowly pressing forward; use a closer hand position if the shoulder complains."
       },
       {
         "id": "d1-externalrotation",
         "name": "Band External Rotation — Elbow at Side",
-        "prescription": "2 × 10–12 each",
+        "prescription": "2 × 10–12 / side",
         "tag": "Shoulder · Easy",
         "tagClass": "hip",
-        "details": "Elbow rests by your ribs with a small towel. Start very light; rotation should be smooth and not produce a jolt, numbness or pulling down the arm."
+        "details": "With a small towel under elbow, rotate outward smoothly with very light resistance. Avoid tingling, radiating pulling and sudden jolts. This is skill/control work, not max effort."
       }
     ]
   },
   "day2": {
-    "title": "Upper A — Chest, Lats + Arms",
-    "subtitle": "Efficient upper-body hypertrophy with gentle shoulder-rotation practice.",
-    "duration": "35–45 min",
+    "title": "Full Body B — Single-Leg + Upper",
+    "subtitle": "Padel leg stability, chest/lats, arm growth, hip and shoulder rotation.",
+    "duration": "50–60 min",
     "exercises": [
+      {
+        "id": "d2-split",
+        "name": "Supported Split Squat or Leg Press",
+        "prescription": "3 × 8–10 / leg",
+        "tag": "1 · Main legs",
+        "tagClass": "main",
+        "details": "Use a rack/rail for balance so the legs do the work. If the recent ankle sprain still hurts, swells or causes limping, use a stable bilateral leg press instead. Rest 90–120 seconds."
+      },
       {
         "id": "d2-incline",
         "name": "Incline Dumbbell Press",
-        "prescription": "2 × 8–10",
+        "prescription": "3 × 8–12",
         "tag": "Pair A · Push",
         "tagClass": "main",
-        "details": "Low incline, neutral-to-comfortable grip. Pair with pulldown when possible. Avoid pushing into electric or radiating sensations."
+        "details": "Low incline, shoulder-friendly grip. Pair with neutral-grip pulldowns if possible, resting 75–90 seconds between paired rounds."
       },
       {
         "id": "d2-pulldown",
@@ -1029,165 +1056,126 @@
         "prescription": "3 × 8–12",
         "tag": "Pair A · Pull",
         "tagClass": "main",
-        "details": "Pull elbows down and slightly forward; no neck thrusting. Increase weight when all sets hit 12 smooth reps."
+        "details": "Elbows travel down toward ribs; avoid leaning back aggressively or elevating the shoulders. Use a comfortable grip and range."
       },
       {
-        "id": "d2-lateralraise",
-        "name": "Neutral / Slight Thumb-Up Cable Lateral Raise",
-        "prescription": "2 × 12–15",
-        "tag": "Side delts",
-        "tagClass": "muscle",
-        "details": "Thumb neutral or slightly upward, NOT thumb toward the floor or machine. Keep resistance light enough to lift smoothly without a jolt."
+        "id": "d2-hamcurl",
+        "name": "Seated or Lying Hamstring Curl",
+        "prescription": "2 × 10–15",
+        "tag": "2 · Hamstrings",
+        "tagClass": "main",
+        "details": "Controlled, full comfortable range. Focus on muscular effort, not back arching. Rest 60–75 seconds."
       },
       {
         "id": "d2-biceps",
         "name": "Cable Curl",
-        "prescription": "2 × 10–12",
+        "prescription": "2 × 10–15",
         "tag": "Pair B · Biceps",
         "tagClass": "muscle",
-        "details": "Use the comfortable grip. Skip or lighten if your forearm or elbow becomes symptomatic. No forceful stretching at the bottom."
+        "details": "Comfortable grip and elbow position. Pair with triceps pressdowns. Avoid hammer-curl positions that irritate the forearm/elbow."
       },
       {
         "id": "d2-triceps",
         "name": "Cable Triceps Pressdown",
-        "prescription": "2 × 10–12",
+        "prescription": "2 × 10–15",
         "tag": "Pair B · Triceps",
         "tagClass": "muscle",
-        "details": "No aggressive lockout; avoid any shoulder/triceps jolt or tingling. Pair with the curl for efficiency."
+        "details": "No hard lockout or shoulder/triceps jolt. Reduce load/range if the familiar pulling starts. Pair with curls."
       },
       {
-        "id": "d2-wallslide",
-        "name": "Serratus Wall Slide",
-        "prescription": "1–2 × 8",
-        "tag": "Shoulder blade",
+        "id": "d2-abduction",
+        "name": "Side-Lying or Cable Hip Abduction",
+        "prescription": "2 × 12–15 / side",
+        "tag": "Pair C · Lateral hip",
         "tagClass": "hip",
-        "details": "Forearms on wall, glide upward without shrugging or forcing posture. This is controlled practice, not a hard workout."
+        "details": "Small, strict range with hips stacked. Feel the side glute, not low-back tension. If ankle loading is uncomfortable, use side-lying version."
       },
       {
         "id": "d2-internalrotation",
         "name": "Band Internal Rotation — Elbow at Side",
-        "prescription": "2 × 10–12 each",
-        "tag": "Rotator cuff · Easy",
+        "prescription": "2 × 10–12 / side",
+        "tag": "Pair C · Shoulder",
         "tagClass": "hip",
-        "details": "Elbow against ribs with a towel. Rotate the forearm toward your abdomen using very light resistance. This is not a thumb-down lateral raise. Stop if you feel the jolt."
+        "details": "Elbow next to ribs with towel. Rotate forearm inward against very light band resistance, without turning the full arm into a thumb-down raise. Stop at any electric jolt or new numbness."
       }
     ]
   },
   "day3": {
-    "title": "Strength B — Single-Leg + Hip",
-    "subtitle": "Padel-specific leg capacity and balance, plus core and scapular control.",
-    "duration": "40–45 min",
+    "title": "Full Body C — Glutes + Upper",
+    "subtitle": "Second lower-body stimulus, chest/back volume, shoulders and core.",
+    "duration": "50–60 min",
     "exercises": [
       {
-        "id": "d3-split",
-        "name": "Split Squat or Leg Press",
-        "prescription": "3 × 6–10 each",
-        "tag": "Main · Legs",
+        "id": "d3-legpress",
+        "name": "Leg Press or Belt Squat",
+        "prescription": "3 × 8–12",
+        "tag": "1 · Main squat",
         "tagClass": "main",
-        "details": "Steady stance and small initial range. If the ankle is not recovered or you still limp, switch to a stable leg press with a comfortable range."
+        "details": "Stable lower-body strength. Use controlled depth and an ankle-comfortable foot position. If ankle remains acutely painful/swollen or you limp, reduce load and seek assessment; do not train through it."
       },
       {
-        "id": "d3-slrdl",
-        "name": "Supported Single-Leg Romanian Deadlift",
-        "prescription": "2 × 8 each",
-        "tag": "Hip stability",
+        "id": "d3-hipthrust",
+        "name": "Hip Thrust or Glute Bridge",
+        "prescription": "3 × 8–12",
+        "tag": "2 · Glutes",
         "tagClass": "main",
-        "details": "Hold onto a rack so balance is not the limiting factor. Move from the hip, pelvis level, stop before back rotation."
+        "details": "Bench-supported or floor version. Drive through feet, stop tall without arching the lower back. Rest 75–120 seconds."
       },
       {
-        "id": "d3-hamcurl",
-        "name": "Hamstring Curl",
-        "prescription": "2 × 10–15",
-        "tag": "Hamstrings",
-        "tagClass": "main",
-        "details": "Use seated or lying machine; smooth contraction without using momentum."
-      },
-      {
-        "id": "d3-abduction",
-        "name": "Side-Lying or Cable Hip Abduction",
-        "prescription": "2 × 12–15 each",
-        "tag": "Lateral hip",
-        "tagClass": "hip",
-        "details": "Keep pelvis stacked and toes near forward. Feel the side glute rather than the front hip. Start with body weight or a small load."
-      },
-      {
-        "id": "d3-pallof",
-        "name": "Pallof Press",
-        "prescription": "2 × 8–10 each",
-        "tag": "Anti-rotation",
-        "tagClass": "hip",
-        "details": "Cable or band at chest height. Exhale while pressing straight ahead; resist twisting. If the shoulder is irritated, hold close to the chest."
-      },
-      {
-        "id": "d3-pushupplus",
-        "name": "Wall Push-Up Plus",
-        "prescription": "2 × 8–10",
-        "tag": "Shoulder blade",
-        "tagClass": "hip",
-        "details": "At a wall, gently spread the shoulder blades at the top. Keep the elbows soft and stop any radiating arm sensation."
-      }
-    ]
-  },
-  "day4": {
-    "title": "Upper B — Back, Delts + Core",
-    "subtitle": "Second upper-body stimulus without duplicating a long list of isolation work.",
-    "duration": "35–45 min",
-    "exercises": [
-      {
-        "id": "d4-chestpress",
-        "name": "Machine or Neutral-Grip Dumbbell Chest Press",
-        "prescription": "2 × 8–12",
+        "id": "d3-chestpress",
+        "name": "Machine Chest Press",
+        "prescription": "3 × 8–12",
         "tag": "Pair A · Push",
         "tagClass": "main",
-        "details": "Choose the version that feels most stable. Normal controlled shoulder range only; no electric jolts."
+        "details": "Use a stable path and shoulder-comfortable neutral grip. Pair with cable row if equipment is nearby. Leave ~2 reps in reserve."
       },
       {
-        "id": "d4-row",
+        "id": "d3-row",
         "name": "Seated Cable Row",
         "prescription": "3 × 8–12",
         "tag": "Pair A · Pull",
         "tagClass": "main",
-        "details": "Pair with chest press. Use controlled scapular motion and a comfortable grip; no neck shrugging."
+        "details": "Pair with machine press. Sit tall, move shoulder blades naturally, no aggressive shrug or yanking through shoulder."
       },
       {
-        "id": "d4-scaption",
+        "id": "d3-reardelt",
+        "name": "Reverse Pec Deck or Rear-Delt Fly",
+        "prescription": "2 × 12–15",
+        "tag": "Pair B · Rear delts",
+        "tagClass": "muscle",
+        "details": "Light, controlled and not shrugging. This complements back training without duplicating another heavy row."
+      },
+      {
+        "id": "d3-scaption",
         "name": "Thumb-Up Scaption Raise",
         "prescription": "2 × 8–12",
-        "tag": "Shoulder · Reach",
+        "tag": "Pair B · Shoulder",
         "tagClass": "hip",
-        "details": "Very light weight or no weight. Raise in the plane slightly forward of your sides, thumb pointing UP, to a comfortable height. This replaces thumb-down Jobe-style loading."
+        "details": "Very light dumbbell or none; raise arms slightly forward of your sides with thumbs UP through a comfortable range. No provocative thumb-down resistance."
       },
       {
-        "id": "d4-biceps",
-        "name": "Cable Curl",
-        "prescription": "2 × 10–12",
-        "tag": "Pair B · Biceps",
-        "tagClass": "muscle",
-        "details": "Optional if you played padel hard or the forearm is tired. Choose the comfortable grip."
-      },
-      {
-        "id": "d4-triceps",
-        "name": "Cable Triceps Pressdown",
-        "prescription": "2 × 10–12",
-        "tag": "Pair B · Triceps",
-        "tagClass": "muscle",
-        "details": "Stop short of forceful extension. Skip if it creates the familiar shoulder/triceps jolt."
-      },
-      {
-        "id": "d4-chop",
-        "name": "Half-Kneeling Cable Chop",
-        "prescription": "2 × 8 each",
-        "tag": "Core",
+        "id": "d3-chop",
+        "name": "Cable Chop or Pallof Hold",
+        "prescription": "2 × 8–10 / side",
+        "tag": "3 · Core",
         "tagClass": "hip",
-        "details": "Rotate through the trunk without wrenching your shoulder or lower back. Comfortable controlled load."
+        "details": "Slow trunk rotation/anti-rotation with the shoulder relaxed. Use a Pallof hold if chopping bothers shoulder/neck."
       },
       {
-        "id": "d4-externalrotation",
-        "name": "Band External Rotation — Elbow at Side",
+        "id": "d3-arms",
+        "name": "Optional Cable Curl + Pressdown",
         "prescription": "2 × 10–12 each",
-        "tag": "Rotator cuff · Easy",
+        "tag": "Optional · Arms",
+        "tagClass": "muscle",
+        "details": "Add when you want more arm size and still have 5–6 minutes. Pair both exercises; skip after heavy padel or if forearm/triceps symptoms are irritable."
+      },
+      {
+        "id": "d3-pushupplus",
+        "name": "Wall Push-Up Plus",
+        "prescription": "1 × 10–12",
+        "tag": "Shoulder · Easy",
         "tagClass": "hip",
-        "details": "Light resistance. No forced elbow-pit-forward posture. This reinforces smooth external rotation in a comfortable position."
+        "details": "Wall version: gentle forward reach at the top without shrugging. Keep range comfortable. Finish with quiet smooth repetitions, not fatigue."
       }
     ]
   }
@@ -1198,7 +1186,8 @@
     const STORAGE_KEY = "padel-strength-plan-data";
     const BACKUP_KEY = "padel-strength-plan-data-backup";
     const LEGACY_KEY_PATTERN = /^padel-strength-plan(?:-v\d+(?:-[a-z0-9-]+)?)?$/i;
-    const DAY_ORDER = ["day1", "day2", "day3", "day4"];
+    const DAY_ORDER = ["day1", "day2", "day3"];
+    const HISTORY_DAYS = ["day1", "day2", "day3", "day4"];
 
     function emptyState() {
       return {
@@ -1206,6 +1195,7 @@
         nextDay: "day1",
         drafts: {},
         sessions: { day1: [], day2: [], day3: [], day4: [] },
+        programVersion: 13,
         shoulderStage: 1,
         checkIns: []
       };
@@ -1256,12 +1246,16 @@
       normalized.drafts = value.drafts || {};
       normalized.shoulderStage = [1,2,3].includes(Number(value.shoulderStage)) ? Number(value.shoulderStage) : 1;
       normalized.checkIns = Array.isArray(value.checkIns) ? value.checkIns : [];
-      DAY_ORDER.forEach(day => {
+      HISTORY_DAYS.forEach(day => {
         normalized.sessions[day] = Array.isArray(value.sessions[day])
           ? value.sessions[day].filter(session => session && typeof session === "object")
           : [];
       });
-      normalized.nextDay = deriveNextDay(value);
+      // A four-day rotation must not drive the new A-B-C schedule.
+      const isOlderPlan = Number(value.programVersion || 0) < 13;
+      normalized.activeDay = isOlderPlan ? "day1" : normalized.activeDay;
+      normalized.nextDay = isOlderPlan ? "day1" : deriveNextDay(value);
+      normalized.programVersion = 13;
       return normalized;
     }
 
@@ -1310,7 +1304,7 @@
           Object.entries(legacy.drafts).forEach(([id, draft]) => {
             if (!(id in migrated.drafts)) migrated.drafts[id] = draft;
           });
-          DAY_ORDER.forEach(day => {
+          HISTORY_DAYS.forEach(day => {
             (Array.isArray(legacy.sessions[day]) ? legacy.sessions[day] : []).forEach(session => {
               if (!session || typeof session !== "object") return;
               const sessionKey = session.id
@@ -1335,12 +1329,12 @@
           found = true;
         }
       }
-      DAY_ORDER.forEach(day => migrated.sessions[day].sort((a,b) =>
+      HISTORY_DAYS.forEach(day => migrated.sessions[day].sort((a,b) =>
         Date.parse(b.savedAt || `${b.date || ""}T12:00:00`) -
         Date.parse(a.savedAt || `${a.date || ""}T12:00:00`)
       ));
       // Recalculate the workout rotation from the most recent saved session.
-      migrated.nextDay = deriveNextDay({ sessions: migrated.sessions });
+      migrated.nextDay = "day1"; // New three-day rotation starts at A after migration.
       return migrated;
     }
 
@@ -1403,14 +1397,14 @@
 
     const PHASES = {
       1: { title: "Phase 1 · Establish easy rotation", bullets: [
-        "Use the band internal/external rotations already listed on Days 1, 2 and 4; keep elbows by your sides.",
+        "Use light band internal/external rotations on Workouts A and B; keep elbows comfortably by your sides.",
         "Practice shoulder elevation only in normal thumb-neutral or thumb-up positions.",
         "Very light load; smooth reps. No thumb-down cable raise, no forcing a protective jolt."
       ]},
       2: { title: "Phase 2 · Build comfortable reach", bullets: [
-        "Keep light rotational work. Gradually increase the range of thumb-up scaption on Day 4 if symptom-free.",
-        "Increase the neutral-grip lateral raise on Day 2 in small steps, staying smooth.",
-        "Keep at least two comfortable exposures before progressing further."
+        "Keep light rotational work. Gradually increase the range of thumb-up scaption on Workout C if symptom-free.",
+        "Increase the neutral-grip lateral raise on Workout A in small steps, staying smooth.",
+        "Progress only after repeated comfortable sessions without the jolt or worsening symptoms."
       ]},
       3: { title: "Phase 3 · Optional rotation variety", bullets: [
         "Only if earlier phases feel reliably comfortable: explore small, unloaded variations in arm rotation below shoulder level.",
@@ -1506,7 +1500,7 @@
       const day = plan[dayId];
 
       if (nextWorkoutTitle && day) {
-        nextWorkoutTitle.textContent = `${dayId.replace("day", "Day ")} — ${day.title}`;
+        nextWorkoutTitle.textContent = `${{day1:"Workout A",day2:"Workout B",day3:"Workout C"}[dayId]} — ${day.title}`;
         nextWorkoutSubtitle.textContent = day.subtitle;
       }
     }
@@ -1524,7 +1518,7 @@
 
           <div class="progress-card">
             <div class="progress-top">
-              <span>${dayId.replace("day", "Day ")} progress</span>
+              <span>${{day1:"Workout A",day2:"Workout B",day3:"Workout C"}[dayId]} progress</span>
               <span class="progress-text">0 / ${day.exercises.length} complete</span>
             </div>
             <div class="progress-track"><div class="progress-bar"></div></div>
@@ -1764,7 +1758,7 @@
       renderHistory(dayId);
       updateHistoryButton(dayId);
       updateNextWorkoutCard();
-      showToast(`${dayId.replace("day", "Day ")} saved. Next: ${state.nextDay.replace("day", "Day ")}.`);
+      showToast(`${{day1:"A",day2:"B",day3:"C"}[dayId]} saved. Next: ${{day1:"A",day2:"B",day3:"C"}[state.nextDay]}.`);
     }
 
     function prefillLastSession(dayId) {
@@ -1861,7 +1855,9 @@
     function updateHistoryButton(dayId) {
       const button = document.querySelector(`[data-toggle-history="${dayId}"]`);
       if (button) {
-        button.textContent = `View history (${(state.sessions[dayId] || []).length})`;
+        button.textContent = dayId === "day4"
+          ? `View archived Day 4 history (${(state.sessions[dayId] || []).length})`
+          : `View history (${(state.sessions[dayId] || []).length})`;
       }
     }
 
@@ -1918,7 +1914,7 @@
     document.getElementById("exportData").addEventListener("click", () => {
       const exportPayload = {
         app: "Padel Strength Plan",
-        version: 12,
+        version: 13,
         exportedAt: new Date().toISOString(),
         data: state
       };
@@ -1971,7 +1967,7 @@
         Object.entries(importedNormalized.drafts).forEach(([id, draft]) => {
           if (!(id in state.drafts)) state.drafts[id] = draft;
         });
-        DAY_ORDER.forEach(day => {
+        HISTORY_DAYS.forEach(day => {
           const seen = new Set((state.sessions[day] || []).map(s => s.id || JSON.stringify([s.date,s.savedAt,s.entries])));
           (importedNormalized.sessions[day] || []).forEach(session => {
             const identity = session.id || JSON.stringify([session.date,session.savedAt,session.entries]);
@@ -2023,6 +2019,7 @@
       updateLastLabels(dayId);
       updateHistoryButton(dayId);
     });
+    updateHistoryButton("day4");
 
   </script>
 </body>
